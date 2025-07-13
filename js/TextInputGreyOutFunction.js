@@ -1,4 +1,4 @@
-function text_input_grey_out_function(){
+window.text_input_grey_out_function = function text_input_grey_out_function(){
 
     ////////////
     // LABELS // 

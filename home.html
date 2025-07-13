@@ -21,23 +21,23 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/font-awesome.js"></script>
 
-  
-
-
   <!-- JS: modular scripts -->
   <script src="js/DataStorage_GetData.js"></script>
+  <script src="js/ViewChangingBehavior.js"></script>
+  <script src="js/ColorThemeChanges.js"></script>
+  <script src="js/HamburgerIconFunctionality.js"></script>
   <script src="js/RemoveTildeFromInputs.js"></script>
   <script src="js/ConfigureRightDock.js"></script>
   <script src="js/WebSearchInput.js"></script>
   <script src="js/TextInputGreyOutFunction.js"></script>
   <script src="js/SaveData.js"></script>
   <script src="js/UpdateWebsiteNames.js"></script>
-
   <script src="js/RightDockGroupWebsiteOpeningFunctionality.js"></script>
+  <script src="js/RightDockFocusCheck.js"></script>
+  <script src="js/EasterEgg.js"></script>
 
   <!--  JS: core logic -->
   <script src="home.js"></script>
-  
 
 </head>
 
@@ -850,9 +850,9 @@
               </div>
 
               <!-- a -->
-              <div id='ldi_lc_1' class='row'>
+              <div id='ldi_lc_1' class='row' style='margin-top:'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>a</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>a</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_a_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -865,7 +865,7 @@
               <!-- b -->
               <div id='ldi_lc_2' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>b</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>b</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_b_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -878,7 +878,7 @@
               <!-- c -->
               <div id='ldi_lc_3' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>c</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>c</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_c_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -891,7 +891,7 @@
               <!-- d -->
               <div id='ldi_lc_4' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>d</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>d</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_d_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -904,7 +904,7 @@
               <!-- e -->
               <div id='ldi_lc_5' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>e</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>e</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_e_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -917,7 +917,7 @@
               <!-- f -->
               <div id='ldi_lc_6' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>f</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>f</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_f_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -930,7 +930,7 @@
               <!-- g -->
               <div id='ldi_lc_7' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>g</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>g</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_g_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -943,7 +943,7 @@
               <!-- h -->
               <div id='ldi_lc_8' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>h</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>h</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_h_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -956,7 +956,7 @@
               <!-- i -->
               <div id='ldi_lc_9' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>i</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>i</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_i_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -969,7 +969,7 @@
               <!-- j -->
               <div id='ldi_lc_10' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>j</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>j</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_j_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -982,7 +982,7 @@
               <!-- k -->
               <div id='ldi_lc_11' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>k</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>k</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_k_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -995,7 +995,7 @@
               <!-- l -->
               <div id='ldi_lc_12' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>l</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>l</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_l_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1008,7 +1008,7 @@
               <!-- m -->
               <div id='ldi_lc_13' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>m</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>m</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_m_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1021,7 +1021,7 @@
               <!-- n -->
               <div id='ldi_lc_14' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>n</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>n</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_n_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;:placeholder{color:red}'>
@@ -1034,7 +1034,7 @@
               <!-- o -->
               <div id='ldi_lc_15' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>o</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>o</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_o_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1047,7 +1047,7 @@
               <!-- p -->
               <div id='ldi_lc_16' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>p</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>p</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_p_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1060,7 +1060,7 @@
               <!-- q -->
               <div id='ldi_lc_17' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>q</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>q</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_q_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1073,7 +1073,7 @@
               <!-- r -->
               <div id='ldi_lc_18' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>r</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>r</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_r_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1086,7 +1086,7 @@
               <!-- s -->
               <div id='ldi_lc_19' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>s</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>s</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_s_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1099,7 +1099,7 @@
               <!-- t -->
               <div id='ldi_lc_20' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>t</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>t</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_t_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1112,7 +1112,7 @@
               <!-- u -->
               <div id='ldi_lc_21' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>u</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>u</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_u_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1125,7 +1125,7 @@
               <!-- v -->
               <div id='ldi_lc_22' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>v</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>v</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_v_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1138,7 +1138,7 @@
               <!-- w -->
               <div id='ldi_lc_23' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>w</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>w</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_w_label_input" placeholder="label" maxlength='20' style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1151,7 +1151,7 @@
               <!-- x -->
               <div id='ldi_lc_24' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>x</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>x</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_x_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1164,7 +1164,7 @@
               <!-- y -->
               <div id='ldi_lc_25' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>y</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>y</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_y_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1177,7 +1177,7 @@
               <!-- z -->
               <div id='ldi_lc_26' class='row'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>z</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>z</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_z_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1200,7 +1200,7 @@
               <!-- A -->
               <div id='ldi_uc_1' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>A</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>A</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_A_label_input" placeholder="LABEL" maxlength='20' style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF; font-size:.8em'>
@@ -1213,7 +1213,7 @@
               <!-- B -->
               <div id='ldi_uc_2' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>B</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>B</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_B_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1226,7 +1226,7 @@
               <!-- C -->
               <div id='ldi_uc_3' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>C</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>C</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_C_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1239,7 +1239,7 @@
               <!-- D -->
               <div id='ldi_uc_4' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>D</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>D</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_D_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1252,7 +1252,7 @@
               <!-- E -->
               <div id='ldi_uc_5' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>E</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>E</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_E_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1265,7 +1265,7 @@
               <!-- F -->
               <div id='ldi_uc_6' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>F</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>F</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_F_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1278,7 +1278,7 @@
               <!-- G -->
               <div id='ldi_uc_7' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>G</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>G</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_G_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1291,7 +1291,7 @@
               <!-- H -->
               <div id='ldi_uc_8' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>H</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>H</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_H_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1304,7 +1304,7 @@
               <!-- I -->
               <div id='ldi_uc_9' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>I</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>I</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_I_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1317,7 +1317,7 @@
               <!-- J -->
               <div id='ldi_uc_10' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>J</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>J</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_J_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1330,7 +1330,7 @@
               <!-- K -->
               <div id='ldi_uc_11' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>K</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>K</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_K_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1343,7 +1343,7 @@
               <!-- L -->
               <div id='ldi_uc_12' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>L</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>L</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_L_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1356,7 +1356,7 @@
               <!-- M -->
               <div id='ldi_uc_13' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>M</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>M</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_M_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1369,7 +1369,7 @@
               <!-- N -->
               <div id='ldi_uc_14' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>N</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>N</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_N_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1382,7 +1382,7 @@
               <!-- O -->
               <div id='ldi_uc_15' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>O</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>O</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_O_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1395,7 +1395,7 @@
               <!-- P -->
               <div id='ldi_uc_16' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>P</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>P</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_P_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1408,7 +1408,7 @@
               <!-- Q -->
               <div id='ldi_uc_17' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>Q</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>Q</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_Q_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1421,7 +1421,7 @@
               <!-- R -->
               <div id='ldi_uc_18' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>R</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>R</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_R_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1434,7 +1434,7 @@
               <!-- S -->
               <div id='ldi_uc_19' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>S</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>S</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_S_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1447,7 +1447,7 @@
               <!-- T -->
               <div id='ldi_uc_20' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>T</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>T</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_T_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1460,7 +1460,7 @@
               <!-- U -->
               <div id='ldi_uc_21' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>U</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>U</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_U_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1473,7 +1473,7 @@
               <!-- V -->
               <div id='ldi_uc_22' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>V</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>V</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_V_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1486,7 +1486,7 @@
               <!-- W -->
               <div id='ldi_uc_23' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>W</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>W</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_W_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1499,7 +1499,7 @@
               <!-- X -->
               <div id='ldi_uc_24' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>X</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>X</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_X_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1512,7 +1512,7 @@
               <!-- Y -->
               <div id='ldi_uc_25' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>Y</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>Y</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_Y_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1525,7 +1525,7 @@
               <!-- Z -->
               <div id='ldi_uc_26' class='row' style='display:none'>
                   <!-- letter -->
-                  <div class='col-sm-1' style='padding:0px;'>Z</div>
+                  <div class='col-sm-1' style='padding:0px; padding-top:4px'>Z</div>
                   <!-- label -->
                   <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
                       <input class="form-control" id="ld_Z_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
@@ -1638,7 +1638,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_1_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px;'>group label</div>
+              <div id='rd_1_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px;'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_1_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1648,7 +1648,7 @@
             <!-- website 1:1 -->
             <div id='rdi_1_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_1_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left; '>
                     <input class="form-control" id="rd_1_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1657,7 +1657,7 @@
             <!-- website 1:2 -->
             <div id='rdi_1_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_1_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1666,7 +1666,7 @@
             <!-- website 1:3 -->
             <div id='rdi_1_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_1_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1675,7 +1675,7 @@
             <!-- website 1:4 -->
             <div id='rdi_1_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_1_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1684,7 +1684,7 @@
             <!-- website 1:5 -->
             <div id='rdi_1_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_1_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1693,7 +1693,7 @@
             <!-- website 1:6 -->
             <div id='rdi_1_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_1_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1702,7 +1702,7 @@
             <!-- website 1:7 -->
             <div id='rdi_1_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_1_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1711,7 +1711,7 @@
             <!-- website 1:8 -->
             <div id='rdi_1_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_1_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1720,7 +1720,7 @@
             <!-- website 1:9 -->
             <div id='rdi_1_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_1_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1729,7 +1729,7 @@
             <!-- website 1:10 -->
             <div id='rdi_1_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_1_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_1_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_1_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1750,7 +1750,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_2_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_2_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_2_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1760,7 +1760,7 @@
             <!-- website 1:1 -->
             <div id='rdi_2_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_2_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none; outline: none;'>
@@ -1769,7 +1769,7 @@
             <!-- website 1:2 -->
             <div id='rdi_2_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_2_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1778,7 +1778,7 @@
             <!-- website 1:3 -->
             <div id='rdi_2_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_2_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1787,7 +1787,7 @@
             <!-- website 1:4 -->
             <div id='rdi_2_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_2_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1796,7 +1796,7 @@
             <!-- website 1:5 -->
             <div id='rdi_2_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_2_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1805,7 +1805,7 @@
             <!-- website 1:6 -->
             <div id='rdi_2_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_2_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1814,7 +1814,7 @@
             <!-- website 1:7 -->
             <div id='rdi_2_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_2_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1823,7 +1823,7 @@
             <!-- website 1:8 -->
             <div id='rdi_2_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_2_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1832,7 +1832,7 @@
             <!-- website 1:9 -->
             <div id='rdi_2_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_2_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1841,7 +1841,7 @@
             <!-- website 1:10 -->
             <div id='rdi_2_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_2_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_2_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_2_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1862,7 +1862,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_3_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_3_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_3_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1872,7 +1872,7 @@
             <!-- website 1:1 -->
             <div id='rdi_3_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_3_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1881,7 +1881,7 @@
             <!-- website 1:2 -->
             <div id='rdi_3_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_3_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1890,7 +1890,7 @@
             <!-- website 1:3 -->
             <div id='rdi_3_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_3_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1899,7 +1899,7 @@
             <!-- website 1:4 -->
             <div id='rdi_3_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_3_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1908,7 +1908,7 @@
             <!-- website 1:5 -->
             <div id='rdi_3_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_3_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1917,7 +1917,7 @@
             <!-- website 1:6 -->
             <div id='rdi_3_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_3_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1926,7 +1926,7 @@
             <!-- website 1:7 -->
             <div id='rdi_3_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_3_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1935,7 +1935,7 @@
             <!-- website 1:8 -->
             <div id='rdi_3_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_3_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1944,7 +1944,7 @@
             <!-- website 1:9 -->
             <div id='rdi_3_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_3_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1953,7 +1953,7 @@
             <!-- website 1:10 -->
             <div id='rdi_3_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_3_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_3_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_3_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1976,7 +1976,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_4_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_4_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_4_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1986,7 +1986,7 @@
             <!-- website 1:1 -->
             <div id='rdi_4_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_4_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -1995,7 +1995,7 @@
             <!-- website 1:2 -->
             <div id='rdi_4_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_4_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2004,7 +2004,7 @@
             <!-- website 1:3 -->
             <div id='rdi_4_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_4_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2013,7 +2013,7 @@
             <!-- website 1:4 -->
             <div id='rdi_4_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_4_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2022,7 +2022,7 @@
             <!-- website 1:5 -->
             <div id='rdi_4_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_4_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2031,7 +2031,7 @@
             <!-- website 1:6 -->
             <div id='rdi_4_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_4_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2040,7 +2040,7 @@
             <!-- website 1:7 -->
             <div id='rdi_4_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_4_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2049,7 +2049,7 @@
             <!-- website 1:8 -->
             <div id='rdi_4_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_4_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2058,7 +2058,7 @@
             <!-- website 1:9 -->
             <div id='rdi_4_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_4_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2067,7 +2067,7 @@
             <!-- website 1:10 -->
             <div id='rdi_4_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_4_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_4_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_4_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2090,7 +2090,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_5_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_5_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_5_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2100,7 +2100,7 @@
             <!-- website 1:1 -->
             <div id='rdi_5_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_5_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2109,7 +2109,7 @@
             <!-- website 1:2 -->
             <div id='rdi_5_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_5_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2118,7 +2118,7 @@
             <!-- website 1:3 -->
             <div id='rdi_5_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_5_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2127,7 +2127,7 @@
             <!-- website 1:4 -->
             <div id='rdi_5_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_5_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2136,7 +2136,7 @@
             <!-- website 1:5 -->
             <div id='rdi_5_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_5_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2145,7 +2145,7 @@
             <!-- website 1:6 -->
             <div id='rdi_5_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_5_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2154,7 +2154,7 @@
             <!-- website 1:7 -->
             <div id='rdi_5_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_5_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2163,7 +2163,7 @@
             <!-- website 1:8 -->
             <div id='rdi_5_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_5_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2172,7 +2172,7 @@
             <!-- website 1:9 -->
             <div id='rdi_5_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_5_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2181,7 +2181,7 @@
             <!-- website 1:10 -->
             <div id='rdi_5_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_5_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_5_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_5_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2203,7 +2203,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_6_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_6_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_6_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2213,7 +2213,7 @@
             <!-- website 1:1 -->
             <div id='rdi_6_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_6_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2222,7 +2222,7 @@
             <!-- website 1:2 -->
             <div id='rdi_6_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_6_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2231,7 +2231,7 @@
             <!-- website 1:3 -->
             <div id='rdi_6_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_6_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2240,7 +2240,7 @@
             <!-- website 1:4 -->
             <div id='rdi_6_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_6_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2249,7 +2249,7 @@
             <!-- website 1:5 -->
             <div id='rdi_6_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_6_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2258,7 +2258,7 @@
             <!-- website 1:6 -->
             <div id='rdi_6_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_6_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2267,7 +2267,7 @@
             <!-- website 1:7 -->
             <div id='rdi_6_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_6_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2276,7 +2276,7 @@
             <!-- website 1:8 -->
             <div id='rdi_6_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_6_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2285,7 +2285,7 @@
             <!-- website 1:9 -->
             <div id='rdi_6_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_6_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2294,7 +2294,7 @@
             <!-- website 1:10 -->
             <div id='rdi_6_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_6_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_6_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_6_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2317,7 +2317,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_7_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_7_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_7_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2327,7 +2327,7 @@
             <!-- website 1:1 -->
             <div id='rdi_7_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_7_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2336,7 +2336,7 @@
             <!-- website 1:2 -->
             <div id='rdi_7_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_7_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2345,7 +2345,7 @@
             <!-- website 1:3 -->
             <div id='rdi_7_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_7_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2354,7 +2354,7 @@
             <!-- website 1:4 -->
             <div id='rdi_7_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_7_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2363,7 +2363,7 @@
             <!-- website 1:5 -->
             <div id='rdi_7_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_7_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2372,7 +2372,7 @@
             <!-- website 1:6 -->
             <div id='rdi_7_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_7_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2381,7 +2381,7 @@
             <!-- website 1:7 -->
             <div id='rdi_7_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_7_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2390,7 +2390,7 @@
             <!-- website 1:8 -->
             <div id='rdi_7_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_7_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2399,7 +2399,7 @@
             <!-- website 1:9 -->
             <div id='rdi_7_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_7_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2408,7 +2408,7 @@
             <!-- website 1:10 -->
             <div id='rdi_7_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_7_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_7_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_7_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2431,7 +2431,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_8_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_8_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_8_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2441,7 +2441,7 @@
             <!-- website 1:1 -->
             <div id='rdi_8_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_8_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2450,7 +2450,7 @@
             <!-- website 1:2 -->
             <div id='rdi_8_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_8_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2459,7 +2459,7 @@
             <!-- website 1:3 -->
             <div id='rdi_8_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_8_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2468,7 +2468,7 @@
             <!-- website 1:4 -->
             <div id='rdi_8_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_8_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2477,7 +2477,7 @@
             <!-- website 1:5 -->
             <div id='rdi_8_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_8_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2486,7 +2486,7 @@
             <!-- website 1:6 -->
             <div id='rdi_8_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_8_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2495,7 +2495,7 @@
             <!-- website 1:7 -->
             <div id='rdi_8_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_8_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2504,7 +2504,7 @@
             <!-- website 1:8 -->
             <div id='rdi_8_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_8_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2513,7 +2513,7 @@
             <!-- website 1:9 -->
             <div id='rdi_8_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_8_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2522,7 +2522,7 @@
             <!-- website 1:10 -->
             <div id='rdi_8_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_8_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_8_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_8_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2544,7 +2544,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_9_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_9_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_9_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2554,7 +2554,7 @@
             <!-- website 1:1 -->
             <div id='rdi_9_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_9_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2563,7 +2563,7 @@
             <!-- website 1:2 -->
             <div id='rdi_9_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_9_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2572,7 +2572,7 @@
             <!-- website 1:3 -->
             <div id='rdi_9_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_9_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2581,7 +2581,7 @@
             <!-- website 1:4 -->
             <div id='rdi_9_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_9_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2590,7 +2590,7 @@
             <!-- website 1:5 -->
             <div id='rdi_9_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_9_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2599,7 +2599,7 @@
             <!-- website 1:6 -->
             <div id='rdi_9_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_9_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2608,7 +2608,7 @@
             <!-- website 1:7 -->
             <div id='rdi_9_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_9_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2617,7 +2617,7 @@
             <!-- website 1:8 -->
             <div id='rdi_9_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_9_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2626,7 +2626,7 @@
             <!-- website 1:9 -->
             <div id='rdi_9_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_9_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2635,7 +2635,7 @@
             <!-- website 1:10 -->
             <div id='rdi_9_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_9_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_9_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_9_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2657,7 +2657,7 @@
                 </button>
               </div>
               <!-- label -->
-              <div id='rd_0_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <div id='rd_0_label_input_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left;margin-top:5px'>group label</div>
               <!-- website input -->
               <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
                   <input class="form-control" id="rd_0_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2667,7 +2667,7 @@
             <!-- website 1:1 -->
             <div id='rdi_0_1' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <div id='rd_0_input_1_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 1</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2676,7 +2676,7 @@
             <!-- website 1:2 -->
             <div id='rdi_0_2' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <div id='rd_0_input_2_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 2</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2685,7 +2685,7 @@
             <!-- website 1:3 -->
             <div id='rdi_0_3' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <div id='rd_0_input_3_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 3</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2694,7 +2694,7 @@
             <!-- website 1:4 -->
             <div id='rdi_0_4' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <div id='rd_0_input_4_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 4</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2703,7 +2703,7 @@
             <!-- website 1:5 -->
             <div id='rdi_0_5' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <div id='rd_0_input_5_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 5</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2712,7 +2712,7 @@
             <!-- website 1:6 -->
             <div id='rdi_0_6' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <div id='rd_0_input_6_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 6</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2721,7 +2721,7 @@
             <!-- website 1:7 -->
             <div id='rdi_0_7' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <div id='rd_0_input_7_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 7</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2730,7 +2730,7 @@
             <!-- website 1:8 -->
             <div id='rdi_0_8' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <div id='rd_0_input_8_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 8</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2739,7 +2739,7 @@
             <!-- website 1:9 -->
             <div id='rdi_0_9' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <div id='rd_0_input_9_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 9</div>
                 <!-- label -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2748,7 +2748,7 @@
             <!-- website 1:10 -->
             <div id='rdi_0_10' class='row' style='margin-left:20px'>
                 <!-- label -->
-                <div id='rd_0_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <div id='rd_0_input_10_label' class='col-sm-3' style='padding:0px;padding-top:4px;display:block;text-align:left'>website 10</div>
                 <!-- website input  -->
                 <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
                     <input class="form-control" id="rd_0_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
@@ -2911,10 +2911,11 @@
       <div class='row' style='width:100%;'>
           <!-- Instructions -->
           <div class='col-sm-5' style=''>
-              <div id='web_search_input_instructions_id' class='web_search_input_instructions'>
+              <div id='web_search_input_instructions_id' class='web_search_input_instructions' style='width:90%'>
                   <br>
-                  <center><div id='web_search_input_underline'style='border-bottom:1px solid #000000;width:65%'><b>Information</b></div></center><br>
-                  <ul>
+                  <center><div id='web_search_input_underline'style='border-bottom:1px solid #000000;width:65%'>
+                    <b>Information</b></div></center><br>
+                  <ul >
                       <li>Press spacebar on the main display screen to display the search box</li><br>
                       <li>Change the search box destinations by adding the prefix of search urls. <br><br></li><br><br>
                   </ul>
@@ -2924,8 +2925,8 @@
           <div class='col-sm-7'>
 
           <!-- Table: number inputs -->
-              <div id='wsi_header' class='row' style='border-bottom:1.5px solid #808080'>
-                <div class='col-sm-1'></div>
+              <div id='wsi_header' class='row' style='border-bottom:1.5px solid #808080; margin-top:10px'>
+                <div class='col-sm-1' style='height:15px;'></div>
                 <div class='col-sm-4' style='max-width:42%'>website</div>
                 <!-- <div class='col-sm-5' style='border-bottom:1.5px solid #808080'>label</div> -->
                 <div class='col-sm-7' style='max-width:50%'>search url</div>
@@ -2935,7 +2936,7 @@
               <!-- 1 -->
               <div id='wsi_1' class='row'>
                 <!-- checkbox -->
-                <div class='col-sm-1' style='margin-top:2px'>
+                <div class='col-sm-1' style='margin-top:2px; '>
                   <div id='wsi_1_checkbox_outline' class='checkbox_outline'></div>
                   <div id='wsi_1_checkbox_on' class='checkbox_on'>✓</div>     
                   <div id='wsi_1_checkbox_off'class='checkbox_off' style='display:none'></div>
