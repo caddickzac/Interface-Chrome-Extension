@@ -1,0 +1,3049 @@
+
+<html>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> -->
+<title>interface</title>
+<head>
+  <meta charset="UTF-8">
+  <title>Interface Extension</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css"> <!-- Optional -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css"> <!-- Your custom styles (optional) -->
+
+  <!-- JS: libraries -->
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/font-awesome.js"></script>
+
+  
+
+
+  <!-- JS: modular scripts -->
+  <script src="js/DataStorage_GetData.js"></script>
+  <script src="js/RemoveTildeFromInputs.js"></script>
+  <script src="js/ConfigureRightDock.js"></script>
+  <script src="js/WebSearchInput.js"></script>
+  <script src="js/TextInputGreyOutFunction.js"></script>
+  <script src="js/SaveData.js"></script>
+  <script src="js/UpdateWebsiteNames.js"></script>
+
+  <script src="js/RightDockGroupWebsiteOpeningFunctionality.js"></script>
+
+  <!--  JS: core logic -->
+  <script src="home.js"></script>
+  
+
+</head>
+
+
+
+
+<div id="Main" class='body_class' style="display:;"> <!-- Frame Box -->
+<body id='body_id' style='background-color:#242424;display:none'>
+
+  <!-- hamburger icon -->
+  <div class='ham_class' id='ham_icon' style='margin-top:1%; margin-left:1%;background-color:; height:20px;'>
+    <img id="testImage" class='hi_off' src='Images/Hamburger_icon3.png'  height="20px" width="35px" style='display:none; '/>
+    <canvas id="canvas" width="50" height="50"></canvas><br>
+  </div>
+
+  <!-- Left Docker -->
+  <div id='left_dock' class='left_docker_state1' style='display:none;'>
+      <table id='left_dock_lowercase' style='display:none; font-size: 1.0em;width:100%;padding:0px;margin:0px'>
+          <tr>
+              <th class='ld-left-column'></th>
+              <th class='ld-right-column'></th>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>a</td>
+              <td id='ld-a' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>b</td>
+              <td id='ld-b' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>c</td>
+              <td id='ld-c' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>d</td>
+              <td id='ld-d' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>e</td>
+              <td id='ld-e' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>f</td>
+              <td id='ld-f' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>g</td>
+              <td id='ld-g' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>h</td>
+              <td id='ld-h' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>i</td>
+              <td id='ld-i' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>j</td>
+              <td id='ld-j' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>k</td>
+              <td id='ld-k' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>l</td>
+              <td id='ld-l' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>m</td>
+              <td id='ld-m' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>n</td>
+              <td id='ld-n' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>o</td>
+              <td id='ld-o' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>p</td>
+              <td id='ld-p' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>q</td>
+              <td id='ld-q' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>r</td>
+              <td id='ld-r' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>s</td>
+              <td id='ld-s' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>t</td>
+              <td id='ld-t' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>u</td>
+              <td id='ld-u' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>v</td>
+              <td id='ld-v' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>w</td>
+              <td id='ld-w' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>x</td>
+              <td id='ld-x' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>y</td>
+              <td id='ld-y' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>z</td>
+              <td id='ld-z' class='ld-right-column'></td>
+          </tr>
+      </table>
+
+      <table id='left_dock_uppercase' style='display:; color:#BFBFBF; font-size: 1.0em;'>
+          <tr>
+              <th class='ld-left-column'></th>
+              <th class='ld-right-column'></th>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>A</td>
+              <td id='ld-A' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>B</td>
+              <td id='ld-B' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>C</td>
+              <td id='ld-C' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>D</td>
+              <td id='ld-D' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>E</td>
+              <td id='ld-E' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>F</td>
+              <td id='ld-F' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>G</td>
+              <td id='ld-G' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>H</td>
+              <td id='ld-H' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>I</td>
+              <td id='ld-I' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>J</td>
+              <td id='ld-J' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>K</td>
+              <td id='ld-K' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>L</td>
+              <td id='ld-L' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>M</td>
+              <td id='ld-M' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>N</td>
+              <td id='ld-N' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>O</td>
+              <td id='ld-O' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>P</td>
+              <td id='ld-P' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>Q</td>
+              <td id='ld-Q' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>R</td>
+              <td id='ld-R' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>S</td>
+              <td id='ld-S' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>T</td>
+              <td id='ld-T' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>U</td>
+              <td id='ld-U' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>V</td>
+              <td id='ld-V' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>W</td>
+              <td id='ld-W' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>X</td>
+              <td id='ld-X' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>Y</td>
+              <td id='ld-Y' class='ld-right-column'></td>
+          </tr>
+          <tr>
+              <td class='ld-left-column'>Z</td>
+              <td id='ld-Z' class='ld-right-column'></td>
+          </tr>
+      </table>
+  </div>
+
+  <!-- Right Docker -->
+  <div id='right_dock' class='right_docker_state1' style='display:'>
+      <table id='right_dock_table' style='color:#BFBFBF; font-size: 1.0em;'>
+          <tr>
+              <th class='rd-left-column'></th>
+              <th class='rd-right-column'></th>
+          </tr>
+          <tr>
+              <td id='rd-1' class='rd-left-column'></td>
+              <td class='rd-right-column'>1</td>
+          </tr>
+          <tr>
+              <td id='rd-2' class='rd-left-column'></td>
+              <td class='rd-right-column'>2</td>
+          </tr>
+          <tr>
+              <td id='rd-3' class='rd-left-column'></td>
+              <td class='rd-right-column'>3</td>
+          </tr>
+          <tr>
+              <td id='rd-4' class='rd-left-column'></td>
+              <td class='rd-right-column'>4</td>
+          </tr>
+          <tr>
+              <td id='rd-5' class='rd-left-column'></td>
+              <td class='rd-right-column'>5</td>
+          </tr>
+          <tr>
+              <td id='rd-6' class='rd-left-column'></td>
+              <td class='rd-right-column'>6</td>
+          </tr>
+          <tr>
+              <td id='rd-7' class='rd-left-column'></td>
+              <td class='rd-right-column'>7</td>
+          </tr>
+          <tr>
+              <td id='rd-8' class='rd-left-column'></td>
+              <td class='rd-right-column'>8</td>
+          </tr>
+          <tr>
+              <td id='rd-9' class='rd-left-column'></td>
+              <td class='rd-right-column'>9</td>
+          </tr>
+          <tr>
+              <td id='rd-0' class='rd-left-column'></td>
+              <td class='rd-right-column'>0</td>
+          </tr>
+      </table>
+  </div>
+
+  <!-- Bottom Docker -->
+  <center>
+  <div id='bottom_dock' class='bottom_docker_state1' style='display:;'>
+    <!-- row 1 -->
+    <div class='row' style='width:100%;margin:0px; background-color:'>
+      <div id='bd_1' class='col-sm-4' style='padding:25px; border:1px solid #808080'>google</div>
+      <div id='bd_2' class='col-sm-4' style='padding:25px; border-top: 1px solid #808080; border-bottom: 1px solid #808080;'>duckduckgo</div>
+      <div id='bd_3' class='col-sm-4' style='padding:25px; border:1px solid #808080; '>[empty]</div>
+    </div>
+
+   <!--  <div style='border:1px solid #808080; width:100%; position:absolute;background-color:green' ></div> -->
+
+    <!-- row 2 -->
+    <div class='row' style='width:100%;margin:0px'>
+      <div id='bd_4' class='col-sm-4' style='padding:25px; border-left: 1px solid #808080;border-right: 1px solid #808080'>[empty]</div>
+      <div id='bd_5' class='col-sm-4' style='padding:25px;'>[empty]</div>
+      <div id='bd_6' class='col-sm-4' style='padding:25px; border-right: 1px solid #808080; border-left: 1px solid #808080;'>[empty]</div>
+      <!-- selected css: padding:25px; border: 2px solid #BFBFBF; color:#BFBFBF -->
+    </div>
+  </div>
+  </center>
+
+  <!-- Top Docker -->
+  <font size='+1'>
+  <div id='top_dock' class='top_docker_state1' style='display:; width:95%; margin-left:2.5%; '>
+    <div id='top_dock_date' style='margin-bottom:10px;'>
+      <font size='+2'>
+        <span id='top_dock_date_DoW' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;'>Monday</span>
+        <span id='top_dock_date_MDY' style='margin-left:4px'></span>
+      </font>
+    </div><br>
+    <div id='top_dock_ruler' class='row' style='margin:0px; padding:0px;'>
+      <!-- left half -->
+      <div class='col-sm-6' style='margin:0px; padding:0px;width:100%;'>
+        <div class='row' style='margin:0px; padding:0px;width:100%'>
+          <div id='tl_1' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_1' style='position:absolute; top:-25px; left:-6px'></span>
+            <span id='t1_text_1_meridies' style='position:absolute; top:-25px; left:-6px'></span>
+          </div>
+          <div id='tl_2'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_2' style='position:absolute; top:-25px; left:-6px'>1</span>
+            <span id='t1_text_2_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_3'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_3' style='position:absolute; top:-25px; left:-6px'>2</span>
+            <span id='t1_text_3_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_4'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_4' style='position:absolute; top:-25px; left:-6px'>3</span>
+            <span id='t1_text_4_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_5'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_5' style='position:absolute; top:-25px; left:-6px'>4</span>
+            <span id='t1_text_5_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_6'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_6' style='position:absolute; top:-25px; left:-6px'>5</span>
+            <span id='t1_text_6_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_7'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_7' style='position:absolute; top:-25px; left:-6px'>6</span>
+            <span id='t1_text_7_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_8'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_8' style='position:absolute; top:-25px; left:-6px'>7</span>
+            <span id='t1_text_8_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_9'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_9' style='position:absolute; top:-25px; left:-6px'>8</span>
+            <span id='t1_text_9_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_10'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_10' style='position:absolute; top:-25px; left:-6px'>9</span>
+            <span id='t1_text_10_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_11'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_11' style='position:absolute; top:-25px; left:-6px'>10</span>
+            <span id='t1_text_11_meridies'style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
+          </div>
+          <div id='tl_12'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_12' style='position:absolute; top:-25px; left:-6px'>11</span>
+            <span id='t1_text_12_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
+          </div>
+        </div>
+      </div>
+      <!-- right half -->
+      <div class='col-sm-6' style='margin:0px; padding:0px; width:100%'>
+        <div class='row' style='margin:0px; padding:0px; width:100%'>
+          <div id='tl_13' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>
+            <span id='t1_text_13_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_14' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_14' style='position:absolute; top:-25px; left:-6px'>13</span>
+            <span id='t1_text_14_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_15' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_15' style='position:absolute; top:-25px; left:-6px'>14</span>
+            <span id='t1_text_15_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_16' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_16' style='position:absolute; top:-25px; left:-6px'>15</span>
+            <span id='t1_text_16_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_17' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_17' style='position:absolute; top:-25px; left:-6px'>16</span>
+            <span id='t1_text_17_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_18' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_18' style='position:absolute; top:-25px; left:-6px'>17</span>
+            <span id='t1_text_18_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_19' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_19' style='position:absolute; top:-25px; left:-6px'>18</span>
+            <span id='t1_text_19_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_20' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_20' style='position:absolute; top:-25px; left:-6px'>19</span>
+            <span id='t1_text_20_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_21' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_21' style='position:absolute; top:-25px; left:-6px'>20</span>
+            <span id='t1_text_21_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_22' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_22' style='position:absolute; top:-25px; left:-6px'>21</span>
+            <span id='t1_text_22_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_23' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+            <span id='tl_text_23' style='position:absolute; top:-25px; left:-6px'>22</span>
+            <span id='t1_text_23_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+          </div>
+          <div id='tl_24' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px; border-right:solid 2px red; padding:0px'>
+            <span id='tl_text_24' style='position:absolute; top:-25px; left:-6px'>23</span>
+            <span id='t1_text_24_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- span below adds time on left of bar, when early in time of day -->
+    <span id='pct_of_day_tracker_time_early_only' style='color:red;position:absolute;font-weight:bold;margin-top:-3px;padding-left:2px'>12:30</span>
+    <span id='pct_of_day_tracker_time_early_only_meridies' style='color:red;position:absolute;font-weight:bold;margin-top:8px;padding-left:41px;font-size:.5em'>12:30</span>
+
+
+    <!--  -->
+    <!-- time of day progress tracker below -->
+    <div id='pct_of_day_tracker' style='height:20px;display:block;margin-right:2.5%; margin-top:0px; padding:0px;'>
+      <!-- clock labels -->
+      <span id='pct_of_day_tracker_time_meridies' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:7px; font-size:.5em'></span>
+      <span id='pct_of_day_tracker_time' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:-3px'>12:50</span>
+    </div>
+  </div> <!-- End: Top Docker -->
+  </font>
+
+  <!-- Main display screen -->
+  <div id='screen1' class='main_display_screen'>
+      <!-- Day of Week, Month, Year -->
+      <div class='row' style='width:100%;'>
+          <div class='col-sm-12' id="Date_Display">
+              <span id="dayofweek_placeholder" class="dayofweek"></span>
+          </div>
+      </div>
+
+      <!-- Clock -->
+      <div class='row' style='width:100%;padding-top:4%' id="Clock_Div">
+          <!-- 12:00 -->
+          <div class='col-sm-12' id='clock_box' style='text-align:center'>
+              <span id="MyClockDisplay" class="clock" onload="showTime()"></span>
+              <span id="meridies" class="clock_meridies"></span>
+          </div>
+
+          <!-- Military Time -->
+          <div class='col-sm-12' id='clock_box_MT' style='display:none; text-align:center'>
+              <span id="MyClockDisplay_MT" class="clock_MT" onload="showTime()"></span>
+          </div>
+      </div>
+  </div> <!-- end: Main display screen -->
+
+  <!-- Greeting message -->
+  <div class='row' style='width:100%; padding-top:4%'>
+      <div class='col-sm-12' id="">
+          <span id='Greeting_Message' class='greeting'></span>
+      </div>
+  </div>
+
+  <!-- about screen -->
+  <div id='about_screen' class='about_screen' style='display:none'>
+
+      <!-- Contra -->
+      <center>
+        <div class='row' style='width:58%;display:block;text-align:center;border-opacity:.4;height:40px;'>
+            <!-- border:1.5px solid #808080 -->
+            <!-- contra animation -->
+            <div id='contra_div' class='contra_movement'>
+                <img id='contra_img_1' style='display:none' src="Images/EasterEgg/contra_img1.png">
+                <img id='contra_img_2' style='display:none' src="Images/EasterEgg/contra_img2.png">
+                <img id='contra_img_3' style='display:none' src="Images/EasterEgg/contra_img3.png">
+                <img id='contra_img_4' style='display:none' src="Images/EasterEgg/contra_img4.png">
+                <img id='contra_img_5' style='display:none' src="Images/EasterEgg/contra_img5.png">
+                <img id='contra_img_6' style='display:none' src="Images/EasterEgg/contra_img6.png">
+                <img id='contra_img_7' style='display:none' src="Images/EasterEgg/contra_img7.png">
+            </div>
+        </div>
+
+        <!-- created by line -->
+        <div class='row' style='display:block; text-align:center;'>
+          <div class='author_name_div'>
+            created by <span id='author_name' class='highlight_letter'>
+            <a id='author_website' href='https://zacharycaddick.com/'>
+              Zachary A. Caddick
+            </a></span>
+          </div>
+        </div>
+
+      </center>
+  </div> <!-- end: about screen -->
+
+  <!-- Google Search Screen -->
+  <div id='screen2' class='background2' style='display:none;'>
+
+      <!-- Google Search Greeting Text -->
+      <div class='row'>
+          <div class='col-sm-12'>
+              <font id='Search_Greeting' size='10' style='display:none;' class='Search_Greeting'>Where are we going?</font>
+          </div>
+      </div>
+      
+      <!-- Google Search Box -->
+      <div class='row' style='padding-top:4%'>
+          <div class='col-sm-12'>
+              <div class="form-group">
+                  <center>
+                  <input class="form-control" id="search_bar" placeholder="Google search" style='width:50%; display:block; min-width:400px; display:none; box-shadow: 0 0 2px #FFF, 0 0 5px #BFBFBF, 0 0 9px #242424; border-color:#BFBFBF;' >
+                  </center>
+              </div>
+          </div>
+      </div>
+  </div> <!-- End: Google Search Screen -->
+
+  <!-- Settings Screen -->
+  <div id='settings_screen_main' class='settings_screen' style='display:none'>
+      <h1><center>Settings</center></h1>
+      <center><div id='settings_screen_title_border' class="settings_screen_title_border"></div></center><br>
+
+      <!-- version number -->
+      <!-- <center> -->
+      <div id='version_number' class='version_number_class'>
+        <a id='information_link' style='text-align:right;' href='https://data-cene.com/IF'>information</a><br>
+        <span style='text-align:right'>ver. 1.1.0</span>
+      </div>
+      <!-- </center> -->
+
+      <!-- Start bootstrap row -->
+      <center><div class='row' style='width:90%;'>
+
+          <!-- Left Half -->
+          <div class='col-sm-6' style='background-color:;font-size:20px;'>
+              <b>Main Display</b>
+              <!-- <div class="settings_screen_subtitle_border"></div> -->
+              <br><br>
+
+              <!-- sub row 1 -->
+              <div class='row'>
+                  <div class='col-sm-6'>
+                      show date
+                  </div>
+                  <div class='col-sm-6'>
+                      <!-- sub-sub row: show date yes/no (2b) -->
+                      <div class='row' style='width:122px'>
+                          <div class='col-sm-6' style=''>
+                              <!-- LEFT BUTTON: YES -->
+                              <div id="sd_settings_yes" class="parallelogram_left_unselect">
+                                  <center>
+                                      <div class='yes_pg'>yes</div>
+                                  </center>
+                              </div>
+                          </div>
+                          <div class='col-sm-6' style=''>
+                              <!-- RIGHT BUTTON: NO -->
+                              <div id="sd_settings_no" class="parallelogram_right_select" >
+                                  <center>
+                                      <div class='no_pg'>no</div>
+                                  </center>
+                              </div>
+                          </div>
+                      </div> 
+                  </div>
+              </div>
+
+              <div id='spacer' style='height:10px'></div>
+
+              <!-- sub row 2 -->
+              <div class='row'>
+                  <div class='col-sm-6'>
+                      military time
+                  </div>
+                  <div class='col-sm-6'>
+
+                      <!-- sub-sub row: military time yes/no (2b) -->
+                      <div class='row' style='width:122px'>
+                          <div class='col-sm-6' style=''>
+                              <!-- LEFT BUTTON: YES -->
+                              <div id="mt_settings_yes" class="parallelogram_left_unselect">
+                                  <center>
+                                      <div class='yes_pg'>yes</div>
+                                  </center>
+                              </div>
+                          </div>
+                          <div class='col-sm-6' style=''>
+                              <!-- RIGHT BUTTON: NO -->
+                              <div id="mt_settings_no" class="parallelogram_right_select" >
+                                  <center>
+                                      <div class='no_pg'>no</div>
+                                  </center>
+                              </div>
+                          </div>
+                      </div>                       
+                  </div>
+              </div>
+
+              <div id='spacer' style='height:10px'></div>
+
+              <!-- sub row 3 -->
+              <div class='row'>
+                  <div class='col-sm-6'>
+                      show greeting
+                  </div>
+                  <div class='col-sm-6'>
+                      <!-- sub-sub row: show greeting yes/no (2b) -->
+                      <div class='row' style='width:122px'>
+                          <div class='col-sm-6' style=''>
+                              <!-- LEFT BUTTON: YES -->
+                              <div id="sg_settings_yes" class="parallelogram_left_unselect">
+                                  <center>
+                                      <div class='yes_pg'>yes</div>
+                                  </center>
+                              </div>
+                          </div>
+                          <div class='col-sm-6' style=''>
+                              <!-- RIGHT BUTTON: NO -->
+                              <div id="sg_settings_no" class="parallelogram_right_select" >
+                                  <center>
+                                      <div class='no_pg'>no</div>
+                                  </center>
+                              </div>
+                          </div>
+                      </div> 
+                  </div>
+              </div>
+
+              <div id='spacer' style='height:10px'></div>
+
+              <!-- sub row 4 -->
+              <div class='row'>
+                  <div class='col-sm-6'>
+                      your name
+                  </div>
+                  <div class='col-sm-6'>
+                      <div class="form-group" style='width:122px'>
+                          <input class="form-control" id="name_input" placeholder="your name" style='margin-top:5px; margin-left:10px; padding:0px; padding-left:6px; width:100%; height:25px; border-color:#BFBFBF;'>
+                      </div>
+                  </div>
+              </div>
+              <br>
+
+              <!-- Color Scheme Box -->
+              <div id='color_scheme_change' class='color_scheme_change_class'>
+                <!-- sub row 5 -->
+                <div class='row'>
+                    <div id='csi_button_label' class='col-sm-12' style='text-align:center; left:0px;margin-bottom:8px;margin-top:15px; font-family: Book Antiqua;'>
+                        color scheme
+                    </div><br>
+                </div>
+
+                <!-- sub row 6 -->
+                <div class='row' style='margin-bottom:25px;background-color:; width:100%'>
+                    <div class='col-sm-12' style='background-color:white; max-width:127px; max-height:40px;padding:0px;margin:0px; margin-left:29px'>
+                        <span class='swatch_outline' id='swatch_background_outline' style=''>&#x25FC;</span>
+                        <span class='swatches' id='swatch_background' style='font-size:1.3em;'>&#x25FC;</span>
+                        <span class='swatch_outline' id='swatch_background_outline' style=''>&#x25FC;</span>
+                        <span class='swatches' id='swatch_accent1' style='font-size:1.3em;'>&#x25FC;</span>
+                        <span class='swatch_outline' id='swatch_background_outline' style=''>&#x25FC;</span>
+                        <span class='swatches' id='swatch_accent2' style='font-size:1.3em;'>&#x25FC;</span>
+                    </div>
+                </div>
+              </div>
+              <br>
+
+          </div> <!-- End: Left Half -->
+
+          <!-- Right Half -->
+          <div class='col-sm-6' style='background-color:;font-size:20px'>
+              <center><b>Configure Docks</b></center>
+              <!-- <div class="settings_screen_subtitle_border"></div> -->
+              <br>
+
+              <!-- top arrow -->
+              <div>
+                  <button id="top_arr_sett" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding-top:16px; box-shadow:none; border-radius: 6%'>
+                      <i class="fa fa-play" style="font-size:25px; transform: rotate(-90deg) translateX(7px) translateY(-1px);"></i>
+                  </button> <!-- top arrow -->
+              </div>
+
+              <!-- Bottom 3 Arrow Keys -->
+              <div style='padding-top:10px; color:#808080'>
+
+                  <!-- left arrow -->
+                  <button id="left_arr_sett" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding-top:16px; box-shadow:none; border-radius: 6%'>
+                      <i class="fa fa-play" style="font-size:25px; transform: rotateY(180deg) translateY(-7px) translateX(1px);"></i>
+                  </button> 
+
+                  <!-- bottom arrow -->
+                  <button id="bottom_arr_sett"type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding-top:16px; box-shadow:none; border-radius: 6%'>
+                      <i class="fa fa-play" style="font-size:25px; transform: rotate(90deg) translateX(-7px) translateY(1px);"></i>
+                  </button> 
+
+                  <!-- right arrow -->
+                  <button id="right_arr_sett" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding-top:16px; box-shadow:none; border-radius: 6%'>
+                      <i class="fa fa-play" style="font-size:25px; transform: translateY(-30%) translateX(-1px);"></i>
+                  </button> 
+              </div>
+              <br>
+
+          </div> <!-- End: Right Half -->
+      </div> <!-- End row -->
+
+      <div id='settings_finished' class='finished_button' style='margin-bottom:20px; '>
+          Finished
+      </div>
+      </center>
+  </div>  <!-- end settings screen -->
+
+  <!-- Configure Left Dock -->
+  <center>
+  <div id='left_dock_input' class='left_dock_input_class' style='display:none;padding-top:25px;'>
+
+      <div class='config_left_dock_header' style='padding-bottom:20px; font-family: Book Antiqua;'><h1>Configure Left Dock</h1></div>
+
+      <!-- create row -->
+      <div class='row' style='width:100%;'>
+          <!-- Instructions -->
+          <div class='col-sm-4' style=''>
+            <!-- override window with new links? -->
+            <div class='row' style='display:block;text-align:center; margin:0px;padding:0px; margin-top:-18px;'>
+                <center>
+                <div id='ld_override_settings'class='ld_override_settings' style='text-align:center;display:block;'>
+                  <!-- zc -->
+                  <span style='margin-bottom:15px;'>
+                    open in new tab?
+                  </span>
+                  
+                  <center>
+                  <div class='row' style='width:122px;margin-top:8px;'>
+                      <div class='col-sm-6' style='left:-10px'>
+                          <!-- LEFT BUTTON: YES -->
+                          <div id="ld_newtab_settings_yes" class="parallelogram_left_unselect">
+                              <center>
+                                  <div class='yes_pg'>yes</div>
+                              </center>
+                          </div>
+                      </div>
+                      <div class='col-sm-6' style='left:-10px;'>
+                          <!-- RIGHT BUTTON: NO -->
+                          <div id="ld_newtab_settings_no" class="parallelogram_right_select" >
+                              <center>
+                                  <div class='no_pg'>no</div>
+                              </center>
+                          </div>
+                      </div>
+                  </div>
+                  </center>
+                </div>
+            </div><!-- end override settings div -->
+
+            <!-- instructions -->
+            <div id='left_dock_input_instructions' class='left_dock_input_instructions' style='background-color:; margin-bottom:10px;'>
+                <br>
+                <center><div id='left_dock_input_instructions_underline' style='border-bottom:1px solid #BFBFBF;width:65%'><b>Information</b></div></center><br>
+
+                <ul id='left_dock_information_text'>
+                    <li>Create hotkeys by mapping the letter keys to specific websites.<br><br></li>
+                    <li>Add labels for each link, which will appear within the left dock for reference.<br><br></li>
+                  <!--   <li>Toggle between the lowercase and uppercase hotkey inputs by pressing 'shift' or 'capslock'.<br><br></li> -->
+                    <li>The uppercase hotkeys require pressing "shift" plus the target letter. The lowercase hotkeys only require the target letter.</li>
+                </ul>
+            </div>
+            <br>
+          </div>
+          
+          <div class='col-sm-8' style=''>
+              <!-- toggle left dock table inputs -->
+              <div id='left_dock_input_table_heading' class='row' style='border-bottom:1.5px solid #808080; display:block;text-align:left;'>
+                  <!-- lower case toggle -->
+                  <div class='col-sm-1' style='padding:0px;padding-left:5px; margin:0px; '>
+                      <div id="ldi_lowercase_toggle" class="parallelogram_lowercase_selected" >
+                          <div class='lowercase_toggle'>
+                              lowercase
+                              <!-- spacer -->
+                              <span style='padding-left:5px'> </span>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- UPPERCASE toggle -->
+                  <div class='col-sm-11' style='width:100%; left:90px;padding:0px;'>        
+                      <div id="ldi_UPPERCASE_toggle" class="parallelogram_UPPERCASE_unselected">
+                          <div class='UPPERCASE_toggle'>
+                              UPPERCASE
+                          </div>
+                      </div>
+                  </div>
+              </div> <!-- end: 'toggle left dock table inputs' div -->
+
+          <!-- Table: lowercase inputs -->
+              <!-- lowercase: header row -->
+              <div id='ldi_lc_0' class='row' style='border-bottom:1.5px solid #808080'>
+                  <div id='ldi_lc_0a'class='col-sm-1' style='border-left:1.5px solid #808080;'>α</div>
+                  <div class='col-sm-5' style='max-width:42%'>label</div>
+                  <!-- <div class='col-sm-5' style='border-bottom:1.5px solid #808080'>label</div> -->
+                  <div class='col-sm-6' style='max-width:50%'>website</div>
+              </div>
+
+              <!-- a -->
+              <div id='ldi_lc_1' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>a</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_a_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_a_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- b -->
+              <div id='ldi_lc_2' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>b</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_b_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_b_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- c -->
+              <div id='ldi_lc_3' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>c</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_c_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_c_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- d -->
+              <div id='ldi_lc_4' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>d</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_d_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_d_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- e -->
+              <div id='ldi_lc_5' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>e</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_e_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_e_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- f -->
+              <div id='ldi_lc_6' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>f</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_f_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_f_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- g -->
+              <div id='ldi_lc_7' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>g</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_g_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_g_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- h -->
+              <div id='ldi_lc_8' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>h</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_h_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_h_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- i -->
+              <div id='ldi_lc_9' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>i</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_i_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_i_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- j -->
+              <div id='ldi_lc_10' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>j</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_j_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_j_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- k -->
+              <div id='ldi_lc_11' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>k</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_k_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_k_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- l -->
+              <div id='ldi_lc_12' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>l</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_l_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_l_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- m -->
+              <div id='ldi_lc_13' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>m</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_m_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_m_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- n -->
+              <div id='ldi_lc_14' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>n</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_n_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;:placeholder{color:red}'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_n_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- o -->
+              <div id='ldi_lc_15' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>o</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_o_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_o_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- p -->
+              <div id='ldi_lc_16' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>p</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_p_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_p_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- q -->
+              <div id='ldi_lc_17' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>q</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_q_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_q_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- r -->
+              <div id='ldi_lc_18' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>r</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_r_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_r_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- s -->
+              <div id='ldi_lc_19' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>s</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_s_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_s_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- t -->
+              <div id='ldi_lc_20' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>t</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_t_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_t_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- u -->
+              <div id='ldi_lc_21' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>u</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_u_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_u_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- v -->
+              <div id='ldi_lc_22' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>v</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_v_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_v_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- w -->
+              <div id='ldi_lc_23' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>w</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_w_label_input" placeholder="label" maxlength='20' style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_w_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- x -->
+              <div id='ldi_lc_24' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>x</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_x_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_x_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- y -->
+              <div id='ldi_lc_25' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>y</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_y_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_y_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- z -->
+              <div id='ldi_lc_26' class='row'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>z</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_z_label_input" placeholder="label" maxlength='25' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_z_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+
+          <!-- Table: UPPERCASE inputs -->
+              <!-- UPPERCASE: header row -->
+              <div id='ldi_uc_0' class='row' style='display:none;border-bottom:1.5px solid #808080'>
+                  <div id='ldi_uc_0a' class='col-sm-1' style='border-left:1.5px solid #808080;'>A</div>
+                  <div class='col-sm-5' style='max-width:42%'>LABEL</div>
+                  <!-- <div class='col-sm-5' style='border-bottom:1.5px solid #808080'>label</div> -->
+                  <div class='col-sm-6' style='max-width:50%'>WEBSITE</div>
+              </div>
+
+              <!-- A -->
+              <div id='ldi_uc_1' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>A</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_A_label_input" placeholder="LABEL" maxlength='20' style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF; font-size:.8em'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_A_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- B -->
+              <div id='ldi_uc_2' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>B</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_B_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_B_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- C -->
+              <div id='ldi_uc_3' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>C</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_C_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_C_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- D -->
+              <div id='ldi_uc_4' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>D</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_D_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_D_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- E -->
+              <div id='ldi_uc_5' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>E</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_E_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_E_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- F -->
+              <div id='ldi_uc_6' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>F</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_F_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_F_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- G -->
+              <div id='ldi_uc_7' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>G</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_G_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_G_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- H -->
+              <div id='ldi_uc_8' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>H</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_H_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_H_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- I -->
+              <div id='ldi_uc_9' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>I</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_I_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_I_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- J -->
+              <div id='ldi_uc_10' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>J</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_J_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_J_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- K -->
+              <div id='ldi_uc_11' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>K</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_K_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_K_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- L -->
+              <div id='ldi_uc_12' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>L</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_L_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_L_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- M -->
+              <div id='ldi_uc_13' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>M</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_M_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_M_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- N -->
+              <div id='ldi_uc_14' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>N</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_N_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_N_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- O -->
+              <div id='ldi_uc_15' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>O</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_O_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_O_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- P -->
+              <div id='ldi_uc_16' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>P</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_P_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_P_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- Q -->
+              <div id='ldi_uc_17' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>Q</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Q_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Q_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- R -->
+              <div id='ldi_uc_18' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>R</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_R_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_R_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- S -->
+              <div id='ldi_uc_19' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>S</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_S_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_S_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- T -->
+              <div id='ldi_uc_20' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>T</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_T_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_T_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- U -->
+              <div id='ldi_uc_21' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>U</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_U_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_U_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- V -->
+              <div id='ldi_uc_22' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>V</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_V_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_V_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- W -->
+              <div id='ldi_uc_23' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>W</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_W_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_W_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- X -->
+              <div id='ldi_uc_24' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>X</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_X_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_X_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- Y -->
+              <div id='ldi_uc_25' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>Y</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Y_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Y_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>
+              <!-- Z -->
+              <div id='ldi_uc_26' class='row' style='display:none'>
+                  <!-- letter -->
+                  <div class='col-sm-1' style='padding:0px;'>Z</div>
+                  <!-- label -->
+                  <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Z_label_input" placeholder="LABEL" maxlength='20'  style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+                  </div>
+                  <!-- website -->
+                  <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+                      <input class="form-control" id="ld_Z_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                  </div>
+              </div>                
+          </div>
+      </div> <!-- end row  -->
+      
+      <div id='ldi_finished' class='finished_button' style='margin-top:15px;'>
+          Finished
+      </div>
+  </div> <!-- End: Configure Left Dock -->
+  </center>
+
+  <!-- Configure Right Dock -->
+  <center>
+  <div id='right_dock_input' class='right_dock_input_class' style='display:none;'>
+
+      <div class='config_right_dock_header'>
+        <h1>
+          Configure Right Dock
+        </h1>
+      </div>
+
+      <!-- number row -->
+      <div style='padding:0px; margin:0px; padding-top:10px;'>
+        <!-- 1 -->
+        <button id="nr_1" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:10px; border-radius:6%; margin-top:-50px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>1</div>
+        </button> 
+
+        <!-- 2 -->
+        <button id="nr_2" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>2</div>
+        </button>
+
+        <!-- 3 -->
+        <button id="nr_3" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>3</div>
+        </button> 
+
+        <!-- 4 -->
+        <button id="nr_4" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>4</div>
+        </button> 
+
+        <!-- 5 -->
+        <button id="nr_5" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>5</div>
+        </button> 
+
+        <!-- 6 -->
+        <button id="nr_6" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px;  margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>6</div>
+        </button> 
+
+        <!-- 7 -->
+        <button id="nr_7" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>7</div>
+        </button> 
+
+        <!-- 8 -->
+        <button id="nr_8" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>8</div>
+        </button> 
+
+        <!-- 9 -->
+        <button id="nr_9" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>9</div>
+        </button> 
+
+        <!-- 0 -->
+        <button id="nr_0" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px;box-shadow:none; margin-left:10px; margin-right:10px; margin-bottom:20px; border-radius: 6%'>
+          <div style='transform: translateY(-3px)'>0</div>
+        </button>
+      </div>
+
+      <!-- configure right dock: information panel and inputs -->
+      <div class='row' style='margin:0px; padding:0px; width:100%;'>
+        <!-- Instructions -->
+        <div class='col-sm-5' style='background-color:'>
+            <div id='right_dock_input_instructions_id' class='right_dock_input_instructions'>
+                <center><div id='right_dock_input_underline'style='border-bottom:1px solid #BFBFBF;width:65%'><b>Information</b></div></center><br>
+
+                <ul>
+                    <li>Click the number keys at the top to configure opening multiple websites simultaneously by pressing a hotkey.<br><br></li>
+                    <li>Map up to 10 websites for each hotkey.<br><br></li>
+                    <li>Add a label for each hotkey, which will appear within the right dock for future reference.<br><br></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- configure numeric hotkeys -->
+        <div class='col-sm-7' style=' background-color:'>
+
+          <!--#####-->
+          <!--# 1 #-->
+          <!--#####-->
+          <div id='rdi_1' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_1a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>1</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_1_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px;'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_1_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_1_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left; '>
+                    <input class="form-control" id="rd_1_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_1_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_1_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_1_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_1_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_1_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_1_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_1_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_1_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_1_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_1_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_1_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!--#####-->
+          <!--# 2 #-->
+          <!--#####-->
+          <div id='rdi_2' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_2a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>2</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_2_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_2_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_2_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none; outline: none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_2_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_2_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_2_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_2_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_2_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_2_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_2_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_2_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_2_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_2_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_2_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!--#####-->
+          <!--# 3 #-->
+          <!--#####-->
+          <div id='rdi_3' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_3a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>3</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_3_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_3_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_3_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_3_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_3_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_3_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_3_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_3_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_3_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_3_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_3_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_3_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_3_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_3_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!-- ############################## -->
+
+          <!--#####-->
+          <!--# 4 #-->
+          <!--#####-->
+          <div id='rdi_4' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_4a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>4</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_4_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_4_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_4_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_4_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_4_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_4_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_4_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_4_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_4_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_4_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_4_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_4_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_4_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_4_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!-- ############################## -->
+
+          <!--#####-->
+          <!--# 5 #-->
+          <!--#####-->
+          <div id='rdi_5' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_5a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>5</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_5_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_5_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_5_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_5_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_5_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_5_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_5_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_5_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_5_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_5_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_5_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_5_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_5_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_5_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+          <!-- ########################################## -->
+
+          <!--#####-->
+          <!--# 6 #-->
+          <!--#####-->
+          <div id='rdi_6' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_6a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>6</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_6_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_6_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_6_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_6_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_6_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_6_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_6_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_6_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_6_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_6_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_6_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_6_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_6_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_6_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!-- ###################################### -->
+
+          <!--#####-->
+          <!--# 7 #-->
+          <!--#####-->
+          <div id='rdi_7' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_7a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>7</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_7_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_7_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_7_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_7_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_7_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_7_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_7_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_7_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_7_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_7_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_7_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_7_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_7_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_7_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!-- ########################################## -->
+
+          <!--#####-->
+          <!--# 8 #-->
+          <!--#####-->
+          <div id='rdi_8' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_8a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>8</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_8_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_8_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_8_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_8_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_8_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_8_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_8_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_8_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_8_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_8_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_8_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_8_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_8_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_8_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+
+          <!-- ################################################# -->
+          <!--#####-->
+          <!--# 9 #-->
+          <!--#####-->
+          <div id='rdi_9' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_9a" type="button" class="arrow_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>9</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_9_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_9_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_9_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_9_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_9_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_9_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_9_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_9_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_9_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_9_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_9_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_9_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_9_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_9_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+          <!-- ####################################### -->
+
+          <!--#####-->
+          <!--# 0 #-->
+          <!--#####-->
+          <div id='rdi_0' class='no_touching' style='margin-bottom:50px; margin:0px; padding:0px;display:none'>
+            <!-- 1 -->
+            <div class='row' style='margin-left:20px; background-color:'>
+              <!-- number -->
+              <div class='col-sm-2' style='text-align:left;padding:0px;margin:0px;margin-bottom:5px'>
+                <button id="nr_0a" type="button" class="box_button_class" style='max-width:45px; max-height:45px; min-width:45px; min-height:45px; border:1.5px solid #808080; background-color:#242424; color:#BFBFBF; text-align:center; margin:0px; font-weight:bold; outline:0 !important; font-size:30px; padding:0px; box-shadow:none;'>
+                  <div style='transform: translateY(-3px);'>0</div>
+                </button>
+              </div>
+              <!-- label -->
+              <div id='rd_0_label_input_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left;margin-top:5px'>group label</div>
+              <!-- website input -->
+              <div class='col-sm-6' style='padding:0px;padding-right:15px;text-align:left;margin-top:5px'>
+                  <input class="form-control" id="rd_0_label_input" maxlength='20' placeholder="group label" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+              </div>
+            </div>
+            
+            <!-- website 1:1 -->
+            <div id='rdi_0_1' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_1_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 1</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_1" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:2 -->
+            <div id='rdi_0_2' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_2_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 2</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_2" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:3 -->
+            <div id='rdi_0_3' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_3_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 3</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_3" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:4 -->
+            <div id='rdi_0_4' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_4_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 4</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_4" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:5 -->
+            <div id='rdi_0_5' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_5_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 5</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_5" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:6 -->
+            <div id='rdi_0_6' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_6_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 6</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_6" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:7 -->
+            <div id='rdi_0_7' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_7_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 7</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_7" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:8 -->
+            <div id='rdi_0_8' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_8_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 8</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_8" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:9 -->
+            <div id='rdi_0_9' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_9_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 9</div>
+                <!-- label -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_9" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+            <!-- website 1:10 -->
+            <div id='rdi_0_10' class='row' style='margin-left:20px'>
+                <!-- label -->
+                <div id='rd_0_input_10_label' class='col-sm-3' style='padding:0px;background-color:;display:block;text-align:left'>website 10</div>
+                <!-- website input  -->
+                <div class='col-sm-8' style='padding:0px;padding-right:15px;text-align:left'>
+                    <input class="form-control" id="rd_0_input_10" placeholder="https://www.example.com" style='font-size:.8em; margin-top:5px; margin-bottom:1px; height:18px; border-color:#BFBFBF;display:none;'>
+                </div>
+            </div>
+          </div>
+          <!-- ####################################### -->
+          <br><br>
+        </div>
+      </div>
+
+      <div id='rdi_finished' class='finished_button' style=''>
+          Finished
+      </div>
+  </div>
+  </center>
+
+  <!-- Color Scheme Input -->
+  <center>
+  <div id='color_scheme_input' class='colors_cheme_input_class' style='display:none;'>
+
+      <div class='config_left_dock_header' style='font-family: Book Antiqua;'><h1>Color Scheme</h1></div>
+
+      <!-- create row -->
+      <div class='row' style='width:100%;'>
+          <!-- Instructions -->
+          <div class='col-sm-5' style=''>
+              <div id='color_scheme_input_instructions_id' class='color_scheme_input_instructions'>
+                  <br>
+                  <center><div id='color_scheme_input_underline'style='border-bottom:1.5px solid #BFBFBF;width:65%'><b>Information</b></div></center><br>
+                  <ul>
+                      <li>Choose from a preset color scheme or create your own with hex codes.<br><br></li>
+                      <li>Hex codes are six digit color codes. You can find color codes <a href='https://htmlcolorcodes.com/' id='hex_link' style='text-decoration: underline;'>here</a>.<br><br></li>
+
+                  </ul>
+              </div>
+          </div>
+          
+          <div class='col-sm-7' style=''>
+
+            <!-- Customize label -->
+            <div id='' class='row'>
+              <div id='' class='col-sm-12' style=''>
+                <h5 class='csi_color_change_header'>Customize Color Scheme</h5>
+              </div>
+            </div>
+
+            <div id='csi_underline' style='border-top:1.5px solid #808080; width:90%; margin-right:30px;'></div>
+
+
+            <!-- row 0 -->
+            <div id='csi_0' class='row'>
+              <!--  -->
+              <div class='col-sm-5' style='padding:0px; padding-right:15px; margin-top:10px;'>
+                  choose scheme
+              </div>
+              <!--  -->
+              <div class='col-sm-5' style='padding:0px; padding-right:15px ;'>
+                <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
+                  <select class="form-control" id="theme_choice" text='working' placeholder="custom" style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                    <!-- padding:0px; margin:0px; -->
+                    <option>night</option>
+                    <option>americana</option>
+                    <option>berries</option>
+                    <option>blues</option>
+                    <option>clay</option>
+                    <option>coastline</option>
+                    <option>cotton candy</option>
+                    <option>dusk</option>
+                    <option>emerald</option>
+                    <option>greens</option>
+                    <option>kiwi</option>
+                    <option>light</option>
+                    <option>pittsburgh</option>
+                    <option>riddler</option>
+                    <option>sandstone</option>
+                    <option>seaside</option>
+                    <option>strawberry</option>
+                    <option>custom</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <br>
+
+            <!-- row OR -->
+            <div id='csi_OR' class='row'>
+              <div class='col-sm-5'></div>
+              <div class='col-sm-5' style='padding:0px;padding-right:15px; display:block; text-align:center '>
+                  <h2 style='font-family: Book Antiqua;'>OR</h2>
+              </div>               
+            </div>
+            <br>
+
+
+
+            <!-- row 1 -->
+            <div id='csi_1' class='row'>
+              <!-- component -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  background
+              </div>
+              <!-- website -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  <input id='hex_1' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+              </div>
+            </div>
+
+            <!-- row 2 -->
+            <div id='csi_2' class='row'>
+              <!-- component -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  accent color 1
+              </div>
+              <!-- website -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  <input id='hex_2' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+              </div>
+            </div>
+
+            <!-- row 3 -->
+            <div id='csi_3' class='row'>
+              <!-- component -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  accent color 2
+              </div>
+              <!-- website -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                  <input id='hex_3' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+              </div>
+            </div>
+
+            <!-- row 4 -->
+            <div id='csi_4' class='row'>
+              <!-- spacer -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'></div>
+              <!-- custom color submit -->
+              <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+                <div id='color_scheme_custom_submit' class='submit_button' style='margin-top:15px'>
+                  Submit
+                </div> 
+              </div>
+              <br><br>
+            </div>
+          </div>
+
+      </div> <!-- end: row -->
+
+      <div id='color_scheme_input_finished' class='finished_button' style=''>
+          Finished
+      </div>
+  </div>
+
+  <!-- Web Search Input -->
+  <center>
+  <div id='web_search_input' class='web_search_input_class' style='display:none; min-width:600px'>
+
+      <div class='config_left_dock_header' style='font-family: Book Antiqua;'><h1>Configure Bottom Dock</h1></div>
+
+      <div class='row' style='width:100%;'>
+          <!-- Instructions -->
+          <div class='col-sm-5' style=''>
+              <div id='web_search_input_instructions_id' class='web_search_input_instructions'>
+                  <br>
+                  <center><div id='web_search_input_underline'style='border-bottom:1px solid #000000;width:65%'><b>Information</b></div></center><br>
+                  <ul>
+                      <li>Press spacebar on the main display screen to display the search box</li><br>
+                      <li>Change the search box destinations by adding the prefix of search urls. <br><br></li><br><br>
+                  </ul>
+              </div>
+          </div>
+          
+          <div class='col-sm-7'>
+
+          <!-- Table: number inputs -->
+              <div id='wsi_header' class='row' style='border-bottom:1.5px solid #808080'>
+                <div class='col-sm-1'></div>
+                <div class='col-sm-4' style='max-width:42%'>website</div>
+                <!-- <div class='col-sm-5' style='border-bottom:1.5px solid #808080'>label</div> -->
+                <div class='col-sm-7' style='max-width:50%'>search url</div>
+              </div>
+
+
+              <!-- 1 -->
+              <div id='wsi_1' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_1_checkbox_outline' class='checkbox_outline'></div>
+                  <div id='wsi_1_checkbox_on' class='checkbox_on'>✓</div>     
+                  <div id='wsi_1_checkbox_off'class='checkbox_off' style='display:none'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4 col-xs-2' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_1_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_1_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+              <!-- 2 -->
+              <div id='wsi_2' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_2_checkbox_outline'class='checkbox_outline'></div>
+                  <div id='wsi_2_checkbox_on' class='checkbox_on' style='display:none'>✓</div>      
+                  <div id='wsi_2_checkbox_off' class='checkbox_off'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_2_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_2_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+              <!-- 3 -->
+              <div id='wsi_3' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_3_checkbox_outline' class='checkbox_outline'></div>
+                  <div id='wsi_3_checkbox_on' class='checkbox_on' style='display:none'>✓</div>
+                  <div id='wsi_3_checkbox_off'class='checkbox_off'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_3_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_3_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+              <!-- 4 -->
+              <div id='wsi_4' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_4_checkbox_outline' class='checkbox_outline'></div>
+                  <div id='wsi_4_checkbox_on' class='checkbox_on' style='display:none'>✓</div>            
+                  <div id='wsi_4_checkbox_off' class='checkbox_off'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_4_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_4_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+              <!-- 5 -->
+              <div id='wsi_5' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_5_checkbox_outline' class='checkbox_outline'></div>
+                  <div id='wsi_5_checkbox_on' class='checkbox_on' style='display:none'>✓</div>
+                  <div id='wsi_5_checkbox_off' class='checkbox_off'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_5_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_5_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+
+              <!-- 6 -->
+              <div id='wsi_6' class='row'>
+                <!-- checkbox -->
+                <div class='col-sm-1' style='margin-top:2px'>
+                  <div id='wsi_6_checkbox_outline' class='checkbox_outline'></div>
+                  <div id='wsi_6_checkbox_on' class='checkbox_on' style='display:none'>✓</div>       
+                  <div id='wsi_6_checkbox_off' class='checkbox_off'></div>
+                </div>
+                <!-- website -->
+                <div class='col-sm-4' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_6_website_input" maxlength='17' placeholder="website" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+                <!-- search url -->
+                <div class='col-sm-7' style='padding:0px;padding-right:15px;'>
+                    <input class="form-control" id="ws_6_url_input" placeholder="https://www.google.com/search?q=" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+                </div>
+              </div>
+          </div>
+
+      </div> <!-- end: row -->
+
+      <div id='web_search_input_finished' class='finished_button' style=''>
+          Finished
+      </div>
+    </div>
+  </center>
+</body>
+</div>
+</html>

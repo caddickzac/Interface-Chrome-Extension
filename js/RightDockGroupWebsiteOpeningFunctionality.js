@@ -1,0 +1,234 @@
+////////////////////////////////////////////////////
+// Right Dock Group Website Opening Functionality //
+////////////////////////////////////////////////////
+
+function open_rd_1_group(){
+    // check for inputs, if input is present, open page
+    if(!website_1_1){}
+    else{window.open(website_1_1,'1')}
+    if(!website_1_2){}
+    else{window.open(website_1_2,'2')}
+    if(!website_1_3){}
+    else{window.open(website_1_3,'3')}
+    if(!website_1_4){}
+    else{window.open(website_1_4,'4')}
+    if(!website_1_5){}
+    else{window.open(website_1_5,'5')}
+    if(!website_1_6){}
+    else{window.open(website_1_6,'6')}
+    if(!website_1_7){}
+    else{window.open(website_1_7,'7')}
+    if(!website_1_8){}
+    else{window.open(website_1_8,'8')}
+    if(!website_1_9){}
+    else{window.open(website_1_9,'9')}
+    if(!website_1_10){}
+    else{window.open(website_1_10,'10')}
+}
+function open_rd_2_group(){
+    // check for inputs, if input is present, open page
+    if(!website_2_1){}
+    else{window.open(website_2_1,'1')}
+    if(!website_2_2){}
+    else{window.open(website_2_2,'2')}
+    if(!website_2_3){}
+    else{window.open(website_2_3,'3')}
+    if(!website_2_4){}
+    else{window.open(website_2_4,'4')}
+    if(!website_2_5){}
+    else{window.open(website_2_5,'5')}
+    if(!website_2_6){}
+    else{window.open(website_2_6,'6')}
+    if(!website_2_7){}
+    else{window.open(website_2_7,'7')}
+    if(!website_2_8){}
+    else{window.open(website_2_8,'8')}
+    if(!website_2_9){}
+    else{window.open(website_2_9,'9')}
+    if(!website_2_10){}
+    else{window.open(website_2_10,'10')}
+}
+function open_rd_3_group(){
+    // check for inputs, if input is present, open page
+    if(!website_3_1){}
+    else{window.open(website_3_1,'1')}
+    if(!website_3_2){}
+    else{window.open(website_3_2,'2')}
+    if(!website_3_3){}
+    else{window.open(website_3_3,'3')}
+    if(!website_3_4){}
+    else{window.open(website_3_4,'4')}
+    if(!website_3_5){}
+    else{window.open(website_3_5,'5')}
+    if(!website_3_6){}
+    else{window.open(website_3_6,'6')}
+    if(!website_3_7){}
+    else{window.open(website_3_7,'7')}
+    if(!website_3_8){}
+    else{window.open(website_3_8,'8')}
+    if(!website_3_9){}
+    else{window.open(website_3_9,'9')}
+    if(!website_3_10){}
+    else{window.open(website_3_10,'10')}
+}
+function open_rd_4_group(){
+    // check for inputs, if input is present, open page
+    if(!website_4_1){}
+    else{window.open(website_4_1,'1')}
+    if(!website_4_2){}
+    else{window.open(website_4_2,'2')}
+    if(!website_4_3){}
+    else{window.open(website_4_3,'3')}
+    if(!website_4_4){}
+    else{window.open(website_4_4,'4')}
+    if(!website_4_5){}
+    else{window.open(website_4_5,'5')}
+    if(!website_4_6){}
+    else{window.open(website_4_6,'6')}
+    if(!website_4_7){}
+    else{window.open(website_4_7,'7')}
+    if(!website_4_8){}
+    else{window.open(website_4_8,'8')}
+    if(!website_4_9){}
+    else{window.open(website_4_9,'9')}
+    if(!website_4_10){}
+    else{window.open(website_4_10,'10')}
+}
+function open_rd_5_group(){
+    // check for inputs, if input is present, open page
+    if(!website_5_1){}
+    else{window.open(website_5_1,'1')}
+    if(!website_5_2){}
+    else{window.open(website_5_2,'2')}
+    if(!website_5_3){}
+    else{window.open(website_5_3,'3')}
+    if(!website_5_4){}
+    else{window.open(website_5_4,'4')}
+    if(!website_5_5){}
+    else{window.open(website_5_5,'5')}
+    if(!website_5_6){}
+    else{window.open(website_5_6,'6')}
+    if(!website_5_7){}
+    else{window.open(website_5_7,'7')}
+    if(!website_5_8){}
+    else{window.open(website_5_8,'8')}
+    if(!website_5_9){}
+    else{window.open(website_5_9,'9')}
+    if(!website_5_10){}
+    else{window.open(website_5_10,'10')}
+}
+function open_rd_6_group(){
+    // check for inputs, if input is present, open page
+    if(!website_6_1){}
+    else{window.open(website_6_1,'1')}
+    if(!website_6_2){}
+    else{window.open(website_6_2,'2')}
+    if(!website_6_3){}
+    else{window.open(website_6_3,'3')}
+    if(!website_6_4){}
+    else{window.open(website_6_4,'4')}
+    if(!website_6_5){}
+    else{window.open(website_6_5,'5')}
+    if(!website_6_6){}
+    else{window.open(website_6_6,'6')}
+    if(!website_6_7){}
+    else{window.open(website_6_7,'7')}
+    if(!website_6_8){}
+    else{window.open(website_6_8,'8')}
+    if(!website_6_9){}
+    else{window.open(website_6_9,'9')}
+    if(!website_6_10){}
+    else{window.open(website_6_10,'10')}
+}
+function open_rd_7_group(){
+    // check for inputs, if input is present, open page
+    if(!website_7_1){}
+    else{window.open(website_7_1,'1')}
+    if(!website_7_2){}
+    else{window.open(website_7_2,'2')}
+    if(!website_7_3){}
+    else{window.open(website_7_3,'3')}
+    if(!website_7_4){}
+    else{window.open(website_7_4,'4')}
+    if(!website_7_5){}
+    else{window.open(website_7_5,'5')}
+    if(!website_7_6){}
+    else{window.open(website_7_6,'6')}
+    if(!website_7_7){}
+    else{window.open(website_7_7,'7')}
+    if(!website_7_8){}
+    else{window.open(website_7_8,'8')}
+    if(!website_7_9){}
+    else{window.open(website_7_9,'9')}
+    if(!website_7_10){}
+    else{window.open(website_7_10,'10')}
+}
+function open_rd_8_group(){
+    // check for inputs, if input is present, open page
+    if(!website_8_1){}
+    else{window.open(website_8_1,'1')}
+    if(!website_8_2){}
+    else{window.open(website_8_2,'2')}
+    if(!website_8_3){}
+    else{window.open(website_8_3,'3')}
+    if(!website_8_4){}
+    else{window.open(website_8_4,'4')}
+    if(!website_8_5){}
+    else{window.open(website_8_5,'5')}
+    if(!website_8_6){}
+    else{window.open(website_8_6,'6')}
+    if(!website_8_7){}
+    else{window.open(website_8_7,'7')}
+    if(!website_8_8){}
+    else{window.open(website_8_8,'8')}
+    if(!website_8_9){}
+    else{window.open(website_8_9,'9')}
+    if(!website_8_10){}
+    else{window.open(website_8_10,'10')}
+}
+function open_rd_9_group(){
+    // check for inputs, if input is present, open page
+    if(!website_9_1){}
+    else{window.open(website_9_1,'1')}
+    if(!website_9_2){}
+    else{window.open(website_9_2,'2')}
+    if(!website_9_3){}
+    else{window.open(website_9_3,'3')}
+    if(!website_9_4){}
+    else{window.open(website_9_4,'4')}
+    if(!website_9_5){}
+    else{window.open(website_9_5,'5')}
+    if(!website_9_6){}
+    else{window.open(website_9_6,'6')}
+    if(!website_9_7){}
+    else{window.open(website_9_7,'7')}
+    if(!website_9_8){}
+    else{window.open(website_9_8,'8')}
+    if(!website_9_9){}
+    else{window.open(website_9_9,'9')}
+    if(!website_9_10){}
+    else{window.open(website_9_10,'10')}
+}
+function open_rd_0_group(){
+    // check for inputs, if input is present, open page
+    if(!website_0_1){}
+    else{window.open(website_0_1,'1')}
+    if(!website_0_2){}
+    else{window.open(website_0_2,'2')}
+    if(!website_0_3){}
+    else{window.open(website_0_3,'3')}
+    if(!website_0_4){}
+    else{window.open(website_0_4,'4')}
+    if(!website_0_5){}
+    else{window.open(website_0_5,'5')}
+    if(!website_0_6){}
+    else{window.open(website_0_6,'6')}
+    if(!website_0_7){}
+    else{window.open(website_0_7,'7')}
+    if(!website_0_8){}
+    else{window.open(website_0_8,'8')}
+    if(!website_0_9){}
+    else{window.open(website_0_9,'9')}
+    if(!website_0_10){}
+    else{window.open(website_0_10,'10')}
+}
