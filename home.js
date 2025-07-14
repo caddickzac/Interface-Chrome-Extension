@@ -1,71 +1,7 @@
-// resources :
-// https://medium.com/@ryanfarney/creating-a-chrome-extension-that-will-open-in-a-new-tab-bc06b7eb54aa
-// https://developer.chrome.com/extensions/background_pages
-// https://developer.chrome.com/extensions/user_interface
-// https://developer.chrome.com/extensions/background_pages
-// https://scotch.io/@dongido/how-to-build-a-google-chrome-extension
-// https://stackoverflow.com/questions/14432675/chrome-extension-blank-new-tab-address-bar-focus
-
-// https://stackoverflow.com/questions/38088604/chrome-not-setting-local-storage
-// https://stackoverflow.com/questions/28060616/properly-storing-an-object-in-chrome-storage
-// https://developer.chrome.com/extensions/storage#method-StorageArea-clear
-// https://stackoverflow.com/questions/14531102/saving-and-retrieving-from-chrome-storage-sync
-// https://www.youtube.com/watch?v=fDERPeXGzPY
-// https://developer.chrome.com/extensions/storage#property-managed
-// https://stackoverflow.com/questions/5364062/how-can-i-save-information-locally-in-my-chrome-extension
-
-// https://stackoverflow.com/questions/17598778/how-to-steal-focus-from-the-omnibox-in-a-chrome-extension-on-the-new-tab-page
-// https://stackoverflow.com/questions/42178723/chrome-extension-creating-new-tab-and-taking-focus-to-page
-
-// https://www.color-hex.com/color-palettes/
-// https://coolors.co/palettes/trending
-
-
-// https://developer.chrome.com/webstore/get_started_simple#step5
-// 
-// https://developer.chrome.com/webstore/images#icons
-
-// https://developer.chrome.com/extensions/storage
-
-// https://developer.chrome.com/extensions/themes // style theme
-// https://developer.chrome.com/extensions/samples#search:tabs
-// https://jsonlint.com/
-// https://developer.chrome.com/extensions/override
-// https://chrome.google.com/webstore/devconsole/0d61ecf9-38ac-4994-accb-5a246241acc7?hl=en
-// chrome://extensions/
-
-// https://developer.chrome.com/apps/app_identity   // authenticate google user to use google calendar API 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 window.onload = function(){
-
-
-///////////////////////////////////////////////////////////////////////////////////
-
-// chrome.tabs.create({ url: chrome.extension.getURL("home.html") });
-// window.close();
-
-// Called when the user clicks on the browser action (extension icon)
-// chrome.browserAction.onClicked.addListener(function newtab(){
-//     chrome.tabs.create({'url':"home.html"});
-//     // chrome.tabs.create({'url':"chrome://newtab"});
-// })
-
-//   // Send a message to the active tab
-//   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//     var activeTab = tabs[0];
-//     chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
-//   });
-// });
-
-// This block is new!
-// chrome.runtime.onMessage.addListener(
-//   function(request, sender, sendResponse) {
-//     if( request.message === "open_new_tab" ) {
-//      chrome.tabs.create({'url':"chrome://newtab"});
-//     }
-//   }
-// );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -899,13 +835,6 @@ $('#ldi_lowercase_toggle').click(function(){
     ldi_case_toggle()
     ldi_case_input_toggle()
 })
-
-
-
-// function test(){
-//     window.open("https://mail.google.com/mail/ca/u/0/#inbox", 'gmail')
-//     window.open("https://play.hbomax.com/", 'hbo')
-// }
 
 /////////////////////
 //  Hamburger icon //
