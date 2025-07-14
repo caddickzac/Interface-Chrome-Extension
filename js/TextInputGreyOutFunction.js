@@ -832,7 +832,7 @@ window.text_input_grey_out_function = function text_input_grey_out_function(){
     if($('#ld_Q_label_input').val()==''){
         $('#ld_Q_label_input').css('background-color', '#8D8D8D')
         $('#ld_Q_label_input').css('color', '#000000')
-        $('#ld_a_label_input').addClass('input_placeholder')
+        $('#ld_Q_label_input').addClass('input_placeholder')
     }
     else{
         $('#ld_Q_label_input').css('background-color', '#FFFFFF')
@@ -1132,7 +1132,7 @@ window.text_input_grey_out_function = function text_input_grey_out_function(){
     if($('#ld_Q_website_input').val()==''){
         $('#ld_Q_website_input').css('background-color', '#8D8D8D')
         $('#ld_Q_website_input').css('color', '#000000')
-        $('#ld_a_website_input').addClass('input_placeholder')
+        $('#ld_Q_website_input').addClass('input_placeholder')
     }
     else{
         $('#ld_Q_website_input').css('background-color', '#FFFFFF')

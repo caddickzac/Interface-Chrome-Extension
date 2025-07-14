@@ -75,7 +75,7 @@ window.onload = function(){
 /////////////////////////////////
 
 // Data Storage 
-top_dock_mt='no' // zc
+top_dock_mt='no'
 
 // Custom Color Scheme 
 hex_1_empty =""
@@ -1121,6 +1121,8 @@ document.body.onkeydown = function(e){
             console.log('bottom arrow key')
         }
     }
+    else if(current_display=='left_dock_config'){   
+    }
     else if(current_display=='right_dock_config'){
         // 1 | 
         if(e.keyCode == 49){
@@ -1128,9 +1130,7 @@ document.body.onkeydown = function(e){
             if(rdi_focus_status=='open'){
                 $('#nr_1').click()
             }
-            // zc
         }
-
         // 2 | 
         if(e.keyCode == 50){
             right_dock_input_focus_decision()
@@ -1205,6 +1205,64 @@ document.body.onkeyup = function(e){
 
         if(current_display=='left_dock_config'){
             text_input_grey_out_function()
+
+            const key = e.keyCode;
+    
+            // A–Z key codes
+            if (key >= 65 && key <= 90) {
+                const letter = String.fromCharCode(key);
+                left_dock_input_focus_decision();
+
+                if (ldi_focus_status === 'open') {
+                    if (ldi_case === 'lower') {
+                        $('#ld_' + letter.toLowerCase() + '_label_input').focus();
+                    } else if (ldi_case === 'upper') {
+                        $('#ld_' + letter.toUpperCase() + '_label_input').focus();
+                    }
+                }
+            }
+            // // a
+            // if(e.keyCode == 65){
+            //     left_dock_input_focus_decision()
+            //     if(ldi_focus_status=='open'){
+            //         if(ldi_case=='lower'){
+            //             $('#ld_a_label_input').focus()
+            //         }
+            //         else if(ldi_case=='upper'){
+            //             $('#ld_A_label_input').focus()
+            //         }
+                    
+            //     }
+            // }
+            // // b
+            // if(e.keyCode == 66){
+            //     left_dock_input_focus_decision()
+            //     if(ldi_focus_status=='open'){
+            //         if(ldi_case=='lower'){
+            //             $('#ld_b_label_input').focus()
+            //         }
+            //         else if(ldi_case=='upper'){
+            //             $('#ld_B_label_input').focus()
+            //         }
+                    
+            //     }
+            // }
+            // // c
+            // if(e.keyCode == 67){
+            //     left_dock_input_focus_decision()
+            //     if(ldi_focus_status=='open'){
+            //         if(ldi_case=='lower'){
+            //             $('#ld_c_label_input').focus()
+            //         }
+            //         else if(ldi_case=='upper'){
+            //             $('#ld_C_label_input').focus()
+            //         }
+                    
+            //     }
+            // }
+
+
+            // zc
         }
 
         if(current_display=='right_dock_config'){
@@ -1225,16 +1283,22 @@ document.body.onkeyup = function(e){
 
         // Shift modifer off
         if(e.keyCode == 16){
-            if(ldi_case=='lower'){
-                ldi_case='upper'
-                ldi_case_toggle()
-                ldi_case_input_toggle()
+            if(current_display=='left_dock_config'){
+                left_dock_input_focus_decision()
+                if(ldi_focus_status=='open'){
+                    if(ldi_case=='lower'){
+                        ldi_case='upper'
+                        ldi_case_toggle()
+                        ldi_case_input_toggle()
+                    }
+                    else{
+                        ldi_case='lower'
+                        ldi_case_toggle()
+                        ldi_case_input_toggle()
+                    }
+                }
             }
-            else{
-                ldi_case='lower'
-                ldi_case_toggle()
-                ldi_case_input_toggle()
-            }
+
             setTimeout(function(){
                  shift_mod = 'no'
                  console.log('shift_mod: no')
@@ -1243,16 +1307,20 @@ document.body.onkeyup = function(e){
 
         // capslock
         if(e.keyCode == 20){
-            if(ldi_case=='lower'){
-                ldi_case='upper'
-                ldi_case_toggle()
-                ldi_case_input_toggle()
-
-            }
-            else{
-                ldi_case='lower'
-                ldi_case_toggle()
-                ldi_case_input_toggle()
+            if(current_display=='left_dock_config'){
+                left_dock_input_focus_decision()
+                if(ldi_focus_status=='open'){
+                    if(ldi_case=='lower'){
+                        ldi_case='upper'
+                        ldi_case_toggle()
+                        ldi_case_input_toggle()
+                    }
+                    else{
+                        ldi_case='lower'
+                        ldi_case_toggle()
+                        ldi_case_input_toggle()
+                    }
+                }
             }
             console.log('capslock')
         }
@@ -1397,6 +1465,7 @@ document.body.onkeyup = function(e){
                 if(e.keyCode == 57){
                     open_rd_9_group()
                 } 
+
                 // a | 
                 if(e.keyCode == 65){
                     if(shift_mod=='yes'){}
@@ -1743,7 +1812,7 @@ document.body.onkeyup = function(e){
                         console.log("shift+forwardslash")
                         $('#about_screen').show()
                         $('#screen1').hide()
-                        contra_animation_loop()
+                        contra_animation_loop() // easter egg animation
                         setTimeout(function(){
                              $('#about_screen').hide()
                              $('#screen1').show()
