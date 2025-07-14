@@ -1,5 +1,5 @@
 # Interface Chrome Extension
 
-**Interface** is a Chrome extension, productivity tool, and new tab homepage. This tool helps you efficiently navigate the internet.
+**Interface** is a minimalist Chrome extension that transforms your new tab into a personalized productivity dashboard
 
-The extension replaces the new tab window and displays a minimalist clock and date interface, serving as a launchpad for internet activity. Keyboard keys can be programmed to transport you to bookmarked websites with a single stroke. There are **62 programmable hotkeys** available, along with a **customizable search engine function** that can be quickly changed.
+It replaces the default new tab with a clean clock-and-date display and gives you fast access to your favorite sites. With 62 programmable hotkeys and a customizable search engine, Interface is designed to streamline how you start your browsing session every time you open a new tab.

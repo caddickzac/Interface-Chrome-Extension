@@ -12,7 +12,8 @@
     "default_icon": {
       "16": "Images/favicon-16x16.png",
       "32": "Images/favicon-32x32.png"
-    }
+    },
+    "default_title": "Interface"
   },
   "author": "Zachary A. Caddick",
   "background": {
@@ -26,8 +27,5 @@
   },
   "permissions": [
     "storage"
-  ],
-  "host_permissions": [
-    "*://*.home.html/*"
   ]
 }
