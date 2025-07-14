@@ -977,40 +977,12 @@ shift_mod = 'no' // inital setting (used for blocking commands when pressed)
 disable_arrow_keys = 'no' // inital setting. values: 'yes, no'
 paused='no'
 
-window.disable_arrow_keys_function = function() {
+window.disable_arrow_keys_function = function disable_arrow_keys_function() {
     if (document.hasFocus() === false) {
         disable_arrow_keys = 'no';
         console.log('disable_arrow_keys: no');
     }
 };
-
-window.shift_disable = function() {
-    shift_mod = 'yes';
-    console.log('shift_mod: yes');
-    setTimeout(function() {
-        shift_mod = 'no';
-        console.log('shift_mod: no');
-    }, 500);
-};
-
-
-// function disable_arrow_keys_function(){
-//     if(document.hasFocus()==false){
-//         disable_arrow_keys='no'
-//         console.log('disable_arrow_keys: no')
-//     }
-// }
-
-// function shift_disable(){
-//     shift_mod='yes'
-//     console.log('shift_mod: yes')
-//     setTimeout(function(){
-//         shift_mod='no'
-//         console.log('shift_mod: no')
-//     },500)
-// }
-
-
 
 // Key press comands
 document.body.onkeydown = function(e){
@@ -1023,7 +995,8 @@ document.body.onkeydown = function(e){
 
     // When shift is held, create modifer that enables combination key commands
     if(e.keyCode == 16){
-        shift_disable()
+        shift_mod = 'yes';
+        console.log('control_mod: yes');
     }
 
     // Hotkeys allowed? 
@@ -1206,11 +1179,11 @@ document.body.onkeyup = function(e){
         if(current_display=='left_dock_config'){
             text_input_grey_out_function()
 
-            const key = e.keyCode;
+            const letter_key = e.keyCode;
     
             // A–Z key codes
-            if (key >= 65 && key <= 90) {
-                const letter = String.fromCharCode(key);
+            if (letter_key >= 65 && letter_key <= 90) {
+                const letter = String.fromCharCode(letter_key);
                 left_dock_input_focus_decision();
 
                 if (ldi_focus_status === 'open') {
@@ -1221,48 +1194,6 @@ document.body.onkeyup = function(e){
                     }
                 }
             }
-            // // a
-            // if(e.keyCode == 65){
-            //     left_dock_input_focus_decision()
-            //     if(ldi_focus_status=='open'){
-            //         if(ldi_case=='lower'){
-            //             $('#ld_a_label_input').focus()
-            //         }
-            //         else if(ldi_case=='upper'){
-            //             $('#ld_A_label_input').focus()
-            //         }
-                    
-            //     }
-            // }
-            // // b
-            // if(e.keyCode == 66){
-            //     left_dock_input_focus_decision()
-            //     if(ldi_focus_status=='open'){
-            //         if(ldi_case=='lower'){
-            //             $('#ld_b_label_input').focus()
-            //         }
-            //         else if(ldi_case=='upper'){
-            //             $('#ld_B_label_input').focus()
-            //         }
-                    
-            //     }
-            // }
-            // // c
-            // if(e.keyCode == 67){
-            //     left_dock_input_focus_decision()
-            //     if(ldi_focus_status=='open'){
-            //         if(ldi_case=='lower'){
-            //             $('#ld_c_label_input').focus()
-            //         }
-            //         else if(ldi_case=='upper'){
-            //             $('#ld_C_label_input').focus()
-            //         }
-                    
-            //     }
-            // }
-
-
-            // zc
         }
 
         if(current_display=='right_dock_config'){
@@ -1298,11 +1229,15 @@ document.body.onkeyup = function(e){
                     }
                 }
             }
+            else{
+                shift_mod = 'no';
+                console.log('shift_mod: no');
+            }
 
-            setTimeout(function(){
-                 shift_mod = 'no'
-                 console.log('shift_mod: no')
-            }, 25);        
+            // setTimeout(function(){
+            //      shift_mod = 'no'
+            //      console.log('shift_mod: no')
+            // }, 25);        
         }
 
         // capslock

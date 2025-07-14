@@ -52,6 +52,7 @@ window.web_search_updater = function web_search_updater(){
     }
     else{
         $('#bd_3').val(ws_3_website)
+        $('#bd_3').text(ws_3_website)
     }
 
     if(ws_4_website==''){
@@ -59,6 +60,7 @@ window.web_search_updater = function web_search_updater(){
     }
     else{
         $('#bd_4').val(ws_4_website)
+        $('#bd_4').text(ws_4_website)
     }
 
     if(ws_5_website==''){
@@ -66,6 +68,7 @@ window.web_search_updater = function web_search_updater(){
     }
     else{
         $('#bd_5').val(ws_5_website)
+        $('#bd_5').text(ws_5_website)
     }
 
     if(ws_6_website==''){
@@ -73,6 +76,7 @@ window.web_search_updater = function web_search_updater(){
     }
     else{
         $('#bd_6').val(ws_6_website)
+        $('#bd_6').text(ws_6_website)
     }
 }
 

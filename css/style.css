@@ -1122,7 +1122,7 @@
 
   .parallelogram_lowercase_unselected{
     position: absolute;
-    top: -19px;
+    top: -15px;
     /*margin-top:-18px;*/
     left:4px;
     padding:0px;
@@ -1131,7 +1131,7 @@
     transform: skew(-20deg);
     background: #242424;
     color: #808080;  
-    border-bottom:1.5px solid #808080;
+    /*border-bottom:1.5px solid #808080;*/
     font-weight: bold;
     /* code below makes it so text is not selectable */
     -webkit-touch-callout: none;
@@ -1153,6 +1153,7 @@
     border-left:1.5px solid #BFBFBF;
     border-right:1.5px solid #BFBFBF;
     border-top:1px solid #BFBFBF;
+    border-bottom:5px solid #808080;
     background: #BFBFBF;
     color: #242424;
     font-weight: bold;
@@ -1167,7 +1168,7 @@
   .parallelogram_UPPERCASE_unselected{
     bottom:-1.5px;
     position: absolute;
-    top: -19px;
+    top: -18px;
     /*margin-top:-18px;*/
     left:4px;
     padding:0px;
@@ -1192,6 +1193,7 @@
   .swatches{
     position:relative;
     padding-left: 2.5px;
+    top: -1px;
     /*padding-left: 1.5px;*/
     /*height:90%;*/
     z-index: 3;

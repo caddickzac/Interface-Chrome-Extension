@@ -1,4 +1,4 @@
-function update_website_names(){ // updates dock labels
+window.update_website_names = function update_website_names(){ // updates dock labels
     // left dock
     // lowercase: labels
     $('#ld-a').text(label_a)

@@ -1,4 +1,4 @@
-function grab_data(){
+window.grab_data = function grab_data(){
     // labels
     label_a=$('#ld_a_label_input').val()
     label_b=$('#ld_b_label_input').val()
@@ -250,7 +250,7 @@ function grab_data(){
 }
 
 // Save data to storage
-function save_data(){
+window.save_data = function save_data(){
     grab_data()
     // save labels
     chrome.storage.sync.set({

@@ -1,4 +1,4 @@
-function get_data(){
+window.get_data = function get_data(){
     console.log('get data function started')
 
     // initial settings
