@@ -657,7 +657,7 @@
     position: absolute;
     /*border: solid 2px white;*/
     display: block;
-    padding-top:100px;
+    padding-top:25px;
     top:0px;
     transition: .4s;
     -webkit-animation: slide 0.5s upwards;

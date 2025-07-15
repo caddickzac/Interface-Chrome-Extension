@@ -34,7 +34,7 @@
   <script src="js/RightDockGroupWebsiteOpeningFunctionality.js"></script>
   <script src="js/RightDockFocusCheck.js"></script>
   <script src="js/LeftDockFocusCheck.js"></script>
-  
+  <script src="js/TopDockViewChanger.js"></script>  
   <script src="js/EasterEgg.js"></script>
 
   <!--  JS: core logic -->
@@ -351,135 +351,2624 @@
   </div>
   </center>
 
-  <!-- Top Docker -->
+  <!-- Top Dock -->
   <font size='+1'>
-  <div id='top_dock' class='top_docker_state1' style='display:; width:95%; margin-left:2.5%; '>
-    <div id='top_dock_date' style='margin-bottom:10px;'>
-      <font size='+2'>
-        <span id='top_dock_date_DoW' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;'>Monday</span>
-        <span id='top_dock_date_MDY' style='margin-left:4px'></span>
-      </font>
-    </div><br>
-    <div id='top_dock_ruler' class='row' style='margin:0px; padding:0px;'>
-      <!-- left half -->
-      <div class='col-sm-6' style='margin:0px; padding:0px;width:100%;'>
-        <div class='row' style='margin:0px; padding:0px;width:100%'>
-          <div id='tl_1' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_1' style='position:absolute; top:-25px; left:-6px'></span>
-            <span id='t1_text_1_meridies' style='position:absolute; top:-25px; left:-6px'></span>
+  <div id='top_dock' class='top_docker_state1' style='display:none; width:95%; margin-left:2.5%; z-index:1'>
+
+    <!-- View Granularity: Header -->
+    <div class='row' id='top_dock_view_header' style='padding-left:35px; margin-top:.2%;text-align:center;top:700px;'>
+      <div class='col-sm-1'></div>
+      <div id='top_dock_view_header_present' class='col-sm-2'>Present</div>
+      <div id='top_dock_view_header_day' class='col-sm-2'>Day</div>
+      <div id='top_dock_view_header_week' class='col-sm-2'>Week</div>
+      <div id='top_dock_view_header_month' class='col-sm-2'>Month</div>
+      <div id='top_dock_view_header_year' class='col-sm-2'>Year</div>
+      <div class='col-sm-1'></div>
+    </div>
+    
+    <!-- View Granularity: Present -->
+    <div id='top_dock_present' style='display:block; display:none; padding-top:17px;margin:0px; background-color:'>
+
+      <!-- day of week, month, date, year -->
+      <div id='present_view_date'>
+        <font size='+2'>
+          <span id='present_view_date_DoW' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold; '>Monday</span>
+          <span id='present_view_date_MDY' style='position:absolute; padding-left:4px; margin-left:4px; font-family:Lexend Deca; font-size:1.1em'></span>
+        </font>
+      </div><br>
+
+      <!-- "Railing" to cover left and right sides -->
+      <div id='present_view_left_side_rail'style='position:absolute; height:429.5px; background-color:lightgrey; width:5%; left:-5%; z-index:2; border-right: solid purple 2px;' ></div>
+      <div id='present_view_right_side_rail'style='position:absolute; height:429.5px; background-color:lightgrey; width:5%; right:-5%; z-index:2; border-left: solid green 2px;'></div>
+
+      <!-- "Railing" to cover top (1,2) and bottom sides -->
+      <div id='present_view_top_side_rail_1' style='border-top:green solid 2px; width:100%; margin:0px; padding:0px; margin-top:0px; position:absolute '></div>
+      <div id='present_view_top_side_rail_2' style='border-top:yellow solid 2px; width:100%; margin:0px; padding:0px; margin-top:30px; position:absolute; z-index:10'></div>
+      <div id='present_view_bottom_side_rail' style='border-top:green solid 2px; width:100.2%; margin:0px; padding:0px; margin-top:428px; position:absolute; z-index:10; left:-1px'></div>
+
+      <!-- Moving Timeline -->
+      <div id='present_timeline' class='row' style='margin:0px; padding:0px; margin-top:30px'>        
+
+        <!-- Current Time Tick -->
+        <div class='row' style='margin:0px; padding:0px; width:100%; position:absolute;margin-left:2px;'>
+          <div class='col-sm-4'>
+            <div class='row'>
+              <div class='col-sm-4' style='padding:0px; height:20px'></div>
+              <div class='col-sm-4' style='margin:0px; padding:0px; height:20px'>
+                <!-- Tick line -->
+                <div id='present_tick_line' style='z-index:+10;width:3px;height:429px;position:absolute; display:block; margin: 0px;left:-3px; margin-top:-30px'></div>
+                <div id='present_time_div' style='height:28px; font-weight: bold; font-size:1.5em; font-family:Lexend Deca; position:relative; display:inline-block; z-index:1; margin:0px; margin-top:2px; padding-right:3px; padding-left:2px'>
+                  <!-- current time -->
+                  <div id='present_time_span' style='position:relative; display:inline-block; margin-top:-6px'>test</div>
+                  <!-- <span id='present_time_meridies_span' style='font-size:.5em;margin:0px; display:none'>PM</span> -->
+                </div>
+              </div>
+            </div>
           </div>
-          <div id='tl_2'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_2' style='position:absolute; top:-25px; left:-6px'>1</span>
-            <span id='t1_text_2_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+        </div>
+
+        <!-- Moving Timeline Ticks + Time -->
+        <div id='present_moving_timeline' class='row' style='margin:0px; padding:0px; width:100%;'>
+          <div class='col-sm-4'>
+            <div class='row'>
+              <div id='pmt_0' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_0_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>-1</div>
+              </div>
+              <div id='pmt_1' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_1_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>0</div>
+              </div>
+              <div id='pmt_2' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_2_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>1</div>
+              </div>
+            </div>
           </div>
-          <div id='tl_3'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_3' style='position:absolute; top:-25px; left:-6px'>2</span>
-            <span id='t1_text_3_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          <div class='col-sm-4'>
+            <div class='row'>
+              <div id='pmt_3' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_3_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>2</div>
+              </div>
+              <div id='pmt_4' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_4_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>3</div>
+              </div>
+              <div id='pmt_5' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_5_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>4</div>
+              </div>
+            </div>
           </div>
-          <div id='tl_4'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_4' style='position:absolute; top:-25px; left:-6px'>3</span>
-            <span id='t1_text_4_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+          <div class='col-sm-4'>
+            <div class='row'>
+              <div id='pmt_6' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_6_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>5</div>
+              </div>
+              <div id='pmt_7' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px'>
+                <div id='pmt_7_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>6</div>
+              </div>
+              <div id='pmt_8' class='col-sm-4' style='border-left:solid 1.5px red; padding:0px; height:428px; padding-left:3px; margin:0px; margin-top:-30px; border-right:solid 1.5px red'>
+                <div id='pmt_8_text' style='position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em'>7</div>
+                <div id='pmt_9_text' class='col-sm-4' style='top:0px; right:-37%; padding-left:0px; position:absolute; font-family:Lexend Deca; font-weight:bold; font-size:1.1em; display:inline-block'>8</div>
+              </div>
+            </div>
+          </div>         
+        </div>
+      </div> <!-- End: Moving Timeline -->
+
+      
+    </div><!-- end: View Granularity: Present -->
+
+    <!-- View Granularity: Day -->
+    <div id='top_dock_day' style='display:none;padding-top:17px'>
+      <div id='top_dock_date' style='margin-bottom:10px;'>
+        <font size='+2'>
+          <span id='top_dock_date_DoW' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;'>Monday</span>
+          <span id='top_dock_date_MDY' style='margin-left:4px; position:absolute; padding-left:4px; margin-left:4px; font-family:Lexend Deca; font-size:1.1em;'></span>
+        </font>
+      </div><br>
+      <div id='top_dock_ruler' class='row' style='margin:0px; padding:0px;'>
+        <!-- left half -->
+        <div class='col-sm-6' style='margin:0px; padding:0px;width:100%;'>
+          <div class='row' style='margin:0px; padding:0px;width:100%'>
+            <div id='tl_1' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_1' style='position:absolute; top:-25px; left:-6px'></span>
+              <span id='t1_text_1_meridies' style='position:absolute; top:-25px; left:-6px'></span>
+            </div>
+            <div id='tl_2'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_2' style='position:absolute; top:-25px; left:-6px'>1</span>
+              <span id='t1_text_2_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_3'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_3' style='position:absolute; top:-25px; left:-6px'>2</span>
+              <span id='t1_text_3_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_4'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_4' style='position:absolute; top:-25px; left:-6px'>3</span>
+              <span id='t1_text_4_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_5'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_5' style='position:absolute; top:-25px; left:-6px'>4</span>
+              <span id='t1_text_5_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_6'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_6' style='position:absolute; top:-25px; left:-6px'>5</span>
+              <span id='t1_text_6_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_7'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_7' style='position:absolute; top:-25px; left:-6px'>6</span>
+              <span id='t1_text_7_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_8'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_8' style='position:absolute; top:-25px; left:-6px'>7</span>
+              <span id='t1_text_8_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_9'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_9' style='position:absolute; top:-25px; left:-6px'>8</span>
+              <span id='t1_text_9_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_10'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_10' style='position:absolute; top:-25px; left:-6px'>9</span>
+              <span id='t1_text_10_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_11'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_11' style='position:absolute; top:-25px; left:-6px'>10</span>
+              <span id='t1_text_11_meridies'style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
+            </div>
+            <div id='tl_12'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_12' style='position:absolute; top:-25px; left:-6px'>11</span>
+              <span id='t1_text_12_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
+            </div>
           </div>
-          <div id='tl_5'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_5' style='position:absolute; top:-25px; left:-6px'>4</span>
-            <span id='t1_text_5_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_6'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_6' style='position:absolute; top:-25px; left:-6px'>5</span>
-            <span id='t1_text_6_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_7'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_7' style='position:absolute; top:-25px; left:-6px'>6</span>
-            <span id='t1_text_7_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_8'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_8' style='position:absolute; top:-25px; left:-6px'>7</span>
-            <span id='t1_text_8_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_9'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_9' style='position:absolute; top:-25px; left:-6px'>8</span>
-            <span id='t1_text_9_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_10'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_10' style='position:absolute; top:-25px; left:-6px'>9</span>
-            <span id='t1_text_10_meridies'style='position:relative; top:-15px; left:6px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_11'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_11' style='position:absolute; top:-25px; left:-6px'>10</span>
-            <span id='t1_text_11_meridies'style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
-          </div>
-          <div id='tl_12'class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_12' style='position:absolute; top:-25px; left:-6px'>11</span>
-            <span id='t1_text_12_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>AM</span>
+        </div>
+        <!-- right half -->
+        <div class='col-sm-6' style='margin:0px; padding:0px; width:100%'>
+          <div class='row' style='margin:0px; padding:0px; width:100%'>
+            <div id='tl_13' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>
+              <span id='t1_text_13_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_14' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_14' style='position:absolute; top:-25px; left:-6px'>13</span>
+              <span id='t1_text_14_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_15' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_15' style='position:absolute; top:-25px; left:-6px'>14</span>
+              <span id='t1_text_15_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_16' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_16' style='position:absolute; top:-25px; left:-6px'>15</span>
+              <span id='t1_text_16_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_17' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_17' style='position:absolute; top:-25px; left:-6px'>16</span>
+              <span id='t1_text_17_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_18' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_18' style='position:absolute; top:-25px; left:-6px'>17</span>
+              <span id='t1_text_18_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_19' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_19' style='position:absolute; top:-25px; left:-6px'>18</span>
+              <span id='t1_text_19_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_20' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_20' style='position:absolute; top:-25px; left:-6px'>19</span>
+              <span id='t1_text_20_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_21' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_21' style='position:absolute; top:-25px; left:-6px'>20</span>
+              <span id='t1_text_21_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_22' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_22' style='position:absolute; top:-25px; left:-6px'>21</span>
+              <span id='t1_text_22_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_23' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
+              <span id='tl_text_23' style='position:absolute; top:-25px; left:-6px'>22</span>
+              <span id='t1_text_23_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+            </div>
+            <div id='tl_24' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px; border-right:solid 2px red; padding:0px'>
+              <span id='tl_text_24' style='position:absolute; top:-25px; left:-6px'>23</span>
+              <span id='t1_text_24_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+            </div>
           </div>
         </div>
       </div>
-      <!-- right half -->
-      <div class='col-sm-6' style='margin:0px; padding:0px; width:100%'>
-        <div class='row' style='margin:0px; padding:0px; width:100%'>
-          <div id='tl_13' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>
-            <span id='t1_text_13_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_14' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_14' style='position:absolute; top:-25px; left:-6px'>13</span>
-            <span id='t1_text_14_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_15' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_15' style='position:absolute; top:-25px; left:-6px'>14</span>
-            <span id='t1_text_15_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_16' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_16' style='position:absolute; top:-25px; left:-6px'>15</span>
-            <span id='t1_text_16_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_17' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_17' style='position:absolute; top:-25px; left:-6px'>16</span>
-            <span id='t1_text_17_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_18' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_18' style='position:absolute; top:-25px; left:-6px'>17</span>
-            <span id='t1_text_18_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_19' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_19' style='position:absolute; top:-25px; left:-6px'>18</span>
-            <span id='t1_text_19_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_20' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_20' style='position:absolute; top:-25px; left:-6px'>19</span>
-            <span id='t1_text_20_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_21' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_21' style='position:absolute; top:-25px; left:-6px'>20</span>
-            <span id='t1_text_21_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_22' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_22' style='position:absolute; top:-25px; left:-6px'>21</span>
-            <span id='t1_text_22_meridies' style='position:relative; top:-15px; left:6px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_23' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
-            <span id='tl_text_23' style='position:absolute; top:-25px; left:-6px'>22</span>
-            <span id='t1_text_23_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
-          </div>
-          <div id='tl_24' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px; border-right:solid 2px red; padding:0px'>
-            <span id='tl_text_24' style='position:absolute; top:-25px; left:-6px'>23</span>
-            <span id='t1_text_24_meridies' style='position:relative; top:-15px; left:15px; font-size:.5em'>PM</span>
+      <!--  -->
+      <!-- time of day progress tracker below -->
+      <div id='pct_of_day_tracker' style='height:20px;display:block;margin-right:2.5%; margin-top:0px; padding:0px;'>
+        <!-- clock labels -->
+        <span id='pct_of_day_tracker_time_meridies' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:7px; font-size:.5em'>am/pm</span>
+        <span id='pct_of_day_tracker_time' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:-3px'>12:50</span>
+      </div>
+
+      <!-- span below adds time on left of bar, when early in time of day -->
+      <div id = 'pct_of_day_tracker_time_early_div' style='margin-top:-22px; height:20px'>
+        <table>
+          <tr>
+            <th>
+              <span id='pct_of_day_tracker_time_early_only' style='font-weight:bold;'>12:30</span>
+            </th>
+            <th>
+              <span id='pct_of_day_tracker_time_early_only_meridies' style='font-weight:bold; font-size:.5em; margin-top:8px; display:block'>am/pm</span> <!-- zc -->
+            </th>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Calendar: Event 1 -->
+      <div id='event_1' style='height:20px;display:block;margin-right:2.5%; margin-top:2px; padding:0px;background-color:pink; width:50%; display:none'></div>
+    </div><!-- end: View Granularity: Day -->
+
+    <!-- View Granularity: Week -->
+    <div id='top_dock_week' style='display:none; padding-top:10px'>
+      <!-- date header -->
+      <div id='top_dock_date' style='margin-top:7px;'>
+        <font size='+2'>
+          <!-- <font size='+2'> -->
+          <span id='top_dock_date_DoW_range' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;'>Oct 11 – Oct 17</span>
+
+          <!-- <span id='top_dock_date_DoW_range' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;font-family: Lexend Deca'>Sep 27 – Oct 3</span> -->
+        </font>
+      </div><br>
+
+      <!-- highlight a day -->
+      <div id='week_view_highlight_day' style='position:absolute; z-index:3; margin-top:100px; height:100px; width:100%; background-color:red; display:none'>
+      </div>
+
+      <!-- calendar events -->
+      <div class='row' style='position:absolute;width:100%; height:100px; z-index:3; '>
+        <!-- overlay -->
+        <div id='week_view_grid_overlay' style='top:-8px;height:710px; position:absolute; background-color:red;left:15px; width:100%; opacity:.5; z-index:-1; display:none'></div>
+        <div class='col-sm-2' style='position:relative;'></div><!-- spacer -->
+        
+        <div class='col-sm-10' style='position:relative; dislay:inline-block;font-size:.8em; font-family: Lexend deca; font-weight:bold'>
+
+
+          <!-- sunday events -->
+
+          <!-- monday events -->
+          <!-- <div id='wv_mon_event_1' style='max-height:44px; position:absolute; margin-top:100px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:50%'>Lab Meeting</div> -->
+          <!-- tuesday events -->
+          <!-- <div id='wv_tue_event_1' style='max-height:44px; position:absolute; margin-top:200px; dislay:inline-block; background-color:white; color:black; width:12.48%; margin-left:70.83%'>Data Basics Workshop</div> -->
+          <!-- wednesday events -->
+          <!-- <div id='wv_wed_event_1' style='max-height:44px; position:absolute; margin-top:300px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:50%'>Brown Bag</div> -->
+          <!-- thursday events -->
+          <!-- <div id='wv_thu_event_1' style='max-height:44px; position:absolute; margin-top:400px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:47.91%'>ABIM Meeting</div> -->
+          <!-- <div id='wv_thu_event_2' style='max-height:44px; position:absolute; margin-top:400px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:47.91%'>ABIM Meeting</div> -->
+          <!-- friday events -->
+          <!-- <div id='wv_fri_event_1' style='max-height:44px; position:absolute; margin-top:500px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:41.67%; padding:3px'>Ben Meeting</div> -->
+          <!-- <div id='wv_fri_event_2' style='max-height:44px; position:absolute; margin-top:500px; dislay:inline-block; background-color:white; color:black; width:4.16%; margin-left:58.33%; padding:3px'>Danny Meeting</div> -->
+
+          <!-- week view tracker -->
+          <div id='week_view_time_tracker' style='position:absolute; width:100%; margin:0px; padding:0px;'>
+            <!-- week view tracker: line -->
+            <div id='week_view_time_tracker_line_background' style='margin-left:1.5px; position:absolute; width:100%; height:100px; opacity:.2'></div>
+            
+            
+            <!-- week view tracker: circle -->
+            <div id='week_view_time_tracker_circle' style='position:absolute;'>
+              <!-- layered icons -->
+              <!-- <div id='' class='fa fa-circle' style='position:absolute;font-size:16px; margin-top:-7px; margin-left:-6.5px' ></div> -->
+              <!-- <div class='fa fa-circle' style='position:absolute;font-size:10px; margin-top:-5px; margin-left:-6px;' ></div> -->
+            </div>
+
+            <div id='week_view_time_tracker_line' style='position:absolute; border-right: solid red 3px; width:100%; height:100px; z-index:+1'>
+              <div id='week_view_time_tracker_circle_background' class='fa fa-circle' style='position:absolute; font-size:12px; margin-top:-7px; margin-left:0px; right:-7px; z-index:0' ></div>
+              <div class='fa fa-circle' style='position:absolute; font-size:10px; margin-top:-5px; margin-left:0px; right:-6px' ></div>
+              <!-- <div id='week_view_time_tracker_circle_small' class='fa fa-circle' style='position:absolute; font-size:4px; margin-top:-2px; margin-left:0px; right:-3px' ></div> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- span below adds time on left of bar, when early in time of day -->
-    <span id='pct_of_day_tracker_time_early_only' style='color:red;position:absolute;font-weight:bold;margin-top:-3px;padding-left:2px'>12:30</span>
-    <span id='pct_of_day_tracker_time_early_only_meridies' style='color:red;position:absolute;font-weight:bold;margin-top:8px;padding-left:41px;font-size:.5em'>12:30</span>
+
+      <div id='top_dock_week_ruler' class='row' style='margin:0px; padding:0px;font-family:Lexend Deca'>
+        <!-- left half -->
+        <div class='col-sm-12' style='margin:0px; padding:0px;width:100%;position:absolute; font-family: Book Antiqua; letter-spacing: 1px;'>
+          <div id='week_view_sunday' style='height:100px; border-bottom: solid red 1px;border-top: solid red 1px'>
+            <!-- <span style='padding-left:100px; position:absolute'>11</span><br> -->
+            <span id='week_view_sunday_text'>Sunday</span>
+          </div>
+          <div id='week_view_monday' style='height:100px; border-bottom: solid red 1px;'>
+            <span id='week_view_monday_text'>Monday</span>
+          </div>
+          <div id='week_view_tuesday' style='height:100px; border-bottom: solid red 1px;'>
+            <span id='week_view_tuesday_text'>Tuesday</span>
+          </div>
+          <div id='week_view_wednesday' style='height:100px; border-bottom: solid red 1px;'>
+            <span id='week_view_wednesday_text'>Wednesday</span>
+          </div>
+          <div id='week_view_thursday' style='height:100px; border-bottom: solid red 1px'>
+            <span id='week_view_thursday_text'>Thursday</span>
+          </div>
+          <div id='week_view_friday' style='height:100px; border-bottom: solid red 1px;'>
+            <span id='week_view_friday_text'>Friday</span><br>
+            <!-- <span>16</span> -->
+            <!-- <div id='week_view_friday_date' style='min-width:50px; height:50px; width:50px; padding:5px; margin-left:-2px; text-align:center; bottom:0px; background-color:white; margin:0px; font-weight:bold; font-family:Lexend Deca; font-size:1.7em'>30</div> -->
+            <!-- padding:4px; padding-top:2px;  -->
+          </div>
+          <div id='week_view_saturday' style='height:100px; border-bottom: solid red 1px'>
+            <span id='week_view_saturday_text'>Saturday</span>
+          </div>
+        </div>
+
+        <!-- spacer -->
+        <div class='col-sm-2' style='margin:0px; padding:0px;width:100%;'></div>
+
+        <!-- Left half of clock (midnight - noon) -->
+        <div id='week_view_left_half_div' class='col-sm-5' style='margin:0px; padding:0px;width:100%; border-bottom:solid 0px red; top:-9px;font-size:.97em;'>
+          <div class='row' style='margin:0px; padding:0px;width:100%;'>
+            <div id='week_view_1' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_1' style='position:absolute; top:-25px; left:-6px'></span>
+              <span id='week_view_text_1_meridies' style='position:absolute; top:-16px; left:-4px'></span>
+            </div>
+            <div id='week_view_2'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_2' style='position:absolute; top:-25px; left:-6px'>1</span>
+              <span id='week_view_text_2_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_3'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_3' style='position:absolute; top:-25px; left:-6px'>2</span>
+              <span id='week_view_text_3_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_4'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_4' style='position:absolute; top:-25px; left:-6px'>3</span>
+              <span id='week_view_text_4_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_5'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_5' style='position:absolute; top:-25px; left:-6px'>4</span>
+              <span id='week_view_text_5_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_6'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_6' style='position:absolute; top:-25px; left:-6px'>5</span>
+              <span id='week_view_text_6_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_7'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_7' style='position:absolute; top:-25px; left:-6px'>6</span>
+              <span id='week_view_text_7_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_8'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_8' style='position:absolute; top:-25px; left:-6px'>7</span>
+              <span id='week_view_text_8_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_9'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_9' style='position:absolute; top:-25px; left:-6px'>8</span>
+              <span id='week_view_text_9_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_10'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_10' style='position:absolute; top:-25px; left:-6px'>9</span>
+              <span id='week_view_text_10_meridies'style='position:relative; top:-16px; left:4px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_11'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_11' style='position:absolute; top:-25px; left:-6px'>10</span>
+              <span id='week_view_text_11_meridies'style='position:relative; top:-16px; left:12px; font-size:.5em'>AM</span>
+            </div>
+            <div id='week_view_12'class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_12' style='position:absolute; top:-25px; left:-6px'>11</span>
+              <span id='week_view_text_12_meridies' style='position:relative; top:-16px; left:11px; font-size:.5em'>AM</span>
+            </div>
+          </div>
+        </div>
+        <!-- right half of clock (noon - midnight) -->
+        <div id='week_view_right_half_div' class='col-sm-5' style='margin:0px; padding:0px; width:100%; border-bottom:solid 0px blue; top:-9px;font-size:.97em; font-family: Lexend Deca'>
+          <div class='row' style='margin:0px; padding:0px; width:100%'>
+            <div id='week_view_13' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>
+              <span id='week_view_text_13_meridies' style='position:relative; top:-16px; left:15px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_14' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_14' style='position:absolute; top:-25px; left:-6px'>13</span>
+              <span id='week_view_text_14_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_15' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_15' style='position:absolute; top:-25px; left:-6px'>14</span>
+              <span id='week_view_text_15_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_16' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_16' style='position:absolute; top:-25px; left:-6px'>15</span>
+              <span id='week_view_text_16_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_17' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_17' style='position:absolute; top:-25px; left:-6px'>16</span>
+              <span id='week_view_text_17_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_18' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_18' style='position:absolute; top:-25px; left:-6px'>17</span>
+              <span id='week_view_text_18_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_19' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_19' style='position:absolute; top:-25px; left:-6px'>18</span>
+              <span id='week_view_text_19_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_20' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_20' style='position:absolute; top:-25px; left:-6px'>19</span>
+              <span id='week_view_text_20_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_21' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_21' style='position:absolute; top:-25px; left:-6px'>20</span>
+              <span id='week_view_text_21_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_22' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_22' style='position:absolute; top:-25px; left:-6px'>21</span>
+              <span id='week_view_text_22_meridies' style='position:relative; top:-16px; left:4px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_23' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
+              <span id='week_view_text_23' style='position:absolute; top:-25px; left:-6px'>22</span>
+              <span id='week_view_text_23_meridies' style='position:relative; top:-16px; left:13px; font-size:.5em'>PM</span>
+            </div>
+            <div id='week_view_24' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px; border-right:solid 1px red; padding:0px'>
+              <span id='week_view_text_24' style='position:absolute; top:-25px; left:-6px'>23</span>
+              <span id='week_view_text_24_meridies' style='position:relative; top:-16px; left:12px; font-size:.5em'>PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end: View Granularity: Week -->
+
+    <!-- View Granularity: Month -->
+    <div id='top_dock_month' style='display:block; display:none; text-align:center; '>
+      <div id='top_dock_month_label' style='margin-top:16px'; class='top_dock_month_label'>
+
+          <font size='+2'>
+            <!-- zc -->
+            <span id='month_view_month_label' style='position:relative; background-color:white; padding:4px; padding-top:1px; margin:0px; margin-top:.5px; font-weight:bold; height:38px'>For example: September </span>
 
 
-    <!--  -->
-    <!-- time of day progress tracker below -->
-    <div id='pct_of_day_tracker' style='height:20px;display:block;margin-right:2.5%; margin-top:0px; padding:0px;'>
-      <!-- clock labels -->
-      <span id='pct_of_day_tracker_time_meridies' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:7px; font-size:.5em'></span>
-      <span id='pct_of_day_tracker_time' style='text-align:right; float:right;padding-right:2px;font-weight:bold; padding-top:0px; margin-top:-3px'>12:50</span>
-    </div>
+            <span id='month_view_year_label' style='font-weight:bold; font-family:Lexend Deca; font-size:1.1em'>
+              2020
+            </span>
+          </font>
+
+      </div>
+
+      <center>
+        <!-- week day headers -->
+        <!-- <table id='td_month_header' class='top_dock_month_header_table' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:80%' width='100%'>
+          <tr style='min-width:600px; width:100%; width:100%; margin:0px; padding:0px;'>
+            <td style='min-width:85.5px; width:14%;'>Sunday</td>
+            <td style='min-width:85.5px; width:14%;'>Monday</td>
+            <td style='min-width:85.5px; width:14%;'>Tuesday</td>
+            <td style='min-width:85.5px; width:14%;'>Wednesday</td>
+            <td style='min-width:85.5px; width:14%;'>Thursday</td>
+            <td style='min-width:85.5px; width:14%;'>Friday</td>
+            <td style='min-width:85.5px; width:14%;'>Saturday</td>
+          </tr>
+        </table> -->
+
+        <table id='td_month_header' class='top_dock_month_header_table' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%; margin-top:5px;' width='100%'>
+          <tr style='min-width:600px; width:100%; width:100%; margin:0px; padding:0px;'>
+            <td style='min-width:85.5px; width:14%;'>Sunday</td>
+            <td style='min-width:85.5px; width:14%;'>Monday</td>
+            <td style='min-width:85.5px; width:14%;'>Tuesday</td>
+            <td style='min-width:85.5px; width:14%;'>Wednesday</td>
+            <td style='min-width:85.5px; width:14%;'>Thursday</td>
+            <td style='min-width:85.5px; width:14%;'>Friday</td>
+            <td style='min-width:85.5px; width:14%;'>Saturday</td>
+          </tr>
+        </table>
+
+        <!-- row 1 -->
+        <table id='td_month_row_1' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%;' width='100%'>
+          <tr id='td_month_row_1_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top; font-family: Book Antiqua'>
+            <td id='td_month_cell_1' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px;'>
+              <div id='td_month_cell_1_DOM'>1</div>
+            </td>
+            <td id='td_month_cell_2' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_2_DOM'>2</div>
+            </td>
+            <td id='td_month_cell_3' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_3_DOM'>3</div>
+            </td>
+            <td id='td_month_cell_4' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_4_DOM'>4</div>
+            </td>
+            <td id='td_month_cell_5' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_5_DOM'>5</div>
+            </td>
+            <td id='td_month_cell_6' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_6_DOM'>6</div>
+            </td>
+            <td id='td_month_cell_7' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px'>
+              <div id='td_month_cell_7_DOM'>7</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- row 2 -->
+        <table id='td_month_row_2' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%' width='100%'>
+          <tr id='td_month_row_2_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top;font-family: Book Antiqua'>
+            <td id='td_month_cell_8' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_8_DOM'>8</div>
+            </td>
+            <td id='td_month_cell_9' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_9_DOM'>9</div>
+            </td>
+            <td id='td_month_cell_10' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_10_DOM'>10</div>
+            </td>
+            <td id='td_month_cell_11' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_11_DOM'>11</div>
+            </td>
+            <td id='td_month_cell_12' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_12_DOM'>12</div>
+            </td>
+            <td id='td_month_cell_13' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_13_DOM'>13</div>
+            </td>
+            <td id='td_month_cell_14' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_14_DOM'>14</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- row 3 -->
+        <table id='td_month_row_3' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%' width='100%'>
+          <tr id='td_month_row_3_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top;font-family: Book Antiqua;'>
+            <td id='td_month_cell_15' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_15_DOM'>15</div>
+            </td>
+            <td id='td_month_cell_16' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_16_DOM'>16</div>
+            </td>
+            <td id='td_month_cell_17' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_17_DOM'>17</div>
+            </td>
+            <td id='td_month_cell_18' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_18_DOM'>18</div>
+            </td>
+            <td id='td_month_cell_19' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_19_DOM'>19</div>
+            </td>
+            <td id='td_month_cell_20' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_20_DOM'>20</div>
+            </td>
+            <td id='td_month_cell_21' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_21_DOM'>21</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- row 4 -->
+        <table id='td_month_row_4' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%' width='100%'>
+          <tr id='td_month_row_4_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top;font-family: Book Antiqua'>
+            <td id='td_month_cell_22' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_22_DOM'>22</div>
+            </td>
+            <td id='td_month_cell_23' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_23_DOM'>23</div>
+            </td>
+            <td id='td_month_cell_24' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_24_DOM'>24</div>
+            </td>
+            <td id='td_month_cell_25' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_25_DOM'>25</div>
+            </td>
+            <td id='td_month_cell_26' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_26_DOM'>26</div>
+            </td>
+            <td id='td_month_cell_27' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_27_DOM'>27</div>
+            </td>
+            <td id='td_month_cell_28' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_28_DOM'>28</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- row 5 -->
+        <table id='td_month_row_5' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%' width='100%'>
+          <tr id='td_month_row_5_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top;font-family: Book Antiqua'>
+            <td id='td_month_cell_29' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_29_DOM'>29</div>
+            </td>
+            <td id='td_month_cell_30' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_30_DOM'>30</div>
+            </td>
+            <td id='td_month_cell_31' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_31_DOM'>31</div>
+            </td>
+            <td id='td_month_cell_32' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_32_DOM'>32</div>
+            </td>
+            <td id='td_month_cell_33' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_33_DOM'>33</div>
+            </td>
+            <td id='td_month_cell_34' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_34_DOM'>34</div>
+            </td>
+            <td id='td_month_cell_35' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_35_DOM'>35</div>
+            </td>
+          </tr>
+        </table>
+
+        <!-- row 6 -->
+        <table id='td_month_row_6' style='min-width:600px; text-align:center; margin:0px; padding:0px; width:100%' width='100%'>
+          <tr id='td_month_row_6_sub' style='height:150px; min-width:600px; width:100%; margin:0px; padding:0px; vertical-align:text-top;font-family: Book Antiqua'>
+            <td id='td_month_cell_36' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_36_DOM'>36</div>
+            </td>
+            <td id='td_month_cell_37' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_37_DOM'>37</div>
+            </td>
+            <td id='td_month_cell_38' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_38_DOM'>38</div>
+            </td>
+            <td id='td_month_cell_39' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_39_DOM'>39</div>
+            </td>
+            <td id='td_month_cell_40' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_40_DOM'>40</div>
+            </td>
+            <td id='td_month_cell_41' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_41_DOM'>41</div>
+            </td>
+            <td id='td_month_cell_42' style='min-width:85.5px; width:14%; min-height:120px; border:solid grey 1px; border-top:0px'>
+              <div id='td_month_cell_42_DOM'>42</div>
+            </td>
+          </tr>
+        </table>
+
+      </center>
+    </div><!-- end: View Granularity: Month -->
+
+    <!-- View Granularity: Year -->
+    <div id='top_dock_year' style='display:block;display:none; text-align:center '>
+      <div id='top_dock_year_label' class='top_dock_year_label'>2020</div>
+      <div class='row'>
+        <!-- column: January -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_jan'>January</span>
+          <center>
+            <table id='tp_m1' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jan_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: February -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_feb'>February</span>
+          <center>
+            <table id='tp_m2' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_feb_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: March -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_mar'>March</span>
+          <center>
+            <table id='tp_m3' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_mar_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: April -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_apr'>April</span>
+          <center>
+            <table id='tp_m4' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_apr_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: May -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_may'>May</span>
+          <center>
+            <table id='tp_m5' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_may_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: June -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_jun'>June</span>
+          <center>
+            <table id='tp_m6' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jun_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: July -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_jul'>July</span>
+          <center>
+            <table id='tp_m7' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_jul_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: August -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_aug'>August</span>
+          <center>
+            <table id='tp_m8' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_aug_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: September -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_sep'>September</span>
+          <center>
+            <table id='tp_m9' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_sep_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: October -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_oct'>October</span>
+          <center>
+            <table id='tp_m10' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_oct_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: November -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_nov'>November</span>
+          <center>
+            <table id='tp_m11' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_nov_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+
+        <!-- column: December -->
+        <div class='col-sm-6 col-md-4 col-lg-3' style='margin:0px; padding:0px; display:block; text-align:center; margin-bottom:30px'>
+          <span id='year_view_dec'>December</span>
+          <center>
+            <table id='tp_m12' style='display:block; text-align:center; width:210px; margin:0px; padding:0px'>
+              <!-- day of week labels -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>M</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>W</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>T</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>F</td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>S</td>
+              </tr>
+              <!-- month day row 1 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_1'>1</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_2'>2</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_3'>3</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_4'>4</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_5'>5</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_6'>6</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_7'>7</div>
+                </td>
+              </tr>
+              <!-- month day row 2 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_8'>8</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_9'>9</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_10'>10</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_11'>11</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_12'>12</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_13'>13</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_14'>14</div>
+                </td>
+              </tr>
+              <!-- month day row 3 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_15'>15</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_16'>16</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_17'>17</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_18'>18</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_19'>19</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_20'>20</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_21'>21</div>
+                </td>
+              </tr>
+              <!-- month day row 4 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_22'>22</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_23'>23</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_24'>24</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_25'>25</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_26'>26</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_27'>27</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_28'>28</div>
+                </td>
+              </tr>
+              <!-- month day row 5 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_29'>29</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_30'>30</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_31'>31</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_32'>32</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_33'>33</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_34'>34</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_35'>35</div>
+                </td>
+              </tr>
+              <!-- month day row 6 -->
+              <tr>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_36'>36</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_37'>37</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_38'>38</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_39'>39</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_40'>40</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_41'>41</div>
+                </td>
+                <td style='min-width:30px;width:30px; padding:0px; margin:0px'>
+                  <div id='td_year_dec_42'>42</div>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </div>
+      </div>
+    </div><!-- end: View Granularity: Year -->
   </div> <!-- End: Top Docker -->
   </font>
 
@@ -577,7 +3066,7 @@
       <!-- <center> -->
       <div id='version_number' class='version_number_class'>
         <a id='information_link' style='text-align:right;' href='https://data-cene.com/IF'>information</a><br>
-        <span style='text-align:right'>ver. 1.1.0</span>
+        <span style='text-align:right'>ver. 1.1.1</span>
       </div>
       <!-- </center> -->
 

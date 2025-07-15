@@ -512,7 +512,10 @@ window.save_data = function save_data(){
         'ws_3_url_input_stored':ws_3_url,
         'ws_4_url_input_stored':ws_4_url,
         'ws_5_url_input_stored':ws_5_url,
-        'ws_6_url_input_stored':ws_6_url
+        'ws_6_url_input_stored':ws_6_url,
+
+        'top_dock_calendar_view_choice_stored':top_dock_calendar_view_choice,
+        'top_dock_hotkey_choice_stored':top_dock_hotkey_choice
 
     })
     console.log('saved data')

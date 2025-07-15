@@ -10,8 +10,6 @@ window.onload = function(){
 // Set Environmental Variables //
 /////////////////////////////////
 
-// Data Storage 
-top_dock_mt='no'
 
 // Custom Color Scheme 
 hex_1_empty =""
@@ -36,6 +34,7 @@ current_display='main' // (values: main, search, settings, left_dock_config, rig
 
 // Contra Animation
 contra_rdy='yes' // variable used as a gate so duplicate animations are not simultaneously run
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,9 +105,9 @@ window.top_dock_small_screen_view = function top_dock_small_screen_view(){
     }
 }
 
-// window.onresize = function(){
-//     top_dock_small_screen_view()
-// }
+window.onresize = function(){
+    top_dock_small_screen_view()
+}
 
 document.getElementsByTagName("BODY")[0].onresize = function(){top_dock_small_screen_view()};
 document.getElementById('top_dock').onresize = function(){top_dock_small_screen_view()};
@@ -260,93 +259,93 @@ function DoW(){
 }
 // DoW()
 
-function hide_meridies_top_dock(){
-    $('#t1_text_1_meridies').hide()
-    $('#t1_text_2_meridies').hide()
-    $('#t1_text_3_meridies').hide()
-    $('#t1_text_4_meridies').hide()
-    $('#t1_text_5_meridies').hide()
-    $('#t1_text_6_meridies').hide()
-    $('#t1_text_7_meridies').hide()
-    $('#t1_text_8_meridies').hide()
-    $('#t1_text_9_meridies').hide()
-    $('#t1_text_10_meridies').hide()
-    $('#t1_text_11_meridies').hide()
-    $('#t1_text_12_meridies').hide()
-    $('#t1_text_13_meridies').hide()
-    $('#t1_text_14_meridies').hide()
-    $('#t1_text_15_meridies').hide()
-    $('#t1_text_16_meridies').hide()
-    $('#t1_text_17_meridies').hide()
-    $('#t1_text_18_meridies').hide()
-    $('#t1_text_19_meridies').hide()
-    $('#t1_text_20_meridies').hide()
-    $('#t1_text_21_meridies').hide()
-    $('#t1_text_22_meridies').hide()
-    $('#t1_text_23_meridies').hide()
-    $('#t1_text_24_meridies').hide() 
-}
+// function hide_meridies_top_dock(){
+//     $('#t1_text_1_meridies').hide()
+//     $('#t1_text_2_meridies').hide()
+//     $('#t1_text_3_meridies').hide()
+//     $('#t1_text_4_meridies').hide()
+//     $('#t1_text_5_meridies').hide()
+//     $('#t1_text_6_meridies').hide()
+//     $('#t1_text_7_meridies').hide()
+//     $('#t1_text_8_meridies').hide()
+//     $('#t1_text_9_meridies').hide()
+//     $('#t1_text_10_meridies').hide()
+//     $('#t1_text_11_meridies').hide()
+//     $('#t1_text_12_meridies').hide()
+//     $('#t1_text_13_meridies').hide()
+//     $('#t1_text_14_meridies').hide()
+//     $('#t1_text_15_meridies').hide()
+//     $('#t1_text_16_meridies').hide()
+//     $('#t1_text_17_meridies').hide()
+//     $('#t1_text_18_meridies').hide()
+//     $('#t1_text_19_meridies').hide()
+//     $('#t1_text_20_meridies').hide()
+//     $('#t1_text_21_meridies').hide()
+//     $('#t1_text_22_meridies').hide()
+//     $('#t1_text_23_meridies').hide()
+//     $('#t1_text_24_meridies').hide() 
+// }
 
 
-function top_dock_configure_time_display(){
-    if(top_dock_mt=='no'){
-        // non-military time
-        $('#tl_text_1').text('')
-        $('#tl_text_2').text('1')
-        $('#tl_text_3').text('2')
-        $('#tl_text_4').text('3')
-        $('#tl_text_5').text('4')
-        $('#tl_text_6').text('5')
-        $('#tl_text_7').text('6')
-        $('#tl_text_8').text('7')
-        $('#tl_text_9').text('8')
-        $('#tl_text_10').text('9')
-        $('#tl_text_11').text('10')
-        $('#tl_text_12').text('11')
-        $('#tl_text_13').text('12')
-        $('#tl_text_14').text('1')
-        $('#tl_text_15').text('2')
-        $('#tl_text_16').text('3')
-        $('#tl_text_17').text('4')
-        $('#tl_text_18').text('5')
-        $('#tl_text_19').text('6')
-        $('#tl_text_20').text('7')
-        $('#tl_text_21').text('8')
-        $('#tl_text_22').text('9')
-        $('#tl_text_23').text('10')
-        $('#tl_text_24').text('11')
+// function top_dock_configure_time_display(){
+//     if(top_dock_mt=='no'){
+//         // non-military time
+//         $('#tl_text_1').text('')
+//         $('#tl_text_2').text('1')
+//         $('#tl_text_3').text('2')
+//         $('#tl_text_4').text('3')
+//         $('#tl_text_5').text('4')
+//         $('#tl_text_6').text('5')
+//         $('#tl_text_7').text('6')
+//         $('#tl_text_8').text('7')
+//         $('#tl_text_9').text('8')
+//         $('#tl_text_10').text('9')
+//         $('#tl_text_11').text('10')
+//         $('#tl_text_12').text('11')
+//         $('#tl_text_13').text('12')
+//         $('#tl_text_14').text('1')
+//         $('#tl_text_15').text('2')
+//         $('#tl_text_16').text('3')
+//         $('#tl_text_17').text('4')
+//         $('#tl_text_18').text('5')
+//         $('#tl_text_19').text('6')
+//         $('#tl_text_20').text('7')
+//         $('#tl_text_21').text('8')
+//         $('#tl_text_22').text('9')
+//         $('#tl_text_23').text('10')
+//         $('#tl_text_24').text('11')
 
-        $('#t1_text_1_meridies').show()
-        $('#t1_text_2_meridies').show()
-        $('#t1_text_3_meridies').show()
-        $('#t1_text_4_meridies').show()
-        $('#t1_text_5_meridies').show()
-        $('#t1_text_6_meridies').show()
-        $('#t1_text_7_meridies').show()
-        $('#t1_text_8_meridies').show()
-        $('#t1_text_9_meridies').show()
-        $('#t1_text_10_meridies').show()
-        $('#t1_text_11_meridies').show()
-        $('#t1_text_12_meridies').show()
-        $('#t1_text_13_meridies').show()
-        $('#t1_text_14_meridies').show()
-        $('#t1_text_15_meridies').show()
-        $('#t1_text_16_meridies').show()
-        $('#t1_text_17_meridies').show()
-        $('#t1_text_18_meridies').show()
-        $('#t1_text_19_meridies').show()
-        $('#t1_text_20_meridies').show()
-        $('#t1_text_21_meridies').show()
-        $('#t1_text_22_meridies').show()
-        $('#t1_text_23_meridies').show()
-        $('#t1_text_24_meridies').show()
-    }
+//         $('#t1_text_1_meridies').show()
+//         $('#t1_text_2_meridies').show()
+//         $('#t1_text_3_meridies').show()
+//         $('#t1_text_4_meridies').show()
+//         $('#t1_text_5_meridies').show()
+//         $('#t1_text_6_meridies').show()
+//         $('#t1_text_7_meridies').show()
+//         $('#t1_text_8_meridies').show()
+//         $('#t1_text_9_meridies').show()
+//         $('#t1_text_10_meridies').show()
+//         $('#t1_text_11_meridies').show()
+//         $('#t1_text_12_meridies').show()
+//         $('#t1_text_13_meridies').show()
+//         $('#t1_text_14_meridies').show()
+//         $('#t1_text_15_meridies').show()
+//         $('#t1_text_16_meridies').show()
+//         $('#t1_text_17_meridies').show()
+//         $('#t1_text_18_meridies').show()
+//         $('#t1_text_19_meridies').show()
+//         $('#t1_text_20_meridies').show()
+//         $('#t1_text_21_meridies').show()
+//         $('#t1_text_22_meridies').show()
+//         $('#t1_text_23_meridies').show()
+//         $('#t1_text_24_meridies').show()
+//     }
     
-    // military time
-    if(top_dock_mt=='yes'){
-        hide_meridies_top_dock()
-    }
-}
+//     // military time
+//     if(top_dock_mt=='yes'){
+//         hide_meridies_top_dock()
+//     }
+// }
 
 top_dock_configure_time_display()
 
@@ -889,7 +888,8 @@ $(".ham_class").mouseover(function(){
 });
 
 
-
+// this code creates "listening" function that runs when window size is changed. 
+document.getElementsByTagName("BODY")[0].onresize = function(){top_dock_resize_events()};
 
 
 
@@ -1097,6 +1097,35 @@ document.body.onkeydown = function(e){
             }
         }
     }
+    else if(current_display=='top_dock'){
+        if(current_top_dock_tool=='none'){
+            if(e.keyCode == 68){ // d |
+                // show day calendar view
+                current_top_dock_module='day'
+                top_dock_module_changer()
+            }
+            if(e.keyCode == 77){ // m | 
+                // show month calendar view
+                current_top_dock_module='month'
+                top_dock_module_changer()
+            }
+            if(e.keyCode == 80){ // p |
+                // show present calendar view
+                current_top_dock_module='present'
+                top_dock_module_changer()
+            }
+            if(e.keyCode == 87){ // w | 
+                // show week calendar view
+                current_top_dock_module='week'
+                top_dock_module_changer()
+            }
+            if(e.keyCode == 89){ // y | 
+                // show year calendar view
+                current_top_dock_module='year'
+                top_dock_module_changer()
+            } 
+        }
+    }
 }
 
 
@@ -1235,6 +1264,11 @@ document.body.onkeyup = function(e){
                 update_website_names()
                 current_display='settings'
             }
+            else if(current_display=='top_dock_config'){
+                save_data()
+                update_website_names()
+                current_display='settings'
+            }
             else if(current_display=='color_scheme'){
                 save_data()
                 update_website_names()
@@ -1263,8 +1297,8 @@ document.body.onkeyup = function(e){
                 View_Changer()
             }
             else if(current_display=='main'){
-                // current_display='top_dock'
-                // View_Changer()
+                current_display='top_dock'
+                View_Changer()
             }         
         }
 
@@ -1371,14 +1405,18 @@ document.body.onkeyup = function(e){
                 }
                 // d | 
                 if(e.keyCode == 68){
-                    if(shift_mod=='yes'){}
+                    if(current_display=='top_dock'){
+                    }
                     else{
-                        if(!website_d){}
+                        if(shift_mod=='yes'){}
                         else{
-                            if(ld_link_override=='no'){
-                                window.location.replace(website_d);   
+                            if(!website_d){}
+                            else{
+                                if(ld_link_override=='no'){
+                                    window.location.replace(website_d);   
+                                }
+                                else{window.open(website_d,'')}
                             }
-                            else{window.open(website_d,'')}
                         }
                     }
                 }
@@ -1488,14 +1526,18 @@ document.body.onkeyup = function(e){
                 }
                 // m | 
                 if(e.keyCode == 77){
-                    if(shift_mod=='yes'){}
+                    if(current_display=='top_dock'){
+                    }
                     else{
-                        if(!website_m){}
+                        if(shift_mod=='yes'){}
                         else{
-                            if(ld_link_override=='no'){
-                                window.location.replace(website_m);   
+                            if(!website_m){}
+                            else{
+                                if(ld_link_override=='no'){
+                                    window.location.replace(website_m);   
+                                }
+                                else{window.open(website_m,'')}
                             }
-                            else{window.open(website_m,'')}
                         }
                     }
                 }
@@ -1527,14 +1569,18 @@ document.body.onkeyup = function(e){
                 }
                 // p | 
                 if(e.keyCode == 80){
-                    if(shift_mod=='yes'){}
+                    if(current_display=='top_dock'){
+                    }
                     else{
-                        if(!website_p){}
+                        if(shift_mod=='yes'){}
                         else{
-                            if(ld_link_override=='no'){
-                                window.location.replace(website_p);   
+                            if(!website_p){}
+                            else{
+                                if(ld_link_override=='no'){
+                                    window.location.replace(website_p);   
+                                }
+                                else{window.open(website_p,'')}
                             }
-                            else{window.open(website_p,'')}
                         }
                     }
                 }
@@ -1615,15 +1661,19 @@ document.body.onkeyup = function(e){
                 }
                 // w | 
                 if(e.keyCode == 87){
-                    if(shift_mod=='yes'){}
+                    if(current_display=='top_dock'){
+                    }
                     else{
-                        if(!website_w){}
+                        if(shift_mod=='yes'){}
                         else{
-                            if(ld_link_override=='no'){
-                                window.location.replace(website_w);   
-                            }
-                            else{window.open(website_w,'')}
-                        }                    
+                            if(!website_w){}
+                            else{
+                                if(ld_link_override=='no'){
+                                    window.location.replace(website_w);   
+                                }
+                                else{window.open(website_w,'')}
+                            }                    
+                        }
                     }
                 }
                 // x | 
@@ -1641,16 +1691,20 @@ document.body.onkeyup = function(e){
                 }
                 // y | 
                 if(e.keyCode == 89){
-                    if(shift_mod=='yes'){}
-                    else{
-                        if(!website_y){}
-                        else{
-                            if(ld_link_override=='no'){
-                                window.location.replace(website_y);   
-                            }
-                            else{window.open(website_y,'')}
-                        }
+                    if(current_display=='top_dock'){
                     }
+                    else{
+                        if(shift_mod=='yes'){}
+                        else{
+                            if(!website_y){}
+                            else{
+                                if(ld_link_override=='no'){
+                                    window.location.replace(website_y);   
+                                }
+                                else{window.open(website_y,'')}
+                            }
+                        }
+                    }                    
                 }
                 // z | 
                 if(e.keyCode == 90){
@@ -1985,6 +2039,11 @@ document.body.onkeyup = function(e){
                 save_data()
                 update_website_names()
             }
+            else if(current_display=='top_dock_config'){
+                current_display='main'
+                save_data()
+                update_website_names()
+            }
             else if(current_display=='color_scheme'){
                 current_display='main'
                 save_data()
@@ -2006,6 +2065,41 @@ document.body.onkeyup = function(e){
     }
 }
 
+
+// $(document).on('click', '#top_dock_view_header_year', function() {
+//     current_top_dock_module = 'year';
+//     top_dock_module_changer();
+//     console.log('clicked top dock: year');
+// });
+
+
+$('#top_dock_view_header_year').click(function(){
+    current_top_dock_module='year'
+    top_dock_module_changer()
+    console.log('clicked top dock: year')
+})
+
+
+$('#top_dock_view_header_month').click(function(){
+    current_top_dock_module='month'
+    top_dock_module_changer()
+})
+
+$('#top_dock_view_header_week').click(function(){
+    current_top_dock_module='week'
+    top_dock_module_changer()
+})
+
+$('#top_dock_view_header_day').click(function(){
+    current_top_dock_module='day'
+    top_dock_module_changer()
+})
+
+$('#top_dock_view_header_present').click(function(){
+    current_top_dock_module='present'
+    top_dock_module_changer()
+})
+
 // Arrow Keyboard Buttons
 $('#top_arr_sett').click(function(){
     console.log('top arrow')
@@ -2015,7 +2109,9 @@ $('#top_arr_sett').click(function(){
         document.getElementById("top_arr_sett").style.borderColor = color_accent_1;
     }, 500);
     document.getElementById("top_arr_sett").style.color = color_accent_1;
-    console.log('color_accent_1, log 8: '+ color_accent_1)
+    current_display='top_dock_config'
+    View_Changer()
+    // console.log('color_accent_1, log 8: '+ color_accent_1)
 })
 
 $('#left_arr_sett').click(function(){

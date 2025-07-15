@@ -20,6 +20,10 @@ window.get_data = function get_data(){
     // checkbox
     wsi_current_selection=''
 
+    // top dock: sub view
+    current_top_dock_module='' // options: present, day, week, month, year
+    current_top_dock_tool='none' // options: timer, none
+
     label_a=''
     label_b=''
     label_c=''
@@ -250,6 +254,9 @@ window.get_data = function get_data(){
     ws_5_url=''
     ws_6_url=''
 
+    top_dock_calendar_view_choice=''
+    top_dock_hotkey_choice=''
+
 
     /////////////////////
     // Display Setting //
@@ -430,6 +437,18 @@ window.get_data = function get_data(){
         }
         $('#theme_choice').val(theme)
 
+    });
+
+    // top dock sub-view choice
+    chrome.storage.sync.get(['current_top_dock_module_stored'], function(current_top_dock_module) {
+        current_top_dock_module_DS = current_top_dock_module.current_top_dock_module_stored
+        if(!current_top_dock_module_DS){
+            current_top_dock_module='day'
+        }
+        else{
+            current_top_dock_module=current_top_dock_module_DS
+            // will need an action here to update a top dock settings menu choice. (dropdown menu item)
+        }
     });
 
     ///////////////
@@ -3064,6 +3083,9 @@ window.get_data = function get_data(){
     ws_5_url_input_DS =''
     ws_6_url_input_DS =''
 
+    top_dock_calendar_view_choice_DS =''
+    top_dock_hotkey_choice_DS =''
+
     chrome.storage.sync.get(['ws_1_website_input_stored'], function(ws_1_website) {
         ws_1_website_input_DS = ws_1_website.ws_1_website_input_stored
         if(!ws_1_website_input_DS){
@@ -3201,4 +3223,28 @@ window.get_data = function get_data(){
             $('#ws_6_url_input').val(ws_6_url) 
         }
     });
+
+    // top dock settings
+    chrome.storage.sync.get(['top_dock_calendar_view_choice_stored'], function(top_dock_calendar_view_choice) {
+        top_dock_calendar_view_choice_DS = top_dock_calendar_view_choice.top_dock_calendar_view_choice_stored
+        if(!top_dock_calendar_view_choice_DS){
+            top_dock_calendar_view_choice=''
+        }
+        else{
+            top_dock_calendar_view_choice=top_dock_calendar_view_choice_DS
+            $('#top_dock_calendar_view_choice').val(top_dock_calendar_view_choice)
+        }
+    });
+
+    // overwrite: 
+    chrome.storage.sync.get(['top_dock_hotkey_choice_stored'], function(top_dock_hotkey_choice) {
+        top_dock_hotkey_choice_DS = top_dock_hotkey_choice.top_dock_hotkey_choice_stored
+        if(!top_dock_hotkey_choice_DS){
+            top_dock_hotkey_choice=''
+        }
+        else{
+            top_dock_hotkey_choice=top_dock_hotkey_choice_DS
+            $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice)
+        }
+    }); 
 }

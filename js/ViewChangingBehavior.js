@@ -87,6 +87,31 @@ window.show_top_dock = function show_top_dock(){
 
     $('#top_dock').removeClass('top_docker_state1')
     $('#top_dock').addClass('top_docker_state2') 
+
+    ////////////////////////////////////////
+    // Open view based on user preference //
+    hide_top_dock_modules()
+    if(top_dock_calendar_view_choice=='present'){
+        current_top_dock_module='present'
+        $('#top_dock_present').show()
+    }
+    else if(top_dock_calendar_view_choice=='day'){
+        current_top_dock_module='day'
+        $('#top_dock_day').show()
+    }
+    else if(top_dock_calendar_view_choice=='week'){
+        current_top_dock_module='week'
+        $('#top_dock_week').show()
+    }
+    else if(top_dock_calendar_view_choice=='month'){
+        current_top_dock_module='month'
+        $('#top_dock_month').show()
+    }
+    else if(top_dock_calendar_view_choice=='year'){
+        current_top_dock_module='year'
+        $('#top_dock_year').show()
+    }
+    top_dock_module_changer()
 }
 
 window.hide_top_dock = function hide_top_dock(){
@@ -105,7 +130,7 @@ window.View_Changer = function View_Changer(){
     if(current_display_temp=='main'){
         console.log('display: main')
         $('#bottom_dock').show()
-        // hide_top_dock()
+        hide_top_dock()
         update_search_box_text()
         web_search_updater()
         Display_Main_Screen()
@@ -114,7 +139,7 @@ window.View_Changer = function View_Changer(){
     else if(current_display_temp=='search'){
         console.log('display: search')
         Show_Search_Screen()
-        // hide_top_dock()
+        hide_top_dock()
     }
     else if(current_display_temp=='settings'){
         console.log('display: settings')
@@ -151,9 +176,13 @@ window.View_Changer = function View_Changer(){
         $('#web_search_input').show()
     }
     else if(current_display_temp=='top_dock'){
+        console.log('display: top_dock')
         top_dock_small_screen_view()
         show_top_dock()
     }
-
+    else if(current_display_temp=='top_dock_config'){
+        $('#settings_screen_main').hide() // hide settings
+        $('#top_dock_input').show()
+    }
     disable_arrow_keys_function()
 }
