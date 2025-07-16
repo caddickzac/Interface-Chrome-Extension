@@ -415,6 +415,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
     }
     else if(current_top_dock_module=='month'){
         top_dock_view_array_number=3
+        current_top_dock_module='month'
         $('#top_dock_month').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_distant()
         $('#top_dock_view_header_day').td_view_item_not_selected_distant() 
@@ -424,6 +425,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
     }
     else if(current_top_dock_module=='year'){
         top_dock_view_array_number=4
+        current_top_dock_module='year'
         $('#top_dock_year').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_distant()
         $('#top_dock_view_header_day').td_view_item_not_selected_distant() 
@@ -432,6 +434,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_year').td_view_item_selected()
     }
     console.log('top dock view changed')
+    console.log('4. current_top_dock_module: ', current_top_dock_module)
 }
 
 window.top_dock_view_array_number_change_up = function top_dock_view_array_number_change_up(){
@@ -664,162 +667,6 @@ window.new_day_clock_functions = function new_day_clock_functions(){
     $('#present_view_date_DoW').text(DOW_Text)
     week_view_header_date_change()
 }
-
-// // clock
-// window.showTime = function showTime(){
-//     date = new Date();
-//     year = date.getFullYear(); // 2020
-//     month = date.getMonth(); // 1-12
-//     var h = date.getHours(); // 0 - 23
-//     var h_m = h; // military time
-//     var m = date.getMinutes(); // 0 - 59
-//     var s = date.getSeconds(); // 0 - 59
-//     var session = "am";
-//     Date_Num = date.getDate() // Date (#)
-//     DOW = date.getDay()
-//     weekday_array = Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
-//     DOW_Text = weekday_array[DOW]
-
-//     pct_of_day= ((h+(m/60)+(s/3600))/24)*100
-//     timeline_tracker()
-
-//     if(pct_of_day<5.5){
-//         $('#pct_of_day_tracker_time').hide()
-//         $('#pct_of_day_tracker_time_meridies').hide()
-//         $('#pct_of_day_tracker_time_early_only').show()
-//         $('#pct_of_day_tracker_time_early_only_meridies').show()
-//     }
-//     else{
-//         $('#pct_of_day_tracker_time_early_only').hide()
-//         $('#pct_of_day_tracker_time_early_only_meridies').hide()
-//         $('#pct_of_day_tracker_time').show()
-//         $('#pct_of_day_tracker_time_meridies').show()
-//     }
-//     if(h >= 12){
-//         h = h - 12;
-//         session = "PM";
-//     }
-//     else{
-//         session = "AM";
-//     }
-//     $('#meridies').text(session)
-    
-//     // Display midnight with a 12 instead of a 0. 
-//     if(h == 0){
-//         h = 12;
-//     }
-    
-//     present_timeline_width_adj = ((m+(s/60))*11.11)/60
-//     present_timeline_width_input = '-'+present_timeline_width_adj+'%'
-//     $('#present_moving_timeline').css('margin-left', present_timeline_width_input)
-//     present_timeline_tick_time_labeler() // top dock: present view: tick time labels
-
-    
-
-//     h = (h < 10) ? h : h;
-//     m = (m < 10) ? "0" + m : m;
-//     s = (s < 10) ? "0" + s : s;    
-
-//     $('#pct_of_day_tracker_time').text(h+':'+m)
-//     $('#pct_of_day_tracker_time_meridies').text(session.toUpperCase())
-
-//     $('#pct_of_day_tracker_time_early_only').text(h+':'+m)
-//     $('#pct_of_day_tracker_time_early_only_meridies').text(session.toUpperCase())
-    
-//     var time = h + ":" + m; // + " " + session;
-//     var time_with_sec = h + ":" + m + ":" + s;// + " " + session;
-//     // document.getElementById("MyClockDisplay").innerText = time;
-//     $('#MyClockDisplay').text(time)
-
-//     $('#present_time_span').text(time_with_sec)
-//     $('#present_time_meridies_span').text(session)
-
-//     $('#top_dock_year_label').text(year)
-//     $('#month_view_year_label').text(year)
-
-    
-    
-//     // document.getElementById("MyClockDisplay").textContent = time;
-//     setTimeout(showTime, 1000);
-
-//     // Military time version
-
-//     var time_MT = h_m + ":" + m;
-//     $('#MyClockDisplay_MT').text(time_MT)
-
-
-//     ///////////////////////
-//     // Greeting Messages //
-//     ///////////////////////
-
-//     $('#Greeting_Message').text("Sample Greeting")
-//     if(h_m > 17){
-//         if(name==""){
-//             $('#Greeting_Message').text("Good evening")
-//         }
-//         else{
-//             $('#Greeting_Message').text("Good evening, " + name)
-//         }        
-//     }
-//     else if(h_m<4){
-//         if(name==""){
-//             $('#Greeting_Message').text("Good evening")
-//         }
-//         else{
-//             $('#Greeting_Message').text("Good evening, " + name)
-//         }
-//     }
-//     else if(h_m>3 & h_m <12){
-//         if(name==""){
-//             $('#Greeting_Message').text("Good morning")
-//         }
-//         else{
-//             $('#Greeting_Message').text("Good morning, " + name)
-//         }
-//     }
-//     else if(h_m>11 & h_m<18){
-//         if(name==""){
-//             $('#Greeting_Message').text("Good afternoon")
-//         }
-//         else{
-//             $('#Greeting_Message').text("Good afternoon, " + name)
-//         }        
-//     }
-
-//     // console.log('time | h:m:s ' + h+':'+m+':'+s)
-
-//     // New Day Function
-//     if(h==0 & m==0 & s>0 && s<10){ // run at midnight
-//         new_day_clock_functions()
-//     }
-    
-// }
-// // showTime()
-
-
-
-
-// // Day of Week Function
-// function DoW(){
-//     // Week Day
-//     showTime()
-    
-
-//     // Month
-//     Month = date.getMonth()
-//     month_array = Array("January","February","March","April","May","June","July","August","September","October","November","December")
-//     Month_Text = month_array[Month]
-
-//     month_array_abr = Array("Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sept.","Oct.","Nov.","Dec.")
-//     Month_Text_abr = month_array_abr[Month]
-
-    
-
-//     // Year 
-//     Year = date.getFullYear()
-
-// }
-// // DoW()
 
 window.hide_meridies_top_dock = function hide_meridies_top_dock(){
     $('#t1_text_1_meridies').hide()

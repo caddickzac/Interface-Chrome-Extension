@@ -573,7 +573,9 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#pmt_8_minor_tick_a').css('border-color', color_accent_1)
     $('#pmt_8_minor_tick_b').css('border-color', color_accent_1)
     $('#pmt_8_minor_tick_c').css('border-color', color_accent_1)
-    
+    $('#top_dock_input').css('border-color', color_accent_1)
+    $('#connect_google_calendar_button').css('border-color', color_accent_1)
+    $('#top_dock_input_underline').css('border-color', color_accent_1)
 }
 
 window.update_css_color_accent_2 = function update_css_color_accent_2(){
@@ -654,4 +656,8 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#month_view_year_label').css('color', color_accent_2)
     $('#top_dock_year_label').css('color', color_accent_2)
     $('#present_view_date_DoW').css('background-color', color_accent_2)
+    $('#top_dock_input').css('color', color_accent_2)
+    $('#connect_google_calendar_button').css('color', color_accent_2)
+
+
 }

@@ -17,7 +17,6 @@ function year_view_calendar_dictionary_grabber(){
     dec_dictionary = dictionary_library_array[0][11]
 }
 
-
 function year_view_calendar_day_of_month_labeler_jan(){
     $('#td_year_jan_1').text(jan_dictionary.day_of_month_array[0][0])
     $('#td_year_jan_2').text(jan_dictionary.day_of_month_array[0][1])

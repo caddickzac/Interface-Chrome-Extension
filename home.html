@@ -5525,8 +5525,102 @@
       <div id='web_search_input_finished' class='finished_button' style=''>
           Finished
       </div>
-    </div>
+  </div>
   </center>
+
+  <!-- Configure Top Dock: Calendar -->
+  <div id='top_dock_input' class='top_dock_input_class' style='display:block; display:none; min-width:600px'>
+    <div class='config_top_dock_header' style='font-family: Book Antiqua;'><h1>Configure Top Dock</h1></div>
+    <!-- create row -->
+      <div class='row' style='width:100%; '>
+        <!-- Instructions -->
+        <div class='col-sm-5' style=''>
+              
+          <!-- instructions -->
+          <div id='' class='color_scheme_input_instructions'>
+            <br>
+            <center>
+              <div id='top_dock_input_underline'style='border-bottom:1.5px solid #BFBFBF;width:65%'>
+                <b>Information</b>
+              </div>
+            </center>
+            <br>
+            <ul>
+              <li>The top dock offers several calendar views. Choose which calendar display opens by default.</li>
+              <br>
+              <li>You can navigate the different calendar views with the left and right arrow keys, when the top dock is displayed.</li>
+            </ul>
+          </div>
+        </div><!-- End: Instructions -->
+
+        <div class='col-sm-1'></div>
+        <div style='left:-15px'class='col-sm-6'>
+          <!-- row 1 -->
+          <div class='row'>            
+            <div class='col-sm-7' style='padding:0px; padding-right:15px; margin-top:10px;'>
+              <br>
+              <div style='text-align:left'>
+                default calendar view
+              </div>
+              
+              <br>
+              <div style='text-align:left'>
+                top dock hotkeys
+              </div>
+            </div>
+
+            <div class='col-sm-5' style='padding:0px; padding-right:15px ;'>
+              <br>
+              <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
+                <select class="form-control" id="top_dock_calendar_view_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                  <!-- padding:0px; margin:0px; -->
+                  <option>present</option>
+                  <option>day</option>
+                  <option>week</option>
+                  <option>month</option>
+                  <option>year</option>              
+                </select>
+              </div>
+              <br>
+              <!--  -->
+              <div class="form-group" style='height:18px;margin-top:0px; margin-bottom:5px; max-width:150px; width:95%'>
+                <select class="form-control" id="top_dock_hotkey_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                  <option>calendar</option>
+                  <option>left & right docks</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- row 2 -->
+          <div class='row' style='margin-top:25px'>            
+            <div class='col-sm-11'>
+              <!-- connect google calendar -->
+              <div id='connect_google_calendar_button'style='border: solid red 1.5px; width:150px; padding:10px'>
+                Google Calendar <span id='google_calendar_login_text' style='font-weight:bold'>Login</span>
+              </div>
+
+              <br>
+              <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div id='top_dock_input_finished' class='finished_button' style=''>
+        <!-- transform: rotate(-90deg) translateX(7px) translateY(-1px); -->
+        Finished
+      </div>
+    <!-- 
+    need: 
+    1) drop down menu for which calendar view is default (5 choices); 
+    2) choice of whether or not calendar view vs default main screen is shown at start
+    3) google calendar import functionality
+    ?) color choice for calendar events?
+    -->
+  </div>
+
 </body>
 </div>
 </html>

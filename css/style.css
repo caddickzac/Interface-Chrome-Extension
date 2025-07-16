@@ -1004,6 +1004,14 @@
     /*margin-right: 20px;*/
   }
 
+  .top_dock_input_class{
+    padding-bottom:20px;
+    margin-bottom: 50px;
+    display: block;
+    border: 1.5px solid #808080;
+    color: #BFBFBF;
+    width: 50%;
+  }
   .left_dock_input_class{
     padding-bottom:20px;
     margin-bottom: 50px;

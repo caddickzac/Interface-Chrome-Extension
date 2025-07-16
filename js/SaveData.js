@@ -253,6 +253,7 @@ window.grab_data = function grab_data(){
 window.save_data = function save_data(){
     grab_data()
     // save labels
+    console.log('1. top_dock_calendar_view_choice: ', top_dock_calendar_view_choice)
     chrome.storage.sync.set({
         'mt_settings_stored': mt_settings, // military time
         'sd_settings_stored': sd_settings, // show date
@@ -266,6 +267,10 @@ window.save_data = function save_data(){
         'color_accent_1_stored': color_accent_1,
         'color_accent_2_stored': color_accent_2,
         'theme_stored': theme,
+
+        'top_dock_calendar_view_choice_stored':top_dock_calendar_view_choice,
+        'top_dock_hotkey_choice_stored':top_dock_hotkey_choice,
+        'top_dock_view_array_number_stored':top_dock_view_array_number,
 
         'label_a_stored': label_a,
         'label_b_stored': label_b,
@@ -386,7 +391,6 @@ window.save_data = function save_data(){
         'website_X_stored': website_X,
         'website_Y_stored': website_Y,
         'website_Z_stored': website_Z,
-
 
         // numbers
         // _1_
@@ -512,11 +516,7 @@ window.save_data = function save_data(){
         'ws_3_url_input_stored':ws_3_url,
         'ws_4_url_input_stored':ws_4_url,
         'ws_5_url_input_stored':ws_5_url,
-        'ws_6_url_input_stored':ws_6_url,
-
-        'top_dock_calendar_view_choice_stored':top_dock_calendar_view_choice,
-        'top_dock_hotkey_choice_stored':top_dock_hotkey_choice
-
+        'ws_6_url_input_stored':ws_6_url
     })
     console.log('saved data')
 }

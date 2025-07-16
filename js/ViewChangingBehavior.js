@@ -15,6 +15,7 @@ window.Display_Main_Screen = function Display_Main_Screen(){
     $('#color_scheme_input').hide()
     $('#web_search_input').hide()
     $('#screen2').hide()
+    $('#top_dock_input').hide()
     $('#screen1').show()
     $('#left_dock').show()
     $('#right_dock').show()
@@ -41,7 +42,7 @@ window.Show_Settings_Screen = function Show_Settings_Screen(){
     $('#about_screen').hide()
     $('#color_scheme_input').hide()
     $('#web_search_input').hide()
-    // $('#top_dock').hide()
+    $('#top_dock_input').hide()
     ldi_case='lower'
     ldi_case_toggle()
     ldi_case_input_toggle() 
@@ -62,6 +63,7 @@ window.Show_Search_Screen = function Show_Search_Screen(){
     $('#right_dock').hide()
     $('#about_screen').hide()
     $('#web_search_input').hide()
+    $('#top_dock_input').hide()
     $('#Search_Greeting').show()
     $('#screen2').show()
     $('#search_bar').show()
@@ -70,6 +72,9 @@ window.Show_Search_Screen = function Show_Search_Screen(){
 
 top_dock_view_array_number = 0
 top_dock_view_array = ['present', 'day', 'week', 'month', 'year']
+top_dock_calendar_view_choice ='present'
+current_top_dock_module = 'present'
+
 
 window.top_dock_view_array_number_change_up = function top_dock_view_array_number_change_up(){
     if(top_dock_view_array_number<4){
@@ -89,6 +94,7 @@ window.top_dock_view_array_number_change_down = function top_dock_view_array_num
 }
 
 window.show_top_dock = function show_top_dock(){
+    hide_top_dock_modules()
     $('#top_dock').show()
     current_display='top_dock'
     $('#Greeting_Message').hide()
@@ -111,8 +117,10 @@ window.show_top_dock = function show_top_dock(){
     ////////////////////////////////////////
     // Open view based on user preference //
     hide_top_dock_modules()
-    if(top_dock_calendar_view_choice=='present'){
+    console.log('2. current_top_dock_module: ', current_top_dock_module)
+    if(top_dock_calendar_view_choice=='present' || top_dock_calendar_view_choice==''){
         current_top_dock_module='present'
+
         $('#top_dock_present').show()
     }
     else if(top_dock_calendar_view_choice=='day'){
@@ -131,6 +139,7 @@ window.show_top_dock = function show_top_dock(){
         current_top_dock_module='year'
         $('#top_dock_year').show()
     }
+    console.log('3. current_top_dock_module: ', current_top_dock_module)
     top_dock_module_changer()
 }
 
@@ -202,6 +211,7 @@ window.View_Changer = function View_Changer(){
     }
     else if(current_display_temp=='top_dock'){
         console.log('display: top_dock')
+        console.log('top_dock_calendar_view_choice: ', top_dock_calendar_view_choice)
         top_dock_small_screen_view()
         top_dock_resize_events()
         show_top_dock()

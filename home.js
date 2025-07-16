@@ -36,6 +36,7 @@ current_display='main' // (values: main, search, settings, left_dock_config, rig
 contra_rdy='yes' // variable used as a gate so duplicate animations are not simultaneously run
 
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $('#theme_choice').click(function () {
