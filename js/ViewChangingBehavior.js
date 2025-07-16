@@ -154,16 +154,21 @@ window.View_Changer = function View_Changer(){
         update_search_box_text()
         web_search_updater()
         Display_Main_Screen()
+        main_display_screen_window_scaling() 
+        new_day_clock_functions()
+        hide_top_dock_modules()
         save_data()
     }
     else if(current_display_temp=='search'){
         console.log('display: search')
         Show_Search_Screen()
+        hide_top_dock_modules()
         hide_top_dock()
     }
     else if(current_display_temp=='settings'){
         console.log('display: settings')
         unloadScrollBars()
+        hide_top_dock_modules()
         hide_top_dock()
         Show_Settings_Screen()
 
@@ -198,6 +203,7 @@ window.View_Changer = function View_Changer(){
     else if(current_display_temp=='top_dock'){
         console.log('display: top_dock')
         top_dock_small_screen_view()
+        top_dock_resize_events()
         show_top_dock()
     }
     else if(current_display_temp=='top_dock_config'){

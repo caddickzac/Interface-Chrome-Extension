@@ -290,98 +290,8 @@ function DoW(){
 
     $('#top_dock_date_DoW').text(DOW_Text)
 }
-// DoW()
-
-// function hide_meridies_top_dock(){
-//     $('#t1_text_1_meridies').hide()
-//     $('#t1_text_2_meridies').hide()
-//     $('#t1_text_3_meridies').hide()
-//     $('#t1_text_4_meridies').hide()
-//     $('#t1_text_5_meridies').hide()
-//     $('#t1_text_6_meridies').hide()
-//     $('#t1_text_7_meridies').hide()
-//     $('#t1_text_8_meridies').hide()
-//     $('#t1_text_9_meridies').hide()
-//     $('#t1_text_10_meridies').hide()
-//     $('#t1_text_11_meridies').hide()
-//     $('#t1_text_12_meridies').hide()
-//     $('#t1_text_13_meridies').hide()
-//     $('#t1_text_14_meridies').hide()
-//     $('#t1_text_15_meridies').hide()
-//     $('#t1_text_16_meridies').hide()
-//     $('#t1_text_17_meridies').hide()
-//     $('#t1_text_18_meridies').hide()
-//     $('#t1_text_19_meridies').hide()
-//     $('#t1_text_20_meridies').hide()
-//     $('#t1_text_21_meridies').hide()
-//     $('#t1_text_22_meridies').hide()
-//     $('#t1_text_23_meridies').hide()
-//     $('#t1_text_24_meridies').hide() 
-// }
-
-
-// function top_dock_configure_time_display(){
-//     if(top_dock_mt=='no'){
-//         // non-military time
-//         $('#tl_text_1').text('')
-//         $('#tl_text_2').text('1')
-//         $('#tl_text_3').text('2')
-//         $('#tl_text_4').text('3')
-//         $('#tl_text_5').text('4')
-//         $('#tl_text_6').text('5')
-//         $('#tl_text_7').text('6')
-//         $('#tl_text_8').text('7')
-//         $('#tl_text_9').text('8')
-//         $('#tl_text_10').text('9')
-//         $('#tl_text_11').text('10')
-//         $('#tl_text_12').text('11')
-//         $('#tl_text_13').text('12')
-//         $('#tl_text_14').text('1')
-//         $('#tl_text_15').text('2')
-//         $('#tl_text_16').text('3')
-//         $('#tl_text_17').text('4')
-//         $('#tl_text_18').text('5')
-//         $('#tl_text_19').text('6')
-//         $('#tl_text_20').text('7')
-//         $('#tl_text_21').text('8')
-//         $('#tl_text_22').text('9')
-//         $('#tl_text_23').text('10')
-//         $('#tl_text_24').text('11')
-
-//         $('#t1_text_1_meridies').show()
-//         $('#t1_text_2_meridies').show()
-//         $('#t1_text_3_meridies').show()
-//         $('#t1_text_4_meridies').show()
-//         $('#t1_text_5_meridies').show()
-//         $('#t1_text_6_meridies').show()
-//         $('#t1_text_7_meridies').show()
-//         $('#t1_text_8_meridies').show()
-//         $('#t1_text_9_meridies').show()
-//         $('#t1_text_10_meridies').show()
-//         $('#t1_text_11_meridies').show()
-//         $('#t1_text_12_meridies').show()
-//         $('#t1_text_13_meridies').show()
-//         $('#t1_text_14_meridies').show()
-//         $('#t1_text_15_meridies').show()
-//         $('#t1_text_16_meridies').show()
-//         $('#t1_text_17_meridies').show()
-//         $('#t1_text_18_meridies').show()
-//         $('#t1_text_19_meridies').show()
-//         $('#t1_text_20_meridies').show()
-//         $('#t1_text_21_meridies').show()
-//         $('#t1_text_22_meridies').show()
-//         $('#t1_text_23_meridies').show()
-//         $('#t1_text_24_meridies').show()
-//     }
-    
-//     // military time
-//     if(top_dock_mt=='yes'){
-//         hide_meridies_top_dock()
-//     }
-// }
 
 top_dock_configure_time_display()
-
 
 focus_check = ''
 name_input_focused = ''
@@ -2304,10 +2214,12 @@ function run_setup__functions(){
     get_data()
 
     setTimeout(function(){
+        main_display_screen_window_scaling
         update_css_coloring()
         unloadScrollBars()
         Change_Display_Settings()
-        DoW()    
+        DoW()
+        top_dock_resize_events()
         showTime()
         grab_data()
         hex()
@@ -2316,7 +2228,6 @@ function run_setup__functions(){
         ldi_case_toggle()
         text_input_grey_out_function()
         change_checkbox() // search box check mark
-
         update_search_box_text()
         web_search_updater()
         $('#body_id').show()

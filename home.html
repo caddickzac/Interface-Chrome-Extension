@@ -455,7 +455,6 @@
         </div>
       </div> <!-- End: Moving Timeline -->
 
-      
     </div><!-- end: View Granularity: Present -->
 
     <!-- View Granularity: Day -->
@@ -468,7 +467,7 @@
       </div><br>
       <div id='top_dock_ruler' class='row' style='margin:0px; padding:0px;'>
         <!-- left half -->
-        <div class='col-sm-6' style='margin:0px; padding:0px;width:100%;'>
+        <div class='col-sm-6' style='margin:0px; padding:0px;width:50%;'>
           <div class='row' style='margin:0px; padding:0px;width:100%'>
             <div id='tl_1' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
               <span id='tl_text_1' style='position:absolute; top:-25px; left:-6px'></span>
@@ -521,7 +520,7 @@
           </div>
         </div>
         <!-- right half -->
-        <div class='col-sm-6' style='margin:0px; padding:0px; width:100%'>
+        <div class='col-sm-6' style='margin:0px; padding:0px; width:50%'>
           <div class='row' style='margin:0px; padding:0px; width:100%'>
             <div id='tl_13' class='col-sm-1' style='border-left:solid 2px red; padding:0px; height:7px'>
               <span id='tl_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>
@@ -597,7 +596,8 @@
       </div>
 
       <!-- Calendar: Event 1 -->
-      <div id='event_1' style='height:20px;display:block;margin-right:2.5%; margin-top:2px; padding:0px;background-color:pink; width:50%; display:none'></div>
+      <!-- <div id='event_1' style='height:20px;display:block;margin-right:2.5%; margin-top:2px; padding:0px;background-color:pink; width:50%; display:none'></div> -->
+
     </div><!-- end: View Granularity: Day -->
 
     <!-- View Granularity: Week -->
@@ -641,7 +641,7 @@
           <!-- week view tracker -->
           <div id='week_view_time_tracker' style='position:absolute; width:100%; margin:0px; padding:0px;'>
             <!-- week view tracker: line -->
-            <div id='week_view_time_tracker_line_background' style='margin-left:1.5px; position:absolute; width:100%; height:100px; opacity:.2'></div>
+            <div id='week_view_time_tracker_line_background' style='left:-2px; margin-left:1.5px; position:absolute; width:99.99%; height:100px; opacity:.2'></div>
             
             
             <!-- week view tracker: circle -->
@@ -651,7 +651,7 @@
               <!-- <div class='fa fa-circle' style='position:absolute;font-size:10px; margin-top:-5px; margin-left:-6px;' ></div> -->
             </div>
 
-            <div id='week_view_time_tracker_line' style='position:absolute; border-right: solid red 3px; width:100%; height:100px; z-index:+1'>
+            <div id='week_view_time_tracker_line' style='position:absolute; border-right: solid red 3px; width:99.99%; height:100px; z-index:+1'>
               <div id='week_view_time_tracker_circle_background' class='fa fa-circle' style='position:absolute; font-size:12px; margin-top:-7px; margin-left:0px; right:-7px; z-index:0' ></div>
               <div class='fa fa-circle' style='position:absolute; font-size:10px; margin-top:-5px; margin-left:0px; right:-6px' ></div>
               <!-- <div id='week_view_time_tracker_circle_small' class='fa fa-circle' style='position:absolute; font-size:4px; margin-top:-2px; margin-left:0px; right:-3px' ></div> -->
@@ -691,10 +691,10 @@
         </div>
 
         <!-- spacer -->
-        <div class='col-sm-2' style='margin:0px; padding:0px;width:100%;'></div>
+        <div class='col-sm-2' style='margin:0px; padding:0px;width:16.67%;'></div>
 
         <!-- Left half of clock (midnight - noon) -->
-        <div id='week_view_left_half_div' class='col-sm-5' style='margin:0px; padding:0px;width:100%; border-bottom:solid 0px red; top:-9px;font-size:.97em;'>
+        <div id='week_view_left_half_div' class='col-sm-5' style='margin:0px; padding:0px; width:41.66%; border-bottom:solid 0px red; top:-9px;font-size:.97em;'>
           <div class='row' style='margin:0px; padding:0px;width:100%;'>
             <div id='week_view_1' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
               <span id='week_view_text_1' style='position:absolute; top:-25px; left:-6px'></span>
@@ -747,7 +747,7 @@
           </div>
         </div>
         <!-- right half of clock (noon - midnight) -->
-        <div id='week_view_right_half_div' class='col-sm-5' style='margin:0px; padding:0px; width:100%; border-bottom:solid 0px blue; top:-9px;font-size:.97em; font-family: Lexend Deca'>
+        <div id='week_view_right_half_div' class='col-sm-5' style='margin:0px; padding:0px; width:41.66%%; border-bottom:solid 0px blue; top:-9px;font-size:.97em; font-family: Lexend Deca'>
           <div class='row' style='margin:0px; padding:0px; width:100%'>
             <div id='week_view_13' class='col-sm-1' style='border-left:solid 1px red; padding:0px; height:10px'>
               <span id='week_view_text_13' style='position:absolute; top:-25px; left:-6px'>12</span>

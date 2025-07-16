@@ -451,6 +451,19 @@ window.get_data = function get_data(){
         }
     });
 
+    // top dock sub-view choice
+    chrome.storage.sync.get(['top_dock_view_array_number_DS'], function(top_dock_view_array_number) {
+        top_dock_view_array_number_DS = top_dock_view_array_number.top_dock_view_array_number_DS
+        if(!current_top_dock_module_DS){
+            top_dock_view_array_number='day'
+        }
+        else{
+            top_dock_view_array_number=top_dock_view_array_number_DS
+            // will need an action here to update a top dock settings menu choice. (dropdown menu item)
+        }
+    });
+    
+
     ///////////////
     // lowercase //
     ///////////////
