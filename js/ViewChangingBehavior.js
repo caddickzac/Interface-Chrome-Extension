@@ -16,6 +16,7 @@ window.Display_Main_Screen = function Display_Main_Screen(){
     $('#web_search_input').hide()
     $('#screen2').hide()
     $('#top_dock_input').hide()
+    $('#top_dock').hide()
     $('#screen1').show()
     $('#left_dock').show()
     $('#right_dock').show()

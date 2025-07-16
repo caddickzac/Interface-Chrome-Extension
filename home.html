@@ -356,7 +356,7 @@
 
   <!-- Top Dock -->
   <font size='+1'>
-  <div id='top_dock' class='top_docker_state1' style='display:none; width:95%; margin-left:2.5%; z-index:1'>
+  <div id='top_dock' class='top_docker_state1' style='display:none; width:95%; margin-left:2.5%; z-index:1;'>
 
     <!-- View Granularity: Header -->
     <div class='row' id='top_dock_view_header' style='padding-left:35px; margin-top:.2%;text-align:center;top:700px;'>
@@ -606,7 +606,7 @@
       <div id='top_dock_date' style='margin-top:7px;'>
         <font size='+2'>
           <!-- <font size='+2'> -->
-          <span id='top_dock_date_DoW_range' style='background-color:white; padding:4px; padding-top:2px;margin:0px;font-weight:bold;'>Oct 11 – Oct 17</span>
+          <span id='top_dock_date_DoW_range' style='background-color:white; padding:4px; padding-top:2px; margin:0px;font-weight:bold;'>Oct 11 – Oct 17</span>
         </font>
       </div><br>
 
@@ -803,12 +803,12 @@
     </div><!-- end: View Granularity: Week -->
 
     <!-- View Granularity: Month -->
-    <div id='top_dock_month' style='display:block; display:none; text-align:center; '>
-      <div id='top_dock_month_label' style='margin-top:16px; text-align:left'; class='top_dock_month_label'>
+    <div id='top_dock_month' style='display:block; display:none; text-align:center; padding-top:10px'>
+      <div id='top_dock_month_label' style='margin-top:6px; text-align:left; padding:0px; background-color:'; class='top_dock_month_label'>
 
           <font size='+2'>
             <!-- zc -->
-            <span id='month_view_month_label' style='position:relative; background-color:white; padding:4px; padding-top:1px; margin:0px; margin-top:.5px; font-weight:bold; height:38px'>For example: September </span>
+            <span id='month_view_month_label' style='position:relative; background-color:white; padding:4px; padding-top:2px; margin:0px; font-weight:bold; '>For example: September </span>
 
 
             <span id='month_view_year_label' style='font-weight:bold; font-family:Lexend Deca; font-size:1.1em'>
@@ -5386,7 +5386,7 @@
 
   <!-- Web Search Input -->
   <center>
-  <div id='web_search_input' class='web_search_input_class' style='display:none; min-width:600px'>
+  <div id='web_search_input' class='web_search_input_class' style='display:none; min-width:600px;'>
 
       <div class='config_left_dock_header' style='font-family: Book Antiqua;'><h1>Configure Bottom Dock</h1></div>
 
@@ -5529,7 +5529,7 @@
   </center>
 
   <!-- Configure Top Dock: Calendar -->
-  <div id='top_dock_input' class='top_dock_input_class' style='display:block; display:none; min-width:600px'>
+  <div id='top_dock_input' class='top_dock_input_class' style='display:block; display:none; min-width:600px;'>
     <div class='config_top_dock_header' style='font-family: Book Antiqua;'><h1>Configure Top Dock</h1></div>
     <!-- create row -->
       <div class='row' style='width:100%; '>
@@ -5557,9 +5557,9 @@
         <div style='left:-15px'class='col-sm-6'>
           <!-- row 1 -->
           <div class='row'>            
-            <div class='col-sm-7' style='padding:0px; padding-right:15px; margin-top:10px;'>
+            <div class='col-sm-6' style='padding:0px; padding-right:15px; margin-top:10px;'>
               <br>
-              <div style='text-align:left'>
+              <div style='text-align:left;'>
                 default calendar view
               </div>
               
@@ -5595,7 +5595,7 @@
           <div class='row' style='margin-top:25px'>            
             <div class='col-sm-11'>
               <!-- connect google calendar -->
-              <div id='connect_google_calendar_button'style='border: solid red 1.5px; width:150px; padding:10px'>
+              <div id='connect_google_calendar_button' style='border: solid red 1.5px; width:150px; padding:10px'>
                 Google Calendar <span id='google_calendar_login_text' style='font-weight:bold'>Login</span>
               </div>
 
@@ -5605,20 +5605,12 @@
           </div>
         </div>
 
-        
       </div>
 
       <div id='top_dock_input_finished' class='finished_button' style=''>
         <!-- transform: rotate(-90deg) translateX(7px) translateY(-1px); -->
         Finished
       </div>
-    <!-- 
-    need: 
-    1) drop down menu for which calendar view is default (5 choices); 
-    2) choice of whether or not calendar view vs default main screen is shown at start
-    3) google calendar import functionality
-    ?) color choice for calendar events?
-    -->
   </div>
 
 </body>

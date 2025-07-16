@@ -576,6 +576,8 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#top_dock_input').css('border-color', color_accent_1)
     $('#connect_google_calendar_button').css('border-color', color_accent_1)
     $('#top_dock_input_underline').css('border-color', color_accent_1)
+    $('#top_dock_input_finished').css('border-color', color_accent_1)
+    
 }
 
 window.update_css_color_accent_2 = function update_css_color_accent_2(){

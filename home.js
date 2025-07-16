@@ -604,6 +604,14 @@ $('#rdi_finished').click(function(){
     View_Changer()
 })
 
+// Close Top Dock Input Window
+$('#top_dock_input_finished').click(function(){
+    save_data()
+    current_display='settings'
+    View_Changer()
+    // Display_Main_Screen()
+})
+
 // show color scheme input 
 $('#color_scheme_change').click(function(){
     current_display='color_scheme'
@@ -2233,6 +2241,7 @@ function run_setup__functions(){
         web_search_updater()
         $('#body_id').show()
         new_day_clock_functions()
+        View_Changer()
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
