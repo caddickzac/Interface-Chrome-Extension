@@ -297,3 +297,7 @@ const dictionary_library_next_year = [
     "day_of_month_array": [December_day_of_month_array_next_year]
   }
 ]
+
+dictionary_library_array = [
+    dictionary_library_current_year, dictionary_library_next_year
+]

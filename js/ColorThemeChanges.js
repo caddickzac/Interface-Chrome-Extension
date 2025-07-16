@@ -652,5 +652,6 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#week_view_friday_text').css('color', color_accent_2)    
     $('#week_view_friday_date').css('background-color', color_accent_2)
     $('#month_view_year_label').css('color', color_accent_2)
-    $('#top_dock_year_label').css('color', color_accent_2)  
+    $('#top_dock_year_label').css('color', color_accent_2)
+    $('#present_view_date_DoW').css('background-color', color_accent_2)
 }

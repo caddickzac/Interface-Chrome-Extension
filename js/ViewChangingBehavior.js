@@ -68,6 +68,26 @@ window.Show_Search_Screen = function Show_Search_Screen(){
     $('#search_bar').focus()
 }
 
+top_dock_view_array_number = 0
+top_dock_view_array = ['present', 'day', 'week', 'month', 'year']
+
+window.top_dock_view_array_number_change_up = function top_dock_view_array_number_change_up(){
+    if(top_dock_view_array_number<4){
+        top_dock_view_array_number+=1
+    }
+    else{
+        top_dock_view_array_number=0
+    }
+}
+
+window.top_dock_view_array_number_change_down = function top_dock_view_array_number_change_down(){
+    if(top_dock_view_array_number>0)
+        top_dock_view_array_number-=1
+    else{
+        top_dock_view_array_number=4
+    }
+}
+
 window.show_top_dock = function show_top_dock(){
     $('#top_dock').show()
     current_display='top_dock'

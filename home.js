@@ -126,8 +126,20 @@ function timeline_tracker(){
 }
 
 
+const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
 function showTime(){
     date = new Date();
+    year = date.getFullYear(); // 2020
+    $('#top_dock_year_label').text(year)
+    $('#month_view_year_label').text(year)    
+    month = date.getMonth(); // 1-12
+    const monthName = monthNames[month];
+    $('#month_view_month_label').text(monthName)
     var h = date.getHours(); // 0 - 23
     var h_m = h; // military time
     var m = date.getMinutes(); // 0 - 59
@@ -1099,6 +1111,14 @@ document.body.onkeydown = function(e){
     }
     else if(current_display=='top_dock'){
         if(current_top_dock_tool=='none'){
+            if(e.keyCode == 37){ // arrow left
+                top_dock_view_array_number_change_down()
+                top_dock_view_changer()
+            }
+            if(e.keyCode == 39){ // arrow right
+                top_dock_view_array_number_change_up()
+                top_dock_view_changer()
+            }
             if(e.keyCode == 68){ // d |
                 // show day calendar view
                 current_top_dock_module='day'
@@ -2175,6 +2195,7 @@ function run_setup__functions(){
         update_search_box_text()
         web_search_updater()
         $('#body_id').show()
+        new_day_clock_functions()
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
