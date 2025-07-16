@@ -145,6 +145,10 @@ function showTime(){
     var m = date.getMinutes(); // 0 - 59
     var s = date.getSeconds(); // 0 - 59
     var session = "am";
+    Date_Num = date.getDate() // Date (#)
+    DOW = date.getDay()
+    weekday_array = Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+    DOW_Text = weekday_array[DOW]
 
     pct_of_day= ((h+(m/60)+(s/3600))/24)*100
     timeline_tracker()
@@ -174,6 +178,11 @@ function showTime(){
     if(h == 0){
         h = 12;
     }
+
+    present_timeline_width_adj = ((m+(s/60))*11.11)/60
+    present_timeline_width_input = '-'+present_timeline_width_adj+'%'
+    $('#present_moving_timeline').css('margin-left', present_timeline_width_input)
+    present_timeline_tick_time_labeler() // top dock: present view: tick time labels
     
     h = (h < 10) ? h : h;
     m = (m < 10) ? "0" + m : m;
@@ -186,8 +195,16 @@ function showTime(){
     $('#pct_of_day_tracker_time_early_only_meridies').text(session.toUpperCase())
     
     var time = h + ":" + m; // + " " + session;
+    var time_with_sec = h + ":" + m + ":" + s;// + " " + session;
     // document.getElementById("MyClockDisplay").innerText = time;
     $('#MyClockDisplay').text(time)
+
+    $('#present_time_span').text(time_with_sec)
+    $('#present_time_meridies_span').text(session)
+
+    $('#top_dock_year_label').text(year)
+    $('#month_view_year_label').text(year)
+
 
     // document.getElementById("MyClockDisplay").textContent = time;
     setTimeout(showTime, 1000);
@@ -235,6 +252,10 @@ function showTime(){
         else{
             $('#Greeting_Message').text("Good afternoon, " + name)
         }        
+    }
+    // New Day Function
+    if(h==0 & m==0 & s>0 && s<10){ // run at midnight
+        new_day_clock_functions()
     }
 }
 // showTime()
@@ -904,6 +925,110 @@ $(".ham_class").mouseover(function(){
 document.getElementsByTagName("BODY")[0].onresize = function(){top_dock_resize_events()};
 
 
+// Top Dock Timeline
+function timeline_tracker(){
+
+    // view granularity: day
+    $('#pct_of_day_tracker').css('width', (pct_of_day+'%'))
+    $('#pct_of_day_tracker').css('max-width', (pct_of_day+'%'))
+    $('#pct_of_day_tracker').css('min-width', (pct_of_day+'%'))
+
+    $('#pct_of_day_tracker_time_early_div').css('margin-left', (pct_of_day+'%'))
+    // $('#pct_of_day_tracker_time_early_only_meridies').css('margin-left', (pct_of_day+5+'%'))
+    // console.log('pct_of_day:' + pct_of_day)
+
+    // view granularity: week
+    $('#week_view_time_tracker_circle').css('margin-left', (pct_of_day+'%'))
+
+    $('#week_view_time_tracker_line').css('width', (pct_of_day+'%'))
+    $('#week_view_time_tracker_line').css('max-width', (pct_of_day+'%'))
+    $('#week_view_time_tracker_line').css('min-width', (pct_of_day+'%'))
+    $('#week_view_time_tracker_line_background').css('width', (pct_of_day+'%'))
+    $('#week_view_time_tracker_line_background').css('max-width', (pct_of_day+'%'))
+    $('#week_view_time_tracker_line_background').css('min-width', (pct_of_day+'%'))
+
+    
+    
+}
+
+
+// month labeler
+function month_labeler(){
+    Month_List = ['January', 'February', 'March', ' April', 'May', 'June', 'Juy', 'August', 'September', 'October', 'November', 'December']
+    temp_month = Month_List[month]
+    $('#month_view_month_label').text(temp_month)
+}
+
+// present moving timeline
+// relabel tick marks based on current time
+
+function time_fixer(input){
+    // input = hour (integer)
+    h = input
+    
+    if(h>=24){
+        h=h-24
+    }
+    else if(h>=12){
+        h=h-12
+    }
+    if(h==12 || h==0){
+        h=12
+    }
+    // return(h)
+    h_plus = h+':00'
+    return(h_plus)
+}
+
+function present_timeline_tick_time_labeler(){
+    var h2 = date.getHours();
+
+    if(h2==0){
+        var pmt_0_temp =11 
+    }
+    else{
+        var pmt_0_temp = h2-1
+    }
+    $('#pmt_0_text').text(time_fixer(pmt_0_temp))
+    $('#pmt_1_text').text(time_fixer(h2))
+    $('#pmt_2_text').text(time_fixer(h2+1))
+    $('#pmt_3_text').text(time_fixer(h2+2))
+    $('#pmt_4_text').text(time_fixer(h2+3))
+    $('#pmt_5_text').text(time_fixer(h2+4))
+    $('#pmt_6_text').text(time_fixer(h2+5))
+    $('#pmt_7_text').text(time_fixer(h2+6))
+    $('#pmt_8_text').text(time_fixer(h2+7))
+    $('#pmt_9_text').text(time_fixer(h2+8))
+}
+
+function update_date_labels_on_new_day(){
+    //zcc
+    $('#top_dock_date_DoW').text() // 
+    $('#top_dock_date_MDY').text()
+    $('#present_view_date_DoW').text() // 
+    $('#present_view_date_MDY').text()
+
+}
+
+
+
+// Top Dock: Week View header date range
+
+// zccc
+function week_view_header_date_change(){
+    check_if_date_crosses_two_months()
+    if(week_date_range_crosses_two_months=="yes_current_future"){
+        var output = month_array_abr[month] + " " + getSunday() + " – " + month_array_abr[month+1] + " " + getSaturday()
+    }
+    else if(week_date_range_crosses_two_months=='yes_past_current'){
+        var output = month_array_abr[month-1] + " " + getSunday() + " – " + month_array_abr[month] + " " + getSaturday()
+    }
+    else{
+        var output = month_array_abr[month] + " " + getSunday() + " – " + getSaturday()
+    }
+
+    $('#top_dock_date_DoW_range').text(output)
+}
 
 /////////////////////////////////////////////////
 
