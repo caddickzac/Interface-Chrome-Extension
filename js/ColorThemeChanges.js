@@ -235,6 +235,18 @@ window.change_preset_theme = function change_preset_theme(){
         color_accent_2 = "#000000"
         theme='light'
     }
+    else if($('#theme_choice').val()=='morning'){ 
+        color_background = "#5B9BD5"
+        color_accent_1 = "#FFFFFF" 
+        color_accent_2 = "#FFD300"
+        theme='morning'
+    }
+    else if($('#theme_choice').val()=='vapor wave'){ 
+        color_background = "#0D0D64"
+        color_accent_1 = "#FB69DA" 
+        color_accent_2 = "#FF904B"
+        theme='morning'
+    }
 
     else if($('#theme_choice').val()=='custom'){ 
         if(hexes_ready=='yes'){
@@ -308,6 +320,7 @@ window.update_css_background_color = function update_css_background_color(){
     $('#right_dock_table').css("background-color", color_background)
     $('#about_screen').css("background-color", color_background)
     $('#swatch_background').css('color', color_background)
+    $('#swatch_background_input').css('color', color_background)
     $('#left_arr_sett').css('background-color', color_background)
     $('#right_arr_sett').css('background-color', color_background)
     $('#top_arr_sett').css('background-color', color_background)
@@ -393,6 +406,7 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#ldi_uc_0').css("border-color", color_accent_1)
     $('#ldi_uc_0a').css("border-color", color_accent_1)
     $('#swatch_accent1').css('color', color_accent_1)
+    $('#swatch_accent1_input').css('color', color_accent_1)
     $('#color_scheme_change').css('border-color', color_accent_1)
     $('#left_dock_input_instructions_underline').css('border-color', color_accent_1)
     $('#right_dock_input_underline').css('border-color', color_accent_1)
@@ -610,6 +624,7 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#left_dock_input').css("color", color_accent_2)
     $('#right_dock_input').css("color", color_accent_2)
     $('#swatch_accent2').css('color', color_accent_2)
+    $('#swatch_accent2_input').css('color', color_accent_2)
     $('#left_dock_input_instructions').css("color", color_accent_2)
     $('#Search_Greeting').css("color", color_accent_2)
     $('#right_dock_input_instructions_id').css('color', color_accent_2)

@@ -132,6 +132,13 @@ const monthNames = [
   "July", "August", "September", "October", "November", "December"
 ];
 
+function timeToDecimalHours(timeStr) {
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours + minutes / 60;
+}
+
+
+
 
 function showTime(){
     date = new Date();
@@ -146,6 +153,7 @@ function showTime(){
     var m = date.getMinutes(); // 0 - 59
     var s = date.getSeconds(); // 0 - 59
     var session = "am";
+    Time_Decimal = timeToDecimalHours('18:02')
     Date_Num = date.getDate() // Date (#)
     DOW = date.getDay()
     weekday_array = Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
