@@ -5264,16 +5264,10 @@
                   <center><div id='color_scheme_input_underline'style='border-bottom:1.5px solid #BFBFBF;width:65%'><b>Information</b></div></center><br>
                   <ul>
                       <li>Choose from a preset color scheme theme.<br><br></li>
-                      <li>Create your own theme by clicking the color swatches and saving a new color</li>
+                      <li>Create your own theme by clicking on the color swatches and saving a new color or manually typing a color hex code and clicking submit.</li>
                       <!-- <li>Hex codes are six digit color codes. You can find color codes <a href='https://htmlcolorcodes.com/' id='hex_link' style='text-decoration: underline;'>here</a>.<br><br></li> -->
                   </ul>
               </div>
-
-              <!-- Color Picker Tool -->
-              
-
-
-
           </div>
           
           <div class='col-sm-7' style=''>
@@ -5285,7 +5279,7 @@
               </div>
             </div>
 
-            <div id='csi_underline' style='border-top:1.5px solid #808080; width:90%; margin-right:30px;'></div>
+            <div id='csi_underline' style='border-top:1.5px solid #808080; width:70%; margin-right:30px;'></div>
 
 
             <!-- row 0 -->
@@ -5300,7 +5294,7 @@
               <div class='col-sm-1' style='max-width:15px; margin-top:3px'>
               </div>
               <!-- theme list -->
-              <div class='col-sm-5' style='padding:0px; padding-right:15px ;'>
+              <div class='col-sm-5' style='padding:0px; margin-left:15px ;'>
                 <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
                   <select class="form-control" id="theme_choice" text='working' placeholder="custom" style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
                     <!-- padding:0px; margin:0px; -->
@@ -5330,74 +5324,67 @@
             </div>
             <br>
 
-            <!-- row OR -->
+            <!-- row "OR" -->
             <div id='csi_OR' class='row'>
-              <div class='col-sm-5'></div>
-              <div class='col-sm-5' style='padding:0px;padding-right:15px; display:block; text-align:center '>
+              <div class='col-sm-3'></div>
+              <div class='col-sm-5' style='padding:0px;padding-right:40px; display:block; text-align:center '>
                   <h2 style='font-family: Book Antiqua;'>OR</h2>
               </div>               
             </div>
             <br>
 
-
-
             <!-- row 1 -->
             <div id='csi_1' class='row'>
               <!-- spacer -->
-               <div class='col-sm-2' style='max-width:30px'></div>
-              <!-- component -->
-              <div class='col-sm-4' style='padding:0px;padding-right:15px; text-align:left; padding-left:40px; margin-top:5px'>
+              <div class='col-sm-2' style='max-width:30px'></div>
+              <div class='col-sm-4' style='padding:0px; text-align:left; padding-left:40px; margin-top:5px'>
                   background
               </div>
               <!-- color input swatch -->
               <div class='col-sm-1' style='max-width:45px; '>
-                <div class='swatch_input_white_column' style='margin-top:-8px; margin-left:-5px'></div>
-                <div class='color_picker_tool' style=''></div>
-                <!-- <span id='swatch_background_outline' class='swatch_outline_input'>&#x25FC;</span>
-                <span id='swatch_background_input' class='swatches' style='font-size:1.3em;'>&#x25FC;</span> -->
-                
+                <div class='swatch_input_white_column' style='margin-left:-6px'></div>
+                 <!--  Color Picker: Background -->      
+                <div id='swatch_background_input' class='color_picker_tool' style='border: 2px solid black'>
+                </div>
+
               </div>
-              <!-- website -->
+              <!-- hex code: background color -->
               <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
-                  <input id='hex_1' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+                  <input id='hex_1' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; margin-left:20px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
               </div>
             </div>
 
             <!-- row 2 -->
             <div id='csi_2' class='row'>
               <!-- spacer -->
-               <div class='col-sm-2' style='max-width:30px'></div>
-              <!-- component -->
-              <div class='col-sm-4' style='padding:0px;padding-right:15px; text-align:left; padding-left:40px; margin-top:5px'>
+              <div class='col-sm-2' style='max-width:30px'></div>
+              <div class='col-sm-4' style='padding:0px;text-align:left; padding-left:40px; margin-top:5px'>
                   accent color 1
               </div>
               <!-- color input swatch -->
-              <div class='col-sm-1' style='max-width:15px; margin-top:3px'>
-                <span id='swatch_accent1_outline' class='swatch_outline_input' style=''>&#x25FC;</span>
-                <span id='swatch_accent1_input' class='swatches' style='font-size:1.3em;'>&#x25FC;</span>
+              <div class='col-sm-1' style='max-width:45px;'>
+                <div id ='swatch_accent1_input' class='color_picker_tool' style='border: 2px solid black'></div> <!--  Color Picker: Accent 1 -->  
               </div>
-              <!-- website -->
+              <!-- hex code: accent color 1 -->
               <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
-                  <input id='hex_2' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+                  <input id='hex_2' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; margin-left:20px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
               </div>
             </div>
 
             <!-- row 3 -->
             <div id='csi_3' class='row'>
               <!-- spacer -->
-               <div class='col-sm-2' style='max-width:30px; margin-top:3px'></div>
-              <!-- component -->
-              <div class='col-sm-4' style='padding:0px;padding-right:15px; text-align:left; padding-left:40px; margin-top:5px'>
+              <div class='col-sm-2' style='max-width:30px; margin-top:3px'></div>
+              <div class='col-sm-4' style='padding:0px;text-align:left; padding-left:40px; margin-top:5px'>
                   accent color 2
               </div>
               <!-- color input swatch -->
-              <div class='col-sm-1' style='max-width:15px'>
-                <span id='swatch_accent2_outline' class='swatch_outline_input' style=''>&#x25FC;</span>
-                <span id='swatch_accent2_input' class='swatches' style='font-size:1.3em; padding-top:-5px'>&#x25FC;</span>
+              <div class='col-sm-1' style='max-width:45px;'>
+                <div id='swatch_accent2_input' class='color_picker_tool' style='border: 2px solid black'></div> <!--  Color Picker: Accent 2 --> 
               </div>
-              <!-- website -->
+              <!-- hex code: accent color 2 -->
               <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
-                  <input id='hex_3' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
+                  <input id='hex_3' maxlength='7' class="form-control" id="" placeholder="#FFFFFF" style='margin-top:5px; width:75%; margin-bottom:1px; margin-left:20px; height:18px; border-color:#BFBFBF;max-width:150px;font-size:.9em; text-align:center'>
               </div>
             </div>
 
@@ -5612,6 +5599,7 @@
               <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
                 <select class="form-control" id="top_dock_calendar_view_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
                   <!-- padding:0px; margin:0px; -->
+                  <option>last open</option>
                   <option>present</option>
                   <option>day</option>
                   <option>week</option>

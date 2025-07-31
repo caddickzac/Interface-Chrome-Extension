@@ -84,7 +84,7 @@ window.get_data = function get_data(){
     label_F=''
     label_G=''
     label_H=''
-    label_J=''
+    label_I=''
     label_J=''
     label_K=''
     label_L=''
@@ -110,7 +110,7 @@ window.get_data = function get_data(){
     website_F=''
     website_G=''
     website_H=''
-    website_J=''
+    website_I=''
     website_J=''
     website_K=''
     website_L=''
@@ -134,7 +134,6 @@ window.get_data = function get_data(){
     label_2=''
     label_3=''
     label_4=''
-    label_5=''
     label_5=''
     label_6=''
     label_7=''
@@ -390,6 +389,7 @@ window.get_data = function get_data(){
     color_background_DS=''
     color_accent_1_DS=''
     color_accent_2_DS=''
+    theme_DS = ''
 
     chrome.storage.sync.get(['color_background_stored'], function(color_background) {
         color_background_DS = color_background.color_background_stored
@@ -427,42 +427,51 @@ window.get_data = function get_data(){
     });
 
     // theme
-    chrome.storage.sync.get(['theme_stored'], function(theme) {
-        theme_DS = theme.theme_stored
-        if(!theme_DS){
-            theme='#BFBFBF'
+    chrome.storage.sync.get(['theme_stored'], function(result) {
+        theme_DS = result.theme_stored;
+        if (!theme_DS) {
+            theme = '#BFBFBF'; // fallback or default
+        } else {
+            theme = theme_DS;
         }
-        else{
-            theme=theme_DS
-        }
-        $('#theme_choice').val(theme)
-
+        console.log('theme: ', theme);
+        $('#theme_choice').val(theme);
     });
+
+    // chrome.storage.sync.get(['theme_stored'], function(theme) {
+    //     theme_DS = theme.theme_stored
+    //     if(!theme_DS){
+    //         theme='dusk'
+    //     }
+    //     else{
+    //         theme=theme_DS
+    //     }
+    //     console.log('theme: ', theme)
+    //     $('#theme_choice').val(theme)
+    // });
 
     // top dock sub-view choice
-    chrome.storage.sync.get(['current_top_dock_module_stored'], function(current_top_dock_module) {
-        current_top_dock_module_DS = current_top_dock_module.current_top_dock_module_stored
-        if(!current_top_dock_module_DS){
-            current_top_dock_module='day'
-        }
-        else{
-            current_top_dock_module=current_top_dock_module_DS
-            // will need an action here to update a top dock settings menu choice. (dropdown menu item)
+    chrome.storage.sync.get(['current_top_dock_module_stored'], function(result) {
+        const stored = result.current_top_dock_module_stored;
+        if (!stored) {
+            current_top_dock_module = 'present';
+        } else {
+            current_top_dock_module = stored;
+            // TODO: Add action to update a top dock settings menu choice (dropdown menu item)
         }
     });
 
-    // top dock sub-view choice
-    chrome.storage.sync.get(['top_dock_view_array_number_DS'], function(top_dock_view_array_number) {
-        top_dock_view_array_number_DS = top_dock_view_array_number.top_dock_view_array_number_DS
-        if(!current_top_dock_module_DS){
-            top_dock_view_array_number='day'
-        }
-        else{
-            top_dock_view_array_number=top_dock_view_array_number_DS
-            // will need an action here to update a top dock settings menu choice. (dropdown menu item)
+    // top dock view array number
+    chrome.storage.sync.get(['top_dock_view_array_number_DS'], function(result) {
+        const stored = result.top_dock_view_array_number_DS;
+        if (!stored) {
+            top_dock_view_array_number = '0';
+        } else {
+            top_dock_view_array_number = stored;
+            // TODO: Add action to update a top dock settings menu choice (dropdown menu item)
         }
     });
-    
+
 
     ///////////////
     // lowercase //
@@ -3260,4 +3269,6 @@ window.get_data = function get_data(){
             $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice)
         }
     }); 
+    console.log('get data function ended')
 }
+

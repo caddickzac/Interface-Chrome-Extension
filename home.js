@@ -35,6 +35,8 @@ current_display='main' // (values: main, search, settings, left_dock_config, rig
 // Contra Animation
 contra_rdy='yes' // variable used as a gate so duplicate animations are not simultaneously run
 
+// used for up/down arrow functions within color scheme input
+let pickrIsOpen = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1069,21 +1071,39 @@ document.body.onkeydown = function(e){
     }
     else if(current_display=='color_scheme'){
 
+        active = document.activeElement; // what part of the interface is active
+
         // top arrow key command
         if(e.keyCode == 38){
+            // ✅ Don't interfere if Pickr is open
+            if ($('.pcr-app').is(':visible')) {
+                return;
+            }
+            if (!$(e.target).is('input, textarea, select')) {
+                e.preventDefault();
+            }
+
             setTimeout(function(){
                 change_preset_theme()
                 update_css_coloring()
-            }, 10); 
-            console.log('top arrow key')
+            }, 10);             
+            console.log('bottom arrow key')
         }
 
         // bottom arrow key command
         if(e.keyCode == 40){
+            // ✅ Don't interfere if Pickr is open
+            if ($('.pcr-app').is(':visible')) {
+                return;
+            }
+            if (!$(e.target).is('input, textarea, select')) {
+                e.preventDefault();
+            }
+
             setTimeout(function(){
                 change_preset_theme()
                 update_css_coloring()
-            }, 10); 
+            }, 10);             
             console.log('bottom arrow key')
         }
     }
@@ -2231,7 +2251,7 @@ function run_setup__functions(){
     get_data()
 
     setTimeout(function(){
-        main_display_screen_window_scaling
+        main_display_screen_window_scaling()
         update_css_coloring()
         unloadScrollBars()
         Change_Display_Settings()
@@ -2250,6 +2270,7 @@ function run_setup__functions(){
         $('#body_id').show()
         new_day_clock_functions()
         View_Changer()
+        initializeColorPickers(color_background, color_accent_1, color_accent_2)
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
