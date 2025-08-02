@@ -222,7 +222,6 @@ window.change_preset_theme = function change_preset_theme(){
         color_accent_2 = "#cb0000"
         theme='strawberry'
     }
-
     else if($('#theme_choice').val()=='clay'){ 
         color_background = "#1e0000"
         color_accent_1 = "#9d331f" 
@@ -241,13 +240,18 @@ window.change_preset_theme = function change_preset_theme(){
         color_accent_2 = "#FFD300"
         theme='morning'
     }
+    else if($('#theme_choice').val()=='salmon'){ 
+        color_background = "#FFCACE"
+        color_accent_1 = "#B28D90" 
+        color_accent_2 = "#191919"
+        theme='morning'
+    }
     else if($('#theme_choice').val()=='vapor wave'){ 
         color_background = "#0D0D64"
         color_accent_1 = "#FB69DA" 
         color_accent_2 = "#FF904B"
         theme='morning'
     }
-
     else if($('#theme_choice').val()=='custom'){ 
         if(hexes_ready=='yes'){
             color_background = $('#hex_1').val()
@@ -377,6 +381,8 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#top_arr_sett').css("border-color", color_accent_1)
     $('#right_arr_sett').css("border-color", color_accent_1)
     $('#bottom_arr_sett').css("border-color", color_accent_1)
+    $('#config_import_button').css("border-color", color_accent_1)
+    $('#config_export_button').css("border-color", color_accent_1)
     $('#nr_1').css("border-color", color_accent_1)
     $('#nr_2').css("border-color", color_accent_1)
     $('#nr_3').css("border-color", color_accent_1)
@@ -583,8 +589,7 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#top_dock_input').css('border-color', color_accent_1)
     $('#connect_google_calendar_button').css('border-color', color_accent_1)
     $('#top_dock_input_underline').css('border-color', color_accent_1)
-    $('#top_dock_input_finished').css('border-color', color_accent_1)
-    
+    $('#top_dock_input_finished').css('border-color', color_accent_1)  
 }
 
 window.update_css_color_accent_2 = function update_css_color_accent_2(){
@@ -664,9 +669,8 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#week_view_friday_date').css('background-color', color_accent_2)
     $('#month_view_year_label').css('color', color_accent_2)
     $('#top_dock_year_label').css('color', color_accent_2)
-    $('#present_view_date_DoW').css('background-color', color_accent_2)
+    $('#present_view_date_DoW').css('background-color', color_accent_2)    
+    $('#present_view_date_MDY').css('color', color_accent_2)
     $('#top_dock_input').css('color', color_accent_2)
     $('#connect_google_calendar_button').css('color', color_accent_2)
-
-
 }

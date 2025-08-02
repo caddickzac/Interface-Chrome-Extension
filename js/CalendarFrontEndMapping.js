@@ -3095,13 +3095,13 @@ function year_view_month_highlight(){
 
 
 /////////////////////////////////
-function getMonday(d) {
+window.getMonday = function getMonday(d) {
     diff = Date_Num - DOW + (DOW == 0 ? -6:1); // adjust when day is sunday
     return (diff);
 }
 // getMonday(); // Mon Nov 08 2010
 
-function getSunday(){
+window.getSunday = function getSunday(){
     sunday = Date_Num - DOW
     return(sunday)
 
@@ -3111,7 +3111,7 @@ function getSunday(){
 }
 // getSunday()
 
-function getSaturday(){
+window.getSaturday = function getSaturday(){
     diff = 6 - DOW 
     saturday = Date_Num + diff
     return(saturday)
@@ -3121,7 +3121,7 @@ function getSaturday(){
 
 week_date_range_crosses_two_months=''
 
-function check_if_date_crosses_two_months(){
+window.check_if_date_crosses_two_months = function check_if_date_crosses_two_months(){
     if(getSunday()>27 & getSaturday()<10){
         if(Date_Num>27){
             week_date_range_crosses_two_months='yes_current_future' // denotes showing: current month - next month
@@ -3135,6 +3135,32 @@ function check_if_date_crosses_two_months(){
         week_date_range_crosses_two_months='no'
     }
 }
+
+window.updateWeekViewDateText = function updateWeekViewDateText() {
+  // Ensure Date_Num and DOW are defined (Date_Num = today's date, DOW = today's day of week 0–6)
+  const today = new Date();
+  const Date_Num = today.getDate();
+  const DOW = today.getDay();
+
+  const dayIds = [
+    'sunday', 'monday', 'tuesday', 'wednesday',
+    'thursday', 'friday', 'saturday'
+  ];
+
+  // Calculate the Sunday of the current week
+  const baseDate = new Date(today);
+  baseDate.setDate(Date_Num - DOW);
+
+  for (let i = 0; i < 7; i++) {
+    const newDate = new Date(baseDate);
+    newDate.setDate(baseDate.getDate() + i);
+    const dayOfMonth = newDate.getDate();
+
+    const spanId = `#week_view_${dayIds[i]}_date_text`;
+    $(spanId).text(dayOfMonth);
+  }
+};
+
 
 
 

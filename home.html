@@ -655,7 +655,7 @@
 
             <div id='week_view_time_tracker_line' style='position:absolute; border-right: solid red 3px; width:99.99%; height:100px; z-index:+1'>
               <div id='week_view_time_tracker_circle_background' class='fa fa-circle' style='position:absolute; font-size:12px; margin-top:-7px; margin-left:0px; right:-7px; z-index:0' ></div>
-              <div class='fa fa-circle' style='position:absolute; font-size:10px; margin-top:-5px; margin-left:0px; right:-6px' ></div>
+              <div class='fa fa-circle' style='position:absolute; font-size:10px; margin-top:-5px; margin-left:0px; right:-5.5px' ></div>
               <!-- <div id='week_view_time_tracker_circle_small' class='fa fa-circle' style='position:absolute; font-size:4px; margin-top:-2px; margin-left:0px; right:-3px' ></div> -->
             </div>
           </div>
@@ -667,28 +667,32 @@
         <div class='col-sm-12' style='margin:0px; padding:0px;width:100%;position:absolute; font-family: Book Antiqua; letter-spacing: 1px;'>
           <div id='week_view_sunday' style='height:100px; border-bottom: solid red 1px;border-top: solid red 1px'>
             <!-- <span style='padding-left:100px; position:absolute'>11</span><br> -->
-            <span id='week_view_sunday_text'>Sunday</span>
+            <span id='week_view_sunday_text'>Sunday</span><br>
+            <span id='week_view_sunday_date_text'>1</span>
           </div>
           <div id='week_view_monday' style='height:100px; border-bottom: solid red 1px;'>
-            <span id='week_view_monday_text'>Monday</span>
+            <span id='week_view_monday_text'>Monday</span><br>
+            <span id='week_view_monday_date_text'>2</span>
           </div>
           <div id='week_view_tuesday' style='height:100px; border-bottom: solid red 1px;'>
-            <span id='week_view_tuesday_text'>Tuesday</span>
+            <span id='week_view_tuesday_text'>Tuesday</span><br>
+            <span id='week_view_tuesday_date_text'>3</span>
           </div>
           <div id='week_view_wednesday' style='height:100px; border-bottom: solid red 1px;'>
-            <span id='week_view_wednesday_text'>Wednesday</span>
+            <span id='week_view_wednesday_text'>Wednesday</span><br>
+            <span id='week_view_wednesday_date_text'>4</span>
           </div>
           <div id='week_view_thursday' style='height:100px; border-bottom: solid red 1px'>
-            <span id='week_view_thursday_text'>Thursday</span>
+            <span id='week_view_thursday_text'>Thursday</span><br>
+            <span id='week_view_thursday_date_text'>5</span>
           </div>
           <div id='week_view_friday' style='height:100px; border-bottom: solid red 1px;'>
             <span id='week_view_friday_text'>Friday</span><br>
-            <!-- <span>16</span> -->
-            <!-- <div id='week_view_friday_date' style='min-width:50px; height:50px; width:50px; padding:5px; margin-left:-2px; text-align:center; bottom:0px; background-color:white; margin:0px; font-weight:bold; font-family:Lexend Deca; font-size:1.7em'>30</div> -->
-            <!-- padding:4px; padding-top:2px;  -->
+            <span id='week_view_friday_date_text'>6</span>
           </div>
           <div id='week_view_saturday' style='height:100px; border-bottom: solid red 1px'>
-            <span id='week_view_saturday_text'>Saturday</span>
+            <span id='week_view_saturday_text'>Saturday</span><br>
+            <span id='week_view_saturday_date_text'>7</span>
           </div>
         </div>
 
@@ -3235,6 +3239,13 @@
               </div>
               <br>
 
+              <!-- Import/Export Configuration -->
+              <span style='margin-top:5px'><b>Configuration: </b></span>
+              <span id='config_import_button' style='border:1px solid; padding:3px'>Import</span>
+              <span> | </span>
+              <span id='config_export_button'style='border:1px solid; padding:3px'>Export</span>
+
+
           </div> <!-- End: Right Half -->
       </div> <!-- End row -->
 
@@ -5313,6 +5324,7 @@
                     <option>morning</option>
                     <option>pittsburgh</option>
                     <option>riddler</option>
+                    <option>salmon</option>
                     <option>sandstone</option>
                     <option>seaside</option>
                     <option>strawberry</option>

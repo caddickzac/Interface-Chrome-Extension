@@ -559,22 +559,50 @@ window.update_date_labels_on_new_day = function update_date_labels_on_new_day(){
 
 
 // Top Dock: Week View header date range
+window.week_view_header_date_change = function week_view_header_date_change() {
+    const today = new Date(); // You can replace this with a selected date if needed
+    const dow = today.getDay(); // 0 = Sunday
 
-// zccc
-window.week_view_header_date_change = function week_view_header_date_change(){
-    check_if_date_crosses_two_months()
-    if(week_date_range_crosses_two_months=="yes_current_future"){
-        var output = month_array_abr[month] + " " + getSunday() + " – " + month_array_abr[month+1] + " " + getSaturday()
-    }
-    else if(week_date_range_crosses_two_months=='yes_past_current'){
-        var output = month_array_abr[month-1] + " " + getSunday() + " – " + month_array_abr[month] + " " + getSaturday()
-    }
-    else{
-        var output = month_array_abr[month] + " " + getSunday() + " – " + getSaturday()
+    const sunday = new Date(today);
+    sunday.setDate(today.getDate() - dow);
+
+    const saturday = new Date(today);
+    saturday.setDate(today.getDate() + (6 - dow));
+
+    const sundayMonth = sunday.getMonth();
+    const saturdayMonth = saturday.getMonth();
+
+    const sundayDay = sunday.getDate();
+    const saturdayDay = saturday.getDate();
+
+    let output = '';
+
+    if (sundayMonth !== saturdayMonth) {
+        // Week crosses into a new month
+        output = `${month_array_abr[sundayMonth]} ${sundayDay} – ${month_array_abr[saturdayMonth]} ${saturdayDay}`;
+    } else {
+        // Same month: only show month once
+        output = `${month_array_abr[sundayMonth]} ${sundayDay} – ${saturdayDay}`;
     }
 
-    $('#top_dock_date_DoW_range').text(output)
-}
+    $('#top_dock_date_DoW_range').text(output);
+};
+
+
+// window.week_view_header_date_change = function week_view_header_date_change(){
+//     check_if_date_crosses_two_months()
+//     if(week_date_range_crosses_two_months=="yes_current_future"){
+//         var output = month_array_abr[month] + " " + getSunday() + " – " + month_array_abr[month+1] + " " + getSaturday()
+//     }
+//     else if(week_date_range_crosses_two_months=='yes_past_current'){
+//         var output = month_array_abr[month-1] + " " + getSunday() + " – " + month_array_abr[month] + " " + getSaturday()
+//     }
+//     else{
+//         var output = month_array_abr[month] + " " + getSunday() + " – " + getSaturday()
+//     }
+
+//     $('#top_dock_date_DoW_range').text(output)
+// }
 
 
 
@@ -599,8 +627,34 @@ $.fn.no_highlight_wk_day = function(){
     })
 }
 
+// abstraction for week view, day highlight 
+$.fn.highlight_wk_day_date = function(){
+    return this.each(function(e){
+        $(this).css({
+            'font-size': '1.3em',
+            'border': '1px solid',
+            'border-color': color_accent_2,
+            'padding-left': '3px',
+            'padding-right': '3px',
+            'color': color_accent_2,
+            'font-weight': 'bold'
+        })
+    })
+}
+
+$.fn.no_highlight_wk_day_date = function(){
+    return this.each(function(e){
+        $(this).css({
+            'font-size': '1em',
+            'color': color_accent_1,
+            'font-weight': 'normal'
+        })
+    })
+}
+
 
 window.week_view_timeline_shift_reset = function week_view_timeline_shift_reset(){
+    // day of week text
     $('#week_view_sunday_text').no_highlight_wk_day()
     $('#week_view_monday_text').no_highlight_wk_day()
     $('#week_view_tuesday_text').no_highlight_wk_day()
@@ -608,6 +662,15 @@ window.week_view_timeline_shift_reset = function week_view_timeline_shift_reset(
     $('#week_view_thursday_text').no_highlight_wk_day()
     $('#week_view_friday_text').no_highlight_wk_day()
     $('#week_view_saturday_text').no_highlight_wk_day()
+    // date text
+    $('#week_view_sunday_date_text').no_highlight_wk_day_date()
+    $('#week_view_monday_date_text').no_highlight_wk_day_date()
+    $('#week_view_tuesday_date_text').no_highlight_wk_day_date()
+    $('#week_view_wednesday_date_text').no_highlight_wk_day_date()
+    $('#week_view_thursday_date_text').no_highlight_wk_day_date()
+    $('#week_view_friday_date_text').no_highlight_wk_day_date()
+    $('#week_view_saturday_date_text').no_highlight_wk_day_date()
+
 }
 
 window.week_view_timeline_shift_by_DOW = function week_view_timeline_shift_by_DOW(){
@@ -620,31 +683,37 @@ window.week_view_timeline_shift_by_DOW = function week_view_timeline_shift_by_DO
         // zc
         $('#week_view_time_tracker').css('margin-top', '0px')
         $('#week_view_sunday_text').highlight_wk_day()
+        $('#week_view_sunday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Monday'){
         $('#week_view_time_tracker').css('margin-top', '100px')
         $('#week_view_monday_text').highlight_wk_day()
+        $('#week_view_monday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Tuesday'){
         $('#week_view_time_tracker').css('margin-top', '200px')
         $('#week_view_tuesday_text').highlight_wk_day()
+        $('#week_view_tuesday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Wednesday'){
         $('#week_view_time_tracker').css('margin-top', '300px')
         $('#week_view_wednesday_text').highlight_wk_day()
+        $('#week_view_wednesday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Thursday'){
         $('#week_view_time_tracker').css('margin-top', '400px')
         $('#week_view_thursday_text').highlight_wk_day()
+        $('#week_view_thursday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Friday'){
         $('#week_view_time_tracker').css('margin-top', '500px')
-        // function(){$('#week_view_friday_text').highlight_wk_day()}
         $('#week_view_friday_text').highlight_wk_day()
+        $('#week_view_friday_date_text').highlight_wk_day_date()
     }
     else if(DOW_Text=='Saturday'){
         $('#week_view_time_tracker').css('margin-top', '600px')
         $('#week_view_saturday_text').highlight_wk_day()
+        $('#week_view_saturday_date_text').highlight_wk_day_date()
     }
 }
 
@@ -658,6 +727,7 @@ window.new_day_clock_functions = function new_day_clock_functions(){
     week_view_meridies_top_dock_format() // top dock: week view time format
     week_view_timeline_shift_by_DOW() // shift week view time track by day of week
     month_labeler() // update top dock, month view, month header
+    updateWeekViewDateText() // update week view day-dates 
     year_view_month_highlight() // format current month within year view
     // Update Display text with concatenate
     $('#dayofweek_placeholder').text([DOW_Text+', '+Month_Text+' '+Date_Num+', '+Year])   
