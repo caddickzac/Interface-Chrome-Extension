@@ -2,7 +2,20 @@
 // View Changing Behavior // 
 ////////////////////////////
 
-window.Display_Main_Screen = function Display_Main_Screen(){
+window.Set_Main_Display_Variable = function Set_Main_Display_Variable(){
+    if(default_home_screen=='calendar'){
+        current_display='top_dock'
+        save_data()
+        update_website_names()
+    }
+    else if(default_home_screen=='clock'){
+        current_display='clock'
+        save_data()
+        update_website_names()
+    }
+}
+
+window.show_clock = function show_clock(){
     unloadScrollBars()
     $('#Greeting_Message').show()
     $('#MyClockDisplay').show()
@@ -25,6 +38,16 @@ window.Display_Main_Screen = function Display_Main_Screen(){
     disable_arrow_keys='no'
     Change_Display_Settings()
     text_input_grey_out_function() // update greying out dock input labels
+}
+
+window.Display_Main_Screen = function Display_Main_Screen(){
+    if(default_home_screen=='clock'){
+        show_clock()
+    }
+    else if(default_home_screen=='calendar'){
+        show_top_dock()
+    }
+    
 }
 
 window.Show_Settings_Screen = function Show_Settings_Screen(){
@@ -71,7 +94,7 @@ window.Show_Search_Screen = function Show_Search_Screen(){
     $('#search_bar').focus()
 }
 
-top_dock_view_array_number = 0
+// top_dock_view_array_number = 0
 top_dock_view_array = ['present', 'day', 'week', 'month', 'year']
 top_dock_calendar_view_choice ='present'
 current_top_dock_module = 'present'
@@ -98,6 +121,7 @@ window.show_top_dock = function show_top_dock(){
     hide_top_dock_modules()
     $('#top_dock').show()
     current_display='top_dock'
+    $('#settings_screen_main').hide()
     $('#Greeting_Message').hide()
     $('#MyClockDisplay').hide()
     $('#Date_Display').hide()
@@ -112,16 +136,22 @@ window.show_top_dock = function show_top_dock(){
     $('#color_scheme_input').hide()
     $('#web_search_input').hide()
 
-    $('#top_dock').removeClass('top_docker_state1')
-    $('#top_dock').addClass('top_docker_state2') 
+    if(top_dock_animation=='yes'){
+        $('#top_dock').removeClass('top_docker_state1')
+        $('#top_dock').addClass('top_docker_state2') 
+    }
+    else if(top_dock_animation=='no'){
+        $('#top_dock').removeClass('top_docker_state1')
+        $('#top_dock').addClass('top_docker_state3') 
+    }
+    
 
     ////////////////////////////////////////
     // Open view based on user preference //
     hide_top_dock_modules()
-    console.log('2. current_top_dock_module: ', current_top_dock_module)
+    // console.log('2. current_top_dock_module: ', current_top_dock_module)
     if(top_dock_calendar_view_choice=='present' || top_dock_calendar_view_choice==''){
         current_top_dock_module='present'
-
         $('#top_dock_present').show()
     }
     else if(top_dock_calendar_view_choice=='day'){
@@ -140,13 +170,17 @@ window.show_top_dock = function show_top_dock(){
         current_top_dock_module='year'
         $('#top_dock_year').show()
     }
-    console.log('3. current_top_dock_module: ', current_top_dock_module)
+    else if(top_dock_calendar_view_choice=='last open'){
+        top_dock_view_changer()
+    }
+    // console.log('3. current_top_dock_module: ', current_top_dock_module)
     top_dock_module_changer()
 }
 
 window.hide_top_dock = function hide_top_dock(){
     // current_display='main'
     $('#top_dock').hide()
+    $('#top_dock').removeClass('top_docker_state3')
     $('#top_dock').removeClass('top_docker_state2')
     $('#top_dock').addClass('top_docker_state1')
     setTimeout(function(){
@@ -169,6 +203,20 @@ window.View_Changer = function View_Changer(){
         hide_top_dock_modules()
         save_data()
     }
+    else if(current_display_temp=='clock'){
+        current_display = 'clock'
+        console.log('display: clock')
+        $('#bottom_dock').show()
+        update_search_box_text()
+        web_search_updater()
+        // Display_Main_Screen()
+        main_display_screen_window_scaling() 
+        new_day_clock_functions()
+        hide_top_dock_modules()
+        save_data()
+        hide_top_dock()
+        show_clock()
+    }
     else if(current_display_temp=='search'){
         console.log('display: search')
         Show_Search_Screen()
@@ -181,7 +229,6 @@ window.View_Changer = function View_Changer(){
         hide_top_dock_modules()
         hide_top_dock()
         Show_Settings_Screen()
-
     }
     else if(current_display_temp=='left_dock_config'){
         console.log('display: left dock')
@@ -212,7 +259,15 @@ window.View_Changer = function View_Changer(){
     }
     else if(current_display_temp=='top_dock'){
         console.log('display: top_dock')
-        console.log('top_dock_calendar_view_choice: ', top_dock_calendar_view_choice)
+        update_top_dock_view_array_number()
+        $('#bottom_dock').hide()
+        $('#top_dock_input').hide()
+        update_search_box_text()
+        web_search_updater()
+        // Display_Main_Screen()
+        main_display_screen_window_scaling() 
+        new_day_clock_functions()
+        save_data()
         top_dock_small_screen_view()
         top_dock_resize_events()
         show_top_dock()

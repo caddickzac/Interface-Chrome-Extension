@@ -1,7 +1,70 @@
 // top dock variables
 top_dock_mt='no'
-top_dock_view_array_number = 0
+// top_dock_view_array_number = 0
 top_dock_view_array = ['present', 'day', 'week', 'month', 'year']
+
+
+// top dock settings input
+window.update_top_dock_input_settings = function update_top_dock_input_settings(){
+    // default calendar view
+    if($('#top_dock_calendar_view_choice').val()=='last open'){
+        top_dock_calendar_view_choice = 'last open'
+    }
+    else if($('#top_dock_calendar_view_choice').val()=='present'){
+        top_dock_calendar_view_choice = 'present'
+    }
+    else if($('#top_dock_calendar_view_choice').val()=='day'){
+        top_dock_calendar_view_choice = 'day'
+    }
+    else if($('#top_dock_calendar_view_choice').val()=='week'){
+        top_dock_calendar_view_choice = 'week'
+    }
+    else if($('#top_dock_calendar_view_choice').val()=='month'){
+        top_dock_calendar_view_choice = 'month'
+    }
+    else if($('#top_dock_calendar_view_choice').val()=='year'){
+        top_dock_calendar_view_choice = 'year'
+    }
+
+    // default home screen
+    if($('#default_home_screen_view_choice').val()=='clock'){
+        default_home_screen = 'clock'
+    }
+    else if($('#default_home_screen_view_choice').val()=='calendar'){
+        default_home_screen = 'calendar'
+    }
+
+    // top dock hotkey settings
+    if($('#top_dock_hotkey_choice').val()=='clock'){
+        top_dock_hotkey_choice = 'calendar'
+    }
+    else if($('#top_dock_hotkey_choice').val()=='calendar'){
+        top_dock_hotkey_choice = 'left & right docks'
+    }
+
+}
+
+
+window.update_top_dock_view_array_number = function update_top_dock_view_array_number(){
+    if(top_dock_calendar_view_choice=='present'){
+        top_dock_view_array_number=0
+    }
+    else if(top_dock_calendar_view_choice=='day'){
+        top_dock_view_array_number=1
+    }
+    else if(top_dock_calendar_view_choice=='week'){
+        top_dock_view_array_number=2
+    }
+    else if(top_dock_calendar_view_choice=='month'){
+        top_dock_view_array_number=3
+    }
+    else if(top_dock_calendar_view_choice=='year'){
+        top_dock_view_array_number=4
+    }
+}
+
+
+///////////////////////////////////////////////////////////
 
 
 
@@ -387,7 +450,7 @@ window.hide_top_dock_modules = function hide_top_dock_modules(){
 window.top_dock_module_changer = function top_dock_module_changer(){
     hide_top_dock_modules()
     if(current_top_dock_module=='present'){
-        top_dock_view_array_number=0
+        // top_dock_view_array_number=0
         $('#top_dock_present').show()
         $('#top_dock_view_header_present').td_view_item_selected()
         $('#top_dock_view_header_day').td_view_item_not_selected_close() 
@@ -396,7 +459,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_year').td_view_item_not_selected_distant()
     }
     else if(current_top_dock_module=='day'){
-        top_dock_view_array_number=1
+        // top_dock_view_array_number=1
         $('#top_dock_day').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_close() // zc
         $('#top_dock_view_header_day').td_view_item_selected() 
@@ -405,7 +468,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_year').td_view_item_not_selected_distant()
     }
     else if(current_top_dock_module=='week'){
-        top_dock_view_array_number=2
+        // top_dock_view_array_number=2
         $('#top_dock_week').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_distant()
         $('#top_dock_view_header_day').td_view_item_not_selected_close() 
@@ -414,7 +477,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_year').td_view_item_not_selected_distant()
     }
     else if(current_top_dock_module=='month'){
-        top_dock_view_array_number=3
+        // top_dock_view_array_number=3
         current_top_dock_module='month'
         $('#top_dock_month').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_distant()
@@ -424,7 +487,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_year').td_view_item_not_selected_close()
     }
     else if(current_top_dock_module=='year'){
-        top_dock_view_array_number=4
+        // top_dock_view_array_number=4
         current_top_dock_module='year'
         $('#top_dock_year').show()
         $('#top_dock_view_header_present').td_view_item_not_selected_distant()
@@ -433,8 +496,8 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_month').td_view_item_not_selected_close()
         $('#top_dock_view_header_year').td_view_item_selected()
     }
-    console.log('top dock view changed')
-    console.log('4. current_top_dock_module: ', current_top_dock_module)
+    // console.log('top dock view changed')
+    // console.log('4. current_top_dock_module: ', current_top_dock_module)
 }
 
 window.top_dock_view_array_number_change_up = function top_dock_view_array_number_change_up(){
@@ -631,13 +694,17 @@ $.fn.no_highlight_wk_day = function(){
 $.fn.highlight_wk_day_date = function(){
     return this.each(function(e){
         $(this).css({
+            'position': 'absolute',
+            'margin': '0px',
+            'top': '46px',
             'font-size': '1.3em',
-            'border': '1px solid',
+            'border': '2px solid',
             'border-color': color_accent_2,
-            'padding-left': '3px',
-            'padding-right': '3px',
+            'padding-left': '2px',
+            'padding-right': '2px',
             'color': color_accent_2,
-            'font-weight': 'bold'
+            'font-weight': 'bold',
+            'height': '27px',
         })
     })
 }
@@ -720,7 +787,6 @@ window.week_view_timeline_shift_by_DOW = function week_view_timeline_shift_by_DO
 
 // run this function right at midnight to 'turn page' on new day and relabel/format things as necessary
 window.new_day_clock_functions = function new_day_clock_functions(){
-    console.log("It's a beautiful new day.")
     month_view_calendar_labeler() // top dock: month view
     year_view_calendar_labeler() // top dock: year view
     year_view_calendar_highlight_today() // top dock: year view highlighter
@@ -737,6 +803,27 @@ window.new_day_clock_functions = function new_day_clock_functions(){
     $('#present_view_date_DoW').text(DOW_Text)
     week_view_header_date_change()
 }
+
+window.scheduleMidnightFunction = function scheduleMidnightFunction() {
+  const now = new Date();
+  const midnight = new Date();
+
+  // Set midnight to the next day at 00:00:00
+  midnight.setHours(24, 0, 0, 0); // 24:00:00 is equivalent to 00:00:00 the next day
+
+  const timeUntilMidnight = midnight.getTime() - now.getTime();
+
+  // First run at next midnight
+  setTimeout(() => {
+    new_day_clock_functions();
+
+    // Then repeat every 24 hours
+    setInterval(new_day_clock_functions, 24 * 60 * 60 * 1000);
+  }, timeUntilMidnight);
+  console.log("It's a beautiful new day!")
+}
+
+
 
 window.hide_meridies_top_dock = function hide_meridies_top_dock(){
     $('#t1_text_1_meridies').hide()

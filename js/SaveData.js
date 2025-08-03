@@ -248,6 +248,10 @@ window.grab_data = function grab_data(){
     ws_5_url=$('#ws_5_url_input').val()
     ws_6_url=$('#ws_6_url_input').val()
 
+    top_dock_calendar_view_choice=$('#top_dock_calendar_view_choice').val()
+    default_home_screen=$('#default_home_screen_view_choice').val()
+    top_dock_hotkey_choice=$('#top_dock_hotkey_choice').val()
+
 }
 
 window.store_data = function store_data(){
@@ -266,7 +270,8 @@ window.store_data = function store_data(){
         'color_accent_2_stored': color_accent_2,
         'theme_stored': theme,
 
-        'top_dock_calendar_view_choice_stored':top_dock_calendar_view_choice,
+        'top_dock_calendar_view_choice_stored': top_dock_calendar_view_choice,
+        'default_home_screen_stored': default_home_screen,
         'top_dock_hotkey_choice_stored':top_dock_hotkey_choice,
         'top_dock_view_array_number_stored':top_dock_view_array_number,
 

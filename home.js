@@ -30,7 +30,7 @@ hexes_ready=''
 crd_current_selection='' 
 
 // variable that interacts with "View_Changer()" function
-current_display='main' // (values: main, search, settings, left_dock_config, right_dock_config)
+current_display='clock' // (values: main, search, settings, left_dock_config, right_dock_config)
 
 // Contra Animation
 contra_rdy='yes' // variable used as a gate so duplicate animations are not simultaneously run
@@ -38,19 +38,39 @@ contra_rdy='yes' // variable used as a gate so duplicate animations are not simu
 // used for up/down arrow functions within color scheme input
 let pickrIsOpen = false;
 
+// top dock animation (slide down)
+top_dock_animation = 'no'
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $('#theme_choice').click(function () {
     window.change_preset_theme();
     window.update_css_coloring();
+    setTimeout(function(){
+        window.theme_choice_label_fix();
+    },25)
+    
 });
+
+// top dock settings input
+$('#top_dock_calendar_view_choice').click(function(){
+    update_top_dock_input_settings()
+})
+$('#default_home_screen_view_choice').click(function(){
+    update_top_dock_input_settings()
+})
+$('#top_dock_hotkey_choice').click(function(){
+    update_top_dock_input_settings()
+})
 
 // Submit custom color scheme
 $('#color_scheme_custom_submit').click(function () {
     window.hex();
     window.change_preset_theme();
     window.update_css_coloring();
+    setTimeout(function(){
+        window.theme_choice_label_fix();
+    },20)
     // window.use_custom_hex(); // Uncomment if needed
 });
 
@@ -595,9 +615,7 @@ $('#settings_screen_main').click(function(){
 
 // Close settings window
 $('#settings_finished').click(function(){
-    save_data()
-    update_website_names()
-    current_display='main'
+    Set_Main_Display_Variable()
     View_Changer()
     // Display_Main_Screen()
 })
@@ -805,24 +823,27 @@ $('#ham_icon').click(function(){
     if(current_display=='main'){
         current_display='settings'
     }
+    else if(current_display=='clock'){
+        current_display='settings'
+    }
     else if(current_display=='settings'){
-        current_display='main'
+        Set_Main_Display_Variable()
     }
     else if(current_display=='search'){
         current_display='settings'
     }
     else if(current_display=='left_dock_config'){
-        current_display='main'
+        Set_Main_Display_Variable()
     }
     else if(current_display=='right_dock_config'){
-        current_display='main'
+        Set_Main_Display_Variable()
     }
 
     else if(current_display=='web_search'){
-        current_display='main'
+        Set_Main_Display_Variable()
     }
     else if(current_display=='color_scheme'){
-        current_display='main'
+        Set_Main_Display_Variable()
     }
     else if(current_display=='top_dock'){
         current_display='settings'
@@ -975,7 +996,7 @@ paused='no'
 window.disable_arrow_keys_function = function disable_arrow_keys_function() {
     if (document.hasFocus() === false) {
         disable_arrow_keys = 'no';
-        console.log('disable_arrow_keys: no');
+        // console.log('disable_arrow_keys: no');
     }
 };
 
@@ -995,8 +1016,7 @@ document.body.onkeydown = function(e){
     }
 
     // Hotkeys allowed? 
-    if(current_display=='main'){
-    // if(current_display=='main' || current_display=='top_dock'){ // allow docks to appear in top dock view
+    if(current_display=='clock'){
 
         // When left arrow is held, left dock appears
         if(e.keyCode == 37){
@@ -1186,10 +1206,12 @@ document.body.onkeydown = function(e){
             if(e.keyCode == 37){ // arrow left
                 top_dock_view_array_number_change_down()
                 top_dock_view_changer()
+                save_data()
             }
             if(e.keyCode == 39){ // arrow right
                 top_dock_view_array_number_change_up()
                 top_dock_view_changer()
+                save_data()
             }
             if(e.keyCode == 68){ // d |
                 // show day calendar view
@@ -1312,7 +1334,7 @@ document.body.onkeyup = function(e){
 
         // Spacebar commands
         if(e.keyCode == 32){
-            if(current_display=='main' || current_display=='top_dock'){
+            if(current_display=='clock' || current_display=='top_dock'){
                 current_display='search'
                 View_Changer()            
             }        
@@ -1336,15 +1358,20 @@ document.body.onkeyup = function(e){
 
         // escape key
         if(e.keyCode == 27){
-
-            if(current_display=='main'){}
+            if(current_display=='clock'){
+                // cancel contra animation
+                window.contra_loop_active = false;
+                window.contra_animation_timeouts.forEach(clearTimeout);
+                window.contra_animation_timeouts = [];
+                // Reset images
+                $('#contra_img_1, #contra_img_2, #contra_img_3, #contra_img_4, #contra_img_5, #contra_img_6, #contra_img_7').hide();
+                contra_rdy = 'yes'; // Reset state
+            }
             else if(current_display=='settings'){
-                save_data()
-                update_website_names()
-                current_display='main'
+                Set_Main_Display_Variable()
             }
             else if(current_display=='search'){
-                current_display='main'
+                Set_Main_Display_Variable()
             }
             else if(current_display=='left_dock_config'){
                 save_data()
@@ -1383,15 +1410,16 @@ document.body.onkeyup = function(e){
         }
 
         // When top arrow 
+        // zc
         if(e.keyCode == 38){
-            if(current_display=='top_dock'){
-                current_display='main'
+            // switch between clock and top dock when 'top arrow' is pressed
+            if (current_display == 'clock' || current_display == 'top_dock') {
+                top_dock_animation='yes'
+                e.preventDefault(); // prevent page scroll
+                current_display = (current_display === 'clock') ? 'top_dock' : 'clock';
                 View_Changer()
+                top_dock_animation='no'
             }
-            else if(current_display=='main'){
-                current_display='top_dock'
-                View_Changer()
-            }         
         }
 
         // When right arrow is let go"," right dock disappears
@@ -1414,7 +1442,7 @@ document.body.onkeyup = function(e){
 
         // If control key is not pressed...
         if(control_mod == 'no'){
-            if(current_display=='main' || current_display=='top_dock'){
+            if(current_display=='clock' || current_display=='top_dock'){
                 // 0 | 
                 if(e.keyCode == 48){
                     open_rd_0_group()
@@ -1819,9 +1847,10 @@ document.body.onkeyup = function(e){
 
                     // forward slash
                     if(e.keyCode == 191){
-                        console.log("shift+forwardslash")
+                        console.log("shift+forwardslash: Easter Egg Activated")
                         $('#about_screen').show()
                         $('#screen1').hide()
+                        window.contra_loop_active = true;
                         contra_animation_loop() // easter egg animation
                         setTimeout(function(){
                              $('#about_screen').hide()
@@ -2144,39 +2173,30 @@ document.body.onkeyup = function(e){
             if(current_display=='main'){
                 current_display='settings'
             }
+            else if(current_display=='clock'){
+                current_display='settings'
+            }
             else if(current_display=='settings'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
             }
             else if(current_display=='search'){
                 current_display='settings'
             }
             else if(current_display=='left_dock_config'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
             }
             else if(current_display=='right_dock_config'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
             }
             else if(current_display=='top_dock_config'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
             }
             else if(current_display=='color_scheme'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
                 web_search_updater()
             }
             else if(current_display=='web_search'){
-                current_display='main'
-                save_data()
-                update_website_names()
+                Set_Main_Display_Variable()
             }
             else if(current_display=='top_dock'){
                 current_display='settings'
@@ -2199,7 +2219,6 @@ document.body.onkeyup = function(e){
 $('#top_dock_view_header_year').click(function(){
     current_top_dock_module='year'
     top_dock_module_changer()
-    console.log('clicked top dock: year')
 })
 
 
@@ -2301,13 +2320,16 @@ window.run_setup__functions = function run_setup__functions(){
         $('#body_id').show()
         new_day_clock_functions()
         View_Changer()
+        Display_Main_Screen()
         initializeColorPickers(color_background, color_accent_1, color_accent_2)
+        scheduleMidnightFunction() // re-run calendar setup at midnight
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
+            View_Changer()
         },20)
         
-        
+        // View_Changer()
     },20)
     // },0)
     

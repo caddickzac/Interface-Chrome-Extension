@@ -194,28 +194,24 @@ window.change_preset_theme = function change_preset_theme(){
         color_accent_2 = "#80624C"
         theme='kiwi'
     }
-
     else if($('#theme_choice').val()=='coastline'){ 
         color_background = "#66A5AD"
         color_accent_1 = "#C4DFE6" 
         color_accent_2 = "#003B46"
         theme='coastline'
     }
-
     else if($('#theme_choice').val()=='dusk'){ 
         color_background = "#314455"
         color_accent_1 = "#9e5a63" 
         color_accent_2 = "#c96567"
         theme='dusk'
     }
-
     else if($('#theme_choice').val()=='berries'){ 
         color_background = "#7E444B"
         color_accent_1 = "#ec96a4" 
         color_accent_2 = "#9a9eab"
         theme='berries'
     }
-
     else if($('#theme_choice').val()=='strawberry'){ 
         color_background = "#659353"
         color_accent_1 = "#3f6c45" 
@@ -244,13 +240,13 @@ window.change_preset_theme = function change_preset_theme(){
         color_background = "#FFCACE"
         color_accent_1 = "#B28D90" 
         color_accent_2 = "#191919"
-        theme='morning'
+        theme='salmon'
     }
     else if($('#theme_choice').val()=='vapor wave'){ 
         color_background = "#0D0D64"
         color_accent_1 = "#FB69DA" 
         color_accent_2 = "#FF904B"
-        theme='morning'
+        theme='vapor wave'
     }
     else if($('#theme_choice').val()=='custom'){ 
         if(hexes_ready=='yes'){
@@ -269,6 +265,30 @@ window.change_preset_theme = function change_preset_theme(){
     $('#hex_3').val(color_accent_2)
     setTimeout(() => syncPickrsWithInputs(), 10);
     // initializeColorPickers(color_background, color_accent_1, color_accent_2)
+}
+
+window.theme_choice_label_fix = function theme_choice_label_fix(){
+    if(theme=='americana'){$('#theme_choice').val('americana')}
+    else if(theme=='berries'){$('#theme_choice').val('berries')}
+    else if(theme=='blues'){$('#theme_choice').val('blues')}
+    else if(theme=='clay'){$('#theme_choice').val('clay')}
+    else if(theme=='coastline'){$('#theme_choice').val('coastline')}
+    else if(theme=='cotton candy'){$('#theme_choice').val('cotton candy')}
+    else if(theme=='dusk'){$('#theme_choice').val('dusk')}
+    else if(theme=='emerald'){$('#theme_choice').val('emerald')}
+    else if(theme=='greens'){$('#theme_choice').val('greens')}
+    else if(theme=='kiwi'){$('#theme_choice').val('kiwi')}
+    else if(theme=='light'){$('#theme_choice').val('light')}
+    else if(theme=='morning'){$('#theme_choice').val('morning')}
+    else if(theme=='night'){$('#theme_choice').val('night')}
+    else if(theme=='pittsburgh'){$('#theme_choice').val('pittsburgh')}
+    else if(theme=='riddler'){$('#theme_choice').val('riddler')}
+    else if(theme=='salmon'){$('#theme_choice').val('salmon')}
+    else if(theme=='sandstone'){$('#theme_choice').val('sandstone')}
+    else if(theme=='seaside'){$('#theme_choice').val('seaside')}
+    else if(theme=='strawberry'){$('#theme_choice').val('strawberry')}
+    else if(theme=='vapor wave'){$('#theme_choice').val('vapor wave')}
+    else{}
 }
 
 // Make sure the functions you're calling are globally available

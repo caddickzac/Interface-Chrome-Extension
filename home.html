@@ -5326,7 +5326,7 @@
                     <option>morning</option>
                     <option>night</option>
                     <option>pittsburgh</option>
-                    <option>riddler</option>
+                    <!-- <option>riddler</option> -->
                     <option>salmon</option>
                     <option>sandstone</option>
                     <option>seaside</option>
@@ -5600,9 +5600,12 @@
             <div class='col-sm-6' style='padding:0px; padding-right:15px; margin-top:10px;'>
               <br>
               <div style='text-align:left;'>
-                default calendar view
+                default home screen
               </div>
-              
+              <br>
+              <div style='text-align:left;'>
+                default calendar view
+              </div>            
               <br>
               <div style='text-align:left'>
                 top dock hotkeys
@@ -5611,7 +5614,15 @@
 
             <div class='col-sm-5' style='padding:0px; padding-right:15px ;'>
               <br>
-              <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
+              <div class="form-group" style='height:18px;margin-top:10px; margin-bottom:0px; max-width:150px; width:95%'>
+                <select class="form-control" id="default_home_screen_view_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                  <option>calendar</option>
+                  <option>clock</option>          
+                </select>
+                
+              </div>
+              <br>
+              <div class="form-group" style='height:18px;margin-top:0px; margin-bottom:5px; max-width:150px; width:95%'>
                 <select class="form-control" id="top_dock_calendar_view_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
                   <!-- padding:0px; margin:0px; -->
                   <option>last open</option>

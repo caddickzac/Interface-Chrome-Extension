@@ -1,5 +1,5 @@
 window.get_data = function get_data(){
-    console.log('get data function started')
+    // console.log('get data function started')
 
     // initial settings
     mt_settings="no" // military time
@@ -254,6 +254,7 @@ window.get_data = function get_data(){
     ws_6_url=''
 
     top_dock_calendar_view_choice=''
+    default_home_screen=''
     top_dock_hotkey_choice=''
 
 
@@ -434,7 +435,6 @@ window.get_data = function get_data(){
         } else {
             theme = theme_DS;
         }
-        console.log('theme: ', theme);
         $('#theme_choice').val(theme);
     });
 
@@ -450,13 +450,12 @@ window.get_data = function get_data(){
     });
 
     // top dock view array number
-    chrome.storage.sync.get(['top_dock_view_array_number_DS'], function(result) {
-        const stored = result.top_dock_view_array_number_DS;
+    chrome.storage.sync.get(['top_dock_view_array_number_stored'], function(result) {
+        const stored = result.top_dock_view_array_number_stored;
         if (!stored) {
-            top_dock_view_array_number = '0';
+            top_dock_view_array_number = 0;
         } else {
             top_dock_view_array_number = stored;
-            // TODO: Add action to update a top dock settings menu choice (dropdown menu item)
         }
     });
 
@@ -599,6 +598,7 @@ window.get_data = function get_data(){
     ws_6_url_input_DS =''
 
     top_dock_calendar_view_choice_DS =''
+    default_home_screen_DS =''
     top_dock_hotkey_choice_DS =''
 
     // Bottom Dock: Websearch Inputs
@@ -624,29 +624,23 @@ window.get_data = function get_data(){
       });
     }
 
-
-    // top dock settings
-    chrome.storage.sync.get(['top_dock_calendar_view_choice_stored'], function(top_dock_calendar_view_choice) {
-        top_dock_calendar_view_choice_DS = top_dock_calendar_view_choice.top_dock_calendar_view_choice_stored
-        if(!top_dock_calendar_view_choice_DS){
-            top_dock_calendar_view_choice=''
-        }
-        else{
-            top_dock_calendar_view_choice=top_dock_calendar_view_choice_DS
-            $('#top_dock_calendar_view_choice').val(top_dock_calendar_view_choice)
-        }
+    chrome.storage.sync.get(['top_dock_calendar_view_choice_stored'], function(result) {
+        const stored = result.top_dock_calendar_view_choice_stored;
+        const top_dock_calendar_view_choice = stored || 'last open';
+        $('#top_dock_calendar_view_choice').val(top_dock_calendar_view_choice);
     });
 
-    // overwrite: 
-    chrome.storage.sync.get(['top_dock_hotkey_choice_stored'], function(top_dock_hotkey_choice) {
-        top_dock_hotkey_choice_DS = top_dock_hotkey_choice.top_dock_hotkey_choice_stored
-        if(!top_dock_hotkey_choice_DS){
-            top_dock_hotkey_choice=''
-        }
-        else{
-            top_dock_hotkey_choice=top_dock_hotkey_choice_DS
-            $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice)
-        }
-    }); 
-    console.log('get data function ended')
+    chrome.storage.sync.get(['default_home_screen_stored'], function(result) {
+        const stored = result.default_home_screen_stored;
+        const default_home_screen = stored || 'clock';
+        $('#default_home_screen_view_choice').val(default_home_screen);
+    });
+
+    chrome.storage.sync.get(['top_dock_hotkey_choice_stored'], function(result) {
+        const stored = result.top_dock_hotkey_choice_stored;
+        const top_dock_hotkey_choice = stored || 'calendar';
+        $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice);  // ✅ Corrected
+    });
+
+    // console.log('get data function ended')
 }
