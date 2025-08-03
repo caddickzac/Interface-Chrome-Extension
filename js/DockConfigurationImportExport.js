@@ -273,49 +273,6 @@ window.data_value_problem_checking = function data_value_problem_checking(){
   sanitizeImportedLabels()
 }
 
-
-
-// 🧲 IMPORT
-// $('#config_import_button').on('click', function () {
-//   console.log('📥 Import Dock Configuration');
-//   const input = document.createElement('input');
-//   input.type = 'file';
-//   input.accept = '.csv';
-
-//   input.onchange = e => {
-//     const file = e.target.files[0];
-//     if (!file) return;
-
-//     const reader = new FileReader();
-//     reader.onload = function (e) {
-//       const lines = e.target.result.trim().split('\n');
-//       lines.slice(1).forEach(line => {
-//         const [key, value] = line.split(',');
-//         if (dockKeys.includes(key)) {
-//           window[key] = value.trim();
-//         } else {
-//           console.warn(`Unknown key skipped: ${key}`);
-//         }
-//       });
-
-//       console.log('✅ Configuration imported successfully!');
-//       if (typeof window.store_data === 'function') {
-//         data_value_problem_checking()
-//         store_data()
-//         get_data()
-//         run_setup__functions()
-//       } else {
-//         console.warn('store_data() not found!');
-//       }
-//     };
-
-//     reader.readAsText(file);
-//   };
-//   console.log("")
-
-//   input.click();
-// });
-
 $('#config_import_button').on('click', function () {
   console.log('📥 Import Dock Configuration');
   const input = document.createElement('input');
@@ -346,6 +303,8 @@ $('#config_import_button').on('click', function () {
       });
 
       console.log('✅ Configuration imported successfully!');
+      $('#config_import_message').fadeIn().delay(2500).fadeOut();
+
       
       if (typeof window.data_value_problem_checking === 'function') {
         data_value_problem_checking();

@@ -353,7 +353,8 @@ window.update_css_background_color = function update_css_background_color(){
     $('#month_view_month_label').css('color', color_background)
     $('#week_view_time_tracker_circle_background').css('color', color_background)
     $('#week_view_time_tracker_line_background').css('border-color', color_background)
-    $('#week_view_friday_date').css('color', color_background) 
+    $('#week_view_friday_date').css('color', color_background)
+    $('#config_import_message').css('color', color_background)
 }
 
 
@@ -673,4 +674,5 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#present_view_date_MDY').css('color', color_accent_2)
     $('#top_dock_input').css('color', color_accent_2)
     $('#connect_google_calendar_button').css('color', color_accent_2)
+    $('#config_import_message').css('background-color', color_accent_2)
 }

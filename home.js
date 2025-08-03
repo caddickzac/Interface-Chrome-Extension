@@ -2103,7 +2103,28 @@ document.body.onkeyup = function(e){
                     if(name_input_focused==false){
                         $('#color_scheme_change').click()
                     }                
-                }            
+                }
+                // zc
+                // i | 
+                if(e.keyCode == 73){
+                    focus_check = document.getElementById('name_input');
+                    name_input_focused = (document.activeElement == focus_check)
+                    // check is name input box is focused, if not, open color settings
+                    // note: this is to avoid opening the color settings when someone is inputting their name. 
+                    if(name_input_focused==false){
+                        $('#config_import_button').click()
+                    }                
+                }      
+                // e | 
+                if(e.keyCode == 69){
+                    focus_check = document.getElementById('name_input');
+                    name_input_focused = (document.activeElement == focus_check)
+                    // check is name input box is focused, if not, open color settings
+                    // note: this is to avoid opening the color settings when someone is inputting their name. 
+                    if(name_input_focused==false){
+                        $('#config_export_button').click()
+                    }                
+                }       
             }
         }
 
