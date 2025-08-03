@@ -2104,7 +2104,17 @@ document.body.onkeyup = function(e){
                         $('#color_scheme_change').click()
                     }                
                 }
-                // zc
+                // n | 
+                if(e.keyCode == 78){
+                    focus_check = document.getElementById('name_input');
+                    name_input_focused = (document.activeElement == focus_check)
+                    // check is name input box is focused, if not, open color settings
+                    // note: this is to avoid opening the color settings when someone is inputting their name. 
+                    if(name_input_focused==false){
+                        $('#name_input').focus()
+                    }                
+                }
+
                 // i | 
                 if(e.keyCode == 73){
                     focus_check = document.getElementById('name_input');
