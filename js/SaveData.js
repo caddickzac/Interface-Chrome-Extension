@@ -1,3 +1,4 @@
+
 window.grab_data = function grab_data(){
     // labels
     label_a=$('#ld_a_label_input').val()
@@ -249,11 +250,8 @@ window.grab_data = function grab_data(){
 
 }
 
-// Save data to storage
-window.save_data = function save_data(){
-    grab_data()
+window.store_data = function store_data(){
     // save labels
-    console.log('1. top_dock_calendar_view_choice: ', top_dock_calendar_view_choice)
     chrome.storage.sync.set({
         'mt_settings_stored': mt_settings, // military time
         'sd_settings_stored': sd_settings, // show date
@@ -518,4 +516,10 @@ window.save_data = function save_data(){
         'ws_6_url_input_stored':ws_6_url
     })
     console.log('saved data')
+}
+
+// Save data to storage
+window.save_data = function save_data(){
+    grab_data()
+    store_data()    
 }

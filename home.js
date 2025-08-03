@@ -2247,7 +2247,7 @@ $('#right_arr_sett').click(function(){
 })
 
 
-function run_setup__functions(){
+window.run_setup__functions = function run_setup__functions(){
     get_data()
 
     setTimeout(function(){
