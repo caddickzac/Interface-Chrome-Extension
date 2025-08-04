@@ -112,8 +112,14 @@ $.fn.td_view_item_not_selected_distant = function(){
 // top dock width check
 window.width_check = function width_check(){
     current_window_width = window.outerWidth;
+    console.log("current_window_width: ", current_window_width)
 }
 
+window.height_check = function height_check(){
+    current_window_height = window.outerHeight;
+}
+
+// top dock day view
 window.top_dock_small_screen_view = function top_dock_small_screen_view(){
     width_check()
     if(current_window_width <590){
@@ -135,9 +141,7 @@ window.top_dock_small_screen_view = function top_dock_small_screen_view(){
     }
 }
 
-window.height_check = function height_check(){
-    current_window_height = window.outerHeight;
-}
+
 
 window.main_display_screen_window_scaling = function main_display_screen_window_scaling(){
     height_check()
@@ -250,26 +254,31 @@ window.top_dock_week_view_resize = function top_dock_week_view_resize(){
         top_dock_week_view_row_resize_input=44
         top_dock_week_view_resize_rows('44px')
         top_dock_week_view_resize_minor_lines('316px') // formula for this value (x) is uses above value (y); x=y*7+8
+        hide_week_date_text()
     }
     else if(current_window_height<740){
         top_dock_week_view_row_resize_input=65
         top_dock_week_view_resize_rows('65px')
         top_dock_week_view_resize_minor_lines('463px') // formula for this value (x) is uses above value (y); x=y*7+8
+        hide_week_date_text()
     }
     else if(current_window_height<840){
         top_dock_week_view_row_resize_input=75
         top_dock_week_view_resize_rows('75px')
         top_dock_week_view_resize_minor_lines('533px') // formula for this value (x) is uses above value (y); x=y*7+8
+        show_week_date_text()
     }
     else if(current_window_height<920){
         top_dock_week_view_row_resize_input=90
         top_dock_week_view_resize_rows('90px')
         top_dock_week_view_resize_minor_lines('638px') // formula for this value (x) is uses above value (y); x=y*7+8
+        show_week_date_text()
     }
     else{
         top_dock_week_view_row_resize_input=100
         top_dock_week_view_resize_rows('100px')
         top_dock_week_view_resize_minor_lines('708px')
+        show_week_date_text()
     }
     
 }
@@ -362,56 +371,111 @@ window.top_dock_month_view_resize_rows = function top_dock_month_view_resize_row
 
 
 window.top_dock_month_view_resize = function top_dock_month_view_resize(){
+    // zc
     height_check()
-    // user 'current_week_span' 
-    if(current_window_height<470){
-        top_dock_month_view_resize_row_headers('44px')
-        top_dock_month_view_resize_rows('44px')
+    if(current_week_span<6){
+        if(current_window_height<470){
+            top_dock_month_view_resize_row_headers('44px')
+            top_dock_month_view_resize_rows('44px')
+        }
+        else if(current_window_height<520){
+            top_dock_month_view_resize_row_headers('50px')
+            top_dock_month_view_resize_rows('50px')
+        }
+        else if(current_window_height<570){
+            top_dock_month_view_resize_row_headers('60px')
+            top_dock_month_view_resize_rows('60px')
+        }
+        else if(current_window_height<620){
+            top_dock_month_view_resize_row_headers('70px')
+            top_dock_month_view_resize_rows('70px')
+        }
+        else if(current_window_height<670){
+            top_dock_month_view_resize_row_headers('80px')
+            top_dock_month_view_resize_rows('80px')
+        }
+        else if(current_window_height<720){
+            top_dock_month_view_resize_row_headers('90px')
+            top_dock_month_view_resize_rows('90px')
+        }
+        else if(current_window_height<770){
+            top_dock_month_view_resize_row_headers('100px')
+            top_dock_month_view_resize_rows('100px')
+        }
+        else if(current_window_height<820){
+            top_dock_month_view_resize_row_headers('110px')
+            top_dock_month_view_resize_rows('110px')
+        }
+        else if(current_window_height<870){
+            top_dock_month_view_resize_row_headers('120px')
+            top_dock_month_view_resize_rows('120px')
+        }
+        else if(current_window_height<920){
+            top_dock_month_view_resize_row_headers('130px')
+            top_dock_month_view_resize_rows('120px')
+        }
+        else if(current_window_height<970){
+            top_dock_month_view_resize_row_headers('140px')
+            top_dock_month_view_resize_rows('120px')
+        }
+        else{
+            top_dock_month_view_resize_row_headers('150px')
+            top_dock_month_view_resize_rows('120px')  
+        }
+
     }
-    else if(current_window_height<520){
-        top_dock_month_view_resize_row_headers('50px')
-        top_dock_month_view_resize_rows('50px')
+    else if(current_week_span=6){
+        if(current_window_height<470){
+            top_dock_month_view_resize_row_headers('24px')
+            top_dock_month_view_resize_rows('24px')
+        }
+        else if(current_window_height<520){
+            top_dock_month_view_resize_row_headers('30px')
+            top_dock_month_view_resize_rows('30px')
+        }
+        else if(current_window_height<570){
+            top_dock_month_view_resize_row_headers('40px')
+            top_dock_month_view_resize_rows('40px')
+        }
+        else if(current_window_height<620){
+            top_dock_month_view_resize_row_headers('50px')
+            top_dock_month_view_resize_rows('50px')
+        }
+        else if(current_window_height<670){ // started here (drop by 10)
+            top_dock_month_view_resize_row_headers('60px')
+            top_dock_month_view_resize_rows('60px')
+        }
+        else if(current_window_height<720){
+            top_dock_month_view_resize_row_headers('70px')
+            top_dock_month_view_resize_rows('70px')
+        }
+        else if(current_window_height<770){
+            top_dock_month_view_resize_row_headers('80px')
+            top_dock_month_view_resize_rows('80px')
+        }
+        else if(current_window_height<820){
+            top_dock_month_view_resize_row_headers('85px')
+            top_dock_month_view_resize_rows('85px')
+        }
+        else if(current_window_height<870){
+            top_dock_month_view_resize_row_headers('95px')
+            top_dock_month_view_resize_rows('95px')
+        }
+        else if(current_window_height<920){
+            top_dock_month_view_resize_row_headers('105px')
+            top_dock_month_view_resize_rows('110px')
+        }
+        else if(current_window_height<970){
+            top_dock_month_view_resize_row_headers('115px')
+            top_dock_month_view_resize_rows('120px')
+        }
+        else{
+            top_dock_month_view_resize_row_headers('120px')
+            top_dock_month_view_resize_rows('120px')  
+        }
+
     }
-    else if(current_window_height<570){
-        top_dock_month_view_resize_row_headers('60px')
-        top_dock_month_view_resize_rows('60px')
-    }
-    else if(current_window_height<620){
-        top_dock_month_view_resize_row_headers('70px')
-        top_dock_month_view_resize_rows('70px')
-    }
-    else if(current_window_height<670){
-        top_dock_month_view_resize_row_headers('80px')
-        top_dock_month_view_resize_rows('80px')
-    }
-    else if(current_window_height<720){
-        top_dock_month_view_resize_row_headers('90px')
-        top_dock_month_view_resize_rows('90px')
-    }
-    else if(current_window_height<770){
-        top_dock_month_view_resize_row_headers('100px')
-        top_dock_month_view_resize_rows('100px')
-    }
-    else if(current_window_height<820){
-        top_dock_month_view_resize_row_headers('110px')
-        top_dock_month_view_resize_rows('110px')
-    }
-    else if(current_window_height<870){
-        top_dock_month_view_resize_row_headers('120px')
-        top_dock_month_view_resize_rows('120px')
-    }
-    else if(current_window_height<920){
-        top_dock_month_view_resize_row_headers('130px')
-        top_dock_month_view_resize_rows('120px')
-    }
-    else if(current_window_height<970){
-        top_dock_month_view_resize_row_headers('140px')
-        top_dock_month_view_resize_rows('120px')
-    }
-    else{
-        top_dock_month_view_resize_row_headers('150px')
-        top_dock_month_view_resize_rows('120px')  
-    }
+    
 
 }
 
@@ -652,23 +716,6 @@ window.week_view_header_date_change = function week_view_header_date_change() {
 };
 
 
-// window.week_view_header_date_change = function week_view_header_date_change(){
-//     check_if_date_crosses_two_months()
-//     if(week_date_range_crosses_two_months=="yes_current_future"){
-//         var output = month_array_abr[month] + " " + getSunday() + " – " + month_array_abr[month+1] + " " + getSaturday()
-//     }
-//     else if(week_date_range_crosses_two_months=='yes_past_current'){
-//         var output = month_array_abr[month-1] + " " + getSunday() + " – " + month_array_abr[month] + " " + getSaturday()
-//     }
-//     else{
-//         var output = month_array_abr[month] + " " + getSunday() + " – " + getSaturday()
-//     }
-
-//     $('#top_dock_date_DoW_range').text(output)
-// }
-
-
-
 // abstraction for week view, day highlight 
 $.fn.highlight_wk_day = function(){
     return this.each(function(e){
@@ -694,15 +741,14 @@ $.fn.no_highlight_wk_day = function(){
 $.fn.highlight_wk_day_date = function(){
     return this.each(function(e){
         $(this).css({
-            'position': 'absolute',
+            'position': 'relative',
             'margin': '0px',
-            'top': '46px',
+            'top': '0px',
             'font-size': '1.3em',
-            'border': '2px solid',
-            'border-color': color_accent_2,
+            'background-color': color_accent_2,
             'padding-left': '2px',
             'padding-right': '2px',
-            'color': color_accent_2,
+            'color': color_background,
             'font-weight': 'bold',
             'height': '27px',
         })
@@ -713,10 +759,31 @@ $.fn.no_highlight_wk_day_date = function(){
     return this.each(function(e){
         $(this).css({
             'font-size': '1em',
+            'background-color': color_background,
             'color': color_accent_1,
             'font-weight': 'normal'
         })
     })
+}
+
+window.hide_week_date_text = function hide_week_date_text(){
+    $('#week_view_sunday_date_text').hide()
+    $('#week_view_monday_date_text').hide()
+    $('#week_view_tuesday_date_text').hide()
+    $('#week_view_wednesday_date_text').hide()
+    $('#week_view_thursday_date_text').hide()
+    $('#week_view_friday_date_text').hide()
+    $('#week_view_saturday_date_text').hide()
+}
+
+window.show_week_date_text = function show_week_date_text(){
+    $('#week_view_sunday_date_text').show()
+    $('#week_view_monday_date_text').show()
+    $('#week_view_tuesday_date_text').show()
+    $('#week_view_wednesday_date_text').show()
+    $('#week_view_thursday_date_text').show()
+    $('#week_view_friday_date_text').show()
+    $('#week_view_saturday_date_text').show()
 }
 
 

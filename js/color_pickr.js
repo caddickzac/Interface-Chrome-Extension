@@ -21,67 +21,87 @@ window.initializeColorPickers = function initializeColorPickers(color_background
 	];
 
 	swatchIds.forEach((id) => {
-		const pickr = Pickr.create({
-			el: `#${id}`,
-			theme: 'classic',
-			default: colorDefaults[id],
-			components: {
-				preview: true,
-				opacity: false,
-				hue: true,
-				interaction: {
-					hex: true,
-					rgba: false,
-					hsla: false,
-					hsva: false,
-					cmyk: false,
-					input: true,
-					clear: false,
-					save: true
-				}
-			}
-		});
-		pickr.on('show', () => {
-			pickrIsOpen = true;
-		});
-		pickr.on('hide', () => {
-			// setTimeout(() => {
-				pickrIsOpen = false;
-			// }, 10); // slight delay to ensure DOM is settled
-		});
+        const el = document.querySelector(`#${id}`);
+        if (!el) {
+            console.warn(`⏭️ Skipping color picker for #${id} — element not found.`);
+            return;
+        }
 
-		pickrInstances[id] = pickr;
+        const pickr = Pickr.create({
+            el: `#${id}`,
+            theme: 'classic',
+            default: colorDefaults[id],
+            components: {
+                preview: true,
+                opacity: false,
+                hue: true,
+                interaction: {
+                    hex: true,
+                    rgba: false,
+                    hsla: false,
+                    hsva: false,
+                    cmyk: false,
+                    input: true,
+                    clear: false,
+                    save: true
+                }
+            }
+        });
+        pickr.on('show', () => {
+            pickrIsOpen = true;
+        });
+        pickr.on('hide', () => {
+            pickrIsOpen = false;
+        });
+        pickrInstances[id] = pickr;
 
-		pickr.on('save', (color) => {
-			if (!color) {
-				return;
-			}
-			const [r, g, b] = color.toRGBA();
-			const hex = '#' + [r, g, b]
-				.map((val) => Math.round(val).toString(16).padStart(2, '0'))
-				.join('')
-				.toUpperCase();
+        pickr.on('save', (color) => {
+            if (!color) return;
 
-			colorData[id] = hex;
-			console.log(`${id} selected:`, hex);
-			$('#theme_choice').val('custom'); // set scheme to custom
-			// $('#theme_choice').val(theme); // set scheme to custom
+            const [r, g, b] = color.toRGBA();
+            const hex = '#' + [r, g, b]
+                .map((val) => Math.round(val).toString(16).padStart(2, '0'))
+                .join('')
+                .toUpperCase();
 
-			if (id === 'swatch_background_input') {
-				$('#hex_1').val(hex);
-			} else if (id === 'swatch_accent1_input') {
-				$('#hex_2').val(hex);
-			} else if (id === 'swatch_accent2_input') {
-				$('#hex_3').val(hex);
-			}
-			pickr.hide();
-		});
-	});
+            colorData[id] = hex;
+            console.log(`${id} selected:`, hex);
+            $('#theme_choice').val('custom'); // Switch to custom theme
 
-	// Optionally return the colorData reference
-	// return colorData;
+            if (id === 'swatch_background_input') {
+                $('#hex_1').val(hex);
+            } else if (id === 'swatch_accent1_input') {
+                $('#hex_2').val(hex);
+            } else if (id === 'swatch_accent2_input') {
+                $('#hex_3').val(hex);
+            }
+
+            pickr.hide();
+        });
+    });
 };
 
+window.tryInitializeColorPickers = function(bg, accent1, accent2) {
+    let attempts = 0;
+    const maxAttempts = 10;
+    const delay = 150;
+
+    function attempt() {
+        const bgEl = document.querySelector('#swatch_background_input');
+        const a1El = document.querySelector('#swatch_accent1_input');
+        const a2El = document.querySelector('#swatch_accent2_input');
+
+        if (bgEl && a1El && a2El) {
+            initializeColorPickers(bg, accent1, accent2);
+        } else if (++attempts < maxAttempts) {
+            setTimeout(attempt, delay);
+        } else {
+            // console.warn("❌ Could not initialize color pickers. Elements not found.");
+        }
+    }
+
+    attempt();
+};
 
 window.syncPickrsWithInputs = function syncPickrsWithInputs() {
 	Object.keys(pickrInstances).forEach((swatchId, idx) => {

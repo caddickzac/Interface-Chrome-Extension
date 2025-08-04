@@ -162,7 +162,7 @@ function timeToDecimalHours(timeStr) {
 
 
 
-function showTime(){
+window.showTime = function showTime(){
     date = new Date();
     year = date.getFullYear(); // 2020
     $('#top_dock_year_label').text(year)
@@ -292,7 +292,7 @@ function showTime(){
 // showTime()
 
 // Day of Week Function
-function DoW(){
+window.DoW = function DoW(){
     // Week Day
     showTime()
     DOW = date.getDay()
@@ -2310,7 +2310,6 @@ window.run_setup__functions = function run_setup__functions(){
         showTime()
         grab_data()
         hex()
-
         home_display_settings() // settings display screen appearence for date, military time, greeting
         ldi_case_toggle()
         text_input_grey_out_function()
@@ -2321,12 +2320,15 @@ window.run_setup__functions = function run_setup__functions(){
         new_day_clock_functions()
         View_Changer()
         Display_Main_Screen()
-        initializeColorPickers(color_background, color_accent_1, color_accent_2)
+        setTimeout(function(){
+            tryInitializeColorPickers(color_background, color_accent_1, color_accent_2) // zc
+        },1000)
         scheduleMidnightFunction() // re-run calendar setup at midnight
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
             View_Changer()
+            top_dock_resize_events()
         },20)
         
         // View_Changer()

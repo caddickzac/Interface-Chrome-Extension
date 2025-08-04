@@ -22,7 +22,7 @@ dockKeys.push(
   'theme', 
   'color_background', 'color_accent_1', 'color_accent_2',
   'name',
-  'top_dock_calendar_view_choice', 'top_dock_hotkey_choice'  
+  'default_home_screen', 'top_dock_calendar_view_choice', 'top_dock_hotkey_choice'  
 );
 
 // 🧨 EXPORT
@@ -251,8 +251,13 @@ window.data_value_problem_checking = function data_value_problem_checking(){
     theme = 'dusk';
   }
 
-
   // top dock inputs
+  const default_home_screen_list = [
+    'calendar','clock']
+  if (!default_home_screen_list.includes(default_home_screen)) {
+    default_home_screen = 'clock';
+  }
+
   const top_dock_calendar_view_choice_list = [
     'last open','present','day','week','month','year']
   if (!top_dock_calendar_view_choice_list.includes(top_dock_calendar_view_choice)) {
@@ -319,12 +324,45 @@ $('#config_import_button').on('click', function () {
       }
 
       if (typeof window.run_setup__functions === 'function') {
-        run_setup__functions();
+        get_data()
+
+        setTimeout(function(){
+          main_display_screen_window_scaling()
+          update_css_coloring()
+          unloadScrollBars()
+          Change_Display_Settings()
+          DoW()
+          top_dock_resize_events()
+          showTime()
+          grab_data()
+          hex()
+          home_display_settings() // settings display screen appearence for date, military time, greeting
+          ldi_case_toggle()
+          text_input_grey_out_function()
+          change_checkbox() // search box check mark
+          update_search_box_text()
+          web_search_updater()
+          $('#body_id').show()
+          new_day_clock_functions()
+          View_Changer()
+          // Display_Main_Screen()
+          setTimeout(function(){
+              tryInitializeColorPickers(color_background, color_accent_1, color_accent_2) // zc
+          },1000)
+          scheduleMidnightFunction() // re-run calendar setup at midnight
+          setTimeout(function(){
+              hamburger_color_changer() 
+              page_ready='yes'
+              // View_Changer()
+              top_dock_resize_events()
+          },20)          
+        })
       }
     };
 
     reader.readAsText(file);
   };
+
 
   input.click();
 });
