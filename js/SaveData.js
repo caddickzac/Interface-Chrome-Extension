@@ -251,12 +251,14 @@ window.grab_data = function grab_data(){
     top_dock_calendar_view_choice=$('#top_dock_calendar_view_choice').val()
     default_home_screen=$('#default_home_screen_view_choice').val()
     top_dock_hotkey_choice=$('#top_dock_hotkey_choice').val()
-
+    
 }
 
 window.store_data = function store_data(){
     // save labels
     chrome.storage.sync.set({
+        'page_count_stored': page_count, // how many times has extension been opened?
+
         'mt_settings_stored': mt_settings, // military time
         'sd_settings_stored': sd_settings, // show date
         'sg_settings_stored': sg_settings, // show greetings'

@@ -639,8 +639,26 @@ window.get_data = function get_data(){
     chrome.storage.sync.get(['top_dock_hotkey_choice_stored'], function(result) {
         const stored = result.top_dock_hotkey_choice_stored;
         const top_dock_hotkey_choice = stored || 'calendar';
-        $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice);  // ✅ Corrected
+        $('#top_dock_hotkey_choice').val(top_dock_hotkey_choice); 
     });
+
+
+    chrome.storage.sync.get(['page_count_stored'], function(result) {
+        let stored = result.page_count_stored;
+        page_count = (stored || 0) + 1;  // Increment count
+
+        // Save the updated value
+        chrome.storage.sync.set({ 'page_count_stored': page_count }, function() {
+            console.log("📈 page_count incremented to:", page_count);
+
+            // Optional: trigger behavior based on usage level
+            if (page_count <= 3) {
+                // Show tutorial, hints, welcome message, etc.
+                // showWelcomeHints();
+            }
+        });
+    });
+
 
     // console.log('get data function ended')
 }
