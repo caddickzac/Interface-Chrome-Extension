@@ -33,6 +33,9 @@ window.update_top_dock_input_settings = function update_top_dock_input_settings(
     else if($('#default_home_screen_view_choice').val()=='calendar'){
         default_home_screen = 'calendar'
     }
+    else if($('#default_home_screen_view_choice').val()=='quick launch'){
+        default_home_screen = 'quick launch'
+    }
 
     // top dock hotkey settings
     if($('#top_dock_hotkey_choice').val()=='clock'){

@@ -695,4 +695,29 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#top_dock_input').css('color', color_accent_2)
     $('#connect_google_calendar_button').css('color', color_accent_2)
     $('#config_import_message').css('background-color', color_accent_2)
+
+    // quick bookmarks
+    $('#bookmark_1_text').css('color', color_accent_2)
+    $('#bookmark_2_text').css('color', color_accent_2)
+    $('#bookmark_3_text').css('color', color_accent_2)
+    $('#bookmark_4_text').css('color', color_accent_2)
+    $('#bookmark_5_text').css('color', color_accent_2)
+    $('#bookmark_6_text').css('color', color_accent_2)
+    $('#bookmark_7_text').css('color', color_accent_2)
+    $('#bookmark_8_text').css('color', color_accent_2)
+    $('#bookmark_9_text').css('color', color_accent_2)
+    $('#bookmark_10_text').css('color', color_accent_2)
+    $('#bookmark_11_text').css('color', color_accent_2);
+    $('#bookmark_12_text').css('color', color_accent_2);
+    $('#bookmark_13_text').css('color', color_accent_2);
+    $('#bookmark_14_text').css('color', color_accent_2);
+    $('#bookmark_15_text').css('color', color_accent_2);
+    $('#bookmark_16_text').css('color', color_accent_2);
+    $('#bookmark_17_text').css('color', color_accent_2);
+    $('#bookmark_18_text').css('color', color_accent_2);
+    $('#bookmark_19_text').css('color', color_accent_2);
+    $('#bookmark_20_text').css('color', color_accent_2);
+
+    $('#bookmark_1_icon').css('border-color', color_accent_2)
+    $('#bookmark_2_icon').css('border-color', color_accent_2)
 }

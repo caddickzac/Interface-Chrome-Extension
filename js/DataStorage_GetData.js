@@ -634,6 +634,7 @@ window.get_data = function get_data(){
         const stored = result.default_home_screen_stored;
         const default_home_screen = stored || 'clock';
         $('#default_home_screen_view_choice').val(default_home_screen);
+        current_display=default_home_screen
     });
 
     chrome.storage.sync.get(['top_dock_hotkey_choice_stored'], function(result) {

@@ -13,6 +13,11 @@ window.Set_Main_Display_Variable = function Set_Main_Display_Variable(){
         save_data()
         update_website_names()
     }
+    else if(default_home_screen=='quick launch'){
+        current_display='quick launch'
+        save_data()
+        update_website_names()
+    }
 }
 
 window.show_clock = function show_clock(){
@@ -30,6 +35,7 @@ window.show_clock = function show_clock(){
     $('#screen2').hide()
     $('#top_dock_input').hide()
     $('#top_dock').hide()
+    $('#greeting_div').show()
     $('#screen1').show()
     $('#left_dock').show()
     $('#right_dock').show()
@@ -40,12 +46,48 @@ window.show_clock = function show_clock(){
     text_input_grey_out_function() // update greying out dock input labels
 }
 
+window.show_quick_launch_screen = function show_quick_launch_screen(){
+    // unloadScrollBars()
+    // $('#Greeting_Message').show()
+    
+    $('#Date_Display').hide()
+    
+    $('#settings_screen_main').hide()
+    $('#left_dock_input').hide()
+    $('#right_dock_input').hide()
+    $('#color_scheme_input').hide()
+    $('#greeting_div').hide()
+    $('#web_search_input').hide()
+    $('#top_dock_input').hide()
+    $('#top_dock').hide()
+    $('#left_dock').hide()
+    $('#right_dock').hide()
+    $('#Search_Greeting').hide()
+    $('#screen1').show() // main clock
+    $('#MyClockDisplay').show()
+    $('#MyClockDisplay_MT').show()
+    $('#meridies').show()
+    $('#screen2').show() // search bar
+
+    $('#screen1').css('padding-top', '5%') // add class to other view when this one isn't selected
+    $('#screen2').css('padding-top','0%')
+    $('#screen2').css('margin-top','2%')
+    $('#screen2').css('height', '70px')
+    $('#search_box').css('padding-top','0%')
+    $('#search_bar').show()
+    $('#bookmark_quick_links').show()
+    console.log('show quick launch')
+}
+
 window.Display_Main_Screen = function Display_Main_Screen(){
     if(default_home_screen=='clock'){
         show_clock()
     }
     else if(default_home_screen=='calendar'){
         show_top_dock()
+    }
+    else if(default_home_screen=='quick launch'){
+        show_quick_launch_screen()
     }
     
 }
@@ -67,6 +109,7 @@ window.Show_Settings_Screen = function Show_Settings_Screen(){
     $('#color_scheme_input').hide()
     $('#web_search_input').hide()
     $('#top_dock_input').hide()
+    $('#bookmark_quick_links').hide()
     ldi_case='lower'
     ldi_case_toggle()
     ldi_case_input_toggle() 
@@ -216,6 +259,12 @@ window.View_Changer = function View_Changer(){
         save_data()
         hide_top_dock()
         show_clock()
+    }
+    else if(current_display_temp=='quick launch'){
+        // zc
+        show_quick_launch_screen()
+        console.log('show quick launch!')
+
     }
     else if(current_display_temp=='search'){
         console.log('display: search')

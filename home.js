@@ -30,7 +30,7 @@ hexes_ready=''
 crd_current_selection='' 
 
 // variable that interacts with "View_Changer()" function
-current_display='clock' // (values: main, search, settings, left_dock_config, right_dock_config)
+// current_display='clock' // (values: main, search, settings, left_dock_config, right_dock_config)
 
 // Contra Animation
 contra_rdy='yes' // variable used as a gate so duplicate animations are not simultaneously run
@@ -848,6 +848,9 @@ $('#ham_icon').click(function(){
     else if(current_display=='top_dock'){
         current_display='settings'
     }
+    else if(current_display=='quick launch'){
+        current_display='settings'
+    }
 
     View_Changer()
 })
@@ -1239,6 +1242,7 @@ document.body.onkeydown = function(e){
                 top_dock_module_changer()
             } 
         }
+    }else if(current_display=='quick launch'){
     }
 }
 
@@ -2201,6 +2205,9 @@ document.body.onkeyup = function(e){
             else if(current_display=='top_dock'){
                 current_display='settings'
             }
+            else if(current_display=='quick launch'){
+                current_display='settings'
+            }
             setTimeout(function(){
                 View_Changer()
             },5)            
@@ -2301,6 +2308,7 @@ window.run_setup__functions = function run_setup__functions(){
     get_data()
 
     setTimeout(function(){
+        console.log('current display: ', current_display)
         main_display_screen_window_scaling()
         update_css_coloring()
         unloadScrollBars()
@@ -2327,8 +2335,8 @@ window.run_setup__functions = function run_setup__functions(){
         setTimeout(function(){
             hamburger_color_changer() 
             page_ready='yes'
-            View_Changer()
             top_dock_resize_events()
+            View_Changer()
         },20)
         
         // View_Changer()

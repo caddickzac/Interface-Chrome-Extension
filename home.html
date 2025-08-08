@@ -2973,7 +2973,7 @@
   <!-- Main display screen -->
   <div id='screen1' class='main_display_screen'>
       <!-- Day of Week, Month, Year -->
-      <div class='row' style='width:100%;'>
+      <div id='DMY' class='row' style='width:100%;'>
           <div class='col-sm-12' id="Date_Display">
               <span id="dayofweek_placeholder" class="dayofweek"></span>
           </div>
@@ -2995,7 +2995,7 @@
   </div> <!-- end: Main display screen -->
 
   <!-- Greeting message -->
-  <div class='row' style='width:100%; padding-top:4%'>
+  <div id='greeting_div' class='row' style='width:100%; padding-top:4%'>
       <div class='col-sm-12' id="">
           <span id='Greeting_Message' class='greeting'></span>
       </div>
@@ -3044,7 +3044,7 @@
       </div>
       
       <!-- Google Search Box -->
-      <div class='row' style='padding-top:4%'>
+      <div id='search_box' class='row' style='padding-top:4%'>
           <div class='col-sm-12'>
               <div class="form-group">
                   <center>
@@ -3056,19 +3056,231 @@
   </div> <!-- End: Google Search Screen -->
 
   <!-- bookmark_clickbar -->
-  <div id="bookmark_quick_links" style='display: none ; text-align:center; color:yellow'>
+  <div id="bookmark_quick_links" style='display:none; ' class='bookmark_quick_links_bar'>
+
     <!-- bookmark #1 -->
-    <span id='bookmark_1'>
-      <span id='bookmark_1_circle' class="bookmark_class">
-        <span id='bookmark_1_favicon'>
-           <img src="https://www.google.com/s2/favicons?domain=nytimes.com&sz=128" alt="NYT Favicon" style='width:15px'>
+    <center>
+      <span id='bookmark_1' class='bookmark_wrapper' style='display:'>
+        <span id='bookmark_1_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_1_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=nytimes.com&sz=128" alt="NYT Favicon" style=''>
         </span>
-      </span><br>
-      <span id='bookmark_1_text'>test</span>
-    </span>
+        <span id='bookmark_1_text' class='bookmark_text'>NY Times</span>
+      </span>
+    </center>
+
+    <!-- bookmark #2 -->
+    <center>
+      <span id='bookmark_2' class='bookmark_wrapper' style='display:'>
+        <span id='bookmark_2_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_2_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="github Favicon" style=''>
+        </span>
+        <span id='bookmark_2_text' class='bookmark_text'>github</span>
+      </span>
+    </center>
+
+    <!-- bookmark #3 -->
+    <center>
+      <span id='bookmark_3' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_3_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_3_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="youtube Favicon" style=''>
+        </span>
+        <span id='bookmark_3_text' class='bookmark_text'>YouTube</span>
+      </span>
+    </center>
+
+    <!-- bookmark #! -->
+    <!-- bookmark #4 -->
+    <center>
+      <span id='bookmark_4' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_4_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_4_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_4_text' class='bookmark_text'>4</span>
+      </span>
+    </center>
+
+    <!-- bookmark #5 -->
+    <center>
+      <span id='bookmark_5' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_5_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_5_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_5_text' class='bookmark_text'>5</span>
+      </span>
+    </center>
+
+    <!-- bookmark #6 -->
+    <center>
+      <span id='bookmark_6' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_6_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_6_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_6_text' class='bookmark_text'>6</span>
+      </span>
+    </center>
+
+    <!-- bookmark #7 -->
+    <center>
+      <span id='bookmark_7' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_7_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_7_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_7_text' class='bookmark_text'>7</span>
+      </span>
+    </center>
+
+    <!-- bookmark #8 -->
+    <center>
+      <span id='bookmark_8' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_8_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_8_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_8_text' class='bookmark_text'>8</span>
+      </span>
+    </center>
+
+    <!-- bookmark #9 -->
+    <center>
+      <span id='bookmark_9' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_9_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_9_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_9_text' class='bookmark_text'>9</span>
+      </span>
+    </center>
+
+    <!-- bookmark #10 -->
+    <center>
+      <span id='bookmark_10' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_10_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_10_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_10_text' class='bookmark_text'>10</span>
+      </span>
+    </center>
+
+    <!-- bookmark #11 -->
+    <center>
+      <span id='bookmark_11' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_11_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_11_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_11_text' class='bookmark_text'>11</span>
+      </span>
+    </center>
+
+    <!-- bookmark #12 -->
+    <center>
+      <span id='bookmark_12' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_12_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_12_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_12_text' class='bookmark_text'>12</span>
+      </span>
+    </center>
+
+    <!-- bookmark #13 -->
+    <center>
+      <span id='bookmark_13' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_13_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_13_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
+        </span>
+        <span id='bookmark_13_text' class='bookmark_text'>13</span>
+      </span>
+    </center>
 
 
-  </div> 
+    <!-- bookmark #14 -->
+    <center>
+      <span id='bookmark_14' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_14_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_14_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_14_text' class='bookmark_text'>14</span>
+      </span>
+    </center>
+
+    <!-- bookmark #15 -->
+    <center>
+      <span id='bookmark_15' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_15_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_15_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_15_text' class='bookmark_text'>15</span>
+      </span>
+    </center>
+
+    <!-- bookmark #16 -->
+    <center>
+      <span id='bookmark_16' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_16_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_16_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_16_text' class='bookmark_text'>16</span>
+      </span>
+    </center>
+
+    <!-- bookmark #17 -->
+    <center>
+      <span id='bookmark_17' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_17_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_17_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_17_text' class='bookmark_text'>17</span>
+      </span>
+    </center>
+
+    <!-- bookmark #18 -->
+    <center>
+      <span id='bookmark_18' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_18_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_18_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_18_text' class='bookmark_text'>18</span>
+      </span>
+    </center>
+
+    <!-- bookmark #19 -->
+    <center>
+      <span id='bookmark_19' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_19_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_19_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_19_text' class='bookmark_text'>19</span>
+      </span>
+    </center>
+
+    <!-- bookmark #20 -->
+    <center>
+      <span id='bookmark_20' class='bookmark_wrapper' style='display:none'>
+        <span id='bookmark_20_favicon' class='bookmark_icon_case'>
+           <img id='bookmark_20_icon' class="bookmark_icon" 
+           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
+        </span>
+        <span id='bookmark_20_text' class='bookmark_text'>20</span>
+      </span>
+    </center>
+
+  </div>  <!-- END: bookmark_clickbar -->
 
   <!-- Settings Screen -->
   <div id='settings_screen_main' class='settings_screen' style='display:none'>
@@ -5630,9 +5842,10 @@
             <div class='col-sm-5' style='padding:0px; padding-right:15px ;'>
               <br>
               <div class="form-group" style='height:18px;margin-top:10px; margin-bottom:0px; max-width:150px; width:95%'>
-                <select class="form-control" id="default_home_screen_view_choice" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                <select id="default_home_screen_view_choice" class="form-control" text='working' style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
                   <option>calendar</option>
-                  <option>clock</option>          
+                  <option>clock</option>
+                  <option>quick launch</option>          
                 </select>
 
               </div>

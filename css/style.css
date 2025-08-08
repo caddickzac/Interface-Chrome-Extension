@@ -1439,25 +1439,60 @@
       user-select: none;
   }
 
-  .bookmark_class {
-    display: inline-block;     /* necessary for spans */
-    width: 60px;               /* circle width */
-    height: 60px;              /* circle height */
-    line-height: 60px;         /* centers text vertically */
-    text-align: center;        /* centers text horizontally */
-    border-radius: 50%;        /* makes it a circle */
-    border: 2px solid black;
-    background-color: white;
-    color: white;
-    font-weight: bold;
-    font-family: sans-serif;
+  .bookmark_quick_links_bar{
+    /*border-radius: 6%; */
+    /*border:2px solid red;*/
+    /*background-color: red;*/
+    width:80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;          /* allow multiple rows */
+    justify-content: center;  /* center items horizontally */
+    gap: 10px;  
+    flex: 0 0 calc(10% - 10px); /* 10 across with gap */
   }
 
-  .bookmark_class img {
-    padding-top:3px;
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-}
+  .bookmark_wrapper {
+    border-radius: 5%; 
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;       /* Stack icon on top of text */
+    justify-content: space-between; /* Push text to bottom */
+    align-items: center;          /* Center horizontally */
+    /*border: 2px solid black;*/
+    /*background-color: red;*/
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+
+  .bookmark_icon_case {
+    margin-top: 3px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;      /* Center icon inside case */
+    align-items: center;
+    background-color: white;
+    
+  }
+
+  .bookmark_icon {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+  }
+
+  .bookmark_text {
+    font-size: 12px;
+    text-align: center;
+    color: yellow;
+  }
+
+ 
 
 </style>
