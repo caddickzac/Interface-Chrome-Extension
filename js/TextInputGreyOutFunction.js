@@ -2613,4 +2613,35 @@ window.text_input_grey_out_function = function text_input_grey_out_function(){
         $('#ws_6_url_input').css('background-color', '#FFFFFF')
         $('#ws_6_url_input').css('color', '#303030')
     }
+    // quick launch bookmarks
+    function updateQuickLaunchBookmarkInputs() {
+        for (let i = 1; i <= 20; i++) {
+            let $labelInput = $(`#bk_${i}_label_input`);
+            let $websiteInput = $(`#bk_${i}_website_input`);
+
+            function applyPlaceholderStyle($input) {
+                if ($input.val().trim() === '') {
+                    $input.css({
+                        'background-color': '#8D8D8D',
+                        'color': '#000000'
+                    }).addClass('input_placeholder');
+                } else {
+                    $input.css({
+                        'background-color': '',
+                        'color': ''
+                    }).removeClass('input_placeholder');
+                }
+            }
+
+            // Check both immediately
+            applyPlaceholderStyle($labelInput);
+            applyPlaceholderStyle($websiteInput);
+
+            // Also listen for changes on both
+            $labelInput.on('input', () => applyPlaceholderStyle($labelInput));
+            $websiteInput.on('input', () => applyPlaceholderStyle($websiteInput));
+        }
+    }
+    updateQuickLaunchBookmarkInputs();
+
 }

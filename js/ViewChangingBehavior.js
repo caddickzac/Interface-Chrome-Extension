@@ -2,6 +2,21 @@
 // View Changing Behavior // 
 ////////////////////////////
 
+function quick_launch_css_changes(){
+    $('#screen1').css('padding-top', '5%') // add class to other view when this one isn't selected
+    $('#screen2').css('padding-top','0%')
+    $('#screen2').css('margin-top','2%')
+    $('#screen2').css('height', '70px')
+    $('#search_box').css('padding-top','0%')
+}
+
+function undo_quick_launch_css_changes(){
+    $('#screen1').addClass('main_display_screen')
+    $('#screen2').addClass('background2')
+    $('#search_box').css('padding-top','4%')
+    $('#greeting_div').show()
+}
+
 window.Set_Main_Display_Variable = function Set_Main_Display_Variable(){
     if(default_home_screen=='calendar'){
         current_display='top_dock'
@@ -42,6 +57,7 @@ window.show_clock = function show_clock(){
     $('#right_dock').show()
     name = $("#name_input").val()
     hide_top_dock()
+    undo_quick_launch_css_changes()
     disable_arrow_keys='no'
     Change_Display_Settings()
     text_input_grey_out_function() // update greying out dock input labels
@@ -69,15 +85,10 @@ window.show_quick_launch_screen = function show_quick_launch_screen(){
     $('#MyClockDisplay_MT').show()
     $('#meridies').show()
     $('#screen2').show() // search bar
-
-    $('#screen1').css('padding-top', '5%') // add class to other view when this one isn't selected
-    $('#screen2').css('padding-top','0%')
-    $('#screen2').css('margin-top','2%')
-    $('#screen2').css('height', '70px')
-    $('#search_box').css('padding-top','0%')
     $('#search_bar').show()
     update_quick_launch_bookmarks()
     $('#bookmark_quick_links').show()
+    quick_launch_css_changes()
 }
 
 window.Display_Main_Screen = function Display_Main_Screen(){
@@ -112,6 +123,7 @@ window.Show_Settings_Screen = function Show_Settings_Screen(){
     $('#web_search_input').hide()
     $('#top_dock_input').hide()
     $('#bookmark_quick_links').hide()
+    undo_quick_launch_css_changes()
     ldi_case='lower'
     ldi_case_toggle()
     ldi_case_input_toggle() 
@@ -334,6 +346,7 @@ window.View_Changer = function View_Changer(){
         $('#search_bar').hide()
         $('#bookmark_quick_links').hide()
         $('#quick_launch_bookmark_settings').show()
+        text_input_grey_out_function()
     }
     disable_arrow_keys_function()
 }

@@ -23,11 +23,8 @@ window.update_quick_launch_bookmark_labels = function update_quick_launch_bookma
 	$('#bookmark_20_text').text(bk_20_label)
 }
 
-function update_quick_launch_bookmark_websites(){
 
-}
-
-function update_quick_launch_bookmark_icons() {
+window.update_quick_launch_bookmark_icons = function update_quick_launch_bookmark_icons() {
   const prefix = "https://www.google.com/s2/favicons?domain=";
   const suffix = "&sz=128";
 
@@ -183,9 +180,8 @@ window.show_hide_quick_launch_bookmarks = function show_hide_quick_launch_bookma
 	}
 }
 
-function update_quick_launch_bookmarks(){
+window.update_quick_launch_bookmarks = function update_quick_launch_bookmarks(){
 	update_quick_launch_bookmark_labels()
-	update_quick_launch_bookmark_websites()
 	update_quick_launch_bookmark_icons()
 	show_hide_quick_launch_bookmarks()
 }

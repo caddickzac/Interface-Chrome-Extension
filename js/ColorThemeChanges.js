@@ -17,6 +17,9 @@ window.update_css_coloring = function update_css_coloring(){ // functions like t
 
     // hamburger icon
     hamburger_color_changer()
+
+    // quick launch bookmark icon
+    initBookmarkIconHover()
 }
 
 window.hex_empty_check = function hex_empty_check(){

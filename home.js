@@ -1323,6 +1323,9 @@ document.body.onkeyup = function(e){
         if(current_display=='web_search'){
             text_input_grey_out_function()
         }
+        if(current_display=='quick launch settings'){
+            text_input_grey_out_function()
+        }
 
         // Control modifer off
         if(e.keyCode == 17){
