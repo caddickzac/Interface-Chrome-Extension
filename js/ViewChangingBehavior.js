@@ -203,6 +203,10 @@ window.show_top_dock = function show_top_dock(){
     $('#about_screen').hide()
     $('#color_scheme_input').hide()
     $('#web_search_input').hide()
+    $('#MyClockDisplay_MT').hide()
+    $('#search_bar').hide()
+    $('#bookmark_quick_links').hide()
+    undo_quick_launch_css_changes()
 
     if(top_dock_animation=='yes'){
         $('#top_dock').removeClass('top_docker_state1')

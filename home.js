@@ -990,7 +990,6 @@ function present_timeline_tick_time_labeler(){
 }
 
 function update_date_labels_on_new_day(){
-    //zcc
     $('#top_dock_date_DoW').text() // 
     $('#top_dock_date_MDY').text()
     $('#present_view_date_DoW').text() // 
@@ -1002,7 +1001,6 @@ function update_date_labels_on_new_day(){
 
 // Top Dock: Week View header date range
 
-// zccc
 function week_view_header_date_change(){
     check_if_date_crosses_two_months()
     if(week_date_range_crosses_two_months=="yes_current_future"){
@@ -1293,7 +1291,8 @@ document.body.onkeydown = function(e){
 // Key release commands
 document.body.onkeyup = function(e){
     if(page_ready=='yes'){ // blocks any keys from working if 'no'
-
+        page_ready='no'
+        
         if(current_display=='left_dock_config'){
             text_input_grey_out_function()
 
@@ -1324,6 +1323,7 @@ document.body.onkeyup = function(e){
         if(current_display=='quick launch settings'){
             text_input_grey_out_function()
         }
+        
 
         // Control modifer off
         if(e.keyCode == 17){
@@ -1473,14 +1473,45 @@ document.body.onkeyup = function(e){
         // When top arrow 
         // zc
         if(e.keyCode == 38){
-            // switch between clock and top dock when 'top arrow' is pressed
-            if (current_display == 'clock' || current_display == 'top_dock') {
+            if(current_display=='clock'){
                 top_dock_animation='yes'
                 e.preventDefault(); // prevent page scroll
-                current_display = (current_display === 'clock') ? 'top_dock' : 'clock';
+                current_display = 'top_dock'
                 View_Changer()
                 top_dock_animation='no'
             }
+
+            else if(current_display=='quick launch'){
+                current_display = 'top_dock'
+                top_dock_animation='yes'
+                View_Changer()
+                // top_dock_animation='no'
+            }
+            else if(current_display=='top_dock'){
+                top_dock_animation='no'
+                e.preventDefault(); // prevent page scroll
+                if(default_home_screen=='clock'){
+                    current_display = 'clock'
+                } // 
+                else if(default_home_screen=='quick launch'){
+                    current_display = 'quick launch'
+                }
+                else if(default_home_screen=='calendar'){
+                    current_display = 'clock'
+                }
+                View_Changer()
+                top_dock_animation='yes'
+            }
+
+
+            // switch between clock and top dock when 'top arrow' is pressed
+            // if (current_display == 'clock' || current_display == 'top_dock') {
+            //     top_dock_animation='yes'
+            //     e.preventDefault(); // prevent page scroll
+            //     current_display = (current_display === 'clock') ? 'top_dock' : 'clock';
+            //     View_Changer()
+            //     top_dock_animation='no'
+            // }
         }
 
         // When right arrow is let go"," right dock disappears
@@ -2273,6 +2304,7 @@ document.body.onkeyup = function(e){
             },5)            
         }
     }
+    page_ready='yes'
 }
 
 
@@ -2364,7 +2396,6 @@ window.run_setup__functions = function run_setup__functions(){
     get_data()
 
     setTimeout(function(){
-        console.log('current display: ', current_display)
         main_display_screen_window_scaling()
         update_css_coloring()
         unloadScrollBars()
