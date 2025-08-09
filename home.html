@@ -40,6 +40,7 @@
   <script src="js/ColorThemeChanges.js"></script>
   <script src="js/EasterEgg.js"></script>
   <script src="js/color_pickr.js"></script>
+  <script src="js/QuickLaunchBookmarks.js"></script>
 
 
   <!--  JS: core logic -->
@@ -3055,230 +3056,504 @@
       </div>
   </div> <!-- End: Google Search Screen -->
 
+  <!-- edit quick launch bookmarks -->
+  <div id='quick_launch_bookmark_settings' class='quick_launch_bookmark_settings_class'>
+
+    <center>
+    <div class='config_left_dock_header' style='padding-bottom:0px; font-family: Book Antiqua;'><h1>Configure Quick Launch Bookmarks</h1></div>
+    </center>
+
+    <div class='row' style='width:95%; margin-left:2.5%; margin-top:2%'>
+      <div class='col-sm-4' style='background-color:; left:0px'>
+        Instructions:
+      </div>
+
+      <div class='col-sm-8' style='background-color:; margin:0px'>
+        <div id='bk_header' class='row' style='width:100%; border-bottom:1.5px solid #808080'>
+            <div id='bk_0'class='col-sm-1' style='text-align:center'>#</div>
+            <div class='col-sm-5' style='left:-.5%; max-width:42%; text-align:center; background-color:'>label</div>
+            <div class='col-sm-6' style='left:-.5%; max-width:50%; text-align:center'>website</div>
+        </div>
+
+        <!-- 1 -->
+        <div id='bk_1' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>1</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_1_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_1_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div id='bk_2' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>2</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_2_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_2_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div id='bk_3' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>3</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_3_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_3_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div id='bk_4' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>4</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_4_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_4_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div id='bk_5' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>5</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_5_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_5_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div id='bk_6' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>6</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_6_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_6_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div id='bk_7' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>7</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_7_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_7_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div id='bk_8' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>8</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_8_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_8_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div id='bk_9' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>9</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_9_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_9_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div id='bk_10' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>10</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_10_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_10_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div id='bk_11' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>11</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_11_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_11_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div id='bk_12' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>12</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_12_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_12_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div id='bk_13' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>13</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_13_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_13_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div id='bk_14' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>14</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_14_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_14_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div id='bk_15' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>15</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_15_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_15_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 16 -->
+        <div id='bk_16' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>16</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_16_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_16_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 17 -->
+        <div id='bk_17' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>17</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_17_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_17_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 18 -->
+        <div id='bk_18' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>18</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_18_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_18_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 19 -->
+        <div id='bk_19' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>19</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_19_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_19_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+        <!-- 20 -->
+        <div id='bk_20' class='row' style='margin-top:'>
+          <!-- letter -->
+          <div class='col-sm-1' style='padding:0px; padding-top:4px; text-align:center'>20</div>
+          <!-- label -->
+          <div class='col-sm-5' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_20_label_input" placeholder="label" maxlength='15' style='font-size:.8em; margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;'>
+          </div>
+          <!-- website -->
+          <div class='col-sm-6' style='padding:0px;padding-right:15px;'>
+              <input class="form-control" id="bk_20_website_input" placeholder="https://www.example.com" style='margin-top:5px; width:95%; margin-bottom:1px; height:18px; border-color:#BFBFBF;font-size:.8em;'>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <center>
+      <div id='bk_finished' class='finished_button' style='margin-top:15px;'>
+        Finished
+      </div>
+    </center>
+
+  </div>
+
   <!-- bookmark_clickbar -->
   <div id="bookmark_quick_links" style='display:none; ' class='bookmark_quick_links_bar'>
 
+    <div id='edit_quick_launch_bookmarks' class='edit_bookmarks'>
+      <img id="bookmark_image_off" src='Images/bookmark_off.png'  height="20px" style='display:; '/>
+      <img id="bookmark_image_on" src='Images/bookmark_on.png'  height="20px" style='display: none; '/>
+    </div>
+    <!-- <span id='edit_quick_launch_bookmarks' >edit bookmarks</span> -->
+
     <!-- bookmark #1 -->
-    <center>
-      <span id='bookmark_1' class='bookmark_wrapper' style='display:'>
-        <span id='bookmark_1_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_1_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=nytimes.com&sz=128" alt="NYT Favicon" style=''>
-        </span>
-        <span id='bookmark_1_text' class='bookmark_text'>NY Times</span>
+    <span id='bookmark_1' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_1_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_1_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=nytimes.com&sz=128" alt="NYT Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_1_text' class='bookmark_text'>NY Times</span>
+    </span>
 
     <!-- bookmark #2 -->
-    <center>
-      <span id='bookmark_2' class='bookmark_wrapper' style='display:'>
-        <span id='bookmark_2_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_2_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="github Favicon" style=''>
-        </span>
-        <span id='bookmark_2_text' class='bookmark_text'>github</span>
+    <span id='bookmark_2' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_2_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_2_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=github.com&sz=128" alt="github Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_2_text' class='bookmark_text'>github</span>
+    </span>
 
     <!-- bookmark #3 -->
-    <center>
-      <span id='bookmark_3' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_3_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_3_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="youtube Favicon" style=''>
-        </span>
-        <span id='bookmark_3_text' class='bookmark_text'>YouTube</span>
+    <span id='bookmark_3' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_3_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_3_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="youtube Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_3_text' class='bookmark_text'>YouTube</span>
+    </span>
 
-    <!-- bookmark #! -->
     <!-- bookmark #4 -->
-    <center>
-      <span id='bookmark_4' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_4_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_4_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_4_text' class='bookmark_text'>4</span>
+    <span id='bookmark_4' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_4_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_4_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_4_text' class='bookmark_text'>4</span>
+    </span>
 
     <!-- bookmark #5 -->
-    <center>
-      <span id='bookmark_5' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_5_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_5_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_5_text' class='bookmark_text'>5</span>
+    <span id='bookmark_5' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_5_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_5_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_5_text' class='bookmark_text'>5</span>
+    </span>
 
     <!-- bookmark #6 -->
-    <center>
-      <span id='bookmark_6' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_6_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_6_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_6_text' class='bookmark_text'>6</span>
+    <span id='bookmark_6' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_6_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_6_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_6_text' class='bookmark_text'>6</span>
+    </span>
 
     <!-- bookmark #7 -->
-    <center>
-      <span id='bookmark_7' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_7_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_7_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_7_text' class='bookmark_text'>7</span>
+    <span id='bookmark_7' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_7_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_7_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_7_text' class='bookmark_text'>7</span>
+    </span>
 
     <!-- bookmark #8 -->
-    <center>
-      <span id='bookmark_8' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_8_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_8_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_8_text' class='bookmark_text'>8</span>
+    <span id='bookmark_8' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_8_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_8_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_8_text' class='bookmark_text'>8</span>
+    </span>
 
     <!-- bookmark #9 -->
-    <center>
-      <span id='bookmark_9' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_9_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_9_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_9_text' class='bookmark_text'>9</span>
+    <span id='bookmark_9' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_9_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_9_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_9_text' class='bookmark_text'>9</span>
+    </span>
 
     <!-- bookmark #10 -->
-    <center>
-      <span id='bookmark_10' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_10_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_10_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_10_text' class='bookmark_text'>10</span>
+    <span id='bookmark_10' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_10_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_10_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_10_text' class='bookmark_text'>10</span>
+    </span>
 
     <!-- bookmark #11 -->
-    <center>
-      <span id='bookmark_11' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_11_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_11_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_11_text' class='bookmark_text'>11</span>
+    <span id='bookmark_11' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_11_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_11_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_11_text' class='bookmark_text'>11</span>
+    </span>
 
     <!-- bookmark #12 -->
-    <center>
-      <span id='bookmark_12' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_12_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_12_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_12_text' class='bookmark_text'>12</span>
+    <span id='bookmark_12' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_12_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_12_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
+      <span id='bookmark_12_text' class='bookmark_text'>12</span>
+    </span>
 
     <!-- bookmark #13 -->
-    <center>
-      <span id='bookmark_13' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_13_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_13_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
-        </span>
-        <span id='bookmark_13_text' class='bookmark_text'>13</span>
+    <span id='bookmark_13' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_13_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_13_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon">
       </span>
-    </center>
-
+      <span id='bookmark_13_text' class='bookmark_text'>13</span>
+    </span>
 
     <!-- bookmark #14 -->
-    <center>
-      <span id='bookmark_14' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_14_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_14_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_14_text' class='bookmark_text'>14</span>
+    <span id='bookmark_14' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_14_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_14_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_14_text' class='bookmark_text'>14</span>
+    </span>
 
     <!-- bookmark #15 -->
-    <center>
-      <span id='bookmark_15' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_15_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_15_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_15_text' class='bookmark_text'>15</span>
+    <span id='bookmark_15' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_15_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_15_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_15_text' class='bookmark_text'>15</span>
+    </span>
 
     <!-- bookmark #16 -->
-    <center>
-      <span id='bookmark_16' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_16_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_16_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_16_text' class='bookmark_text'>16</span>
+    <span id='bookmark_16' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_16_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_16_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_16_text' class='bookmark_text'>16</span>
+    </span>
 
     <!-- bookmark #17 -->
-    <center>
-      <span id='bookmark_17' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_17_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_17_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_17_text' class='bookmark_text'>17</span>
+    <span id='bookmark_17' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_17_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_17_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_17_text' class='bookmark_text'>17</span>
+    </span>
 
     <!-- bookmark #18 -->
-    <center>
-      <span id='bookmark_18' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_18_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_18_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_18_text' class='bookmark_text'>18</span>
+    <span id='bookmark_18' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_18_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_18_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_18_text' class='bookmark_text'>18</span>
+    </span>
 
     <!-- bookmark #19 -->
-    <center>
-      <span id='bookmark_19' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_19_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_19_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_19_text' class='bookmark_text'>19</span>
+    <span id='bookmark_19' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_19_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_19_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_19_text' class='bookmark_text'>19</span>
+    </span>
 
     <!-- bookmark #20 -->
-    <center>
-      <span id='bookmark_20' class='bookmark_wrapper' style='display:none'>
-        <span id='bookmark_20_favicon' class='bookmark_icon_case'>
-           <img id='bookmark_20_icon' class="bookmark_icon" 
-           src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
-        </span>
-        <span id='bookmark_20_text' class='bookmark_text'>20</span>
+    <span id='bookmark_20' class='bookmark_wrapper' style='display:none'>
+      <span id='bookmark_20_favicon' class='bookmark_icon_case'>
+         <img id='bookmark_20_icon' class="bookmark_icon" 
+         src="https://www.google.com/s2/favicons?domain=youtube.com&sz=128" alt="Favicon" style=''>
       </span>
-    </center>
+      <span id='bookmark_20_text' class='bookmark_text'>20</span>
+    </span>
 
   </div>  <!-- END: bookmark_clickbar -->
 
@@ -3545,7 +3820,7 @@
           
           <div class='col-sm-8' style=''>
               <!-- toggle left dock table inputs -->
-              <div id='left_dock_input_table_heading' class='row' style='border-bottom:1.5px solid #808080; display:block;text-align:left;'>
+              <div id='left_dock_input_table_heading' class='row' style='border-bottom:1.5px solid #808080; display:block;text-align:left; color:black'>
                   <!-- lower case toggle -->
                   <div class='col-sm-1' style='padding:0px;padding-left:5px; margin:0px; top:2px; '>
                       <div id="ldi_lowercase_toggle" class="parallelogram_lowercase_selected" >

@@ -375,6 +375,26 @@ window.update_css_background_color = function update_css_background_color(){
     $('#week_view_time_tracker_line_background').css('border-color', color_background)
     $('#week_view_friday_date').css('color', color_background)
     $('#config_import_message').css('color', color_background)
+    $('#bookmark_1_favicon').css('background-color', color_background);
+    $('#bookmark_2_favicon').css('background-color', color_background);
+    $('#bookmark_3_favicon').css('background-color', color_background);
+    $('#bookmark_4_favicon').css('background-color', color_background);
+    $('#bookmark_5_favicon').css('background-color', color_background);
+    $('#bookmark_6_favicon').css('background-color', color_background);
+    $('#bookmark_7_favicon').css('background-color', color_background);
+    $('#bookmark_8_favicon').css('background-color', color_background);
+    $('#bookmark_9_favicon').css('background-color', color_background);
+    $('#bookmark_10_favicon').css('background-color', color_background);
+    $('#bookmark_11_favicon').css('background-color', color_background);
+    $('#bookmark_12_favicon').css('background-color', color_background);
+    $('#bookmark_13_favicon').css('background-color', color_background);
+    $('#bookmark_14_favicon').css('background-color', color_background);
+    $('#bookmark_15_favicon').css('background-color', color_background);
+    $('#bookmark_16_favicon').css('background-color', color_background);
+    $('#bookmark_17_favicon').css('background-color', color_background);
+    $('#bookmark_18_favicon').css('background-color', color_background);
+    $('#bookmark_19_favicon').css('background-color', color_background);
+    $('#bookmark_20_favicon').css('background-color', color_background);
 }
 
 
@@ -610,7 +630,12 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#top_dock_input').css('border-color', color_accent_1)
     $('#connect_google_calendar_button').css('border-color', color_accent_1)
     $('#top_dock_input_underline').css('border-color', color_accent_1)
-    $('#top_dock_input_finished').css('border-color', color_accent_1)  
+    $('#top_dock_input_finished').css('border-color', color_accent_1)
+    $('#edit_quick_launch_bookmarks').css('color', color_accent_1)
+    $('#quick_launch_bookmark_settings').css('border-color', color_accent_1)
+    $('#bk_finished').css('border-color', color_accent_1)
+    
+
 }
 
 window.update_css_color_accent_2 = function update_css_color_accent_2(){
@@ -717,7 +742,26 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#bookmark_18_text').css('color', color_accent_2);
     $('#bookmark_19_text').css('color', color_accent_2);
     $('#bookmark_20_text').css('color', color_accent_2);
+    $('#bookmark_1_favicon').css('border-color', color_accent_2);
+    $('#bookmark_2_favicon').css('border-color', color_accent_2);
+    $('#bookmark_3_favicon').css('border-color', color_accent_2);
+    $('#bookmark_4_favicon').css('border-color', color_accent_2);
+    $('#bookmark_5_favicon').css('border-color', color_accent_2);
+    $('#bookmark_6_favicon').css('border-color', color_accent_2);
+    $('#bookmark_7_favicon').css('border-color', color_accent_2);
+    $('#bookmark_8_favicon').css('border-color', color_accent_2);
+    $('#bookmark_9_favicon').css('border-color', color_accent_2);
+    $('#bookmark_10_favicon').css('border-color', color_accent_2);
+    $('#bookmark_11_favicon').css('border-color', color_accent_2);
+    $('#bookmark_12_favicon').css('border-color', color_accent_2);
+    $('#bookmark_13_favicon').css('border-color', color_accent_2);
+    $('#bookmark_14_favicon').css('border-color', color_accent_2);
+    $('#bookmark_15_favicon').css('border-color', color_accent_2);
+    $('#bookmark_16_favicon').css('border-color', color_accent_2);
+    $('#bookmark_17_favicon').css('border-color', color_accent_2);
+    $('#bookmark_18_favicon').css('border-color', color_accent_2);
+    $('#bookmark_19_favicon').css('border-color', color_accent_2);
+    $('#bookmark_20_favicon').css('border-color', color_accent_2);
+    $('#quick_launch_bookmark_settings').css('color', color_accent_2)
 
-    $('#bookmark_1_icon').css('border-color', color_accent_2)
-    $('#bookmark_2_icon').css('border-color', color_accent_2)
 }

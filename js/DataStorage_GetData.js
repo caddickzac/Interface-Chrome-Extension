@@ -660,6 +660,26 @@ window.get_data = function get_data(){
         });
     });
 
+    // quick launch bookmarks
+    // labels
+    for (let i = 1; i <= 20; i++) {
+      const key = `bk_${i}_label_stored`;
+      chrome.storage.sync.get([key], function (result) {
+        const storedValue = result[key];
+        const value = storedValue || '';
+        $(`#bk_${i}_label_input`).val(value);
+      });
+    }
+    // websites
+    for (let i = 1; i <= 20; i++) {
+      const key = `bk_${i}_website_stored`;
+      chrome.storage.sync.get([key], function (result) {
+        const storedValue = result[key];
+        const value = storedValue || '';
+        $(`#bk_${i}_website_input`).val(value);
+      });
+    }
+
 
     // console.log('get data function ended')
 }

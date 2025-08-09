@@ -1169,3 +1169,361 @@ $(function() {
     }
   });
 });
+
+$(function() {
+  $("#bk_1_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_2_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_3_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_4_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_5_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_6_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_7_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_8_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_9_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_10_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+$(function() {
+  $("#bk_11_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_12_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_13_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_14_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_15_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_16_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_17_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_18_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_19_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_20_label_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_1_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_2_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_3_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_4_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_5_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_6_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_7_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_8_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_9_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_10_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+$(function() {
+  $("#bk_11_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_12_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_13_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_14_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_15_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_16_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_17_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_18_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_19_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});
+
+$(function() {
+  $("#bk_20_website_input").keyup(function(e) {
+    const regex = /^[a-zA-Z]+$/;
+    if (!regex.test(this.value)) {
+      this.value = this.value.replace(/[`]/g, ''); // note: added 'g' to remove all backticks
+    }
+  });
+});

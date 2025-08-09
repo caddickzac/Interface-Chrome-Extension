@@ -640,6 +640,15 @@ $('#top_dock_input_finished').click(function(){
     // Display_Main_Screen()
 })
 
+$('#bk_finished').click(function(){
+    save_data()
+    current_display='quick launch'
+    View_Changer()
+    // Display_Main_Screen()
+})
+
+
+
 // show color scheme input 
 $('#color_scheme_change').click(function(){
     current_display='color_scheme'
@@ -654,6 +663,11 @@ $('#color_scheme_input_finished').click(function(){
 
 $('#web_search_input_finished').click(function(){
     current_display='settings'
+    View_Changer()
+})
+
+$('#edit_quick_launch_bookmarks').click(function(){
+    current_display='quick launch settings'
     View_Changer()
 })
 
@@ -873,6 +887,29 @@ $(".ham_class").mouseover(function(){
     HI_Hover_No_Highlight()
 });
 
+
+
+// quick launch bookmarks click behavior
+$('#bookmark_1').click(function(){window.location.replace(bk_1_website)})
+$('#bookmark_2').click(function(){window.location.replace(bk_2_website)})
+$('#bookmark_3').click(function(){window.location.replace(bk_3_website)})
+$('#bookmark_4').click(function(){window.location.replace(bk_4_website)})
+$('#bookmark_5').click(function(){window.location.replace(bk_5_website)})
+$('#bookmark_6').click(function(){window.location.replace(bk_6_website)})
+$('#bookmark_7').click(function(){window.location.replace(bk_7_website)})
+$('#bookmark_8').click(function(){window.location.replace(bk_8_website)})
+$('#bookmark_9').click(function(){window.location.replace(bk_9_website)})
+$('#bookmark_10').click(function(){window.location.replace(bk_10_website)})
+$('#bookmark_11').click(function(){window.location.replace(bk_11_website)})
+$('#bookmark_12').click(function(){window.location.replace(bk_12_website)})
+$('#bookmark_13').click(function(){window.location.replace(bk_13_website)})
+$('#bookmark_14').click(function(){window.location.replace(bk_14_website)})
+$('#bookmark_15').click(function(){window.location.replace(bk_15_website)})
+$('#bookmark_16').click(function(){window.location.replace(bk_16_website)})
+$('#bookmark_17').click(function(){window.location.replace(bk_17_website)})
+$('#bookmark_18').click(function(){window.location.replace(bk_18_website)})
+$('#bookmark_19').click(function(){window.location.replace(bk_19_website)})
+$('#bookmark_20').click(function(){window.location.replace(bk_20_website)})
 
 // this code creates "listening" function that runs when window size is changed. 
 document.getElementsByTagName("BODY")[0].onresize = function(){top_dock_resize_events()};
@@ -1243,6 +1280,13 @@ document.body.onkeydown = function(e){
             } 
         }
     }else if(current_display=='quick launch'){
+        // When bottom arrow is held, right dock appears 
+        if(e.keyCode==40){
+            $('#bottom_dock').show()
+            $('#bottom_dock').removeClass('bottom_docker_state1')
+            $('#bottom_dock').addClass('bottom_docker_state2')
+            console.log('bottom_docker_state2')      
+        }
     }
 }
 
@@ -1354,7 +1398,16 @@ document.body.onkeyup = function(e){
                     Google_Search()
                     'searching internet'
                 }
-            }            
+            }
+            if(current_display=='quick launch'){
+                if($('#search_bar').val()==""){
+                }
+                else{
+                    Google_Search()
+                    'searching internet'
+                }
+
+            }
             if(current_display=='color_scheme'){
                 $('#color_scheme_custom_submit').click()
             }
@@ -1401,6 +1454,9 @@ document.body.onkeyup = function(e){
                 save_data()
                 update_website_names()
                 current_display='settings'
+            }
+            else if(current_display=='quick launch settings'){
+                Set_Main_Display_Variable()
             }
             View_Changer()
         }
@@ -2208,6 +2264,9 @@ document.body.onkeyup = function(e){
             else if(current_display=='quick launch'){
                 current_display='settings'
             }
+            else if(current_display=='quick launch settings'){
+                Set_Main_Display_Variable()
+            }
             setTimeout(function(){
                 View_Changer()
             },5)            
@@ -2216,11 +2275,7 @@ document.body.onkeyup = function(e){
 }
 
 
-// $(document).on('click', '#top_dock_view_header_year', function() {
-//     current_top_dock_module = 'year';
-//     top_dock_module_changer();
-//     console.log('clicked top dock: year');
-// });
+
 
 
 $('#top_dock_view_header_year').click(function(){

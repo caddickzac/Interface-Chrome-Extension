@@ -17,12 +17,24 @@ for (let i = 0; i <= 9; i++) {
 dockKeys.push(
   'ws_1_website', 'ws_2_website', 'ws_3_website', 'ws_4_website', 'ws_5_website', 'ws_6_website',
   'ws_1_url', 'ws_2_url', 'ws_3_url', 'ws_4_url', 'ws_5_url', 'ws_6_url',
+
+  'bk_1_label','bk_2_label','bk_3_label','bk_4_label','bk_5_label',
+  'bk_6_label','bk_7_label','bk_8_label','bk_9_label','bk_10_label',
+  'bk_11_label','bk_12_label','bk_13_label','bk_14_label','bk_15_label',
+  'bk_16_label','bk_17_label','bk_18_label','bk_19_label','bk_20_label',
+
+  'bk_1_website','bk_2_website','bk_3_website','bk_4_website','bk_5_website',
+  'bk_6_website','bk_7_website','bk_8_website','bk_9_website','bk_10_website',
+  'bk_11_website','bk_12_website','bk_13_website','bk_14_website','bk_15_website',
+  'bk_16_website','bk_17_website','bk_18_website','bk_19_website','bk_20_website',
+
   'wsi_current_selection',
   'mt_settings', 'sd_settings', 'sg_settings',
   'theme', 
   'color_background', 'color_accent_1', 'color_accent_2',
   'name',
-  'default_home_screen', 'top_dock_calendar_view_choice', 'top_dock_hotkey_choice'  
+  'default_home_screen', 'top_dock_calendar_view_choice', 'top_dock_hotkey_choice',
+  'page_count' 
 );
 
 // 🧨 EXPORT
@@ -88,6 +100,12 @@ window.sanitizeImportedLabels = function sanitizeImportedLabels() {
       else if (/^ws_[1-6]_website$/.test(key) && value.length > 17) {
         window[key] = value.slice(0, 17);
       }
+
+      // quick launch bookmark lables → max 15
+      else if (/^bk_(?:[1-9]|1[0-9]|20)_label$/.test(key) && value.length > 15) {
+        window[key] = value.slice(0, 15);
+      }
+
 
       // website_* → no limit (ignored)
     }
@@ -253,7 +271,7 @@ window.data_value_problem_checking = function data_value_problem_checking(){
 
   // top dock inputs
   const default_home_screen_list = [
-    'calendar','clock']
+    'calendar','clock','quick launch']
   if (!default_home_screen_list.includes(default_home_screen)) {
     default_home_screen = 'clock';
   }

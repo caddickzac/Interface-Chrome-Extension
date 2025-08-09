@@ -251,6 +251,49 @@ window.grab_data = function grab_data(){
     top_dock_calendar_view_choice=$('#top_dock_calendar_view_choice').val()
     default_home_screen=$('#default_home_screen_view_choice').val()
     top_dock_hotkey_choice=$('#top_dock_hotkey_choice').val()
+
+    // quick launch bookmarks
+    bk_1_label=$('#bk_1_label_input').val()
+    bk_2_label=$('#bk_2_label_input').val()
+    bk_3_label=$('#bk_3_label_input').val()
+    bk_4_label=$('#bk_4_label_input').val()
+    bk_5_label=$('#bk_5_label_input').val()
+    bk_6_label=$('#bk_6_label_input').val()
+    bk_7_label=$('#bk_7_label_input').val()
+    bk_8_label=$('#bk_8_label_input').val()
+    bk_9_label=$('#bk_9_label_input').val()
+    bk_10_label=$('#bk_10_label_input').val()
+    bk_11_label=$('#bk_11_label_input').val()
+    bk_12_label=$('#bk_12_label_input').val()
+    bk_13_label=$('#bk_13_label_input').val()
+    bk_14_label=$('#bk_14_label_input').val()
+    bk_15_label=$('#bk_15_label_input').val()
+    bk_16_label=$('#bk_16_label_input').val()
+    bk_17_label=$('#bk_17_label_input').val()
+    bk_18_label=$('#bk_18_label_input').val()
+    bk_19_label=$('#bk_19_label_input').val()
+    bk_20_label=$('#bk_20_label_input').val()
+
+    bk_1_website=$('#bk_1_website_input').val()
+    bk_2_website=$('#bk_2_website_input').val()
+    bk_3_website=$('#bk_3_website_input').val()
+    bk_4_website=$('#bk_4_website_input').val()
+    bk_5_website=$('#bk_5_website_input').val()
+    bk_6_website=$('#bk_6_website_input').val()
+    bk_7_website=$('#bk_7_website_input').val()
+    bk_8_website=$('#bk_8_website_input').val()
+    bk_9_website=$('#bk_9_website_input').val()
+    bk_10_website=$('#bk_10_website_input').val()
+    bk_11_website=$('#bk_11_website_input').val()
+    bk_12_website=$('#bk_12_website_input').val()
+    bk_13_website=$('#bk_13_website_input').val()
+    bk_14_website=$('#bk_14_website_input').val()
+    bk_15_website=$('#bk_15_website_input').val()
+    bk_16_website=$('#bk_16_website_input').val()
+    bk_17_website=$('#bk_17_website_input').val()
+    bk_18_website=$('#bk_18_website_input').val()
+    bk_19_website=$('#bk_19_website_input').val()
+    bk_20_website=$('#bk_20_website_input').val()
     
 }
 
@@ -520,7 +563,50 @@ window.store_data = function store_data(){
         'ws_3_url_input_stored':ws_3_url,
         'ws_4_url_input_stored':ws_4_url,
         'ws_5_url_input_stored':ws_5_url,
-        'ws_6_url_input_stored':ws_6_url
+        'ws_6_url_input_stored':ws_6_url,
+
+        'bk_1_label_stored':bk_1_label,
+        'bk_2_label_stored':bk_2_label,
+        'bk_3_label_stored':bk_3_label,
+        'bk_4_label_stored':bk_4_label,
+        'bk_5_label_stored':bk_5_label,
+        'bk_6_label_stored':bk_6_label,
+        'bk_7_label_stored':bk_7_label,
+        'bk_8_label_stored':bk_8_label,
+        'bk_9_label_stored':bk_9_label,
+        'bk_10_label_stored':bk_10_label,
+        'bk_11_label_stored':bk_11_label,
+        'bk_12_label_stored':bk_12_label,
+        'bk_13_label_stored':bk_13_label,
+        'bk_14_label_stored':bk_14_label,
+        'bk_15_label_stored':bk_15_label,
+        'bk_16_label_stored':bk_16_label,
+        'bk_17_label_stored':bk_17_label,
+        'bk_18_label_stored':bk_18_label,
+        'bk_19_label_stored':bk_19_label,
+        'bk_20_label_stored':bk_20_label,
+
+        'bk_1_website_stored':bk_1_website,
+        'bk_2_website_stored':bk_2_website,
+        'bk_3_website_stored':bk_3_website,
+        'bk_4_website_stored':bk_4_website,
+        'bk_5_website_stored':bk_5_website,
+        'bk_6_website_stored':bk_6_website,
+        'bk_7_website_stored':bk_7_website,
+        'bk_8_website_stored':bk_8_website,
+        'bk_9_website_stored':bk_9_website,
+        'bk_10_website_stored':bk_10_website,
+        'bk_11_website_stored':bk_11_website,
+        'bk_12_website_stored':bk_12_website,
+        'bk_13_website_stored':bk_13_website,
+        'bk_14_website_stored':bk_14_website,
+        'bk_15_website_stored':bk_15_website,
+        'bk_16_website_stored':bk_16_website,
+        'bk_17_website_stored':bk_17_website,
+        'bk_18_website_stored':bk_18_website,
+        'bk_19_website_stored':bk_19_website,
+        'bk_20_website_stored':bk_20_website
+
     })
     console.log('saved data')
 }

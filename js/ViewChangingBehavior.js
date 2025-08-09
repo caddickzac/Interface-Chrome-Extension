@@ -35,6 +35,7 @@ window.show_clock = function show_clock(){
     $('#screen2').hide()
     $('#top_dock_input').hide()
     $('#top_dock').hide()
+    $('#quick_launch_bookmark_settings').hide()
     $('#greeting_div').show()
     $('#screen1').show()
     $('#left_dock').show()
@@ -51,7 +52,7 @@ window.show_quick_launch_screen = function show_quick_launch_screen(){
     // $('#Greeting_Message').show()
     
     $('#Date_Display').hide()
-    
+    $('#quick_launch_bookmark_settings').hide()
     $('#settings_screen_main').hide()
     $('#left_dock_input').hide()
     $('#right_dock_input').hide()
@@ -75,8 +76,8 @@ window.show_quick_launch_screen = function show_quick_launch_screen(){
     $('#screen2').css('height', '70px')
     $('#search_box').css('padding-top','0%')
     $('#search_bar').show()
+    update_quick_launch_bookmarks()
     $('#bookmark_quick_links').show()
-    console.log('show quick launch')
 }
 
 window.Display_Main_Screen = function Display_Main_Screen(){
@@ -98,6 +99,7 @@ window.Show_Settings_Screen = function Show_Settings_Screen(){
     $('#Greeting_Message').hide()
     $('#MyClockDisplay').hide()
     $('#Date_Display').hide()
+    $('#quick_launch_bookmark_settings').hide()
     $('#meridies').hide()
     $('#screen1').hide()
     $('#screen2').hide()
@@ -261,10 +263,7 @@ window.View_Changer = function View_Changer(){
         show_clock()
     }
     else if(current_display_temp=='quick launch'){
-        // zc
         show_quick_launch_screen()
-        console.log('show quick launch!')
-
     }
     else if(current_display_temp=='search'){
         console.log('display: search')
@@ -309,6 +308,7 @@ window.View_Changer = function View_Changer(){
     else if(current_display_temp=='top_dock'){
         console.log('display: top_dock')
         update_top_dock_view_array_number()
+        $('#quick_launch_bookmark_settings').hide()
         $('#bottom_dock').hide()
         $('#top_dock_input').hide()
         update_search_box_text()
@@ -324,6 +324,16 @@ window.View_Changer = function View_Changer(){
     else if(current_display_temp=='top_dock_config'){
         $('#settings_screen_main').hide() // hide settings
         $('#top_dock_input').show()
+    }
+    else if(current_display_temp=='quick launch settings'){
+        $('#screen1').hide() // main clock
+        $('#MyClockDisplay').hide()
+        $('#MyClockDisplay_MT').hide()
+        $('#meridies').hide()
+        $('#screen2').hide() // search bar
+        $('#search_bar').hide()
+        $('#bookmark_quick_links').hide()
+        $('#quick_launch_bookmark_settings').show()
     }
     disable_arrow_keys_function()
 }
