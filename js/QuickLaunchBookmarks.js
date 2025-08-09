@@ -50,7 +50,7 @@ window.show_hide_quick_launch_bookmarks = function show_hide_quick_launch_bookma
 		$('#bookmark_2').hide()
 	}
 	else{
-		$('#bookmark_1').show()
+		$('#bookmark_2').show()
 	}
 	// _3
 	if(bk_3_website==''){

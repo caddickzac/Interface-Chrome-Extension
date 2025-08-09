@@ -8,12 +8,16 @@ function quick_launch_css_changes(){
     $('#screen2').css('margin-top','2%')
     $('#screen2').css('height', '70px')
     $('#search_box').css('padding-top','0%')
+    $('#DMY').css('position','absolute')
+    $('#DMY').css('transform','translateX(-4.7%)')
 }
 
 function undo_quick_launch_css_changes(){
     $('#screen1').addClass('main_display_screen')
     $('#screen2').addClass('background2')
     $('#search_box').css('padding-top','4%')
+    $('#DMY').css('position','static')
+    $('#DMY').css('transform','translateX(0%)')
     $('#greeting_div').show()
 }
 
@@ -80,6 +84,7 @@ window.show_quick_launch_screen = function show_quick_launch_screen(){
     $('#left_dock').hide()
     $('#right_dock').hide()
     $('#Search_Greeting').hide()
+    
     $('#screen1').show() // main clock
     $('#MyClockDisplay').show()
     $('#MyClockDisplay_MT').show()
@@ -89,6 +94,12 @@ window.show_quick_launch_screen = function show_quick_launch_screen(){
     update_quick_launch_bookmarks()
     $('#bookmark_quick_links').show()
     quick_launch_css_changes()
+    if(sd_settings=='yes'){
+        $('#Date_Display').show()
+    }
+    else{
+        $('#Date_Display').hide()
+    }
 }
 
 window.Display_Main_Screen = function Display_Main_Screen(){

@@ -160,8 +160,6 @@ function timeToDecimalHours(timeStr) {
 }
 
 
-
-
 window.showTime = function showTime(){
     date = new Date();
     year = date.getFullYear(); // 2020
