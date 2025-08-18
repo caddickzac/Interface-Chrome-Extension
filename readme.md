@@ -6,4 +6,4 @@ It replaces the default new tab with a clean clock-and-date display and gives yo
 
 For more information visit [data-cene/IF](https://data-cene.com/IF?).
 
-The version here on github is the version under contruction. 
+The version here on github is the unreleased version that is under contruction. 
