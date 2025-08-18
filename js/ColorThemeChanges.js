@@ -1,7 +1,88 @@
+
+themes = {
+  "night":        { background: "#242424", accent1: "#808080", accent2: "#BFBFBF" },
+  "cotton candy": { background: "#DE9097", accent1: "#B4E3E0", accent2: "#8EF3ED" },
+  "greens":       { background: "#1A362A", accent1: "#21B577", accent2: "#178256" },
+  "sandstone":    { background: "#F4cc70", accent1: "#de7a22", accent2: "#20948b" },
+  "seaside":      { background: "#38908F", accent1: "#FFBFA3", accent2: "#B2EBE0" },
+  "pittsburgh":   { background: "#040205", accent1: "#FCFEFB", accent2: "#FBBE04" },
+  "americana":    { background: "#F1FAEE", accent1: "#E63946", accent2: "#457B9D" },
+  "emerald":      { background: "#000000", accent1: "#EDF5E1", accent2: "#8EE4AF" },
+  "blues":        { background: "#05386B", accent1: "#8DBFF2", accent2: "#EDF5E1" },
+  "riddler":      { background: "#490652", accent1: "#2C5206", accent2: "#4F9E00" },
+  "kiwi":         { background: "#AFD275", accent1: "#7E685A", accent2: "#80624C" },
+  "coastline":    { background: "#66A5AD", accent1: "#C4DFE6", accent2: "#003B46" },
+  "dusk":         { background: "#314455", accent1: "#9e5a63", accent2: "#c96567" },
+  "berries":      { background: "#7E444B", accent1: "#ec96a4", accent2: "#9a9eab" },
+  "strawberry":   { background: "#659353", accent1: "#3f6c45", accent2: "#cb0000" },
+  "clay":         { background: "#1e0000", accent1: "#9d331f", accent2: "#bc6d4f" },
+  "light":        { background: "#F1FAEE", accent1: "#989898", accent2: "#000000" },
+  "morning":      { background: "#5B9BD5", accent1: "#FFFFFF", accent2: "#FFD300" },
+  "salmon":       { background: "#FFCACE", accent1: "#B28D90", accent2: "#191919" },
+  "vapor wave":   { background: "#0D0D64", accent1: "#FB69DA", accent2: "#FF904B" },
+  "black & gold": { background: "#21221D", accent1: "#A7894A", accent2: "#E5D5B9" },
+  "big foot":     { background: "#BB6653", accent1: "#FFF8E8", accent2: "#F08B51" },
+  "sunshine":     { background: "#00809D", accent1: "#FCF8DD", accent2: "#FFD700" },
+  "netflix":      { background: "#231F20", accent1: "#E0E0E0", accent2: "#E50913" },
+  "scarlet":      { background: "#680021", accent1: "#FFFAEC", accent2: "#000000" },
+  "spotify":      { background: "#191414", accent1: "#1DB954", accent2: "#1DB954" },
+  "uber":         { background: "#09091A", accent1: "#C0C0C8", accent2: "#1FBAD6" },
+  "heineken":     { background: "#205527", accent1: "#008200", accent2: "#FF2B00" },
+  "lego":         { background: "#000000", accent1: "#D11013", accent2: "#F6EC35" },
+  "linkedin-dark":{ background: "#000000", accent1: "#CACCCE", accent2: "#0077B5" },
+  "linkedin-light":{ background: "#F4F2EE", accent1: "#000000", accent2: "#0077B5" },
+  "nasa":         { background: "#FFFFFF", accent1: "#FC3D21", accent2: "#0B3D91" },
+  "natgeo":       { background: "#FFCC00", accent1: "#FFFFFF", accent2: "#000000" },
+  "tiffany":      { background: "#222831", accent1: "#EEEEEE", accent2: "#00ADB5" },
+  "xanadu":       { background: "#798777", accent1: "#A2B29F", accent2: "#1D221C" },
+  "sunset":       { background: "#C06C84", accent1: "#6C5B7B", accent2: "#355C7D" },
+  "earth-light":  { background: "#E5D9B6", accent1: "#5F8D4E", accent2: "#285430" },
+  "earth-dark":   { background: "#285430", accent1: "#E5D9B6", accent2: "#A4BE7B" },
+  "charcoal & sunlight": { background: "#222831", accent1: "#EEEEEE", accent2: "#FFD369" },
+  "timberline":   { background: "#395144", accent1: "#AA8B56", accent2: "#F0EBCE" },
+  "creamsicle":   { background: "#FDEEDC", accent1: "#F1A661", accent2: "#E38B29" },
+  "rust horizon": { background: "#521C0D", accent1: "#FF9B45", accent2: "#D5451B" },
+  "industrial glow": { background: "#1B1A17", accent1: "#A35709", accent2: "#FF8303" },
+  "ash & bone":   { background: "#1A120B", accent1: "#D5CEA3", accent2: "#E5E5CB" },
+  "greenstone":   { background: "#12372A", accent1: "#436850", accent2: "#FBFADA" },
+  "maritime fade":{ background: "#B1D0E0", accent1: "#6998AB", accent2: "#1A374D" },
+  "summerline":   { background: "#155263", accent1: "#FF6F3C", accent2: "#FFC93C" },
+  "military":     { background: "#4D784E", accent1: "#675645", accent2: "#E1D798" }
+};
+
+
+
+theme_list = ['night','cotton candy','greens','sandstone','seaside','pittsburgh',
+'americana','emerald','blues', //'riddler',
+'kiwi','coastline','dusk','berries','strawberry',
+'clay','light','morning','salmon',//'vapor wave',
+'black & gold','big foot','sunshine','netflix',
+'scarlet','spotify','uber','heineken','lego','linkedin-dark','linkedin-light','nasa','natgeo',
+'tiffany','xanadu','sunset','earth-light','earth-dark','charcoal & sunlight','timberline',
+'creamsicle','rust horizon','industrial glow','ash & bone','greenstone','maritime fade',
+'summerline','military']
+
+window.get_random_theme = function get_random_theme(themes){
+    const randomTheme = Math.floor(Math.random() * themes.length);
+    return themes[randomTheme];
+}
+
 window.update_css_coloring = function update_css_coloring(){ // functions like this one, that are run in run_setup__functions(), need to be in this script. 
-    color_background=$('#hex_1').val()
-    color_accent_1=$('#hex_2').val()
-    color_accent_2=$('#hex_3').val()
+    
+    if(theme_mode==='random'){
+        change_preset_theme()
+    }
+    else if(theme_mode==='circadian'){
+        change_preset_theme()
+    }
+    else if(theme_mode==='fixed'){
+        color_background=$('#hex_1').val()
+        color_accent_1=$('#hex_2').val()
+        color_accent_2=$('#hex_3').val()
+    }
+
+
+    
 
     // CHANGE BACKGROUND
     update_css_background_color()
@@ -129,145 +210,65 @@ window.hex = function hex(){
     }
 }
 
-window.change_preset_theme = function change_preset_theme(){
-    if($('#theme_choice').val()=='night'){
-        // Default colors
-        color_background="#242424" // darkest
-        color_accent_1 = "#808080" // medium
-        color_accent_2 = "#BFBFBF" // lightest
-        theme='night'
-    }
-    else if($('#theme_choice').val()=='cotton candy'){
-        color_background = "#DE9097"
-        color_accent_1 = "#B4E3E0" 
-        color_accent_2 = "#8EF3ED"
-        theme='cotton candy'
-    }
-    else if($('#theme_choice').val()=='greens'){
-        color_background = "#1A362A"
-        color_accent_1 = "#21B577" 
-        color_accent_2 = "#178256"
-        theme='greens'
-    }
-    else if($('#theme_choice').val()=='sandstone'){
-        color_background = "#F4cc70"
-        color_accent_1 = "#de7a22" 
-        color_accent_2 = "#20948b"
-        theme='sandstone'
-    }
-    else if($('#theme_choice').val()=='seaside'){
-        color_background = "#38908F"
-        color_accent_1 = "#FFBFA3" 
-        color_accent_2 = "#B2EBE0"
-        theme='seaside'
-    }
-    else if($('#theme_choice').val()=='pittsburgh'){
-        color_background = "#040205"
-        color_accent_1 = "#FCFEFB" 
-        color_accent_2 = "#FBBE04"
-        theme='pittsburgh'
-    }
-    else if($('#theme_choice').val()=='americana'){
-        color_background = "#F1FAEE"
-        color_accent_1 = "#E63946" 
-        color_accent_2 = "#457B9D"
-        theme='americana'
-    }
-    else if($('#theme_choice').val()=='emerald'){ 
-        color_background = "#000000"
-        color_accent_1 = "#EDF5E1" 
-        color_accent_2 = "#8EE4AF"
-        theme='emerald'
-    }
-    else if($('#theme_choice').val()=='blues'){ 
-        color_background = "#05386B"
-        color_accent_1 = "#8DBFF2" 
-        color_accent_2 = "#EDF5E1"
-        theme='blues'
-    }
-    else if($('#theme_choice').val()=='riddler'){ 
-        color_background = "#490652"
-        color_accent_1 = "#2C5206" 
-        color_accent_2 = "#4F9E00"
-        theme='riddler'
-    }
-    else if($('#theme_choice').val()=='kiwi'){ 
-        color_background = "#AFD275"
-        color_accent_1 = "#7E685A" 
-        color_accent_2 = "#80624C"
-        theme='kiwi'
-    }
-    else if($('#theme_choice').val()=='coastline'){ 
-        color_background = "#66A5AD"
-        color_accent_1 = "#C4DFE6" 
-        color_accent_2 = "#003B46"
-        theme='coastline'
-    }
-    else if($('#theme_choice').val()=='dusk'){ 
-        color_background = "#314455"
-        color_accent_1 = "#9e5a63" 
-        color_accent_2 = "#c96567"
-        theme='dusk'
-    }
-    else if($('#theme_choice').val()=='berries'){ 
-        color_background = "#7E444B"
-        color_accent_1 = "#ec96a4" 
-        color_accent_2 = "#9a9eab"
-        theme='berries'
-    }
-    else if($('#theme_choice').val()=='strawberry'){ 
-        color_background = "#659353"
-        color_accent_1 = "#3f6c45" 
-        color_accent_2 = "#cb0000"
-        theme='strawberry'
-    }
-    else if($('#theme_choice').val()=='clay'){ 
-        color_background = "#1e0000"
-        color_accent_1 = "#9d331f" 
-        color_accent_2 = "#bc6d4f"
-        theme='clay'
-    }
-    else if($('#theme_choice').val()=='light'){ 
-        color_background = "#F1FAEE"
-        color_accent_1 = "#989898" 
-        color_accent_2 = "#000000"
-        theme='light'
-    }
-    else if($('#theme_choice').val()=='morning'){ 
-        color_background = "#5B9BD5"
-        color_accent_1 = "#FFFFFF" 
-        color_accent_2 = "#FFD300"
-        theme='morning'
-    }
-    else if($('#theme_choice').val()=='salmon'){ 
-        color_background = "#FFCACE"
-        color_accent_1 = "#B28D90" 
-        color_accent_2 = "#191919"
-        theme='salmon'
-    }
-    else if($('#theme_choice').val()=='vapor wave'){ 
-        color_background = "#0D0D64"
-        color_accent_1 = "#FB69DA" 
-        color_accent_2 = "#FF904B"
-        theme='vapor wave'
-    }
-    else if($('#theme_choice').val()=='custom'){ 
-        if(hexes_ready=='yes'){
-            color_background = $('#hex_1').val()
-            color_accent_1 = $('#hex_2').val()
-            color_accent_2 = $('#hex_3').val()
-            theme='custom'
-        }
-    }
-    $('#hex_1').attr('placeholder', color_background)
-    $('#hex_2').attr('placeholder', color_accent_1)
-    $('#hex_3').attr('placeholder', color_accent_2)
+window.change_theme_mode = function change_theme_mode(){
+    theme_mode = $('#theme_mode').val();
+}
 
-    $('#hex_1').val(color_background)
-    $('#hex_2').val(color_accent_1)
-    $('#hex_3').val(color_accent_2)
-    setTimeout(() => syncPickrsWithInputs(), 10);
-    // initializeColorPickers(color_background, color_accent_1, color_accent_2)
+window.change_preset_theme = function change_preset_theme() {
+  let choice = $('#theme_choice').val();
+  
+  if (theme_mode === 'random') {
+    choice = get_random_theme(Object.keys(themes));
+    // theme = choice;
+  }
+  else if(theme_mode === 'circadian') {
+    const date = new Date();
+    const hour = date.getHours();
+    if(hour < 6){ // midnight to 6am
+        choice = 'night'
+    }
+    else if(hour >= 6 && hour < 12){ // 7am to noon
+        choice = 'morning'
+    }
+    else if(hour >= 12 && hour < 14){ // noon to 2pm
+        choice = 'sandstone'
+    }
+    else if(hour >= 14 && hour < 17){ // 2pm to 5pm
+        choice = 'kiwi'
+    }
+    else if(hour >= 17 && hour < 19){ // 5pm to 7pm
+        choice = 'sunset'
+    }  
+    else if(hour >= 19 && hour < 21){ // 7pm to 9pm
+        choice = 'dusk'
+    }
+    else if(hour >= 21 && hour < 22){ // 9pm to 10pm
+        choice = 'ash & bone'
+    }    
+    else if(hour >= 22 && hour < 24){ // 10pm to midnight
+        choice = 'night'
+    }
+  }
+
+  if (choice === 'custom') {
+    if (hexes_ready === 'yes') {
+      color_background = $('#hex_1').val();
+      color_accent_1   = $('#hex_2').val();
+      color_accent_2   = $('#hex_3').val();
+      theme = 'custom';
+    }
+  } else if (themes[choice]) {
+    color_background = themes[choice].background;
+    color_accent_1   = themes[choice].accent1;
+    color_accent_2   = themes[choice].accent2;
+    theme = choice;
+  }
+
+  $('#hex_1').attr('placeholder', color_background).val(color_background);
+  $('#hex_2').attr('placeholder', color_accent_1).val(color_accent_1);
+  $('#hex_3').attr('placeholder', color_accent_2).val(color_accent_2);
+
+  setTimeout(() => syncPickrsWithInputs(), 10);
 }
 
 window.theme_choice_label_fix = function theme_choice_label_fix(){
@@ -291,6 +292,34 @@ window.theme_choice_label_fix = function theme_choice_label_fix(){
     else if(theme=='seaside'){$('#theme_choice').val('seaside')}
     else if(theme=='strawberry'){$('#theme_choice').val('strawberry')}
     else if(theme=='vapor wave'){$('#theme_choice').val('vapor wave')}
+    else if(theme=='black & gold'){$('#theme_choice').val('black & gold')}
+    else if(theme=='big foot'){$('#theme_choice').val('big foot')}
+    else if(theme=='sunshine'){$('#theme_choice').val('sunshine')}
+    else if(theme=='netflix'){$('#theme_choice').val('netflix')}
+    else if(theme=='scarlet'){$('#theme_choice').val('scarlet')}
+    else if(theme=='spotify'){$('#theme_choice').val('spotify')}
+    else if(theme=='uber'){$('#theme_choice').val('uber')}
+    else if(theme=='heineken'){$('#theme_choice').val('heineken')}
+    else if(theme=='lego'){$('#theme_choice').val('lego')}
+    else if(theme=='linkedin-dark'){$('#theme_choice').val('linkedin-dark')}
+    else if(theme=='linkedin-light'){$('#theme_choice').val('linkedin-light')}
+    else if(theme=='nasa'){$('#theme_choice').val('nasa')}
+    else if(theme=='natgeo'){$('#theme_choice').val('natgeo')}
+    else if(theme=='tiffany'){$('#theme_choice').val('tiffany')}
+    else if(theme=='xanadu'){$('#theme_choice').val('xanadu')}
+    else if(theme=='sunset'){$('#theme_choice').val('sunset')}
+    else if(theme=='earth-light'){$('#theme_choice').val('earth-light')}
+    else if(theme=='earth-dark'){$('#theme_choice').val('earth-dark')}
+    else if(theme=='charcoal & sunlight'){$('#theme_choice').val('charcoal & sunlight')}
+    else if(theme=='timberline'){$('#theme_choice').val('timberline')}
+    else if(theme=='creamsicle'){$('#theme_choice').val('creamsicle')}
+    else if(theme=='rust horizon'){$('#theme_choice').val('rust horizon')}
+    else if(theme=='industrial glow'){$('#theme_choice').val('industrial glow')}
+    else if(theme=='ash & bone'){$('#theme_choice').val('ash & bone')}
+    else if(theme=='greenstone'){$('#theme_choice').val('greenstone')}
+    else if(theme=='maritime fade'){$('#theme_choice').val('maritime fade')}
+    else if(theme=='summerline'){$('#theme_choice').val('summerline')}
+    else if(theme=='military'){$('#theme_choice').val('military')}
     else{}
 }
 
@@ -298,35 +327,6 @@ window.theme_choice_label_fix = function theme_choice_label_fix(){
 window.hex = window.hex || function() {};
 window.change_preset_theme = window.change_preset_theme || function() {};
 window.update_css_coloring = window.update_css_coloring || function() {};
-
-
-
-// $('#color_scheme_custom_submit').click(function(){
-//     hex()
-//     change_preset_theme()
-//     update_css_coloring()
-//     // use_custom_hex()
-// })
-
-// $('#theme_choice').click(function(){
-//     change_preset_theme()
-//     update_css_coloring()
-// })
-
-// $('#hex_1').click(function(){
-//     theme='custom'
-//     $('#theme_choice').val(theme)
-// })
-
-// $('#hex_2').click(function(){
-//     theme='custom'
-//     $('#theme_choice').val(theme)
-// })
-
-// $('#hex_3').click(function(){
-//     theme='custom'
-//     $('#theme_choice').val(theme)
-// })
 
 window.update_css_background_color = function update_css_background_color(){
     $('#body_id').css("background-color", color_background)

@@ -30,7 +30,7 @@ dockKeys.push(
 
   'wsi_current_selection',
   'mt_settings', 'sd_settings', 'sg_settings',
-  'theme', 
+  'theme_mode', 'theme', 
   'color_background', 'color_accent_1', 'color_accent_2',
   'name',
   'default_home_screen', 'top_dock_calendar_view_choice', 'top_dock_hotkey_choice',
@@ -116,168 +116,44 @@ window.sanitizeImportedLabels = function sanitizeImportedLabels() {
 // fix broken import variables (if needed)
 window.data_value_problem_checking = function data_value_problem_checking(){
 
-  if (sd_settings != 'yes' && sd_settings != 'no') { // show date
-    sd_settings = 'yes'
-  }
-  if (mt_settings != 'yes' && mt_settings != 'no') { // military time
-    mt_settings = 'no'
-  }
-  if (sg_settings != 'yes' && sg_settings != 'no') { // show greting
-    sg_settings = 'no'
-  }
 
-  const theme_list = [
-    'night','cotton candy','greens','sandstone','seaside','pittsburgh','americana',
-    'emerald','blues','riddler','kiwi','coastline','dusk','berries','strawberry',
-    'clay','light','morning','salmon','vapor wave','custom']
-  if (!theme_list.includes(theme)) {
-    theme = 'dusk';
-  }
-  // overwrite colors based on theme choice
-  if(theme == 'night'){
-    color_background = "#242424";
-    color_accent_1 = "#808080";
-    color_accent_2 = "#BFBFBF";
-    theme = 'night';
-  }
-  else if(theme == 'cotton candy'){
-    color_background = "#DE9097";
-    color_accent_1 = "#B4E3E0";
-    color_accent_2 = "#8EF3ED";
-    theme = 'cotton candy';
-  }
-  else if(theme == 'greens'){
-    color_background = "#1A362A";
-    color_accent_1 = "#21B577";
-    color_accent_2 = "#178256";
-    theme = 'greens';
-  }
-  else if(theme == 'sandstone'){
-    color_background = "#F4cc70";
-    color_accent_1 = "#de7a22";
-    color_accent_2 = "#20948b";
-    theme = 'sandstone';
-  }
-  else if(theme == 'seaside'){
-    color_background = "#38908F";
-    color_accent_1 = "#FFBFA3";
-    color_accent_2 = "#B2EBE0";
-    theme = 'seaside';
-  }
-  else if(theme == 'pittsburgh'){
-    color_background = "#040205";
-    color_accent_1 = "#FCFEFB";
-    color_accent_2 = "#FBBE04";
-    theme = 'pittsburgh';
-  }
-  else if(theme == 'americana'){
-    color_background = "#F1FAEE";
-    color_accent_1 = "#E63946";
-    color_accent_2 = "#457B9D";
-    theme = 'americana';
-  }
-  else if(theme == 'emerald'){
-    color_background = "#000000";
-    color_accent_1 = "#EDF5E1";
-    color_accent_2 = "#8EE4AF";
-    theme = 'emerald';
-  }
-  else if(theme == 'blues'){
-    color_background = "#05386B";
-    color_accent_1 = "#8DBFF2";
-    color_accent_2 = "#EDF5E1";
-    theme = 'blues';
-  }
-  else if(theme == 'riddler'){
-    color_background = "#490652";
-    color_accent_1 = "#2C5206";
-    color_accent_2 = "#4F9E00";
-    theme = 'riddler';
-  }
-  else if(theme == 'kiwi'){
-    color_background = "#AFD275";
-    color_accent_1 = "#7E685A";
-    color_accent_2 = "#80624C";
-    theme = 'kiwi';
-  }
-  else if(theme == 'coastline'){
-    color_background = "#66A5AD";
-    color_accent_1 = "#C4DFE6";
-    color_accent_2 = "#003B46";
-    theme = 'coastline';
-  }
-  else if(theme == 'dusk'){
-    color_background = "#314455";
-    color_accent_1 = "#9e5a63";
-    color_accent_2 = "#c96567";
-    theme = 'dusk';
-  }
-  else if(theme == 'berries'){
-    color_background = "#7E444B";
-    color_accent_1 = "#ec96a4";
-    color_accent_2 = "#9a9eab";
-    theme = 'berries';
-  }
-  else if(theme == 'strawberry'){
-    color_background = "#659353";
-    color_accent_1 = "#3f6c45";
-    color_accent_2 = "#cb0000";
-    theme = 'strawberry';
-  }
-  else if(theme == 'clay'){
-    color_background = "#1e0000";
-    color_accent_1 = "#9d331f";
-    color_accent_2 = "#bc6d4f";
-    theme = 'clay';
-  }
-  else if(theme == 'light'){
-    color_background = "#F1FAEE";
-    color_accent_1 = "#989898";
-    color_accent_2 = "#000000";
-    theme = 'light';
-  }
-  else if(theme == 'morning'){
-    color_background = "#5B9BD5";
-    color_accent_1 = "#FFFFFF";
-    color_accent_2 = "#FFD300";
-    theme = 'morning';
-  }
-  else if(theme == 'salmon'){
-    color_background = "#FFCACE";
-    color_accent_1 = "#B28D90";
-    color_accent_2 = "#191919";
-    theme = 'salmon';
-  }
-  else if(theme == 'vapor wave'){
-    color_background = "#0D0D64";
-    color_accent_1 = "#FB69DA";
-    color_accent_2 = "#FF904B";
-    theme = 'vapor wave';
-  }
-  else if (theme == 'custom') {
-    theme = 'custom';
+  // yes/no flags
+  if (sd_settings !== 'yes' && sd_settings !== 'no') sd_settings = 'yes'; // show date
+  if (mt_settings !== 'yes' && mt_settings !== 'no') mt_settings = 'no'; // military time
+  if (sg_settings !== 'yes' && sg_settings !== 'no') sg_settings = 'no'; // show greting
+
+
+  const theme_mode_list = ['fixed', 'circadian', 'random']
+  if (!theme_mode_list.includes(theme_mode)) theme_mode = 'fixed';
+
+  // theme name strict check against theme_list
+  if (!window.theme_list.includes(theme)) theme = 'dusk';
+
+  // apply colors
+  if (theme === 'custom') {
     const validated = validateHexColors(color_background, color_accent_1, color_accent_2);
     color_background = validated.color_background;
-    color_accent_1 = validated.color_accent_1;
-    color_accent_2 = validated.color_accent_2;
-  }
-  else { // if theme is blank or some non accepted answer
-    // fallback to default
+    color_accent_1   = validated.color_accent_1;
+    color_accent_2   = validated.color_accent_2;
+  } else if (window.themes && window.themes.hasOwnProperty(theme)) {
+    color_background = window.themes[theme].background;
+    color_accent_1   = window.themes[theme].accent1;
+    color_accent_2   = window.themes[theme].accent2;
+  } else {
+    // hard fallback (shouldn’t happen if theme_list is synced)
     color_background = "#314455";
-    color_accent_1 = "#9e5a63";
-    color_accent_2 = "#c96567";
-    theme = 'dusk';
+    color_accent_1   = "#9e5a63";
+    color_accent_2   = "#c96567";
+    theme            = 'dusk';
   }
 
   // top dock inputs
-  const default_home_screen_list = [
-    'calendar','clock','quick launch']
+  const default_home_screen_list = ['calendar','clock','quick launch']
   if (!default_home_screen_list.includes(default_home_screen)) {
     default_home_screen = 'clock';
   }
 
-  const top_dock_calendar_view_choice_list = [
-    'last open','present','day','week','month','year']
+  const top_dock_calendar_view_choice_list = ['last open','present','day','week','month','year']
   if (!top_dock_calendar_view_choice_list.includes(top_dock_calendar_view_choice)) {
     top_dock_calendar_view_choice = 'present';
   }
@@ -363,6 +239,7 @@ $('#config_import_button').on('click', function () {
           $('#body_id').show()
           new_day_clock_functions()
           View_Changer()
+          update_css_coloring()
           // Display_Main_Screen()
           setTimeout(function(){
               tryInitializeColorPickers(color_background, color_accent_1, color_accent_2) // zc

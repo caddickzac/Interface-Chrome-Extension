@@ -314,6 +314,7 @@ window.store_data = function store_data(){
         'color_accent_1_stored': color_accent_1,
         'color_accent_2_stored': color_accent_2,
         'theme_stored': theme,
+        'theme_mode_stored': theme_mode,
 
         'top_dock_calendar_view_choice_stored': top_dock_calendar_view_choice,
         'default_home_screen_stored': default_home_screen,

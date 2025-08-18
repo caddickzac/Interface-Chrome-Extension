@@ -16,6 +16,7 @@ window.get_data = function get_data(){
     color_accent_2=''
 
     theme = ''
+    theme_mode = ''
 
     // checkbox
     wsi_current_selection=''
@@ -391,6 +392,7 @@ window.get_data = function get_data(){
     color_accent_1_DS=''
     color_accent_2_DS=''
     theme_DS = ''
+    theme_mode_DS = ''
 
     chrome.storage.sync.get(['color_background_stored'], function(color_background) {
         color_background_DS = color_background.color_background_stored
@@ -427,16 +429,32 @@ window.get_data = function get_data(){
         $('#hex_3').val(color_accent_2)
     });
 
-    // theme
+    // theme mode
+    chrome.storage.sync.get(['theme_mode_stored'], function(result) {
+        theme_mode_DS = result.theme_mode_stored;
+        if (!theme_mode_DS) {
+            theme_mode = 'fixed'; // fallback or default
+        } else {
+            theme_mode = theme_mode_DS;
+        }
+        $('#theme_mode').val(theme_mode);
+    });
+
+    // theme color scheme
     chrome.storage.sync.get(['theme_stored'], function(result) {
         theme_DS = result.theme_stored;
         if (!theme_DS) {
-            theme = '#BFBFBF'; // fallback or default
+            theme = 'dusk'; // #BFBFBF // fallback or default
         } else {
             theme = theme_DS;
         }
         $('#theme_choice').val(theme);
     });
+
+    
+
+
+    
 
     // top dock sub-view choice
     chrome.storage.sync.get(['current_top_dock_module_stored'], function(result) {

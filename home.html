@@ -5798,8 +5798,30 @@
 
             <div id='csi_underline' style='border-top:1.5px solid #808080; width:70%; margin-right:30px;'></div>
 
+            <!-- row: choose scheme -->
+            <div id='csi_0' class='row'>
+              <!-- spacer -->
+               <div class='col-sm-2' style='max-width:30px'></div>
+              <!-- color scheme header-->
+              <div class='col-sm-4' style='padding:0px; padding-left:40px; padding-right:15px; text-align:left; margin-top:13px'>
+                  scheme mode
+              </div>
+              <!-- spacer -->
+              <div class='col-sm-1' style='max-width:15px; margin-top:3px'>
+              </div>
+              <!-- theme list -->
+              <div class='col-sm-5' style='padding:0px; margin-left:15px ;'>
+                <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
+                  <select id="theme_mode" class="form-control" text='working' placeholder="custom" style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                    <option>fixed</option>
+                    <option>random</option>
+                    <option>circadian</option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-            <!-- row 0 -->
+            <!-- row: choose scheme -->
             <div id='csi_0' class='row'>
               <!-- spacer -->
                <div class='col-sm-2' style='max-width:30px'></div>
@@ -5813,38 +5835,41 @@
               <!-- theme list -->
               <div class='col-sm-5' style='padding:0px; margin-left:15px ;'>
                 <div class="form-group" style='height:18px;margin-top:13px; margin-bottom:5px; max-width:150px; width:95%'>
-                  <select class="form-control" id="theme_choice" text='working' placeholder="custom" style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky'>
+                  <select id="theme_choice" class="form-control" text='working' placeholder="custom" style='height:20px; padding:0px; bottom:2px; font-size:.8em; position:sticky; overflow-y:auto;'>
                     <option>americana</option>
-                    <option>berries</option>
+                    <option>ash & bone</option>                    
                     <option>blues</option>
-                    <option>clay</option>
+                    <option>charcoal & sunlight</option>
                     <option>coastline</option>
                     <option>cotton candy</option>
                     <option>dusk</option>
+                    <option>earth-dark</option>
                     <option>emerald</option>
                     <option>greens</option>
                     <option>kiwi</option>
                     <option>light</option>
+                    <option>maritime fade</option>
                     <option>morning</option>
                     <option>night</option>
-                    <option>pittsburgh</option>
-                    <!-- <option>riddler</option> -->
+                    <option>rust horizon</option>                    
                     <option>salmon</option>
                     <option>sandstone</option>
+                    <option>scarlet</option>                    
                     <option>seaside</option>
-                    <option>strawberry</option>
-                    <option>vapor wave</option>                    
+                    <option>sunset</option>
+                    <option>sunshine</option>
+                    <option>timberline</option>
                     <option>custom</option>
                   </select>
                 </div>
               </div>
             </div>
-            <br>
+
 
             <!-- row "OR" -->
             <div id='csi_OR' class='row'>
               <div class='col-sm-3'></div>
-              <div class='col-sm-5' style='padding:0px;padding-right:40px; display:block; text-align:center '>
+              <div class='col-sm-5' style='margin:0px; padding:0px;padding-right:40px; display:block; text-align:center '>
                   <h2 style='font-family: Book Antiqua;'>OR</h2>
               </div>               
             </div>
@@ -5915,7 +5940,7 @@
                   Submit
                 </div> 
               </div>
-              <br><br>
+              <br><br><br>
             </div>
           </div>
 

@@ -52,6 +52,16 @@ $('#theme_choice').click(function () {
     
 });
 
+$('#theme_mode').click(function () {
+    window.change_theme_mode();
+    // window.change_preset_theme();
+    // window.update_css_coloring();
+    // setTimeout(function(){
+    //     window.theme_choice_label_fix();
+    // },25)
+    
+});
+
 // top dock settings input
 $('#top_dock_calendar_view_choice').click(function(){
     update_top_dock_input_settings()
@@ -78,6 +88,8 @@ $('#color_scheme_custom_submit').click(function () {
 ['#hex_1', '#hex_2', '#hex_3'].forEach(function (selector) {
     $(selector).click(function () {
         window.theme = 'custom';
+        window.theme_mode == 'fixed';
+        $('#theme_mode').val('fixed'); // zc -- I want theme mode to switch to 'fixed' when swatches are edited
         $('#theme_choice').val('custom');
     });
 });
