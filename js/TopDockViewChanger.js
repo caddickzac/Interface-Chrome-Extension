@@ -859,7 +859,16 @@ window.week_view_timeline_shift_by_DOW = function week_view_timeline_shift_by_DO
 window.new_day_clock_functions = function new_day_clock_functions(){
     month_view_calendar_labeler() // top dock: month view
     year_view_calendar_labeler() // top dock: year view
-    year_view_calendar_highlight_today() // top dock: year view highlighter
+
+    if (typeof window.init_year_view_calendar_highlight_maps === 'function') {
+      window.init_year_view_calendar_highlight_maps(); // top dock: year view highlighter
+    }
+    year_view_calendar_highlight_today_divs(); // builds all 12 maps
+    year_view_calendar_highlight_today_check_all_months();
+
+
+
+    // year_view_calendar_highlight_today() // top dock: year view highlighter
     week_view_meridies_top_dock_format() // top dock: week view time format
     week_view_timeline_shift_by_DOW() // shift week view time track by day of week
     month_labeler() // update top dock, month view, month header

@@ -208,11 +208,6 @@ window.update_quick_launch_bookmark_icons = function update_quick_launch_bookmar
   }
 };
 
-
-
-
-
-
 // window.update_quick_launch_bookmark_icons = function update_quick_launch_bookmark_icons() {
 //   const prefix = "https://www.google.com/s2/favicons?domain=";
 //   const suffix = "&sz=128";

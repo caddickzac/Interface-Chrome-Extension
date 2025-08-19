@@ -662,21 +662,26 @@ window.get_data = function get_data(){
     });
 
 
-    chrome.storage.sync.get(['page_count_stored'], function(result) {
-        let stored = result.page_count_stored;
-        page_count = (stored || 0) + 1;  // Increment count
+    chrome.storage.sync.get({ page_count_stored: 0 }, function (result) {
+        // Coerce to a number; fall back to 0 if NaN or invalid
+        let prev = Number(result.page_count_stored);
+        if (!Number.isFinite(prev) || prev < 0) prev = 0;
 
-        // Save the updated value
-        chrome.storage.sync.set({ 'page_count_stored': page_count }, function() {
-            console.log("📈 page_count incremented to:", page_count);
+        // Optional: avoid overflow
+        if (prev >= Number.MAX_SAFE_INTEGER) prev = 0;
 
-            // Optional: trigger behavior based on usage level
-            if (page_count <= 3) {
-                // Show tutorial, hints, welcome message, etc.
-                // showWelcomeHints();
+        // Increment and save back as a NUMBER
+        window.page_count = prev + 1;
+
+        chrome.storage.sync.set({ page_count_stored: window.page_count }, function () {
+            console.log("📈 page_count incremented to:", window.page_count);
+
+            if (window.page_count <= 3) {
+              // showWelcomeHints();
             }
         });
     });
+
 
     // quick launch bookmarks
     // labels

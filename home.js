@@ -2404,6 +2404,11 @@ window.run_setup__functions = function run_setup__functions(){
     setTimeout(function(){
         main_display_screen_window_scaling()
         update_css_coloring()
+        // ⬇️ start/stop the hourly circadian timer based on the stored mode
+        if (typeof window.circadian_timer_maybe_restart === 'function') {
+          window.circadian_timer_maybe_restart();
+        }
+        
         unloadScrollBars()
         Change_Display_Settings()
         DoW()

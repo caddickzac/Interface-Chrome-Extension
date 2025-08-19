@@ -209,6 +209,10 @@ window.hex = function hex(){
 
 window.change_theme_mode = function change_theme_mode(){
     theme_mode = $('#theme_mode').val();
+    // start/stop the hourly timer when the user switches modes
+    if (typeof window.circadian_timer_maybe_restart === 'function') {
+      window.circadian_timer_maybe_restart();
+    }
 }
 
 window.change_preset_theme = function change_preset_theme() {
