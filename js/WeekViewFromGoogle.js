@@ -1,17 +1,22 @@
 // ===== WeekViewFromGoogle.js =====
-// Positions events inside your actual time grid band, handles timezones,
-// paints all-day events full-width, and shows a custom hover tooltip.
-//
+// Theme: pill text uses window.color_background exactly.
+// All-day events use date strings (no TZ drift). Timed events respect APP_TZ.
+// Tooltip background = color_background; border & text = color_accent_2.
 // Optional: set window.APP_TIME_ZONE = 'America/New_York' before this loads.
 
 (() => {
+  'use strict';
+
   const DAY_IDS = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
   const DAY_NODE_IDS = DAY_IDS.map(d => `#week_view_${d}`);
   const HEADER_ID = '#top_dock_date_DoW_range';
   const STYLE_TAG_ID = 'wv-event-style';
 
-  // ---------- Timezone helpers ----------
-  const APP_TZ = window.APP_TIME_ZONE || Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  // ---------- Timezone helpers (for timed events only) ----------
+  const APP_TZ =
+    window.APP_TIME_ZONE ||
+    Intl.DateTimeFormat().resolvedOptions().timeZone ||
+    'UTC';
 
   const fYMD = new Intl.DateTimeFormat('en-CA', { // "YYYY-MM-DD"
     timeZone: APP_TZ, year: 'numeric', month: '2-digit', day: '2-digit'
@@ -20,13 +25,14 @@
     timeZone: APP_TZ, hour: '2-digit', minute: '2-digit', hour12: false
   });
 
-  function ymdKey(dateLike) { return fYMD.format(new Date(dateLike)); }
-  function minutesInTz(dateLike) {
-    const parts = fHM.formatToParts(new Date(dateLike));
+  const ymdKey = (dLike) => fYMD.format(new Date(dLike));
+  const minutesInTz = (dLike) => {
+    const parts = fHM.formatToParts(new Date(dLike));
     const h = +parts.find(p => p.type === 'hour').value;
     const m = +parts.find(p => p.type === 'minute').value;
     return h * 60 + m;
-  }
+  };
+
   function startOfWeekSunKey(anchor = new Date()) {
     const dowShort = new Date(anchor).toLocaleString('en-US', { weekday: 'short', timeZone: APP_TZ });
     const map = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
@@ -35,24 +41,13 @@
     return ymdKey(back);
   }
   function addDaysKey(ymd, n) {
-    const d = new Date(ymd + 'T12:00:00'); // midday avoids DST edges
+    const d = new Date(ymd + 'T12:00:00'); // midday avoids DST edges for string math
     d.setDate(d.getDate() + n);
     return ymdKey(d);
   }
 
   // ---------- Visual helpers ----------
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
-  function textColorFor(bgHex, fallback = '#111') {
-    try {
-      const hex = (bgHex || '').replace('#', '');
-      if (hex.length !== 6) return fallback;
-      const r = parseInt(hex.slice(0,2), 16);
-      const g = parseInt(hex.slice(2,4), 16);
-      const b = parseInt(hex.slice(4,6), 16);
-      const L = 0.299*r + 0.587*g + 0.114*b;
-      return L > 160 ? '#111111' : '#FFFFFF';
-    } catch { return fallback; }
-  }
 
   function ensureStyles() {
     if (document.getElementById(STYLE_TAG_ID)) return;
@@ -69,10 +64,10 @@
         overflow:hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
-        z-index: 3000;          /* only pills sit above */
+        z-index: 3000;
         opacity:.98;
         cursor:default;
-        pointer-events: auto;
+        pointer-events:auto;
       }
       .wv-all-day { height:18px; line-height:18px; }
 
@@ -80,9 +75,9 @@
         position: fixed;
         z-index: 9999;
         pointer-events: none;
-        background: rgba(0,0,0,0.85);
-        color: #fff;
-        border: 1px solid #ffffff22;
+        background: rgba(0,0,0,0.85); /* runtime overrides to color_background */
+        color: #fff;                  /* runtime overrides to color_accent_2 */
+        border: 1px solid #ffffff22;  /* runtime overrides to color_accent_2 */
         border-radius: 6px;
         padding: 6px 8px;
         font-size: 12px;
@@ -98,108 +93,89 @@
     document.head.appendChild(s);
   }
 
-  // Measure grid band (between weekday labels and right edge)
+  // Measure the real left offset + width of the 24h grid (between labels and right edge)
   function getGridMetrics() {
-    try {
-      const row = document.querySelector('#week_view_sunday');
-      const leftHalf = document.getElementById('week_view_left_half_div');
-      const rightHalf = document.getElementById('week_view_right_half_div');
-      if (!row || !leftHalf || !rightHalf) throw new Error('missing nodes');
+    const row = document.querySelector('#week_view_sunday');
+    const leftHalf = document.getElementById('week_view_left_half_div');
+    const rightHalf = document.getElementById('week_view_right_half_div');
+    if (!row || !leftHalf || !rightHalf) return null;
 
-      const rowRect = row.getBoundingClientRect();
-      const leftRect = leftHalf.getBoundingClientRect();
-      const rightRect = rightHalf.getBoundingClientRect();
+    const rowRect = row.getBoundingClientRect();
+    const leftRect = leftHalf.getBoundingClientRect();
+    const rightRect = rightHalf.getBoundingClientRect();
 
-      const gridStartPx = leftRect.left - rowRect.left;
-      const gridEndPx = (rightRect.left + rightRect.width) - rowRect.left;
-      const gridWidthPx = gridEndPx - gridStartPx;
+    if (rowRect.width <= 0 || leftRect.width <= 0 || rightRect.width <= 0) return null;
 
-      const offsetPct = (gridStartPx / rowRect.width) * 100;
-      const widthPct  = (gridWidthPx  / rowRect.width) * 100;
+    const gridStartPx = leftRect.left - rowRect.left;
+    const gridEndPx = (rightRect.left + rightRect.width) - rowRect.left;
+    const gridWidthPx = gridEndPx - gridStartPx;
+    if (gridWidthPx <= 0) return null;
 
-      return { offsetPct, widthPct };
-    } catch {
-      // fallback to your Bootstrap fractions
-      return { offsetPct: 16.67, widthPct: 83.33 };
-    }
-  }
-
-  // ---------- All-day date helpers (avoid timezone drift) ----------
-  function shiftYmd(ymd, days) {
-    const dt = new Date(ymd + 'T00:00:00Z'); // work in UTC
-    dt.setUTCDate(dt.getUTCDate() + days);
-    return dt.toISOString().slice(0, 10); // YYYY-MM-DD
+    const offsetPct = (gridStartPx / rowRect.width) * 100;
+    const widthPct  = (gridWidthPx  / rowRect.width) * 100;
+    return { offsetPct, widthPct };
   }
 
   // ---------- Event normalization / splitting ----------
+  // Keep raw date strings for all-day to avoid TZ drift.
   function normalizeEvent(ev) {
     const isAllDay = !!(ev?.start?.date && !ev?.start?.dateTime);
-    const s = ev?.start?.dateTime || ev?.start?.date;
-    const e = ev?.end?.dateTime   || ev?.end?.date;
-    if (!s || !e) return null;
-
-    const color = (ev._calendarBg || ev.color) || (window.color_accent_2 || '#3b82f6');
-
     if (isAllDay) {
-      // Keep YMDs as strings; make end inclusive by shifting -1 day (end is exclusive).
-      const startYmd = ev.start.date;
-      const endYmd   = shiftYmd(ev.end.date, -1);
+      const sStr = ev.start.date; // 'YYYY-MM-DD'
+      const eStrExcl = ev.end?.date || sStr; // exclusive
       return {
         id: ev.id || ev.iCalUID || Math.random().toString(36).slice(2),
         title: ev.summary || '(no title)',
         isAllDay: true,
-        color,
-        startYmd,
-        endYmd,
-        raw: ev
-      };
-    } else {
-      const start = new Date(s);
-      const end   = new Date(e);
-      return {
-        id: ev.id || ev.iCalUID || Math.random().toString(36).slice(2),
-        title: ev.summary || '(no title)',
-        isAllDay: false,
-        color,
-        start, end,
+        startDateStr: sStr,
+        endDateStrExcl: eStrExcl,
         raw: ev
       };
     }
+
+    const s = ev?.start?.dateTime;
+    const e = ev?.end?.dateTime;
+    if (!s || !e) return null;
+
+    return {
+      id: ev.id || ev.iCalUID || Math.random().toString(36).slice(2),
+      title: ev.summary || '(no title)',
+      isAllDay: false,
+      start: new Date(s),
+      end:   new Date(e),
+      raw: ev
+    };
   }
 
   function splitEventByWeekKeys(evt, weekKeys) {
     const segs = [];
 
     if (evt.isAllDay) {
+      // Include days where startDateStr <= k < endDateStrExcl
       for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
         const k = weekKeys[dayIndex];
-        if (k >= evt.startYmd && k <= evt.endYmd) {
-          segs.push({
-            id: evt.id, title: evt.title, color: evt.color, isAllDay: true,
-            dayIndex, startMin: 0, endMin: 24 * 60
-          });
+        if (k >= evt.startDateStr && k < evt.endDateStrExcl) {
+          segs.push({ id: evt.id, title: evt.title, isAllDay: true, dayIndex, startMin: 0, endMin: 24*60 });
         }
       }
       return segs;
     }
 
-    const startKey = ymdKey(evt.start);
-    const endKey   = ymdKey(evt.end);
+    // Timed events: compare by local week keys
+    const startK = ymdKey(evt.start);
+    const endK   = ymdKey(evt.end);
 
     for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
       const k = weekKeys[dayIndex];
-      if (k < startKey || k > endKey) continue;
+      if (k < startK || k > endK) continue;
 
-      const onStart = (k === startKey);
-      const onEnd   = (k === endKey);
-      let startMin  = onStart ? minutesInTz(evt.start) : 0;
-      let endMin    = onEnd   ? minutesInTz(evt.end)   : 24 * 60;
+      const onStart = (k === startK);
+      const onEnd   = (k === endK);
+      let startMin = onStart ? minutesInTz(evt.start) : 0;
+      let endMin   = onEnd   ? minutesInTz(evt.end)   : 24*60;
 
-      if (endMin <= startMin) continue; // skip zero-width fragments
-      segs.push({
-        id: evt.id, title: evt.title, color: evt.color, isAllDay: false,
-        dayIndex, startMin, endMin
-      });
+      if (endMin <= startMin) continue; // ignore zero-width fragments
+      segs.push({ id: evt.id, title: evt.title, isAllDay: false, dayIndex, startMin, endMin });
     }
     return segs;
   }
@@ -209,7 +185,7 @@
     daySegs.sort((a,b) =>
       (b.isAllDay - a.isAllDay) ||
       (a.startMin - b.startMin) ||
-      ((b.endMin - b.startMin) - (a.endMin - a.startMin))
+      ((b.endMin-b.startMin) - (a.endMin-a.startMin))
     );
     const laneEnds = [];
     for (const seg of daySegs) {
@@ -223,14 +199,14 @@
     return daySegs;
   }
 
-  function displayRange(weekKeys) {
+  const displayRange = (weekKeys) => {
     try {
       const parse = k => new Date(k + 'T12:00:00');
       const s = parse(weekKeys[0]), e = parse(weekKeys[6]);
       const fmt = d => d.toLocaleString(undefined, { month: 'short', day: 'numeric' });
       return `${fmt(s)} \u2013 ${fmt(e)}`;
     } catch { return ''; }
-  }
+  };
 
   // ---------- Tooltip ----------
   function ensureTooltip() {
@@ -242,7 +218,8 @@
     }
     return el;
   }
-  function formatTime(mins) {
+  const escapeHtml = (s) => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  function fmtTime(mins) {
     const m = Math.max(0, Math.min(1439, Math.round(mins)));
     let h = Math.floor(m / 60);
     const mm = (m % 60).toString().padStart(2, '0');
@@ -250,62 +227,45 @@
     const h12 = (h % 12) || 12;
     return `${h12}:${mm}${am ? 'am' : 'pm'}`;
   }
-  function setTooltipContent(el, seg) {
+  function setTip(el, seg) {
     if (seg.isAllDay) {
       el.innerHTML = `<span class="wv-tip-time">All day</span>\n<span class="wv-tip-title">${escapeHtml(seg.title || '')}</span>`;
     } else {
-      const start = formatTime(seg.startMin);
-      const end   = formatTime(seg.endMin);
-      el.innerHTML = `<span class="wv-tip-time">${start} \u2013 ${end}</span>\n<span class="wv-tip-title">${escapeHtml(seg.title || '')}</span>`;
+      el.innerHTML = `<span class="wv-tip-time">${fmtTime(seg.startMin)} \u2013 ${fmtTime(seg.endMin)}</span>\n<span class="wv-tip-title">${escapeHtml(seg.title || '')}</span>`;
     }
   }
-  function positionTooltip(el, x, y) {
-    el.style.left = `${x}px`;
-    el.style.top  = `${y}px`;
-  }
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;')
-      .replace(/'/g,'&#39;');
-  }
 
-  // ---------- Render ----------
-  function renderWeekWithTz(anchorDate = new Date(), events = []) {
+  // ---------- Core render (with measured grid) ----------
+  function renderWeekWithMetrics(anchorDate, events, metrics) {
     ensureStyles();
 
-    // Make rows positioned containers & clear old pills; DO NOT change z-index/positioning of your grid/labels.
+    // Make each row a positioning context & clear old pills
     DAY_NODE_IDS.forEach(sel => {
       const $row = $(sel);
       if ($row.css('position') === 'static') $row.css('position', 'relative');
       $row.find('.wv-event').remove();
     });
 
-    // Week keys (Sunday..Saturday) in APP_TZ
+    // Week keys & header
     const startKey = startOfWeekSunKey(anchorDate);
     const weekKeys = Array.from({length:7}, (_, i) => addDaysKey(startKey, i));
-
-    // Header label
     const header = $(HEADER_ID);
     if (header.length) header.text(displayRange(weekKeys));
 
-    // Normalize + split
+    // Normalize/split
     const norm = (events || []).map(normalizeEvent).filter(Boolean);
     const byDay = Array.from({length:7}, () => []);
     for (const ev of norm) {
       for (const seg of splitEventByWeekKeys(ev, weekKeys)) byDay[seg.dayIndex].push(seg);
     }
 
-    // Grid metrics (important!)
-    const { offsetPct, widthPct: gridWidthPct } = getGridMetrics();
-
-    // Theme defaults
-    const defaultBg = (window.color_accent_2 || '#3b82f6').toString();
+    // Theme: pill bg uses accent_2, text uses background (your request)
+    const pillBg = String(window.color_accent_2 || '#3b82f6');
+    const pillFg = String(window.color_background || '#111');
     const laneHeight = 18, topPadding = 4, totalMinutes = 24 * 60;
 
-    // Layout & paint
+    const { offsetPct, widthPct: gridWidthPct } = metrics;
+
     for (let d = 0; d < 7; d++) {
       const $row = $(DAY_NODE_IDS[d]);
       if (!$row.length) continue;
@@ -313,8 +273,6 @@
       const segs = assignLanes(byDay[d]);
       for (const seg of segs) {
         const isAllDay = !!seg.isAllDay;
-        const bg = seg.color || defaultBg;
-        const fg = textColorFor(bg, (window.color_background || '#111').toString());
 
         const leftPct  = isAllDay
           ? offsetPct
@@ -327,58 +285,58 @@
         const $pill = $('<div class="wv-event"></div>');
         if (isAllDay) $pill.addClass('wv-all-day');
 
-        // Tooltip data
-        $pill.data('seg', { title: seg.title, startMin: seg.startMin, endMin: seg.endMin, isAllDay: seg.isAllDay });
-
         $pill
           .text(seg.title)
           .css({
             left: `${leftPct}%`,
             width: `${Math.max(widthPct, 1.2)}%`,
             top: `${topPadding + seg.lane * laneHeight}px`,
-            backgroundColor: bg,
-            color: fg,
-            border: `1px solid ${fg}22`
-          });
+            backgroundColor: pillBg,
+            color: pillFg,                // event text = color_background
+            border: `1px solid ${pillFg}22`
+          })
+          .attr('title', seg.title)
+          .data('seg', seg);
 
         $row.append($pill);
       }
     }
 
-    // Wire tooltip handlers once (delegated)
-    if (!renderWeekWithTz._tipsWired) {
-      renderWeekWithTz._tipsWired = true;
-
-      const $doc = $(document);
+    // Tooltips (delegated, wire once)
+    if (!renderWeekWithMetrics._tipsWired) {
+      renderWeekWithMetrics._tipsWired = true;
       let tipEl = null;
 
-      $doc.on('mouseenter', '.wv-event', function (e) {
+      $(document).on('mouseenter', '.wv-event', function (e) {
         const seg = $(this).data('seg');
         if (!seg) return;
         tipEl = ensureTooltip();
-        const bg = window.color_background || '#111';
-        const bd = (window.color_accent_2 || '#fff') + '22';
-        tipEl.style.background = bg;
-        tipEl.style.borderColor = bd;
-        tipEl.style.color = textColorFor(bg, '#fff');
-        setTooltipContent(tipEl, seg);
+        // Theme tooltip per your request:
+        const bg  = String(window.color_background || '#111');
+        const acc = String(window.color_accent_2 || '#fff');
+        tipEl.style.background  = bg;   // same as page background
+        tipEl.style.borderColor = acc;  // border = accent_2 (no alpha)
+        tipEl.style.color       = acc;  // text   = accent_2
+        setTip(tipEl, seg);
         tipEl.style.display = 'block';
-        positionTooltip(tipEl, e.clientX, e.clientY);
+        tipEl.style.left = e.clientX + 'px';
+        tipEl.style.top  = e.clientY + 'px';
       });
 
-      $doc.on('mousemove', '.wv-event', function (e) {
+      $(document).on('mousemove', '.wv-event', function (e) {
         if (!tipEl) return;
-        positionTooltip(tipEl, e.clientX, e.clientY);
+        tipEl.style.left = e.clientX + 'px';
+        tipEl.style.top  = e.clientY + 'px';
       });
 
-      $doc.on('mouseleave', '.wv-event', function () {
+      $(document).on('mouseleave', '.wv-event', function () {
         if (tipEl) tipEl.style.display = 'none';
       });
     }
   }
 
-  // Public entry
-  async function render_week_from_google(date = new Date()) {
+  // ---------- Wrapper that waits for grid readiness ----------
+  async function render_week_from_google(anchorDate = new Date()) {
     try {
       // Prefer all calendars; fall back to primary
       let events = window._imported_google_events;
@@ -389,15 +347,27 @@
           );
         });
       }
-      renderWeekWithTz(date, events);
+
+      // Wait for measurable grid (fixes left-aligned on view change)
+      const MAX_TRIES = 60; // ~3s @50ms
+      let metrics = null;
+      for (let i = 0; i < MAX_TRIES; i++) {
+        metrics = getGridMetrics();
+        if (metrics && metrics.widthPct > 1) break;
+        await new Promise(r => setTimeout(r, 50));
+      }
+      if (!metrics) metrics = { offsetPct: 16.67, widthPct: 83.33 }; // bootstrap fallback
+
+      renderWeekWithMetrics(anchorDate, events, metrics);
     } catch (e) {
       console.warn('[WeekView] render error:', e);
     }
   }
 
+  // Expose
   window.render_week_from_google = render_week_from_google;
 
-  // Repaint on updates & resizes (so the measured grid stays correct)
+  // Repaint on updates & resizes
   chrome?.runtime?.onMessage?.addListener((msg) => {
     if (msg?.type === 'gcal:updated') render_week_from_google();
   });
