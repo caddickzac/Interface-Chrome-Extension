@@ -53,13 +53,7 @@ $('#theme_choice').click(function () {
 });
 
 $('#theme_mode').click(function () {
-    window.change_theme_mode();
-    // window.change_preset_theme();
-    // window.update_css_coloring();
-    // setTimeout(function(){
-    //     window.theme_choice_label_fix();
-    // },25)
-    
+    window.change_theme_mode();   
 });
 
 // top dock settings input

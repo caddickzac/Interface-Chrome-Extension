@@ -79,10 +79,7 @@ window.update_css_coloring = function update_css_coloring(){ // functions like t
         color_background=$('#hex_1').val()
         color_accent_1=$('#hex_2').val()
         color_accent_2=$('#hex_3').val()
-    }
-
-
-    
+    }  
 
     // CHANGE BACKGROUND
     update_css_background_color()
