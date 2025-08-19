@@ -676,6 +676,13 @@ $('#edit_quick_launch_bookmarks').click(function(){
 })
 
 
+// google calendar button
+$('#connect_google_calendar_button').on('click', function () {
+  window.import_google_calendar_json();
+});
+
+
+
 // Left Dock Input Table: Toggle lowercase/uppercase tables
 ldi_case="lower"
 window.ldi_case_toggle = function ldi_case_toggle(){
@@ -2408,7 +2415,7 @@ window.run_setup__functions = function run_setup__functions(){
         if (typeof window.circadian_timer_maybe_restart === 'function') {
           window.circadian_timer_maybe_restart();
         }
-        
+
         unloadScrollBars()
         Change_Display_Settings()
         DoW()
