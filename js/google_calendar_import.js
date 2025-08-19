@@ -1,156 +1,316 @@
-// === Google Calendar JSON Import (button: #import_calendar_json_button) ===
+// ===== google_calendar_import.js =====
+// Front-end hooks + UI glue for Google Calendar.
+// Prefers ALL calendars (gcal_events_all) and falls back to primary.
+// Requires: jQuery, MV3 environment, and background.js that handles gcal:* messages.
 
-window._imported_google_events = []; // normalized, ready for your mapper
-window.google_calendar_import = {
-  last_file_name: null,
-  last_import_count: 0,
-  last_error: null,
-  last_saved_at: null
-};
+(() => {
+  'use strict';
 
-/** Normalize a Google Calendar API event to a compact shape */
-window._normalize_gcal_event = function _normalize_gcal_event(e) {
-  // detect all-day vs timed
-  const hasDateOnly = e?.start?.date || e?.end?.date;
-  const startIso = e?.start?.dateTime || e?.start?.date || null;
-  const endIso   = e?.end?.dateTime   || e?.end?.date   || null;
+  const GCAL_DEBUG = true;
+  const REPAINT_MAX_RETRIES = 80;   // ~8s total if 100ms interval
+  const REPAINT_RETRY_MS = 100;
 
-  // Parse dates. For all-day (YYYY-MM-DD), treat as local midnight(s).
-  const parseIso = (iso, allDay) => {
-    if (!iso) return null;
-    if (allDay && /^\d{4}-\d{2}-\d{2}$/.test(iso)) {
-      // local midnight for start of that date
-      const [y,m,d] = iso.split('-').map(Number);
-      return new Date(y, m - 1, d, 0, 0, 0, 0);
-    }
-    return new Date(iso);
-  };
+  // ---- tiny helpers ----
+  const log  = (...a) => { if (GCAL_DEBUG) console.log('[GCAL]', ...a); };
+  const warn = (...a) => console.warn('[GCAL]', ...a);
 
-  const start = parseIso(startIso, hasDateOnly);
-  let end = parseIso(endIso, hasDateOnly);
+  function repaintWhenReady(triesLeft = REPAINT_MAX_RETRIES) {
+    const vcReady = typeof window.View_Changer === 'function';
+    const hasCurrentDisplay = typeof window.current_display !== 'undefined';
+    const pageReadyFlag = typeof window.page_ready === 'string' ? (window.page_ready === 'yes') : true;
 
-  // Google all-day end is exclusive; often next day 00:00
-  // Keep as-is, but compute a convenience duration if both exist.
-  const durationMs = (start && end) ? (end.getTime() - start.getTime()) : null;
-
-  return {
-    id: e.id || (e.summary ? `${e.summary}-${start?.toISOString() || Math.random()}` : Math.random().toString(36).slice(2)),
-    status: e.status || 'confirmed',
-    summary: e.summary || '(no title)',
-    description: e.description || '',
-    location: e.location || '',
-    start: start ? start.toISOString() : null,
-    end: end ? end.toISOString() : null,
-    startMs: start ? start.getTime() : null,
-    endMs: end ? end.getTime() : null,
-    allDay: !!hasDateOnly,
-    timeZone: e?.start?.timeZone || e?.end?.timeZone || null,
-    colorId: e.colorId || null,
-    recurringEventId: e.recurringEventId || null,
-    recurrence: Array.isArray(e.recurrence) ? e.recurrence.slice() : null,
-    attendees: Array.isArray(e.attendees)
-      ? e.attendees.map(a => ({ email: a.email, response: a.responseStatus, self: !!a.self }))
-      : null,
-    reminders: e.reminders || null,
-    hangoutLink: e.hangoutLink || null,
-    transparency: e.transparency || null,
-    raw: e // keep original for any advanced mapping later
-  };
-};
-
-/** Pull an array of events from various JSON shapes */
-window._extract_gcal_events = function _extract_gcal_events(json) {
-  if (!json) return [];
-
-  // Google Calendar list response
-  if (Array.isArray(json.items)) return json.items;
-
-  // Direct array of events
-  if (Array.isArray(json)) return json;
-
-  // Single event
-  if (json.kind === 'calendar#event' || json.start || json.end) return [json];
-
-  // Some exports may use { events: [...] }
-  if (Array.isArray(json.events)) return json.events;
-
-  return [];
-};
-
-/** Main import function */
-window.import_google_calendar_json = function import_google_calendar_json(callback) {
-  const input = document.createElement('input');
-  input.type = 'file';
-  input.accept = 'application/json,.json';
-
-  input.onchange = (e) => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
+    if (vcReady && hasCurrentDisplay && pageReadyFlag) {
       try {
-        const text = reader.result;
-        const parsed = JSON.parse(text);
-
-        const events = window._extract_gcal_events(parsed);
-        if (!events.length) {
-          throw new Error('No events found in the provided JSON.');
-        }
-
-        // Optionally skip canceled events here:
-        const filtered = events.filter(ev => (ev.status || 'confirmed') !== 'cancelled');
-
-        const normalized = filtered.map(window._normalize_gcal_event);
-
-        window._imported_google_events = normalized;
-        window.google_calendar_import.last_file_name = file.name;
-        window.google_calendar_import.last_import_count = normalized.length;
-        window.google_calendar_import.last_error = null;
-
-        // Persist locally (avoid sync quota)
-        if (chrome?.storage?.local) {
-          const payload = {
-            imported_google_events: normalized,
-            imported_google_events_meta: {
-              file: file.name,
-              imported_at: new Date().toISOString()
-            }
-          };
-          chrome.storage.local.set(payload, () => {
-            window.google_calendar_import.last_saved_at = new Date().toISOString();
-            console.log(`📥 Imported ${normalized.length} events from ${file.name}`);
-            if (typeof callback === 'function') callback(null, normalized);
-            // If you already have a mapper, you can call it here:
-            // if (typeof window.map_imported_events_to_dictionary === 'function') {
-            //   window.map_imported_events_to_dictionary(normalized);
-            // }
-            $('#calendar_import_message').text(`Imported ${normalized.length} events`).fadeIn().delay(2000).fadeOut();
-          });
-        } else {
-          console.log(`📥 Imported ${normalized.length} events from ${file.name} (not persisted)`);
-          if (typeof callback === 'function') callback(null, normalized);
-        }
-
-      } catch (err) {
-        console.error('❌ Calendar import failed:', err);
-        window.google_calendar_import.last_error = String(err && err.message || err);
-        if (typeof callback === 'function') callback(err);
-        $('#calendar_import_message').text('Import failed: ' + window.google_calendar_import.last_error).fadeIn().delay(3000).fadeOut();
+        window.View_Changer();
+        return;
+      } catch (e) {
+        warn('View_Changer threw:', e);
       }
-    };
+    }
+    if (triesLeft > 0) {
+      setTimeout(() => repaintWhenReady(triesLeft - 1), REPAINT_RETRY_MS);
+    } else {
+      log('Skipped repaint (app not ready after retries).');
+    }
+  }
 
-    reader.onerror = () => {
-      const msg = 'File read error.';
-      console.error('❌', msg);
-      window.google_calendar_import.last_error = msg;
-      if (typeof callback === 'function') callback(new Error(msg));
-    };
+  function deliverToMapperAndRepaint(events) {
+    try {
+      if (typeof window.map_imported_events_to_dictionary === 'function') {
+        window.map_imported_events_to_dictionary(events);
+      } else {
+        // fallback so you can inspect or paint later
+        window._imported_google_events = events;
+      }
+    } catch (e) {
+      warn('Mapper threw:', e);
+    }
+    // If your week renderer exists, kick it too (safe no-op if missing)
+    if (typeof window.render_week_from_google === 'function') {
+      try { window.render_week_from_google(); } catch (e) { warn('render_week_from_google threw:', e); }
+    }
+    repaintWhenReady();
+  }
 
-    reader.readAsText(file);
+  // Prefer all calendars; fall back to primary
+  function pullAndRender() {
+    try {
+      chrome.storage.local.get(
+        ['gcal_events_all', 'gcal_events_primary', 'gcal_events_by_calendar', 'gcal_calendars', 'gcal_last_sync_at'],
+        (data) => {
+          const calendars = data?.gcal_calendars || [];
+          const byCal = data?.gcal_events_by_calendar || {};
+          const all = data?.gcal_events_all;
+          const primary = data?.gcal_events_primary;
+
+          const events = Array.isArray(all)
+            ? all
+            : (Array.isArray(primary) ? primary : []);
+
+          // Helpful logging to confirm you’re seeing more than just primary
+          if (calendars.length) {
+            const perCal = calendars.map(c => ({
+              id: c.id,
+              name: c.summary,
+              count: Array.isArray(byCal[c.id]) ? byCal[c.id].length : 0
+            }));
+            log(`Loaded ${events.length} events total from storage`, {
+              calendars: calendars.length,
+              perCalendarCounts: perCal,
+              lastSyncAt: data?.gcal_last_sync_at
+            });
+          } else {
+            log(`Loaded ${events.length} events from storage (no calendars list yet).`);
+          }
+
+          deliverToMapperAndRepaint(events);
+        }
+      );
+    } catch (e) {
+      warn('chrome.storage unavailable?', e);
+      deliverToMapperAndRepaint([]);
+    }
+  }
+
+  // ---- Public helpers (keep your naming) ----
+  window.start_google_calendar_sync = function start_google_calendar_sync() {
+    chrome.runtime.sendMessage({ type: 'gcal:startPolling' }, (res) => {
+      log('startPolling →', res, chrome.runtime.lastError);
+    });
   };
 
-  input.click();
-};
+  window.stop_google_calendar_sync = function stop_google_calendar_sync() {
+    chrome.runtime.sendMessage({ type: 'gcal:stopPolling' }, (res) => {
+      log('stopPolling →', res, chrome.runtime.lastError);
+    });
+  };
 
+  window.refresh_google_calendar_now = function refresh_google_calendar_now() {
+    chrome.runtime.sendMessage({ type: 'gcal:refreshNow' }, (res) => {
+      log('refreshNow →', res, chrome.runtime.lastError);
+    });
+  };
 
+  // ---- Wire up buttons if they exist ----
+  $(document).on('click', '#connect_google_calendar_button', function (e) {
+    e.preventDefault();
+    const $btn = $(this);
+    if ($btn.data('busy')) return;
+
+    $btn.data('busy', true);
+    log('Connect clicked');
+
+    chrome.runtime.sendMessage({ type: 'gcal:connect' }, (res) => {
+      log('gcal:connect response →', res, chrome.runtime.lastError);
+      $btn.data('busy', false);
+      // Show whatever is already present; fresh data will arrive via gcal:updated
+      pullAndRender();
+    });
+  });
+
+  // // Optional buttons:
+  // $(document).on('click', '#disconnect_google_calendar_button', function (e) {
+  //   e.preventDefault();
+  //   chrome.runtime.sendMessage({ type: 'gcal:disconnect' }, (res) => {
+  //     log('disconnect →', res, chrome.runtime.lastError);
+  //   });
+  // });
+  // $(document).on('click', '#gcal_refresh_now_button', function (e) {
+  //   e.preventDefault();
+  //   chrome.runtime.sendMessage({ type: 'gcal:refreshNow' }, (res) => {
+  //     log('refreshNow →', res, chrome.runtime.lastError);
+  //   });
+  // });
+
+  // ---- Listen for background updates ----
+  chrome.runtime.onMessage.addListener((msg) => {
+    if (msg?.type === 'gcal:updated') {
+      log('gcal:updated message received', msg?.counts || {});
+      pullAndRender();
+    }
+    if (msg?.type === 'gcal:disconnected') {
+      log('gcal:disconnected message received');
+      window._imported_google_events = [];
+      repaintWhenReady();
+    }
+  });
+
+  // ---- On load: if background already synced earlier, render immediately ----
+  pullAndRender();
+
+  // ---- Optional: auto-start polling when the page loads ----
+  // window.start_google_calendar_sync();
+
+  // ---- Environment sanity check ----
+  if (!chrome?.runtime?.id) {
+    warn('Not running in an extension page (chrome.runtime.id missing).');
+  }
+  if (typeof $ !== 'function') {
+    warn('jQuery is not loaded before google_calendar_import.js.');
+  }
+})();
+
+// ===== google_calendar_import.js =====
+// Front-end hooks + UI glue for Google Calendar.
+// Requires: jQuery, MV3 environment, and background.js that handles gcal:* messages.
+
+(() => {
+  'use strict';
+
+  const GCAL_DEBUG = true;
+  const STORE_ALL_EVENTS_KEY     = 'gcal_events_all';
+  const STORE_PRIMARY_EVENTS_KEY = 'gcal_events_primary';
+  const REPAINT_MAX_RETRIES = 80;   // ~8s total if 100ms interval
+  const REPAINT_RETRY_MS    = 100;
+
+  // ---- tiny helpers ----
+  const log  = (...a) => { if (GCAL_DEBUG) console.log('[GCAL]', ...a); };
+  const warn = (...a) => console.warn('[GCAL]', ...a);
+
+  function readEventsFromStorage(cb) {
+    try {
+      chrome.storage.local.get([STORE_ALL_EVENTS_KEY, STORE_PRIMARY_EVENTS_KEY], (data) => {
+        const all   = data?.[STORE_ALL_EVENTS_KEY] || [];
+        const prime = data?.[STORE_PRIMARY_EVENTS_KEY] || [];
+        const events = all.length ? all : prime;
+        cb(events);
+      });
+    } catch (e) {
+      warn('chrome.storage unavailable?', e);
+      cb([]);
+    }
+  }
+
+  function repaintWhenReady(triesLeft = REPAINT_MAX_RETRIES) {
+    const vcReady          = typeof window.View_Changer === 'function';
+    const hasCurrentDisplay= typeof window.current_display !== 'undefined';
+    const pageReadyFlag    = typeof window.page_ready === 'string' ? (window.page_ready === 'yes') : true;
+
+    if (vcReady && hasCurrentDisplay && pageReadyFlag) {
+      try { window.View_Changer(); return; }
+      catch (e) { warn('View_Changer threw:', e); }
+    }
+    if (triesLeft > 0) {
+      setTimeout(() => repaintWhenReady(triesLeft - 1), REPAINT_RETRY_MS);
+    } else {
+      log('Skipped repaint (app not ready after retries).');
+    }
+  }
+
+  function deliverToMapperAndRepaint(events) {
+    try {
+      if (typeof window.map_imported_events_to_dictionary === 'function') {
+        window.map_imported_events_to_dictionary(events);
+      } else {
+        window._imported_google_events = events;
+      }
+    } catch (e) {
+      warn('Mapper threw:', e);
+    }
+    repaintWhenReady();
+  }
+
+  function pullAndRender() {
+    readEventsFromStorage((events) => {
+      log(`Loaded ${events.length} events from storage`);
+      deliverToMapperAndRepaint(events);
+    });
+  }
+
+  // ---- Public helpers (keep your naming) ----
+  window.start_google_calendar_sync = function start_google_calendar_sync() {
+    chrome.runtime.sendMessage({ type: 'gcal:startPolling' }, (res) => {
+      log('startPolling →', res, chrome.runtime.lastError);
+    });
+  };
+
+  window.stop_google_calendar_sync = function stop_google_calendar_sync() {
+    chrome.runtime.sendMessage({ type: 'gcal:stopPolling' }, (res) => {
+      log('stopPolling →', res, chrome.runtime.lastError);
+    });
+  };
+
+  window.refresh_google_calendar_now = function refresh_google_calendar_now() {
+    chrome.runtime.sendMessage({ type: 'gcal:refreshNow' }, (res) => {
+      log('refreshNow →', res, chrome.runtime.lastError);
+    });
+  };
+
+  // ---- Wire up buttons ----
+  $(document).on('click', '#connect_google_calendar_button', function (e) {
+    e.preventDefault();
+    const $btn = $(this);
+    if ($btn.data('busy')) return;
+
+    $btn.data('busy', true);
+    log('Connect clicked');
+
+    chrome.runtime.sendMessage({ type: 'gcal:connect' }, (res) => {
+      log('gcal:connect response →', res, chrome.runtime.lastError);
+      $btn.data('busy', false);
+      pullAndRender(); // show whatever is present; fresh data arrives via gcal:updated
+    });
+  });
+
+  // Support both your typed id and the correctly spelled one.
+  $(document).on('click', '#discconnect_google_calendar_button, #disconnect_google_calendar_button', function (e) {
+    e.preventDefault();
+    const $btn = $(this);
+    if ($btn.data('busy')) return;
+
+    $btn.data('busy', true);
+    log('Disconnect clicked');
+
+    chrome.runtime.sendMessage({ type: 'gcal:disconnect' }, (res) => {
+      log('disconnect →', res, chrome.runtime.lastError);
+      $btn.data('busy', false);
+
+      // Clear immediately; background will also broadcast gcal:disconnected
+      window._imported_google_events = [];
+      repaintWhenReady();
+    });
+  });
+
+  // ---- Listen for background updates ----
+  chrome.runtime.onMessage.addListener((msg) => {
+    if (msg?.type === 'gcal:updated') {
+      log('gcal:updated message received', msg?.counts || {});
+      pullAndRender();
+    }
+    if (msg?.type === 'gcal:disconnected') {
+      log('gcal:disconnected message received');
+      window._imported_google_events = [];
+      repaintWhenReady();
+    }
+  });
+
+  // ---- On load: if background already synced earlier, render immediately ----
+  pullAndRender();
+
+  // ---- Optional: auto-start polling ----
+  // window.start_google_calendar_sync();
+
+  // ---- Environment sanity check ----
+  if (!chrome?.runtime?.id) warn('Not running in an extension page (chrome.runtime.id missing).');
+  if (typeof $ !== 'function') warn('jQuery is not loaded before google_calendar_import.js.');
+})();

@@ -228,7 +228,7 @@ window.change_preset_theme = function change_preset_theme() {
     if(hour < 6){ // midnight to 6am
         choice = 'night'
     }
-    else if(hour >= 6 && hour < 12){ // 7am to noon
+    else if(hour >= 6 && hour < 12){ // 6am to noon
         choice = 'morning'
     }
     else if(hour >= 12 && hour < 14){ // noon to 2pm
@@ -633,6 +633,7 @@ window.update_css_color_accent_1 = function update_css_color_accent_1(){
     $('#pmt_8_minor_tick_c').css('border-color', color_accent_1)
     $('#top_dock_input').css('border-color', color_accent_1)
     $('#connect_google_calendar_button').css('border-color', color_accent_1)
+    $('#discconnect_google_calendar_button').css('border-color', color_accent_1)
     $('#top_dock_input_underline').css('border-color', color_accent_1)
     $('#top_dock_input_finished').css('border-color', color_accent_1)
     $('#edit_quick_launch_bookmarks').css('color', color_accent_1)
@@ -723,6 +724,7 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#present_view_date_MDY').css('color', color_accent_2)
     $('#top_dock_input').css('color', color_accent_2)
     $('#connect_google_calendar_button').css('color', color_accent_2)
+    $('#disconnect_google_calendar_button').css('color', color_accent_2)
     $('#config_import_message').css('background-color', color_accent_2)
 
     // quick bookmarks
@@ -767,5 +769,8 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#bookmark_19_favicon').css('border-color', color_accent_2);
     $('#bookmark_20_favicon').css('border-color', color_accent_2);
     $('#quick_launch_bookmark_settings').css('color', color_accent_2)
+
+    document.documentElement.style.setProperty('--event-badge-bg', color_accent_2);
+
 
 }

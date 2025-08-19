@@ -675,11 +675,11 @@ $('#edit_quick_launch_bookmarks').click(function(){
     View_Changer()
 })
 
-
-// google calendar button
-$('#connect_google_calendar_button').on('click', function () {
-  window.import_google_calendar_json();
-});
+// zc
+// // google calendar button
+// $('#connect_google_calendar_button').on('click', function () {
+//   // window.import_google_calendar_json();
+// });
 
 
 

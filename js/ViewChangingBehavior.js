@@ -207,6 +207,7 @@ window.show_top_dock = function show_top_dock(){
     $('#search_bar').hide()
     $('#bookmark_quick_links').hide()
     undo_quick_launch_css_changes()
+    // render_week_from_google()
 
     if(top_dock_animation=='yes'){
         $('#top_dock').removeClass('top_docker_state1')
@@ -346,6 +347,7 @@ window.View_Changer = function View_Changer(){
         save_data()
         top_dock_small_screen_view()
         top_dock_resize_events()
+        render_week_from_google();
         show_top_dock()
     }
     else if(current_display_temp=='top_dock_config'){
