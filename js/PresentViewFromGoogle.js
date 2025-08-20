@@ -13,10 +13,10 @@
   const PILL_H                = 32;
   const PILL_FONT_SIZE        = 18;
   const PILL_GAP              = 8;
-  const PILL_BG_ALPHA         = 0.18;
+  const PILL_BG_ALPHA         = .9;
   const PILL_BORDER_ALPHA     = 0.35;
-  const FUTURE_OPACITY        = 0.45;
-  const ONGOING_OPACITY       = 0.70;
+  const FUTURE_OPACITY        = .9;
+  const ONGOING_OPACITY       = .70;
   const PAST_FADE_MIN         = 120;   // minutes to completely fade
   const MAX_PILLS             = 6;
   const LS_KEY_OFFSET         = 'present_view_user_y_offset'; // persistent offset key
@@ -73,7 +73,7 @@
       #${OVERLAY_ID} {
         position: absolute;
         left: 0; right: 0;
-        pointer-events: none;
+        pointer-events: none;    /* lets underlying UI receive clicks */
         z-index: 3000;
       }
       .pv-event {
@@ -87,7 +87,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        pointer-events: auto;
+        pointer-events: auto;    /* enables hover on the pills themselves */
         z-index: 2600;
       }
       .pv-tooltip {
@@ -119,7 +119,6 @@
 
   // ---------- persistent vertical offset ----------
   function getUserOffset() {
-    // live override wins
     if (typeof window.PRESENT_VIEW_Y_OFFSET === 'number') return window.PRESENT_VIEW_Y_OFFSET|0;
     try {
       const v = localStorage.getItem(LS_KEY_OFFSET);
@@ -153,11 +152,19 @@
   function ensureOverlay() {
     let el = document.getElementById(OVERLAY_ID);
     if (!el) {
+      const host =
+        document.getElementById('top_dock_present') ||
+        document.body ||
+        document.documentElement;   // last resort
+
+      if (!host) return null;       // DOM not ready yet
+
       el = document.createElement('div');
       el.id = OVERLAY_ID;
-      (document.getElementById('top_dock_present') || document.body).appendChild(el);
+      host.appendChild(el);
     }
-    el.style.top = `${computeOverlayTop()}px`;
+    const top = computeOverlayTop();
+    if (top != null) el.style.top = `${top}px`;
     el.style.left = '0';
     el.style.right = '0';
     return el;
@@ -249,6 +256,17 @@
     emphasizeNowTick();
 
     const overlay = ensureOverlay();
+    if (!overlay) {
+      // DOM not ready yet; try once shortly but don't spin
+      if (!renderPresent._retry) {
+        renderPresent._retry = setTimeout(() => {
+          renderPresent._retry = null;
+          renderPresent();
+        }, 50);
+      }
+      return;
+    }
+
     const $overlay = $(overlay).empty();
 
     const accent = String(window.color_accent_2 || '#3b82f6');
@@ -342,6 +360,19 @@
   window.addEventListener('resize', () => present_view_relayout(), { passive: true });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) present_view_relayout(); });
 
-  // Initial paint
-  present_view_relayout();
+  // Initial paint — only after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => present_view_relayout(), { once: true });
+  } else {
+    present_view_relayout();
+  }
 })();
+
+// Back-compat for older View_Changer calls:
+if (!window.render_present_from_google) {
+  window.render_present_from_google = function () {
+    if (typeof window.present_view_relayout === 'function') {
+      window.present_view_relayout();
+    }
+  };
+}

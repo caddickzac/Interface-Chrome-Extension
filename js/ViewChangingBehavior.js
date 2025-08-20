@@ -349,7 +349,8 @@ window.View_Changer = function View_Changer(){
         // calendar scripts: 
         render_week_from_google();
         render_day_from_google()
-        render_present_from_google();
+        // render_present_from_google();
+        present_view_relayout()
         show_top_dock()
     }
     else if(current_display_temp=='top_dock_config'){
