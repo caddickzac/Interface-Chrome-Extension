@@ -1652,15 +1652,23 @@ current_days_in_month=''
 current_week_span=''
 current_day_of_month_array=''
 
+// CalendarFrontEndMapping.js
 window.month_view_calendar_dictionary_grabber = function month_view_calendar_dictionary_grabber(){
-    temp_month_dictionary= dictionary_library_array[0][month]
+  // pick the month’s dictionary (month is your 0..11 global)
+  temp_month_dictionary = dictionary_library_array[0][month];
 
-    // write variables from dictionary
-    current_day_of_month_array = temp_month_dictionary.month
-    current_days_in_month = temp_month_dictionary.days_in_month
-    current_week_span = temp_month_dictionary.week_span
-    current_day_of_month_array = temp_month_dictionary.day_of_month_array
-}
+  // write variables from dictionary
+  current_days_in_month       = temp_month_dictionary.days_in_month;
+  current_week_span           = temp_month_dictionary.week_span;
+  current_day_of_month_array  = temp_month_dictionary.day_of_month_array;
+
+  // ✅ make month/year explicit globals for the month renderer
+  window.month = month; // 0..11
+  window.year  = (temp_month_dictionary.year && +temp_month_dictionary.year[0])
+              || window.current_year
+              || new Date().getFullYear();
+};
+
 
 function month_view_calendar_week_span(){
     $('#td_month_row_5').show()

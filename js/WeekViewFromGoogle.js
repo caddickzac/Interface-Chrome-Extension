@@ -2,7 +2,13 @@
 // Theme: pill text uses window.color_background exactly.
 // All-day events use date strings (no TZ drift). Timed events respect APP_TZ.
 // Tooltip background = color_background; border & text = color_accent_2.
-// Optional: set window.APP_TIME_ZONE = 'America/New_York' before this loads.
+//
+// Knobs (set these *before* this file loads, or set and call render_week_from_google()):
+  // window.WEEK_PILL_OPACITY =.7   // 0..1 (default 0.85)
+//   window.WEEK_FONT_FAMILY    // e.g. "'Lexend Deca', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
+//   window.APP_TIME_ZONE       // e.g. "America/New_York"
+window.WEEK_FONT_FAMILY = '"Helvetica Neue", Helvetica, Arial, sans-serif' // "system-ui" //"'Lexend Deca'" // system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
+window.WEEK_PILL_OPACITY = 0.7; // more transparent; try 0.9 for more opaque
 
 (() => {
   'use strict';
@@ -11,6 +17,16 @@
   const DAY_NODE_IDS = DAY_IDS.map(d => `#week_view_${d}`);
   const HEADER_ID = '#top_dock_date_DoW_range';
   const STYLE_TAG_ID = 'wv-event-style';
+
+  // ---------- knobs ----------
+  const WEEK_PILL_OPACITY = (typeof window.WEEK_PILL_OPACITY === 'number')
+    ? Math.max(0, Math.min(1, window.WEEK_PILL_OPACITY))
+    : 0.85;
+
+  const WEEK_FONT_FAMILY =
+    window.WEEK_FONT_FAMILY ||
+    window.PRESENT_FONT_FAMILY ||
+    "'Lexend Deca', 'Book Antiqua', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
 
   // ---------- Timezone helpers (for timed events only) ----------
   const APP_TZ =
@@ -41,12 +57,19 @@
     return ymdKey(back);
   }
   function addDaysKey(ymd, n) {
-    const d = new Date(ymd + 'T12:00:00'); // midday avoids DST edges for string math
+    const d = new Date(ymd + 'T12:00:00'); // midday avoids DST edges
     d.setDate(d.getDate() + n);
     return ymdKey(d);
   }
 
   // ---------- Visual helpers ----------
+  function hexToRgba(hex, a = 1) {
+    const h = String(hex || '').replace('#','').trim();
+    const r = parseInt(h.slice(0,2),16), g = parseInt(h.slice(2,4),16), b = parseInt(h.slice(4,6),16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 
   function ensureStyles() {
@@ -65,9 +88,10 @@
         white-space:nowrap;
         text-overflow:ellipsis;
         z-index: 3000;
-        opacity:.98;
         cursor:default;
         pointer-events:auto;
+        font-family: ${WEEK_FONT_FAMILY};
+        /* no hard-coded opacity here */
       }
       .wv-all-day { height:18px; line-height:18px; }
 
@@ -86,6 +110,7 @@
         transform: translate(-50%, -110%);
         white-space: pre-line;
         display: none;
+        font-family: ${WEEK_FONT_FAMILY};
       }
       .wv-tip-time { font-weight: 600; }
       .wv-tip-title { opacity: .95; }
@@ -117,7 +142,6 @@
   }
 
   // ---------- Event normalization / splitting ----------
-  // Keep raw date strings for all-day to avoid TZ drift.
   function normalizeEvent(ev) {
     const isAllDay = !!(ev?.start?.date && !ev?.start?.dateTime);
     if (isAllDay) {
@@ -259,7 +283,7 @@
       for (const seg of splitEventByWeekKeys(ev, weekKeys)) byDay[seg.dayIndex].push(seg);
     }
 
-    // Theme: pill bg uses accent_2, text uses background (your request)
+    // Theme
     const pillBg = String(window.color_accent_2 || '#3b82f6');
     const pillFg = String(window.color_background || '#111');
     const laneHeight = 18, topPadding = 4, totalMinutes = 24 * 60;
@@ -291,13 +315,12 @@
             left: `${leftPct}%`,
             width: `${Math.max(widthPct, 1.2)}%`,
             top: `${topPadding + seg.lane * laneHeight}px`,
-            backgroundColor: pillBg,
-            color: pillFg,                // event text = color_background
-            border: `1px solid ${pillFg}22`
+            // Apply opacity to bg/border only (keeps text crisp)
+            backgroundColor: hexToRgba(pillBg, WEEK_PILL_OPACITY),
+            border: `1px solid ${hexToRgba(pillFg, Math.min(1, WEEK_PILL_OPACITY * 0.6))}`,
+            color: pillFg
           })
-          .attr('title', seg.title)
           .data('seg', seg);
-
         $row.append($pill);
       }
     }
@@ -311,12 +334,11 @@
         const seg = $(this).data('seg');
         if (!seg) return;
         tipEl = ensureTooltip();
-        // Theme tooltip per your request:
         const bg  = String(window.color_background || '#111');
         const acc = String(window.color_accent_2 || '#fff');
-        tipEl.style.background  = bg;   // same as page background
-        tipEl.style.borderColor = acc;  // border = accent_2 (no alpha)
-        tipEl.style.color       = acc;  // text   = accent_2
+        tipEl.style.background  = bg;
+        tipEl.style.borderColor = acc;
+        tipEl.style.color       = acc;
         setTip(tipEl, seg);
         tipEl.style.display = 'block';
         tipEl.style.left = e.clientX + 'px';

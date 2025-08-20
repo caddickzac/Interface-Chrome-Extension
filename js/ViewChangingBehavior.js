@@ -2,6 +2,13 @@
 // View Changing Behavior // 
 ////////////////////////////
 
+(function ensureMonthStub(){
+    if (typeof window.render_month_from_google !== 'function') {
+      window.__MONTH_RENDER_QUEUE__ = window.__MONTH_RENDER_QUEUE__ || [];
+      window.render_month_from_google = (...args) => window.__MONTH_RENDER_QUEUE__.push(args);
+    }
+  })();
+
 function quick_launch_css_changes(){
     $('#screen1').css('padding-top', '5%') // add class to other view when this one isn't selected
     $('#screen2').css('padding-top','0%')
@@ -347,10 +354,15 @@ window.View_Changer = function View_Changer(){
         top_dock_small_screen_view()
         top_dock_resize_events()
         // calendar scripts: 
+        present_view_relayout()
         render_week_from_google();
         render_day_from_google()
-        // render_present_from_google();
-        present_view_relayout()
+        syncMonthThemeVars();
+        render_month_from_google(new Date(window.year, window.month, 1));
+        if (typeof window.render_month_from_google === 'function') {
+          window.render_month_from_google();
+        }
+        
         show_top_dock()
     }
     else if(current_display_temp=='top_dock_config'){

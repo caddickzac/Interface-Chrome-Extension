@@ -3,6 +3,7 @@
 //   baseline (auto: just below time chip) + USER OFFSET (persisted, adjustable).
 // Pills fade in only on first paint or when layout stabilizes (no per-second pulsing).
 
+
 (() => {
   'use strict';
 
@@ -14,13 +15,21 @@
   const PILL_H                = 32;
   const PILL_FONT_SIZE        = 18;
   const PILL_GAP              = 8;
-  const PILL_BG_ALPHA         = 0.5;
+  const PILL_BG_ALPHA         = 0.7;
   const PILL_BORDER_ALPHA     = 0.35;
-  const FUTURE_OPACITY        = 0.7;
-  const ONGOING_OPACITY       = 0.70;
+  const FUTURE_OPACITY        = 1;
+  const ONGOING_OPACITY       = 0.40;
   const PAST_FADE_MIN         = 120;
   const MAX_PILLS             = 6;
   const LS_KEY_OFFSET         = 'present_view_user_y_offset';
+  const PRESENT_FONT_FAMILY   = '"Helvetica Neue", Helvetica, Arial, sans-serif'
+
+  // NEW: Font family knob (falls back to WEEK/your defaults if not set)
+  // const PRESENT_FONT_FAMILY =
+  //   window.PRESENT_FONT_FAMILY ||
+  //   window.WEEK_FONT_FAMILY ||
+  //   // '"Helvetica Neue", Helvetica, Arial, sans-serif'
+  //   "'Lexend Deca', 'Book Antiqua', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
 
   const BASE_GAP = (typeof window.PRESENT_VIEW_BASE_GAP === 'number')
     ? window.PRESENT_VIEW_BASE_GAP
@@ -29,7 +38,8 @@
   // ---------- helpers ----------
   function isPresentActive() {
     return String(window.current_display) === 'top_dock'
-        && Number(window.top_dock_view_array_number) === 0;
+      && String(window.current_top_dock_module) === 'present';
+        // && Number(window.top_dock_view_array_number) === 0; // zc
   }
 
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
@@ -96,6 +106,7 @@
         text-overflow: ellipsis;
         pointer-events: auto;
         z-index: 26;
+        font-family: ${PRESENT_FONT_FAMILY};
       }
       .pv-tooltip {
         position: fixed;
@@ -109,6 +120,7 @@
         display: none;
         box-shadow: 0 6px 18px rgba(0,0,0,.35);
         transform: translate(-50%, -110%);
+        font-family: ${PRESENT_FONT_FAMILY};
       }
     `;
     document.head.appendChild(s);
@@ -312,7 +324,6 @@
 
       let overlay = ensureOverlay();
       if (!overlay) {
-        // (retry code can remain as-is)
         if (!renderPresent._retry) {
           renderPresent._retry = setTimeout(() => { renderPresent._retry = null; renderPresent(); }, 50);
         }
@@ -321,12 +332,11 @@
 
       // 🚦 Only show pills when Present view is active
       if (!isPresentActive()) {
-        overlay.style.display = 'none';   // hide when not in Present
+        overlay.style.display = 'none';
         hideTooltip();
         return;
       }
-      overlay.style.display = 'block';    // ensure visible when active
-
+      overlay.style.display = 'block';
 
       // Only wait (and only fade) if metrics aren't usable yet, or if this is first paint
       let didWait = false;
@@ -393,13 +403,11 @@
 
       // Fade in only if first paint or we actually had to wait
       if (firstPaint || didWait) {
-        // keep current opacity (0 from CSS on first paint) or set to 0 briefly if needed
         if (!firstPaint) overlay.style.opacity = '0';
         void overlay.offsetHeight; // reflow
         overlay.style.opacity = '1';
         overlay.dataset.everVisible = '1';
       } else {
-        // stay visible; no pulse
         overlay.style.opacity = '1';
       }
 

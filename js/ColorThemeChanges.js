@@ -771,6 +771,7 @@ window.update_css_color_accent_2 = function update_css_color_accent_2(){
     $('#quick_launch_bookmark_settings').css('color', color_accent_2)
 
     document.documentElement.style.setProperty('--event-badge-bg', color_accent_2);
+    window.month_view_apply_theme();  
 
 
 }
