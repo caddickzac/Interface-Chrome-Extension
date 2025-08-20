@@ -1,6 +1,7 @@
 // ===== PresentViewFromGoogle.js =====
 // Present view pills use real times for X/width. Vertical position is:
 //   baseline (auto: just below time chip) + USER OFFSET (persisted, adjustable).
+// Pills fade in only on first paint or when layout stabilizes (no per-second pulsing).
 
 (() => {
   'use strict';
@@ -9,24 +10,28 @@
   const OVERLAY_ID = 'present_events_overlay';
 
   // ---------- knobs ----------
-  const BASE_GAP_DEFAULT      = 66;    // base gap below the time chip
+  const BASE_GAP_DEFAULT      = 66;
   const PILL_H                = 32;
   const PILL_FONT_SIZE        = 18;
   const PILL_GAP              = 8;
-  const PILL_BG_ALPHA         = .9;
+  const PILL_BG_ALPHA         = 0.5;
   const PILL_BORDER_ALPHA     = 0.35;
-  const FUTURE_OPACITY        = .9;
-  const ONGOING_OPACITY       = .70;
-  const PAST_FADE_MIN         = 120;   // minutes to completely fade
+  const FUTURE_OPACITY        = 0.7;
+  const ONGOING_OPACITY       = 0.70;
+  const PAST_FADE_MIN         = 120;
   const MAX_PILLS             = 6;
-  const LS_KEY_OFFSET         = 'present_view_user_y_offset'; // persistent offset key
+  const LS_KEY_OFFSET         = 'present_view_user_y_offset';
 
-  // Allow optional global override of the base gap
   const BASE_GAP = (typeof window.PRESENT_VIEW_BASE_GAP === 'number')
     ? window.PRESENT_VIEW_BASE_GAP
     : BASE_GAP_DEFAULT;
 
   // ---------- helpers ----------
+  function isPresentActive() {
+    return String(window.current_display) === 'top_dock'
+        && Number(window.top_dock_view_array_number) === 0;
+  }
+
   const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
 
   function hexToRgba(hex, a = 1) {
@@ -73,8 +78,10 @@
       #${OVERLAY_ID} {
         position: absolute;
         left: 0; right: 0;
-        pointer-events: none;    /* lets underlying UI receive clicks */
-        z-index: 3000;
+        pointer-events: none;
+        z-index: 30;
+        opacity: 0;                 /* hidden until first good render */
+        transition: opacity 120ms ease;
       }
       .pv-event {
         position: absolute;
@@ -87,12 +94,12 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-        pointer-events: auto;    /* enables hover on the pills themselves */
-        z-index: 2600;
+        pointer-events: auto;
+        z-index: 26;
       }
       .pv-tooltip {
         position: fixed;
-        z-index: 9999;
+        z-index: 99;
         pointer-events: none;
         border-radius: 8px;
         padding: 8px 10px;
@@ -109,12 +116,13 @@
 
   function emphasizeNowTick() {
     const accent = String(window.color_accent_2 || '#3b82f6');
-    $('#present_tick_line').css({
-      width: '4px',
-      backgroundColor: accent,
-      boxShadow: 'none',
-      zIndex: 4000
-    });
+    const el = document.getElementById('present_tick_line');
+    if (el) {
+      el.style.width = '4px';
+      el.style.backgroundColor = accent;
+      el.style.boxShadow = 'none';
+      el.style.zIndex = '4000';
+    }
   }
 
   // ---------- persistent vertical offset ----------
@@ -125,9 +133,7 @@
       return v ? (parseInt(v,10) || 0) : 0;
     } catch { return 0; }
   }
-  function setUserOffset(px) {
-    try { localStorage.setItem(LS_KEY_OFFSET, String(px|0)); } catch {}
-  }
+  function setUserOffset(px) { try { localStorage.setItem(LS_KEY_OFFSET, String(px|0)); } catch {} }
 
   // ---------- geometry ----------
   function computeOverlayTop() {
@@ -152,13 +158,8 @@
   function ensureOverlay() {
     let el = document.getElementById(OVERLAY_ID);
     if (!el) {
-      const host =
-        document.getElementById('top_dock_present') ||
-        document.body ||
-        document.documentElement;   // last resort
-
-      if (!host) return null;       // DOM not ready yet
-
+      const host = document.getElementById('top_dock_present') || document.body || document.documentElement;
+      if (!host) return null;
       el = document.createElement('div');
       el.id = OVERLAY_ID;
       host.appendChild(el);
@@ -192,6 +193,56 @@
     const o = overlayEl.getBoundingClientRect();
     const w = band ? band.getBoundingClientRect().width : o.width;
     return w / (8 * 60); // fallback: ~8h visible
+  }
+
+  // Quick check: do we have usable metrics *now*?
+  function hasUsableMetrics() {
+    const p1 = document.getElementById('pmt_1');
+    const p2 = document.getElementById('pmt_2');
+    const band = document.getElementById('present_moving_timeline');
+    if (!p1 || !p2 || !band) return false;
+    const r1 = p1.getBoundingClientRect();
+    const r2 = p2.getBoundingClientRect();
+    const bw = band.getBoundingClientRect().width;
+    return bw > 0 && isFinite(r1.left) && isFinite(r2.left) && Math.abs(r2.left - r1.left) > 10;
+  }
+
+  // Wait until metrics stabilize (only when needed)
+  function waitForStableLayout(maxFrames = 8) {
+    return new Promise(resolve => {
+      let prev = null, frames = 0;
+      const eps = 0.5;
+      const measure = () => {
+        const p1 = document.getElementById('pmt_1');
+        const p2 = document.getElementById('pmt_2');
+        const band = document.getElementById('present_moving_timeline');
+        const tick = document.getElementById('present_tick_line');
+        if (!p1 || !p2 || !band || !tick) { frames++; return requestAnimationFrame(measure); }
+
+        const r1 = p1.getBoundingClientRect();
+        const r2 = p2.getBoundingClientRect();
+        const bw = band.getBoundingClientRect().width;
+
+        const valid = (bw > 0) && isFinite(r1.left) && isFinite(r2.left) && Math.abs(r2.left - r1.left) > 10;
+        const cur = { r1: r1.left, r2: r2.left, bw };
+
+        let stable = false;
+        if (prev && valid) {
+          stable = Math.abs(cur.r1 - prev.r1) < eps &&
+                   Math.abs(cur.r2 - prev.r2) < eps &&
+                   Math.abs(cur.bw - prev.bw) < 1;
+        }
+
+        frames++;
+        if (valid && (stable || frames >= maxFrames)) {
+          resolve(frames);
+        } else {
+          prev = cur;
+          requestAnimationFrame(measure);
+        }
+      };
+      requestAnimationFrame(measure);
+    });
   }
 
   // ---------- data ----------
@@ -252,89 +303,126 @@
 
   // ---------- layout ----------
   async function renderPresent() {
-    ensureStyles();
-    emphasizeNowTick();
+    if (renderPresent._running) { renderPresent._pending = true; return; }
+    renderPresent._running = true;
 
-    const overlay = ensureOverlay();
-    if (!overlay) {
-      // DOM not ready yet; try once shortly but don't spin
-      if (!renderPresent._retry) {
-        renderPresent._retry = setTimeout(() => {
-          renderPresent._retry = null;
-          renderPresent();
-        }, 50);
+    try {
+      ensureStyles();
+      emphasizeNowTick();
+
+      let overlay = ensureOverlay();
+      if (!overlay) {
+        // (retry code can remain as-is)
+        if (!renderPresent._retry) {
+          renderPresent._retry = setTimeout(() => { renderPresent._retry = null; renderPresent(); }, 50);
+        }
+        return;
       }
-      return;
-    }
 
-    const $overlay = $(overlay).empty();
+      // 🚦 Only show pills when Present view is active
+      if (!isPresentActive()) {
+        overlay.style.display = 'none';   // hide when not in Present
+        hideTooltip();
+        return;
+      }
+      overlay.style.display = 'block';    // ensure visible when active
 
-    const accent = String(window.color_accent_2 || '#3b82f6');
-    const bg     = String(window.color_background || '#0f172a');
 
-    const now = new Date();
-    const allToday = await getTodaysEvents();
+      // Only wait (and only fade) if metrics aren't usable yet, or if this is first paint
+      let didWait = false;
+      const firstPaint = !overlay.dataset.everVisible;
+      if (!hasUsableMetrics()) {
+        await waitForStableLayout(8);
+        didWait = true;
+      }
 
-    const fadeCutoff = new Date(now.getTime() - PAST_FADE_MIN*60000);
-    const visible = allToday.filter(ev => ev.end >= fadeCutoff).slice(0, MAX_PILLS);
+      // Reposition after potential wait
+      const top = computeOverlayTop();
+      if (top != null) overlay.style.top = `${top}px`;
 
-    // X mapping
-    const nowX = currentTickLeftPx(overlay);
-    const ppm  = pxPerMinute(overlay);
+      const $overlay = $(overlay).empty();
 
-    const oRect = overlay.getBoundingClientRect();
-    const leftBound  = 0;
-    const rightBound = oRect.width;
+      const accent = String(window.color_accent_2 || '#3b82f6');
+      const bg     = String(window.color_background || '#0f172a');
 
-    let y = 0;
-    for (const ev of visible) {
-      const startMinFromNow = (ev.start - now) / 60000;
-      const endMinFromNow   = (ev.end   - now) / 60000;
+      const now = new Date();
+      const allToday = await getTodaysEvents();
 
-      let x1 = nowX + startMinFromNow * ppm;
-      let x2 = nowX + endMinFromNow   * ppm;
+      const fadeCutoff = new Date(now.getTime() - PAST_FADE_MIN*60000);
+      const visible = allToday.filter(ev => ev.end >= fadeCutoff).slice(0, MAX_PILLS);
 
-      // offscreen cull
-      if (x2 <= leftBound || x1 >= rightBound) continue;
+      // X mapping
+      const nowX = currentTickLeftPx(overlay);
+      const ppm  = pxPerMinute(overlay);
 
-      const x1c = clamp(x1, leftBound, rightBound);
-      const x2c = clamp(x2, leftBound, rightBound);
-      const width = Math.max(8, x2c - x1c);
+      const oRect = overlay.getBoundingClientRect();
+      const leftBound  = 0;
+      const rightBound = oRect.width;
 
-      const $pill = $('<div class="pv-event"></div>')
-        .text(ev.title || '(no title)')
-        .css({
-          left:  `${x1c}px`,
-          top:   `${y}px`,
-          width: `${width}px`,
-          height:`${PILL_H}px`,
-          backgroundColor: hexToRgba(accent, PILL_BG_ALPHA),
-          border: `1px solid ${hexToRgba(accent, PILL_BORDER_ALPHA)}`,
-          color: bg,
-          opacity: opacityFor(ev, now)
-        });
+      let y = 0;
+      for (const ev of visible) {
+        const startMinFromNow = (ev.start - now) / 60000;
+        const endMinFromNow   = (ev.end   - now) / 60000;
 
-      $pill.data('seg', { title: ev.title, start: ev.start, end: ev.end, isAllDay: ev.isAllDay });
-      $overlay.append($pill);
-      y += PILL_H + PILL_GAP;
-    }
+        let x1 = nowX + startMinFromNow * ppm;
+        let x2 = nowX + endMinFromNow   * ppm;
 
-    // Hover (delegated once)
-    if (!renderPresent._hoverBound) {
-      renderPresent._hoverBound = true;
-      $(document)
-        .on('mouseenter', '.pv-event', function(e){
-          const seg = $(this).data('seg'); if (!seg) return;
-          showTooltip(seg, e.clientX, e.clientY);
-        })
-        .on('mousemove', '.pv-event', function(e){
-          const tip = document.querySelector('.pv-tooltip');
-          if (tip && tip.style.display === 'block') {
-            tip.style.left = `${e.clientX}px`;
-            tip.style.top  = `${e.clientY}px`;
-          }
-        })
-        .on('mouseleave', '.pv-event', hideTooltip);
+        if (x2 <= leftBound || x1 >= rightBound) continue;
+
+        const x1c = clamp(x1, leftBound, rightBound);
+        const x2c = clamp(x2, leftBound, rightBound);
+        const width = Math.max(8, x2c - x1c);
+
+        const $pill = $('<div class="pv-event"></div>')
+          .text(ev.title || '(no title)')
+          .css({
+            left:  `${x1c}px`,
+            top:   `${y}px`,
+            width: `${width}px`,
+            height:`${PILL_H}px`,
+            backgroundColor: hexToRgba(accent, PILL_BG_ALPHA),
+            border: `1px solid ${hexToRgba(accent, PILL_BORDER_ALPHA)}`,
+            color: bg,
+            opacity: opacityFor(ev, now)
+          });
+
+        $pill.data('seg', { title: ev.title, start: ev.start, end: ev.end, isAllDay: ev.isAllDay });
+        $overlay.append($pill);
+        y += PILL_H + PILL_GAP;
+      }
+
+      // Fade in only if first paint or we actually had to wait
+      if (firstPaint || didWait) {
+        // keep current opacity (0 from CSS on first paint) or set to 0 briefly if needed
+        if (!firstPaint) overlay.style.opacity = '0';
+        void overlay.offsetHeight; // reflow
+        overlay.style.opacity = '1';
+        overlay.dataset.everVisible = '1';
+      } else {
+        // stay visible; no pulse
+        overlay.style.opacity = '1';
+      }
+
+      // Hover (delegated once)
+      if (!renderPresent._hoverBound) {
+        renderPresent._hoverBound = true;
+        $(document)
+          .on('mouseenter', '.pv-event', function(e){
+            const seg = $(this).data('seg'); if (!seg) return;
+            showTooltip(seg, e.clientX, e.clientY);
+          })
+          .on('mousemove', '.pv-event', function(e){
+            const tip = document.querySelector('.pv-tooltip');
+            if (tip && tip.style.display === 'block') {
+              tip.style.left = `${e.clientX}px`;
+              tip.style.top  = `${e.clientY}px`;
+            }
+          })
+          .on('mouseleave', '.pv-event', hideTooltip);
+      }
+    } finally {
+      renderPresent._running = false;
+      if (renderPresent._pending) { renderPresent._pending = false; renderPresent(); }
     }
   }
 
@@ -350,7 +438,18 @@
   };
 
   // Public hook for your showTime() tick
-  async function present_view_relayout() { try { renderPresent(); } catch {} }
+  async function present_view_relayout() {
+    try {
+      // If not active, just hide overlay and bail quickly
+      const el = document.getElementById('present_events_overlay');
+      if (!isPresentActive()) {
+        if (el) el.style.display = 'none';
+        return;
+      }
+      renderPresent();
+    } catch {}
+  }
+
   window.present_view_relayout = present_view_relayout;
 
   // Repaint triggers
@@ -360,12 +459,8 @@
   window.addEventListener('resize', () => present_view_relayout(), { passive: true });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) present_view_relayout(); });
 
-  // Initial paint — only after DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => present_view_relayout(), { once: true });
-  } else {
-    present_view_relayout();
-  }
+  // Initial paint
+  present_view_relayout();
 })();
 
 // Back-compat for older View_Changer calls:
