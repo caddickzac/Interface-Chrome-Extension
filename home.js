@@ -218,6 +218,8 @@ window.showTime = function showTime(){
     present_timeline_width_input = '-'+present_timeline_width_adj+'%'
     $('#present_moving_timeline').css('margin-left', present_timeline_width_input)
     present_timeline_tick_time_labeler() // top dock: present view: tick time labels
+    // shift present view event labels too 
+    present_view_relayout()
     
     h = (h < 10) ? h : h;
     m = (m < 10) ? "0" + m : m;

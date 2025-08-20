@@ -346,8 +346,10 @@ window.View_Changer = function View_Changer(){
         save_data()
         top_dock_small_screen_view()
         top_dock_resize_events()
+        // calendar scripts: 
         render_week_from_google();
         render_day_from_google()
+        render_present_from_google();
         show_top_dock()
     }
     else if(current_display_temp=='top_dock_config'){
