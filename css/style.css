@@ -1530,6 +1530,15 @@
     color: #000; display:none; padding:0 4px;
   }
 
+
+  /* if any overlay hides the year grid, make sure it doesn't block clicks */
+  .overlay-hidden{ pointer-events:none !important; }
+
+  .yv-title{font-size:14px;font-weight:600;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; color: var(--yv-accent);}
+  .yv-item{ color: var(--yv-accent); }
+  #top_dock_year, #top_dock_year [id^="td_year_"] { pointer-events: auto !important; cursor: pointer; }
+
+
  
 
 </style>

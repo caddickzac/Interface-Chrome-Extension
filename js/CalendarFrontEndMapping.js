@@ -1294,8 +1294,8 @@ function year_view_calendar_highlight_today_check_dec(){
 $.fn.highlightday = function(){
     return this.each(function(e){
         $(this).css({
-            'background-color': color_accent_2,
-            'color': color_background,
+            'background-color': window.color_accent_2,
+            'color': window.color_background,
             'font-weight': 'bold'
         })
     })
@@ -1304,8 +1304,8 @@ $.fn.highlightday = function(){
 $.fn.nohighlightday = function(){
     return this.each(function(e){
         $(this).css({
-            'background-color': color_background,
-            'color': color_accent_1,
+            'background-color': window.color_background,
+            'color': window.color_accent_1,
             'font-weight': 'normal'
         })
     })
@@ -1314,6 +1314,41 @@ $.fn.nohighlightday = function(){
 // 0) Month keys + index map
 const YEAR_MONTH_KEYS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
 const MONTH_INDEX = { jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11 };
+
+// --- Year-view helpers: compute reliable day->cell mapping without globals ---
+window.getYearViewDayList = function getYearViewDayList(monthIdx) {
+  const dict = (window.dictionary_library_array?.[0]?.[monthIdx]) || {};
+  const daysInMonth = Number(dict.days_in_month) || 31;
+  const arr = (dict.day_of_month_array?.[0]) || [];
+  return arr.map(v => (Number(v) >= 1 && Number(v) <= daysInMonth) ? Number(v) : '');
+};
+
+window.yearCellSelector = function yearCellSelector(monthIdx, day) {
+  const list = getYearViewDayList(monthIdx);
+  const idx = list.findIndex(v => v === Number(day));
+  if (idx < 0) return null;
+  const key = YEAR_MONTH_KEYS[monthIdx];
+  return `#td_year_${key}_${idx + 1}`;
+};
+
+window.attachYearEventPopup = function attachYearEventPopup(event) {
+  const dt = new Date(event.start); // adapt if your event shape differs
+  const sel = yearCellSelector(dt.getMonth(), dt.getDate());
+  if (!sel) return;
+  // Example behavior: append a trigger/badge or bind a click
+  $(sel).append(event.popupHtml || '');
+  // or: $(sel).on('click', () => openPopup(event));
+};
+
+window.highlightTodayInYear = function highlightTodayInYear() {
+  const now = new Date();
+  const list = getYearViewDayList(now.getMonth());
+  const idx = list.findIndex(v => v === now.getDate());
+  if (idx < 0) return;
+  const key = YEAR_MONTH_KEYS[now.getMonth()];
+  $(`#td_year_${key}_${idx + 1}`).highlightday();
+};
+
 
 // 1) Build the 0..41 -> [highlight, nohighlight] map for any month
 window.build_year_view_calendar_highlight_map = function build_year_view_calendar_highlight_map(monthKey) {
@@ -1417,43 +1452,54 @@ function create_year_view_day_of_month_list(){
     }
 }
 
-// i=0
 function year_view_calendar_highlight_today(){
-    year_view_calendar_highlight_today_check_all_months()
-    year_view_calendar_highlight_today_divs()
-    create_year_view_calendar()
-    create_year_view_day_of_month_list()
-    month_select = year_view_calendar_highlight_today_div_list[month]
-    var day_of_month_list = year_view_calendar_day_of_month_list[month]
+  // keep your existing setup calls if you still need them elsewhere
+  year_view_calendar_highlight_today_check_all_months();
+  year_view_calendar_highlight_today_divs();
+  create_year_view_calendar();
+  create_year_view_day_of_month_list();
 
-    // zc : temp (select january)
-    // var month_select = year_view_calendar_highlight_today_div_list[6]
-    // var day_of_month_list = year_view_calendar_day_of_month_list[6]
-
-    var j = 0
-    var i = 0 
-    // var z = 0
-    for(i=0; i<41;){
-        if(day_of_month_list[i]==''){
-            j+=1
-            i+=1
-        }
-        else if(day_of_month_list[i]==Date_Num){// ){
-            month_select[i][0]()//an error was here. is it fixed? 10/26
-
-            // console.log('found match! ' + day_of_month_list[i])
-            // console.log('found match! output:' + month_select[i][0])
-            // console.log('loop: j: '+ j)
-            i+=1
-        }
-        else{
-            // year_view_divs_sep[i][1]()
-            i+=1
-        }
-        // console.log('i: '+ i)        
-    }
-    // console.log('loop complete: j: '+ j)
+  // New: reliable highlight of today's cell in the year grid
+  highlightTodayInYear();
 }
+
+
+// function year_view_calendar_highlight_today(){
+//     year_view_calendar_highlight_today_check_all_months()
+//     year_view_calendar_highlight_today_divs()
+//     create_year_view_calendar()
+//     create_year_view_day_of_month_list()
+//     month_select = year_view_calendar_highlight_today_div_list[month]
+//     var day_of_month_list = year_view_calendar_day_of_month_list[month]
+
+//     // zc : temp (select january)
+//     // var month_select = year_view_calendar_highlight_today_div_list[6]
+//     // var day_of_month_list = year_view_calendar_day_of_month_list[6]
+
+//     var j = 0
+//     var i = 0 
+//     // var z = 0
+//     for(i=0; i<41;){
+//         if(day_of_month_list[i]==''){
+//             j+=1
+//             i+=1
+//         }
+//         else if(day_of_month_list[i]==Date_Num){// ){
+//             month_select[i][0]()//an error was here. is it fixed? 10/26
+
+//             // console.log('found match! ' + day_of_month_list[i])
+//             // console.log('found match! output:' + month_select[i][0])
+//             // console.log('loop: j: '+ j)
+//             i+=1
+//         }
+//         else{
+//             // year_view_divs_sep[i][1]()
+//             i+=1
+//         }
+//         // console.log('i: '+ i)        
+//     }
+//     // console.log('loop complete: j: '+ j)
+// }
 
 function year_view_calendar_labeler(){
     year_view_calendar_dictionary_grabber()
@@ -1471,6 +1517,16 @@ function year_view_calendar_labeler(){
     year_view_calendar_day_of_month_labeler_dec()
 }
 
+$(function(){
+  // labels & structure
+  year_view_calendar_labeler();     // populates #td_year_<mon>_<1..42> text
+  year_view_month_highlight();      // optional: highlight current month name
+  highlightTodayInYear();           // highlight today (year grid)
+
+  // if you have GCal events already:
+  // renderAllYearEvents(events); // or loop: events.forEach(attachYearEventPopup)
+});
+
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -1482,7 +1538,7 @@ function year_view_calendar_labeler(){
 $.fn.highlight_month_label = function(){
     return this.each(function(e){
         $(this).css({
-            'color': color_accent_2,
+            'color': window.color_accent_2,
             'font-weight': 'bold'
         })
     })
@@ -1491,7 +1547,7 @@ $.fn.highlight_month_label = function(){
 $.fn.dont_highlight_month_label = function(){
     return this.each(function(e){
         $(this).css({
-            'color': color_accent_1,
+            'color': window.color_accent_1,
             'font-weight': 'normal'
         })
     })
@@ -1514,45 +1570,74 @@ function reset_year_view_month_highlight(){
     $('#year_view_dec').dont_highlight_month_label()
 }
 
+// Ensure Month_Text exists for legacy code
+window.Month_Text = window.Month_Text || new Date().toLocaleString('en-US', { month: 'long' });
+
+const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const MONTH_IDS   = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
+
 function year_view_month_highlight(){
-    reset_year_view_month_highlight()
-    if(Month_Text=="January"){
-        $('#year_view_jan').highlight_month_label()
-    }
-    else if(Month_Text=="February"){
-        $('#year_view_feb').highlight_month_label()
-    }
-    else if(Month_Text=="March"){
-        $('#year_view_mar').highlight_month_label()
-    }
-    else if(Month_Text=="April"){
-        $('#year_view_apr').highlight_month_label()
-    }
-    else if(Month_Text=="May"){
-        $('#year_view_may').highlight_month_label()
-    }
-    else if(Month_Text=="June"){
-        $('#year_view_jun').highlight_month_label()
-    }
-    else if(Month_Text=="July"){
-        $('#year_view_jul').highlight_month_label()
-    }
-    else if(Month_Text=="August"){
-        $('#year_view_aug').highlight_month_label()
-    }
-    else if(Month_Text=="September"){
-        $('#year_view_sep').highlight_month_label()
-    }
-    else if(Month_Text=="October"){
-        $('#year_view_oct').highlight_month_label()
-    }
-    else if(Month_Text=="November"){
-        $('#year_view_nov').highlight_month_label()
-    }
-    else if(Month_Text=="De"){
-        $('#year_view_dec').highlight_month_label()
-    }
+  reset_year_view_month_highlight();
+
+  // figure out the month index safely:
+  let idx = -1;
+
+  // 1) prefer explicit numeric month if your app sets it (0..11)
+  if (typeof window.month === 'number' && window.month >= 0 && window.month <= 11) {
+    idx = window.month;
+  }
+  // 2) fallback to Month_Text if present
+  else if (typeof window.Month_Text === 'string') {
+    idx = MONTH_NAMES.indexOf(window.Month_Text);
+  }
+  // 3) final fallback: the real current month
+  if (idx < 0) idx = new Date().getMonth();
+
+  // highlight
+  const id = MONTH_IDS[idx];
+  $(`#year_view_${id}`).highlight_month_label();
 }
+
+
+// function year_view_month_highlight(){
+//     reset_year_view_month_highlight()
+//     if(Month_Text=="January"){
+//         $('#year_view_jan').highlight_month_label()
+//     }
+//     else if(Month_Text=="February"){
+//         $('#year_view_feb').highlight_month_label()
+//     }
+//     else if(Month_Text=="March"){
+//         $('#year_view_mar').highlight_month_label()
+//     }
+//     else if(Month_Text=="April"){
+//         $('#year_view_apr').highlight_month_label()
+//     }
+//     else if(Month_Text=="May"){
+//         $('#year_view_may').highlight_month_label()
+//     }
+//     else if(Month_Text=="June"){
+//         $('#year_view_jun').highlight_month_label()
+//     }
+//     else if(Month_Text=="July"){
+//         $('#year_view_jul').highlight_month_label()
+//     }
+//     else if(Month_Text=="August"){
+//         $('#year_view_aug').highlight_month_label()
+//     }
+//     else if(Month_Text=="September"){
+//         $('#year_view_sep').highlight_month_label()
+//     }
+//     else if(Month_Text=="October"){
+//         $('#year_view_oct').highlight_month_label()
+//     }
+//     else if(Month_Text=="November"){
+//         $('#year_view_nov').highlight_month_label()
+//     }
+//     else if(Month_Text=="December"){
+//         $('#year_view_dec').highlight_month_label()
+//     }
+// }
 // zcc
 // year_view_jan
 // year_view_feb

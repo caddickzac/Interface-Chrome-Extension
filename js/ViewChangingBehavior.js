@@ -269,7 +269,12 @@ window.hide_top_dock = function hide_top_dock(){
 
 }
 
+
+window.events = window.events || []; // for year view in calendar/topdock
+
 window.View_Changer = function View_Changer(){
+    var eventsList = (typeof events !== 'undefined' && events) || window.events || []; // for year view in calendar/topdock
+
     current_display_temp=current_display
     if(current_display_temp=='main'){
         console.log('display: main')
@@ -356,8 +361,10 @@ window.View_Changer = function View_Changer(){
         top_dock_resize_events()
         // calendar scripts: 
         present_view_relayout()
-        render_week_from_google();
         render_day_from_google()
+        render_week_from_google();
+        // events.forEach(ev => attachYearEventPopup(ev));
+        init_year_view_click_popover(); // <- bind clicks for the year grid
         syncMonthThemeVars();
         render_month_from_google(new Date(window.year, window.month, 1));
         if (typeof window.render_month_from_google === 'function') {

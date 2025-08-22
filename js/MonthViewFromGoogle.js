@@ -11,7 +11,7 @@ window.syncMonthThemeVars     ||= window.month_view_apply_theme;
 // Knobs (set these BEFORE this file loads, or set them and call render_month_from_google()):
 //   window.MONTH_MAX_PER_DAY   = 4
 //   window.MONTH_SHOW_TIMES    = true
-window.MONTH_PILL_OPACITY  = 0.6;      // 0..1 (applied to bg only)
+window.MONTH_PILL_OPACITY  = 0.7;      // 0..1 (applied to bg only)
 //   window.MONTH_FONT_FAMILY   = "'Lexend Deca', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
 //   window.APP_TIME_ZONE       = "America/New_York"
 
@@ -250,19 +250,23 @@ if (typeof window.render_month_from_google !== 'function') {
       }
       return;
     }
-    // Timed: include every day intersected by [start..end)
+
+    // Timed: include every day intersected by [start..end), but clip to the day's bounds
     let d = startOfDay(gridStart);
     while (d <= gridEnd){
       const dayStart = startOfDay(d);
       const dayEnd   = endOfDay(d);
-      if (evt.end >= dayStart && evt.start <= dayEnd){
+      // Strict bounds avoid showing a zero-length “midnight-to-midnight” on the next day
+      if (evt.end > dayStart && evt.start < dayEnd){
+        const segStart = new Date(Math.max(evt.start.getTime(), dayStart.getTime())); // ≥ 00:00 that day
+        const segEnd   = new Date(Math.min(evt.end.getTime(),   dayEnd.getTime()));   // ≤ 23:59:59.999 that day
         const key = ymdKey(dayStart);
-        const title = SHOW_TIMES ? `${fmtTime(evt.start)} ${evt.title || ''}`.trim() : (evt.title || '(no title)');
-        yield { key, title, isAllDay:false, start: evt.start, end: evt.end };
+        yield { key, title: evt.title, isAllDay:false, start: segStart, end: segEnd };
       }
       d = new Date(d.getTime() + 86400000);
     }
   }
+
 
   // ---- tooltip ----
   function ensureTooltip(){
@@ -348,7 +352,10 @@ if (typeof window.render_month_from_google !== 'function') {
       for (const it of visible){
         const pill = document.createElement('div');
         pill.className = 'mv-pill';
-        pill.textContent = it.title || '(no title)';
+        const displayText = (!it.isAllDay && SHOW_TIMES)
+          ? `${fmtTime(it.start)} ${it.title || ''}`.trim()
+          : (it.title || '(no title)');
+        pill.textContent = displayText;
 
         // Tooltip on hover
         pill.addEventListener('mouseenter', (e) => {
