@@ -194,6 +194,7 @@ window.top_dock_view_array_number_change_down = function top_dock_view_array_num
 
 window.show_top_dock = function show_top_dock(){
     hide_top_dock_modules()
+    unloadScrollBars()
     $('#top_dock').show()
     current_display='top_dock'
     $('#settings_screen_main').hide()

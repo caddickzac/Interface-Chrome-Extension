@@ -1254,12 +1254,12 @@ document.body.onkeydown = function(e){
     }
     else if(current_display=='top_dock'){
         if(current_top_dock_tool=='none'){
-            if(e.keyCode == 37){ // arrow left
+            if(e.keyCode == 37){ // left arrow
                 top_dock_view_array_number_change_down()
                 top_dock_view_changer()
                 save_data()
             }
-            if(e.keyCode == 39){ // arrow right
+            if(e.keyCode == 39){ // right arrow
                 top_dock_view_array_number_change_up()
                 top_dock_view_changer()
                 save_data()
@@ -1267,26 +1267,32 @@ document.body.onkeydown = function(e){
             if(e.keyCode == 68){ // d |
                 // show day calendar view
                 current_top_dock_module='day'
+                top_dock_view_array_number=1
                 top_dock_module_changer()
+                // update_top_dock_view_array_number() // 
             }
             if(e.keyCode == 77){ // m | 
                 // show month calendar view
                 current_top_dock_module='month'
+                top_dock_view_array_number=3
                 top_dock_module_changer()
             }
             if(e.keyCode == 80){ // p |
                 // show present calendar view
                 current_top_dock_module='present'
+                top_dock_view_array_number=0
                 top_dock_module_changer()
             }
             if(e.keyCode == 87){ // w | 
                 // show week calendar view
                 current_top_dock_module='week'
+                top_dock_view_array_number=2
                 top_dock_module_changer()
             }
             if(e.keyCode == 89){ // y | 
                 // show year calendar view
                 current_top_dock_module='year'
+                top_dock_view_array_number=4
                 top_dock_module_changer()
             } 
         }
@@ -2328,27 +2334,32 @@ document.body.onkeyup = function(e){
 
 $('#top_dock_view_header_year').click(function(){
     current_top_dock_module='year'
+    top_dock_view_array_number=4
     top_dock_module_changer()
 })
 
 
 $('#top_dock_view_header_month').click(function(){
     current_top_dock_module='month'
+    top_dock_view_array_number=3
     top_dock_module_changer()
 })
 
 $('#top_dock_view_header_week').click(function(){
     current_top_dock_module='week'
+    top_dock_view_array_number=2
     top_dock_module_changer()
 })
 
 $('#top_dock_view_header_day').click(function(){
     current_top_dock_module='day'
+    top_dock_view_array_number=1
     top_dock_module_changer()
 })
 
 $('#top_dock_view_header_present').click(function(){
     current_top_dock_module='present'
+    top_dock_view_array_number=0
     top_dock_module_changer()
 })
 

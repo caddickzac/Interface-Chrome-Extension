@@ -563,8 +563,7 @@ window.top_dock_module_changer = function top_dock_module_changer(){
         $('#top_dock_view_header_month').td_view_item_not_selected_close()
         $('#top_dock_view_header_year').td_view_item_selected()
     }
-    // console.log('top dock view changed')
-    // console.log('4. current_top_dock_module: ', current_top_dock_module)
+    save_data()
 }
 
 window.top_dock_view_array_number_change_up = function top_dock_view_array_number_change_up(){

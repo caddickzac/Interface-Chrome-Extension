@@ -11,7 +11,7 @@ window.syncMonthThemeVars     ||= window.month_view_apply_theme;
 // Knobs (set these BEFORE this file loads, or set them and call render_month_from_google()):
 //   window.MONTH_MAX_PER_DAY   = 4
 //   window.MONTH_SHOW_TIMES    = true
-window.MONTH_PILL_OPACITY  = 0.8;      // 0..1 (applied to bg only)
+window.MONTH_PILL_OPACITY  = 0.6;      // 0..1 (applied to bg only)
 //   window.MONTH_FONT_FAMILY   = "'Lexend Deca', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
 //   window.APP_TIME_ZONE       = "America/New_York"
 
