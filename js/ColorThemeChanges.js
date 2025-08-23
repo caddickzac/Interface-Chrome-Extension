@@ -47,7 +47,10 @@ themes = {
   "greenstone":   { background: "#12372A", accent1: "#436850", accent2: "#FBFADA" },
   "maritime fade":{ background: "#B1D0E0", accent1: "#6998AB", accent2: "#1A374D" },
   "summerline":   { background: "#155263", accent1: "#FF6F3C", accent2: "#FFC93C" },
-  "military":     { background: "#4D784E", accent1: "#675645", accent2: "#E1D798" }
+  "military":     { background: "#4D784E", accent1: "#675645", accent2: "#E1D798" },
+  "serengeti":    { background: "#D3602B", accent1: "#FB9739", accent2: "#FFB42A" },
+  "legacy blue":  { background: "#43A6FF", accent1: "#045B96", accent2: "#FFF0C0" },
+  "plumfire":     { background: "#C91F26", accent1: "#EC5F4C", accent2: "#43274D" }
 };
 
 
@@ -60,7 +63,7 @@ theme_list = ['night','cotton candy','greens','sandstone','seaside','pittsburgh'
 'scarlet','spotify','uber','heineken','lego','linkedin-dark','linkedin-light','nasa','natgeo',
 'tiffany','xanadu','sunset','earth-light','earth-dark','charcoal & sunlight','timberline',
 'creamsicle','rust horizon','industrial glow','ash & bone','greenstone','maritime fade',
-'summerline','military']
+'summerline','military', 'serengeti', 'legacy blue', 'plumfire']
 
 window.get_random_theme = function get_random_theme(themes){
     const randomTheme = Math.floor(Math.random() * themes.length);
@@ -228,19 +231,34 @@ window.change_preset_theme = function change_preset_theme() {
     if(hour < 6){ // midnight to 6am
         choice = 'night'
     }
-    else if(hour >= 6 && hour < 12){ // 6am to noon
+    else if(hour >= 6 && hour < 10){ // 6am to 10am
         choice = 'morning'
     }
-    else if(hour >= 12 && hour < 14){ // noon to 2pm
+    else if(hour >= 6 && hour < 10){ // 10am to noon
+        choice = 'maritime fade'
+    }
+    else if(hour >= 10 && hour < 12){ // 10am to noon
+        choice = 'legacy blue'
+    }
+    else if(hour >= 12 && hour < 13){ // noon to 1pm
         choice = 'sandstone'
+    }
+    else if(hour >= 13 && hour < 14){ // 1pm to 2pm
+        choice = 'coastline'
     }
     else if(hour >= 14 && hour < 17){ // 2pm to 5pm
         choice = 'kiwi'
     }
-    else if(hour >= 17 && hour < 19){ // 5pm to 7pm
-        choice = 'sunset'
+    else if(hour >= 17 && hour < 18){ // 5pm to 6pm
+        choice = 'serengeti'
     }  
-    else if(hour >= 19 && hour < 21){ // 7pm to 9pm
+    else if(hour >= 18 && hour < 19){ // 6pm to 7pm
+        choice = 'sunset'
+    } 
+    else if(hour >= 19 && hour < 20){ // 7pm to 8pm
+        choice = 'plumfire'
+    }
+    else if(hour >= 20 && hour < 21){ // 8pm to 9pm
         choice = 'dusk'
     }
     else if(hour >= 21 && hour < 22){ // 9pm to 10pm
