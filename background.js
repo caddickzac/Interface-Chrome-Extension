@@ -10,9 +10,54 @@
 //     ]
 //   }
 
-const GOOGLE_BASE = 'https://www.googleapis.com/calendar/v3';
-const POLL_ALARM  = 'gcal-poll';
-const POLL_MINUTES = 15; // adjust as you like
+'use strict';
+
+const GOOGLE_BASE  = 'https://www.googleapis.com/calendar/v3';
+const POLL_ALARM   = 'gcal-poll';
+const POLL_MINUTES = 15;
+
+// ───────────────── Connection status (persisted) ─────────────────
+// Values: 'never' | 'connected' | 'disconnected'
+let gcalStatus = 'never';
+let everConnected = false;
+
+async function initGcalStatusFromStorage() {
+  try {
+    const data = await chrome.storage.local.get([
+      'gcal_connection_status',
+      'gcal_ever_connected',
+      'gcal_calendars'
+    ]);
+    everConnected = !!data.gcal_ever_connected;
+    if (typeof data.gcal_connection_status === 'string') {
+      gcalStatus = data.gcal_connection_status;
+    } else if (Array.isArray(data.gcal_calendars) && data.gcal_calendars.length > 0) {
+      gcalStatus = 'connected'; everConnected = true;
+    } else {
+      gcalStatus = everConnected ? 'disconnected' : 'never';
+    }
+  } catch {
+    gcalStatus = 'never';
+    everConnected = false;
+  }
+}
+
+async function setGcalStatus(status) {
+  if (gcalStatus === status) return;
+  gcalStatus = status;
+  if (status === 'connected') everConnected = true;
+  await chrome.storage.local.set({
+    gcal_connection_status: gcalStatus,
+    gcal_ever_connected: everConnected
+  });
+  try { chrome.runtime.sendMessage({ type: 'gcal:statusChanged', status: gcalStatus }); } catch {}
+}
+
+// Initialize status when the worker wakes
+chrome.runtime.onStartup?.addListener(() => { initGcalStatusFromStorage(); });
+chrome.runtime.onInstalled.addListener(() => { initGcalStatusFromStorage(); });
+// Also call once on load
+initGcalStatusFromStorage();
 
 // ───────────────── Identity helpers ─────────────────
 function getAuthToken({ interactive }) {
@@ -31,7 +76,7 @@ function clearCachedTokens() {
 
 // ───────────────── Time helpers ─────────────────
 function eventWindow() {
-  // Full **current** year: [Jan 1 this year, Jan 1 next year)
+  // Full current year: [Jan 1 this year, Jan 1 next year)
   const y = new Date().getFullYear();
   const start = new Date(y, 0, 1, 0, 0, 0, 0);
   const end   = new Date(y + 1, 0, 1, 0, 0, 0, 0);
@@ -133,13 +178,21 @@ async function refreshCalendar(interactive = false) {
   await chrome.storage.local.set({
     gcal_calendars: calendars,
     gcal_events_all: allEvents,
-    gcal_events_primary: primaryEvents
+    gcal_events_primary: primaryEvents,
+    gcal_last_sync_at: new Date().toISOString()
   });
 
-  chrome.runtime.sendMessage({
-    type: 'gcal:updated',
-    counts: { calendars: calendars.length, all: allEvents.length, primary: primaryEvents.length }
-  });
+  // Mark connected on any successful full refresh
+  await setGcalStatus('connected');
+
+  // Notify UIs; include status for convenience
+  try {
+    chrome.runtime.sendMessage({
+      type: 'gcal:updated',
+      counts: { calendars: calendars.length, all: allEvents.length, primary: primaryEvents.length },
+      status: gcalStatus
+    });
+  } catch {}
 
   return { calendars: calendars.length, all: allEvents.length, primary: primaryEvents.length };
 }
@@ -158,50 +211,71 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 });
 
 // ───────────────── Message router ─────────────────
-// Single, consolidated listener (no duplicates / no-ops).
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   (async () => {
     try {
-      // Connect + prime + start polling
-      if (msg?.type === 'gcal:connect') {
-        const counts = await refreshCalendar(true);
-        startPolling();
-        sendResponse({ ok: true, counts });
+      // -------- Status query --------
+      if (msg?.type === 'gcal:getStatus') {
+        // If RAM not yet initialized (cold start), fall back to persisted value
+        const { gcal_connection_status } = await chrome.storage.local.get('gcal_connection_status');
+        const status = (typeof gcalStatus === 'string' && gcalStatus)
+          ? gcalStatus
+          : (typeof gcal_connection_status === 'string' ? gcal_connection_status : 'never');
+        sendResponse({ ok: true, status });
         return;
       }
 
-      // Manual refresh (keeps current-year window)
+      // -------- Connect + prime + start polling --------
+      if (msg?.type === 'gcal:connect') {
+        const counts = await refreshCalendar(true);
+        await setGcalStatus('connected');
+        startPolling();
+        sendResponse({ ok: true, counts, status: gcalStatus });
+        return;
+      }
+
+      // -------- Manual refresh (keeps current-year window) --------
       if (msg?.type === 'gcal:refreshNow') {
         const counts = await refreshCalendar(false);
-        sendResponse({ ok: true, counts });
+        if (counts?.calendars > 0) await setGcalStatus('connected');
+        sendResponse({ ok: true, counts, status: gcalStatus });
         return;
       }
 
       if (msg?.type === 'gcal:startPolling') {
-        startPolling();
-        sendResponse({ ok: true });
-        return;
+        startPolling(); sendResponse({ ok: true }); return;
       }
-
       if (msg?.type === 'gcal:stopPolling') {
-        stopPolling();
-        sendResponse({ ok: true });
-        return;
+        stopPolling(); sendResponse({ ok: true }); return;
       }
 
-      // Disconnect: clear local state only (don’t request new tokens/scopes here)
+      // -------- Disconnect: clear local state only --------
       if (msg?.type === 'gcal:disconnect') {
         stopPolling();
         clearCachedTokens();
-        await chrome.storage.local.remove(['gcal_calendars', 'gcal_events_all', 'gcal_events_primary']);
-        chrome.runtime.sendMessage({ type: 'gcal:disconnected' });
-        sendResponse({ ok: true });
+        await chrome.storage.local.remove([
+          'gcal_calendars',
+          'gcal_events_all',
+          'gcal_events_primary',
+          'gcal_last_sync_at'
+        ]);
+        await setGcalStatus('disconnected');
+        try { chrome.runtime.sendMessage({ type: 'gcal:disconnected' }); } catch {}
+        sendResponse({ ok: true, status: gcalStatus });
         return;
       }
 
-      // On-demand range fetch (used by YearView preloader)
+      // -------- On-demand range fetch (used by YearView preloader) --------
       if (msg?.type === 'gcal:fetchRange' || msg?.type === 'gcal:ensureRange') {
-        const token = await getAuthToken({ interactive: false });
+        let token;
+        try {
+          token = await getAuthToken({ interactive: false });
+        } catch (err) {
+          // Not authorized or expired
+          await setGcalStatus(everConnected ? 'disconnected' : 'never');
+          sendResponse({ ok: false, error: String(err?.message || err), status: gcalStatus });
+          return;
+        }
 
         // Reuse cached calendars if present; otherwise fetch once
         let { gcal_calendars } = await chrome.storage.local.get('gcal_calendars');
@@ -209,8 +283,12 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           gcal_calendars = await listCalendars(token);
           await chrome.storage.local.set({ gcal_calendars });
         }
-        const primary = isPrimaryCalendar(gcal_calendars);
 
+        if (Array.isArray(gcal_calendars) && gcal_calendars.length > 0) {
+          await setGcalStatus('connected');
+        }
+
+        const primary = isPrimaryCalendar(gcal_calendars);
         const { startISO, endISO } = msg;
 
         // Fetch each calendar within the requested window
@@ -226,18 +304,19 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                 ev._calendarBg = bg;
               }
               return events;
-            } catch {
+            } catch (err) {
+              console.warn('[BG] range fetch error for', cal.id, err?.message || err);
               return [];
             }
           })
         );
 
-        const addAll = perCal.flat();
+        const addAll     = perCal.flat();
         const addPrimary = primary ? addAll.filter(ev => ev._calendarId === primary.id) : [];
 
         // Merge/de-dupe into storage
-        const data = await chrome.storage.local.get(['gcal_events_all', 'gcal_events_primary']);
-        const curAll = Array.isArray(data.gcal_events_all) ? data.gcal_events_all : [];
+        const data   = await chrome.storage.local.get(['gcal_events_all', 'gcal_events_primary']);
+        const curAll = Array.isArray(data.gcal_events_all)     ? data.gcal_events_all : [];
         const curPri = Array.isArray(data.gcal_events_primary) ? data.gcal_events_primary : [];
 
         const mergedAll = mergeDedup(curAll, addAll);
@@ -245,15 +324,33 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
         await chrome.storage.local.set({
           gcal_events_all: mergedAll,
-          gcal_events_primary: mergedPri
+          gcal_events_primary: mergedPri,
+          gcal_last_sync_at: new Date().toISOString()
         });
 
-        chrome.runtime.sendMessage({ type: 'gcal:updated' });
-        sendResponse({ ok: true, added: addAll.length, total: mergedAll.length });
+        // Let UIs repaint; include counts + status
+        try {
+          chrome.runtime.sendMessage({
+            type: 'gcal:updated',
+            counts: {
+              calendars: Array.isArray(gcal_calendars) ? gcal_calendars.length : 0,
+              all: mergedAll.length,
+              primary: mergedPri.length
+            },
+            status: gcalStatus
+          });
+        } catch {}
+
+        sendResponse({
+          ok: true,
+          added: addAll.length,
+          total: mergedAll.length,
+          status: gcalStatus
+        });
         return;
       }
 
-      // Unknown message: ignore gracefully
+      // -------- Unknown message --------
       sendResponse({ ok: false, error: 'unknown_message_type' });
     } catch (e) {
       console.warn('[BG] handler error:', e);
@@ -263,7 +360,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   return true; // keep the port open for async sendResponse
 });
 
-// Optional
+// Optional: install log
 chrome.runtime.onInstalled.addListener(() => {
   console.log('[BG] Extension installed/updated.');
   // startPolling();

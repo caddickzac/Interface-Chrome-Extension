@@ -55,15 +55,15 @@ themes = {
 
 
 
-theme_list = ['night','cotton candy','greens','sandstone','seaside','pittsburgh',
-'americana','emerald','blues', //'riddler',
-'kiwi','coastline','dusk','berries','strawberry',
-'clay','light','morning','salmon',//'vapor wave',
-'black & gold','big foot','sunshine','netflix',
-'scarlet','spotify','uber','heineken','lego','linkedin-dark','linkedin-light','nasa','natgeo',
-'tiffany','xanadu','sunset','earth-light','earth-dark','charcoal & sunlight','timberline',
-'creamsicle','rust horizon','industrial glow','ash & bone','greenstone','maritime fade',
-'summerline','military', 'serengeti', 'legacy blue', 'plumfire']
+// theme_list = ['night','cotton candy','greens','sandstone','seaside','pittsburgh',
+// 'americana','emerald','blues', 'riddler',
+// 'kiwi','coastline','dusk','berries','strawberry',
+// 'clay','light','morning','salmon', 'vapor wave',
+// 'black & gold','big foot','sunshine','netflix',
+// 'scarlet','spotify','uber','heineken','lego','linkedin-dark','linkedin-light','nasa','natgeo',
+// 'tiffany','xanadu','sunset','earth-light','earth-dark','charcoal & sunlight','timberline',
+// 'creamsicle','rust horizon','industrial glow','ash & bone','greenstone','maritime fade',
+// 'summerline','military', 'serengeti', 'legacy blue', 'plumfire']
 
 window.get_random_theme = function get_random_theme(themes){
     const randomTheme = Math.floor(Math.random() * themes.length);
