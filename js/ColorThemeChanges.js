@@ -50,20 +50,11 @@ themes = {
   "military":     { background: "#4D784E", accent1: "#675645", accent2: "#E1D798" },
   "serengeti":    { background: "#D3602B", accent1: "#FB9739", accent2: "#FFB42A" },
   "legacy blue":  { background: "#43A6FF", accent1: "#045B96", accent2: "#FFF0C0" },
-  "plumfire":     { background: "#C91F26", accent1: "#EC5F4C", accent2: "#43274D" }
+  "plumfire":     { background: "#C91F26", accent1: "#EC5F4C", accent2: "#43274D" },
+  "midnight velvet": { background: "#3B2435", accent1: "#000000", accent2: "#CB9E54" },
+
 };
 
-
-
-// theme_list = ['night','cotton candy','greens','sandstone','seaside','pittsburgh',
-// 'americana','emerald','blues', 'riddler',
-// 'kiwi','coastline','dusk','berries','strawberry',
-// 'clay','light','morning','salmon', 'vapor wave',
-// 'black & gold','big foot','sunshine','netflix',
-// 'scarlet','spotify','uber','heineken','lego','linkedin-dark','linkedin-light','nasa','natgeo',
-// 'tiffany','xanadu','sunset','earth-light','earth-dark','charcoal & sunlight','timberline',
-// 'creamsicle','rust horizon','industrial glow','ash & bone','greenstone','maritime fade',
-// 'summerline','military', 'serengeti', 'legacy blue', 'plumfire']
 
 window.get_random_theme = function get_random_theme(themes){
     const randomTheme = Math.floor(Math.random() * themes.length);
@@ -262,9 +253,12 @@ window.change_preset_theme = function change_preset_theme() {
         choice = 'dusk'
     }
     else if(hour >= 21 && hour < 22){ // 9pm to 10pm
+        choice = 'midnight velvet'
+    }      
+    else if(hour >= 22 && hour < 23){ // 10pm to 11pm
         choice = 'ash & bone'
     }    
-    else if(hour >= 22 && hour < 24){ // 10pm to midnight
+    else if(hour >= 23 && hour < 24){ // 11pm to midnight
         choice = 'night'
     }
   }
