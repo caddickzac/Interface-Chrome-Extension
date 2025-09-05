@@ -222,10 +222,10 @@ window.change_preset_theme = function change_preset_theme() {
     if(hour < 6){ // midnight to 6am
         choice = 'night'
     }
-    else if(hour >= 6 && hour < 10){ // 6am to 10am
+    else if(hour >= 6 && hour < 8){ // 6am to 8am
         choice = 'morning'
     }
-    else if(hour >= 6 && hour < 10){ // 10am to noon
+    else if(hour >= 8 && hour < 10){ // 8am to 10am
         choice = 'maritime fade'
     }
     else if(hour >= 10 && hour < 12){ // 10am to noon
